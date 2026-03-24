@@ -9,35 +9,38 @@ const products: Record<
     name: string;
     price: string;
     description: string;
+    image: string;
   }
 > = {
-  const products = {
   "tank-top": {
     name: "Custom Tank Top",
     price: "$32",
     description: "A lightweight tank perfect for hot camp days.",
+    image: "/tank.jpg",
   },
   "hoodie": {
     name: "Custom Hoodie",
     price: "$60",
     description: "A cozy custom hoodie for chilly camp nights.",
+    image: "/hoodie.jpg",
   },
   "quarter-zip": {
     name: "Custom 1/4 Zip",
     price: "$58",
     description: "A stylish quarter zip for layering at camp.",
+    image: "/quarterzip.jpg",
   },
   "custom-shorts": {
     name: "Custom Shorts",
     price: "$36",
     description: "Comfortable personalized shorts for everyday wear.",
+    image: "/shorts.jpg",
   },
   "custom-tee": {
     name: "Custom Tee",
     price: "$28",
     description: "A classic custom t-shirt for camp and beyond.",
-  },
-};
+    image: "/tee.jpg",
   },
 };
 
@@ -92,13 +95,15 @@ export default function ProductPage() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-10 px-6 py-16 max-w-6xl mx-auto">
-        <div className="h-[420px] bg-gray-200 rounded-xl"></div>
+        <img
+          src={product.image}
+          alt={product.name}
+          className="h-[420px] w-full object-cover rounded-xl"
+        />
 
         <div>
           <h1 className="text-3xl font-light">{product.name}</h1>
-
           <p className="mt-4 text-gray-600">{product.description}</p>
-
           <p className="mt-4 text-xl">{product.price}</p>
 
           <div className="mt-6">
