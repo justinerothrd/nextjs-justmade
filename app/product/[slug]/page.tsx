@@ -3,44 +3,36 @@
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
-const products: Record<
-  string,
-  {
-    name: string;
-    price: string;
-    description: string;
-    image: string;
-  }
-> = {
+const products = {
   "tank-top": {
     name: "Custom Tank Top",
     price: "$32",
     description: "A lightweight tank perfect for hot camp days.",
-    image: "/tank.jpg",
+    image: "/Tank.jpeg",
   },
   "hoodie": {
     name: "Custom Hoodie",
     price: "$60",
     description: "A cozy custom hoodie for chilly camp nights.",
-    image: "/hoodie.jpg",
+    image: "/hoodie.jpeg",
   },
   "quarter-zip": {
     name: "Custom 1/4 Zip",
     price: "$58",
     description: "A stylish quarter zip for layering at camp.",
-    image: "/quarterzip.jpg",
+    image: "/quarterzip.jpeg",
   },
   "custom-shorts": {
     name: "Custom Shorts",
     price: "$36",
     description: "Comfortable personalized shorts for everyday wear.",
-    image: "/shorts.jpg",
+    image: "/shorts.jpeg",
   },
   "custom-tee": {
     name: "Custom Tee",
     price: "$28",
     description: "A classic custom t-shirt for camp and beyond.",
-    image: "/tee.jpg",
+    image: "/Tee.jpeg",
   },
 };
 
@@ -56,19 +48,8 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <main className="bg-[#F7F7F5] text-[#4B4B4B] min-h-screen">
-        <div className="flex justify-between items-center px-6 py-5 border-b">
-          <a href="/">
-            <img src="/logo.png" alt="logo" className="h-10" />
-          </a>
-          <a href="/shop" className="text-sm hover:text-[#6F879E]">
-            Back to Shop
-          </a>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-6 py-16">
-          <h1 className="text-3xl font-light">Product not found</h1>
-        </div>
+      <main className="min-h-screen flex items-center justify-center">
+        <h1>Product not found</h1>
       </main>
     );
   }
@@ -89,9 +70,7 @@ export default function ProductPage() {
         <a href="/">
           <img src="/logo.png" alt="logo" className="h-10" />
         </a>
-        <a href="/shop" className="text-sm hover:text-[#6F879E]">
-          Back to Shop
-        </a>
+        <a href="/shop">Back to Shop</a>
       </div>
 
       <div className="grid md:grid-cols-2 gap-10 px-6 py-16 max-w-6xl mx-auto">
@@ -107,54 +86,12 @@ export default function ProductPage() {
           <p className="mt-4 text-xl">{product.price}</p>
 
           <div className="mt-6">
-            <label className="text-sm">Name on item</label>
             <input
               type="text"
+              placeholder="Enter name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Enter name"
-              className="w-full mt-2 p-3 border rounded-lg bg-white"
-            />
-          </div>
-
-          <div className="mt-6">
-            <label className="text-sm">Size</label>
-            <select
-              value={size}
-              onChange={(e) => setSize(e.target.value)}
-              className="w-full mt-2 p-3 border rounded-lg bg-white"
-            >
-              <option>Youth S</option>
-              <option>Youth M</option>
-              <option>Youth L</option>
-              <option>Youth XL</option>
-              <option>Adult S</option>
-              <option>Adult M</option>
-            </select>
-          </div>
-
-          <div className="mt-6">
-            <label className="text-sm">Color</label>
-            <select
-              value={color}
-              onChange={(e) => setColor(e.target.value)}
-              className="w-full mt-2 p-3 border rounded-lg bg-white"
-            >
-              <option>Heather Gray</option>
-              <option>Light Blue</option>
-              <option>Navy</option>
-              <option>White</option>
-            </select>
-          </div>
-
-          <div className="mt-6">
-            <label className="text-sm">Quantity</label>
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-              className="w-24 mt-2 p-3 border rounded-lg bg-white"
+              className="w-full mt-2 p-3 border rounded-lg"
             />
           </div>
 
