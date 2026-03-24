@@ -84,9 +84,12 @@ export default function ProductPage() {
             />
           </div>
 
-          <button className="mt-8 bg-[#6F879E] text-white px-6 py-3 rounded-full">
-            Add to Cart
-          </button>
+       <a
+  href="/cart"
+  className="mt-8 inline-block bg-[#6F879E] text-white px-6 py-3 rounded-full"
+>
+  Add to Cart
+</a>
         </div>
       </div>
     </main>
