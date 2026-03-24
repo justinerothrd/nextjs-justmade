@@ -3,31 +3,31 @@ const products = [
     slug: "tank-top",
     name: "Custom Tank Top",
     price: "$32",
-    image: "/tank.jpg",
+    image: "/Tank.jpeg",
   },
   {
     slug: "hoodie",
     name: "Custom Hoodie",
     price: "$60",
-    image: "/hoodie.jpg",
+    image: "/hoodie.jpeg",
   },
   {
     slug: "quarter-zip",
     name: "Custom 1/4 Zip",
     price: "$58",
-    image: "/quarterzip.jpg",
+    image: "/quarterzip.jpeg",
   },
   {
     slug: "custom-shorts",
     name: "Custom Shorts",
     price: "$36",
-    image: "/shorts.jpg",
+    image: "/shorts.jpeg",
   },
   {
     slug: "custom-tee",
     name: "Custom Tee",
     price: "$28",
-    image: "/tee.jpg",
+    image: "/Tee.jpeg",
   },
 ];
 
@@ -40,16 +40,16 @@ export default function ShopPage() {
 
       <header className="flex justify-between items-center px-6 py-5 border-b">
         <a href="/">
-          <img src="/logo.png" alt="Just Made Custom" className="h-10 w-auto" />
+          <img src="/logo.png" alt="logo" className="h-10" />
         </a>
 
         <div className="flex items-center gap-8">
           <nav className="hidden md:flex gap-6 text-sm">
-            <a href="/shop" className="hover:text-[#6F879E]">Shop</a>
-            <a href="#" className="hover:text-[#6F879E]">Custom Orders</a>
-            <a href="#" className="hover:text-[#6F879E]">About</a>
-            <a href="#" className="hover:text-[#6F879E]">FAQ</a>
-            <a href="#" className="hover:text-[#6F879E]">Contact</a>
+            <a href="/shop">Shop</a>
+            <a href="#">Custom Orders</a>
+            <a href="#">About</a>
+            <a href="#">FAQ</a>
+            <a href="#">Contact</a>
           </nav>
           <a href="/cart" className="text-sm">Cart</a>
         </div>
