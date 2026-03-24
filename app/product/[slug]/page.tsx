@@ -11,35 +11,33 @@ const products: Record<
     description: string;
   }
 > = {
-  "camp-sweatshirt": {
-    name: "Personalized Camp Sweatshirt",
-    price: "$48",
-    description: "Soft, cozy sweatshirt customized with your child’s name for camp.",
-  },
-  "name-tee": {
-    name: "Custom Name Tee",
-    price: "$28",
-    description: "An easy everyday tee personalized for camp, travel, and summer fun.",
-  },
-  "pajama-shorts": {
-    name: "Camp Pajama Shorts",
+  const products = {
+  "tank-top": {
+    name: "Custom Tank Top",
     price: "$32",
-    description: "Comfortable personalized pajama shorts perfect for sleepaway camp.",
+    description: "A lightweight tank perfect for hot camp days.",
   },
-  "bunk-gift-tote": {
-    name: "Bunk Gift Tote",
-    price: "$22",
-    description: "A personalized tote that makes a thoughtful bunk or camp gift.",
+  "hoodie": {
+    name: "Custom Hoodie",
+    price: "$60",
+    description: "A cozy custom hoodie for chilly camp nights.",
   },
-  "visiting-day-sweatshirt": {
-    name: "Visiting Day Sweatshirt",
-    price: "$50",
-    description: "A special customized sweatshirt made for visiting day memories.",
+  "quarter-zip": {
+    name: "Custom 1/4 Zip",
+    price: "$58",
+    description: "A stylish quarter zip for layering at camp.",
   },
-  "sibling-camp-tee": {
-    name: "Sibling Camp Tee",
-    price: "$26",
-    description: "A fun personalized tee for siblings sharing the camp excitement.",
+  "custom-shorts": {
+    name: "Custom Shorts",
+    price: "$36",
+    description: "Comfortable personalized shorts for everyday wear.",
+  },
+  "custom-tee": {
+    name: "Custom Tee",
+    price: "$28",
+    description: "A classic custom t-shirt for camp and beyond.",
+  },
+};
   },
 };
 
