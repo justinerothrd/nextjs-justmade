@@ -9,7 +9,7 @@ export default function HomePage() {
         <img src="/logo.png" alt="Just Made Custom" className="h-10 w-auto" />
 
         <div className="flex items-center gap-8">
-          <nav className="hidden md:flex gap-6 text-sm">
+          <nav className="flex gap-6 text-sm">
             <a href="#" className="hover:text-[#6F879E]">Shop</a>
             <a href="#" className="hover:text-[#6F879E]">Custom Orders</a>
             <a href="#" className="hover:text-[#6F879E]">About</a>
