@@ -1,13 +1,37 @@
-export default function ShopPage() {
-  const products = [
-    { name: "Personalized Camp Sweatshirt", price: "$48" },
-    { name: "Custom Name Tee", price: "$28" },
-    { name: "Camp Pajama Shorts", price: "$32" },
-    { name: "Bunk Gift Tote", price: "$22" },
-    { name: "Visiting Day Sweatshirt", price: "$50" },
-    { name: "Sibling Camp Tee", price: "$26" },
-  ];
+const products = [
+  {
+    slug: "camp-sweatshirt",
+    name: "Personalized Camp Sweatshirt",
+    price: "$48",
+  },
+  {
+    slug: "name-tee",
+    name: "Custom Name Tee",
+    price: "$28",
+  },
+  {
+    slug: "pajama-shorts",
+    name: "Camp Pajama Shorts",
+    price: "$32",
+  },
+  {
+    slug: "bunk-gift-tote",
+    name: "Bunk Gift Tote",
+    price: "$22",
+  },
+  {
+    slug: "visiting-day-sweatshirt",
+    name: "Visiting Day Sweatshirt",
+    price: "$50",
+  },
+  {
+    slug: "sibling-camp-tee",
+    name: "Sibling Camp Tee",
+    price: "$26",
+  },
+];
 
+export default function ShopPage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B] min-h-screen">
       <div className="bg-[#6F879E] text-white text-center text-sm py-2">
@@ -26,7 +50,7 @@ export default function ShopPage() {
             <a href="#" className="hover:text-[#6F879E]">FAQ</a>
             <a href="#" className="hover:text-[#6F879E]">Contact</a>
           </nav>
-          <div className="text-sm">Cart (0)</div>
+          <a href="/cart" className="text-sm">Cart</a>
         </div>
       </header>
 
@@ -40,16 +64,16 @@ export default function ShopPage() {
       <section className="px-6 pb-20">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {products.map((product) => (
-            <div key={product.name} className="bg-white p-6 rounded-xl border">
+            <div key={product.slug} className="bg-white p-6 rounded-xl border">
               <div className="h-64 bg-gray-100 rounded mb-4"></div>
               <h3 className="text-lg">{product.name}</h3>
               <p className="text-gray-500 mt-1">{product.price}</p>
-            <a
-  href="/product"
-  className="mt-4 inline-block bg-[#6F879E] text-white px-4 py-2 rounded-full text-sm"
->
-  View Product
-</a>
+              <a
+                href={`/product/${product.slug}`}
+                className="mt-4 inline-block bg-[#6F879E] text-white px-4 py-2 rounded-full text-sm"
+              >
+                View Product
+              </a>
             </div>
           ))}
         </div>
