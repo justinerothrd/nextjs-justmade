@@ -20,7 +20,9 @@ export default function ShopPage() {
         </a>
         <div className="flex items-center gap-8">
           <nav className="hidden md:flex gap-6 text-sm">
-            <a href="/shop" className="hover:text-[#6F879E]">Shop</a>
+            <a href="/shop" className="bg-[#6F879E] text-white px-6 py-3 rounded-full">
+  Shop Camp Favorites
+</a>
             <a href="#" className="hover:text-[#6F879E]">Custom Orders</a>
             <a href="#" className="hover:text-[#6F879E]">About</a>
             <a href="#" className="hover:text-[#6F879E]">FAQ</a>
