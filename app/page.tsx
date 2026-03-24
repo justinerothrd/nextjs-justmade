@@ -29,9 +29,9 @@ export default function HomePage() {
         </p>
 
         <div className="mt-8 flex justify-center gap-4">
-          <button className="bg-[#6F879E] text-white px-6 py-3 rounded-full">
-            Shop Camp Favorites
-          </button>
+         <a href="/shop" className="bg-[#6F879E] text-white px-6 py-3 rounded-full">
+  Shop Camp Favorites
+</a>
           <button className="border border-[#6F879E] text-[#6F879E] px-6 py-3 rounded-full">
             Start a Custom Order
           </button>
