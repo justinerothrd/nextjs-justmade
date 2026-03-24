@@ -1,5 +1,6 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { useState } from "react";
 
 const products: Record<
@@ -42,12 +43,10 @@ const products: Record<
   },
 };
 
-export default function ProductPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const product = products[params.slug];
+export default function ProductPage() {
+  const params = useParams();
+  const slug = params?.slug as string;
+  const product = products[slug];
 
   const [name, setName] = useState("");
   const [size, setSize] = useState("Youth M");
