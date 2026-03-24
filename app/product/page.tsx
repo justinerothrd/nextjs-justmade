@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -8,6 +7,16 @@ export default function ProductPage() {
   const [size, setSize] = useState("Youth M");
   const [color, setColor] = useState("Heather Gray");
   const [quantity, setQuantity] = useState(1);
+
+  const cartLink = `/cart?product=${encodeURIComponent(
+    "Personalized Camp Sweatshirt"
+  )}&price=${encodeURIComponent(
+    "$48"
+  )}&name=${encodeURIComponent(name)}&size=${encodeURIComponent(
+    size
+  )}&color=${encodeURIComponent(color)}&quantity=${encodeURIComponent(
+    quantity.toString()
+  )}`;
 
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B] min-h-screen">
@@ -84,12 +93,12 @@ export default function ProductPage() {
             />
           </div>
 
-       <a
-  href="/cart"
-  className="mt-8 inline-block bg-[#6F879E] text-white px-6 py-3 rounded-full"
->
-  Add to Cart
-</a>
+          <a
+            href={cartLink}
+            className="mt-8 inline-block bg-[#6F879E] text-white px-6 py-3 rounded-full"
+          >
+            Add to Cart
+          </a>
         </div>
       </div>
     </main>
