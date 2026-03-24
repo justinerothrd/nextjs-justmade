@@ -44,9 +44,12 @@ export default function ShopPage() {
               <div className="h-64 bg-gray-100 rounded mb-4"></div>
               <h3 className="text-lg">{product.name}</h3>
               <p className="text-gray-500 mt-1">{product.price}</p>
-              <button className="mt-4 bg-[#6F879E] text-white px-4 py-2 rounded-full text-sm">
-                View Product
-              </button>
+            <a
+  href="/product"
+  className="mt-4 inline-block bg-[#6F879E] text-white px-4 py-2 rounded-full text-sm"
+>
+  View Product
+</a>
             </div>
           ))}
         </div>
