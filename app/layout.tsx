@@ -13,8 +13,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#F7F7F5] text-[#4B4B4B]">
+
+        {/* Header */}
         <header className="border-b border-[#E3E3E0] bg-[#F7F7F5]">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+
             <a href="/" className="flex items-center">
               <img
                 src="/logo.png"
@@ -24,33 +27,30 @@ export default function RootLayout({
             </a>
 
             <nav className="hidden md:flex items-center gap-8 text-sm">
-              <a href="/" className="transition hover:text-[#6F879E]">
-                Home
-              </a>
-              <a href="/shop" className="transition hover:text-[#6F879E]">
-                Shop
-              </a>
-              <a href="/custom-orders" className="transition hover:text-[#6F879E]">
-                Custom Orders
-              </a>
-              <a href="/about" className="transition hover:text-[#6F879E]">
-                About
-              </a>
-              <a href="/faq" className="transition hover:text-[#6F879E]">
-                FAQ
-              </a>
-              <a href="/contact" className="transition hover:text-[#6F879E]">
-                Contact
-              </a>
+              <a href="/" className="hover:text-[#6F879E]">Home</a>
+              <a href="/shop" className="hover:text-[#6F879E]">Shop</a>
+              <a href="/custom-orders" className="hover:text-[#6F879E]">Custom Orders</a>
+              <a href="/about" className="hover:text-[#6F879E]">About</a>
+              <a href="/faq" className="hover:text-[#6F879E]">FAQ</a>
+              <a href="/contact" className="hover:text-[#6F879E]">Contact</a>
             </nav>
 
-            <a href="/cart" className="text-sm transition hover:text-[#6F879E]">
+            <a href="/cart" className="text-sm hover:text-[#6F879E]">
               Cart
             </a>
           </div>
         </header>
 
-        {children}
+        {/* 🔵 GLOBAL BLUE BAR */}
+        <div className="bg-[#6F879E] text-white text-center py-3 text-sm">
+          Personalized camp favorites for kids, bunks, and groups
+        </div>
+
+        {/* PAGE CONTENT */}
+        <main className="mx-auto max-w-7xl px-6">
+          {children}
+        </main>
+
       </body>
     </html>
   );
