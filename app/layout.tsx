@@ -14,12 +14,12 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-[#F7F7F5] text-[#4B4B4B]">
         <header className="border-b border-[#E3E3E0] bg-[#F7F7F5]">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
             <a href="/" className="flex items-center">
               <img
                 src="/logo.png"
                 alt="Just Made Custom logo"
-                className="h-32 w-auto"
+                className="h-24 w-auto"
               />
             </a>
 
