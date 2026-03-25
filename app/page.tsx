@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
       {/* Hero */}
-      <section className="px-6 pb-20 pt-16 md:pb-28 md:pt-24">
+     <section className="px-6 pb-20 pt-10 md:pb-24 md:pt-14">
         <div className="mx-auto grid max-w-7xl items-center gap-14 md:grid-cols-[1.1fr_.9fr]">
           <div>
             <p className="text-sm uppercase tracking-[0.28em] text-[#6F879E]">
