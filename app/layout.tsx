@@ -13,11 +13,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#F7F7F5] text-[#4B4B4B]">
-
-        {/* Header */}
         <header className="border-b border-[#E3E3E0] bg-[#F7F7F5]">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-
             <a href="/" className="flex items-center">
               <img
                 src="/logo.png"
@@ -41,16 +38,11 @@ export default function RootLayout({
           </div>
         </header>
 
-        {/* 🔵 GLOBAL BLUE BAR */}
-        <div className="bg-[#6F879E] text-white text-center py-3 text-sm">
+        <div className="bg-[#6F879E] py-3 text-center text-sm text-white">
           Personalized camp favorites for kids, bunks, and groups
         </div>
 
-        {/* PAGE CONTENT */}
-        <main className="mx-auto max-w-7xl px-6">
-          {children}
-        </main>
-
+        {children}
       </body>
     </html>
   );
