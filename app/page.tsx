@@ -1,73 +1,87 @@
 export default function HomePage() {
+  const categories = [
+    { title: "Sweatshirts", subtitle: "Cozy camp favorites" },
+    { title: "Tees", subtitle: "Easy everyday essentials" },
+    { title: "Sleepwear", subtitle: "Soft personalized pieces" },
+    { title: "Accessories", subtitle: "Thoughtful finishing touches" },
+  ];
+
   return (
-    <main className="bg-[#F7F7F5] text-[#4B4B4B] min-h-screen">
+    <main className="bg-[#F7F7F5] text-[#4B4B4B]">
+      {/* Hero */}
+      <section className="px-6 pb-20 pt-16 md:pb-28 md:pt-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-14 md:grid-cols-[1.1fr_.9fr]">
+          <div>
+            <p className="text-sm uppercase tracking-[0.28em] text-[#6F879E]">
+              Just Made Custom
+            </p>
 
-      {/* Hero Section */}
-      <section className="px-6 py-20 md:py-24">
-  <div className="mx-auto max-w-6xl">
-        <h1 className="text-4xl md:text-6xl font-light leading-tight text-[#3F3F3F] max-w-xl">
-          Custom camp clothing made for summer memories
-        </h1>
+            <h1 className="mt-5 max-w-3xl text-4xl font-light leading-[1.05] text-[#3F3F3F] md:text-6xl">
+              Personalized camp clothing made to feel special
+            </h1>
 
-        <p className="mt-6 max-w-lg text-lg text-[#5D5D5D]">
-          Personalized sweatshirts, tees, sleepwear, and camp favorites
-          for kids heading off to sleepaway camp.
-        </p>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-[#5D5D5D]">
+              Boutique-style sweatshirts, tees, sleepwear, and custom favorites
+              for sleepaway camp, visiting day, bunk gifts, and all the moments
+              families want to remember.
+            </p>
 
-        <div className="mt-8 flex gap-4">
-          <a
-            href="/shop"
-            className="rounded-full bg-[#6F879E] px-6 py-3 text-white"
-          >
-            Shop Camp Favorites
-          </a>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href="/shop"
+                className="rounded-full bg-[#6F879E] px-7 py-3 text-sm font-medium text-white transition hover:opacity-90"
+              >
+                Shop Camp Favorites
+              </a>
 
-          <a
-            href="/custom-orders"
-            className="rounded-full border border-[#6F879E] px-6 py-3 text-[#6F879E]"
-          >
-            Start a Custom Order
-          </a>
+              <a
+                href="/custom-orders"
+                className="rounded-full border border-[#6F879E] px-7 py-3 text-sm font-medium text-[#6F879E] transition hover:bg-[#EEF2F5]"
+              >
+                Start a Custom Order
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <div className="rounded-[32px] border border-[#E6E2DD] bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+              <div className="grid gap-5">
+                <div className="h-[360px] rounded-[26px] bg-[#ECE8E2]" />
+                <div className="grid grid-cols-2 gap-5">
+                  <div className="h-36 rounded-[22px] bg-[#EEF2F5]" />
+                  <div className="h-36 rounded-[22px] bg-[#F2F0EB]" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Categories */}
       <section className="mx-auto max-w-7xl px-6 py-16">
-        <h2 className="text-3xl font-light mb-8">Shop by Category</h2>
+        <h2 className="mb-8 text-3xl font-light">Shop by Category</h2>
 
-        <div className="grid md:grid-cols-4 gap-6">
-          {["Sweatshirts", "Tees", "Sleepwear", "Accessories"].map((item) => (
-            <div key={item} className="bg-white p-6 rounded-xl border">
-              <div className="h-40 bg-gray-100 rounded mb-4"></div>
-              <h3 className="text-lg">{item}</h3>
-            </div>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {categories.map((category) => (
+            <a
+              key={category.title}
+              href="/shop"
+              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-5 transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
+            >
+              <div className="h-56 rounded-[22px] bg-[#F1EFEB]" />
+              <h3 className="mt-5 text-xl font-medium text-[#3F3F3F]">
+                {category.title}
+              </h3>
+              <p className="mt-2 text-sm leading-7 text-[#666]">
+                {category.subtitle}
+              </p>
+              <p className="mt-4 text-sm font-medium text-[#6F879E]">
+                Explore
+              </p>
+            </a>
           ))}
         </div>
       </section>
-
-      {/* How it Works */}
-      <section className="bg-[#EEF2F5] py-16">
-        <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-6">
-          <div>
-            <h3 className="text-xl mb-2">Choose your item</h3>
-            <p>Select from sweatshirts, tees, and more.</p>
-          </div>
-          <div>
-            <h3 className="text-xl mb-2">Personalize it</h3>
-            <p>Add names, colors, and custom details.</p>
-          </div>
-          <div>
-            <h3 className="text-xl mb-2">We make it</h3>
-            <p>Each piece is made just for your order.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t mt-16 py-10 text-center text-sm">
-        <p>© Just Made Custom</p>
-      </footer>
-
     </main>
   );
 }
