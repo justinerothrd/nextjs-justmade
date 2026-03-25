@@ -34,9 +34,6 @@ const products = [
 export default function ShopPage() {
   return (
     <main className="min-h-screen bg-white text-[#2F3A4A]">
-      <div className="bg-[#6F879E] py-3 text-center text-sm text-white">
-        Personalized camp favorites for kids, bunks, and groups
-      </div>
 
       <section className="px-8 pb-8 pt-10 text-center">
         <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
