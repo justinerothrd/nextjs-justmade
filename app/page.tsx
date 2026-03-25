@@ -2,37 +2,6 @@ export default function HomePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B] min-h-screen">
 
-      {/* Header */}
-      <header className="border-b border-[#E3E3E0] bg-[#F7F7F5]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-
-          {/* Logo */}
-          <a href="/" className="flex items-center">
-            <img
-              src="/logo.png"
-              alt="Just Made Custom logo"
-              className="h-14 w-auto"
-            />
-          </a>
-
-          {/* Navigation */}
-          <nav className="hidden gap-8 text-sm md:flex">
-            <a href="/" className="transition hover:text-[#6F879E]">Home</a>
-            <a href="/shop" className="transition hover:text-[#6F879E]">Shop</a>
-            <a href="/custom-orders" className="transition hover:text-[#6F879E]">Custom Orders</a>
-            <a href="/about" className="transition hover:text-[#6F879E]">About</a>
-            <a href="/faq" className="transition hover:text-[#6F879E]">FAQ</a>
-            <a href="/contact" className="transition hover:text-[#6F879E]">Contact</a>
-          </nav>
-
-          {/* Cart */}
-          <a href="/cart" className="text-sm">
-            Cart
-          </a>
-
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="mx-auto max-w-7xl px-6 py-20">
         <h1 className="text-4xl md:text-6xl font-light leading-tight text-[#3F3F3F] max-w-xl">
