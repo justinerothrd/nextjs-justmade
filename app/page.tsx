@@ -45,7 +45,11 @@ export default function HomePage() {
           <div>
             <div className="rounded-[32px] border border-[#E6E2DD] bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
               <div className="grid gap-5">
-                <div className="h-[360px] rounded-[26px] bg-[#ECE8E2]" />
+               <img
+  src="/hero.jpg"
+  alt="Camp clothing"
+  className="h-[360px] w-full object-cover rounded-[26px]"
+/>
                 <div className="grid grid-cols-2 gap-5">
                   <div className="h-36 rounded-[22px] bg-[#EEF2F5]" />
                   <div className="h-36 rounded-[22px] bg-[#F2F0EB]" />
