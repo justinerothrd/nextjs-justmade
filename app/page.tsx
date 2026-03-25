@@ -3,7 +3,8 @@ export default function HomePage() {
     <main className="bg-[#F7F7F5] text-[#4B4B4B] min-h-screen">
 
       {/* Hero Section */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="px-6 py-20 md:py-24">
+  <div className="mx-auto max-w-6xl">
         <h1 className="text-4xl md:text-6xl font-light leading-tight text-[#3F3F3F] max-w-xl">
           Custom camp clothing made for summer memories
         </h1>
