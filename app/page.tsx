@@ -17,14 +17,13 @@ export default function HomePage() {
             </p>
 
             <h1 className="mt-5 max-w-3xl text-4xl font-light leading-[1.05] text-[#3F3F3F] md:text-6xl">
-              Personalized camp clothing made to feel special
-            </h1>
+  Custom camp clothing made for summer memories
+</h1>
 
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-[#5D5D5D]">
-              Boutique-style sweatshirts, tees, sleepwear, and custom favorites
-              for sleepaway camp, visiting day, bunk gifts, and all the moments
-              families want to remember.
-            </p>
+<p className="mt-7 max-w-2xl text-lg leading-8 text-[#5D5D5D]">
+  Personalized sweatshirts, tees, sleepwear, and thoughtful camp favorites
+  designed to feel special, wearable, and easy to love all summer long.
+</p>
 
             <div className="mt-10 flex flex-wrap gap-4">
               <a
