@@ -38,23 +38,6 @@ export default function ShopPage() {
         Personalized camp favorites for kids, bunks, and groups
       </div>
 
-      <header className="flex items-center justify-between px-8 py-6">
-        <a href="/">
-          <img src="/logo.png" alt="logo" className="h-12" />
-        </a>
-
-        <div className="flex items-center gap-8">
-          <nav className="hidden gap-8 text-sm md:flex">
-            <a href="/shop" className="hover:text-[#6F879E]">Shop</a>
-            <a href="#" className="hover:text-[#6F879E]">Custom Orders</a>
-            <a href="#" className="hover:text-[#6F879E]">About</a>
-            <a href="#" className="hover:text-[#6F879E]">FAQ</a>
-            <a href="#" className="hover:text-[#6F879E]">Contact</a>
-          </nav>
-          <a href="/cart" className="text-sm hover:text-[#6F879E]">Cart</a>
-        </div>
-      </header>
-
       <section className="px-8 pb-8 pt-10 text-center">
         <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
           Just Made Custom
