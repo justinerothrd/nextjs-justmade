@@ -25,12 +25,7 @@ const teeProducts = [
     name: "Custom Tee",
     price: "$35",
     image: "/Tee.jpeg",
-  },
-  {
-    slug: "custom-shorts",
-    name: "Custom Shorts",
-    price: "$36",
-    image: "/shorts.jpeg",
+    
   },
 ];
 
