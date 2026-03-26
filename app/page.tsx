@@ -103,7 +103,7 @@ export default function HomePage() {
                 <img
                   src={category.image}
                   alt={category.title}
-                  className="block h-56 w-full rounded-[22px] bg-[#F7F7F5] object-contain p-1"
+                  className="block h-56 w-full rounded-[22px] bg-white object-contain p-2"
                 />
 
                 <h3 className="mt-5 text-lg font-medium text-[#3F3F3F]">
