@@ -25,9 +25,9 @@ const teeProducts = [
     name: "Custom Tee",
     price: "$35",
     image: "/Tee.jpeg",
-    
   },
 ];
+
 const bottomProducts = [
   {
     slug: "custom-shorts",
@@ -160,6 +160,12 @@ export default function ShopPage() {
             Tees & Tanks
           </a>
           <a
+            href="#bottoms"
+            className="rounded-full border border-[#D8D8D4] px-5 py-2 text-sm hover:border-[#6F879E] hover:text-[#6F879E]"
+          >
+            Bottoms
+          </a>
+          <a
             href="#sleepwear"
             className="rounded-full border border-[#D8D8D4] px-5 py-2 text-sm hover:border-[#6F879E] hover:text-[#6F879E]"
           >
@@ -176,6 +182,7 @@ export default function ShopPage() {
 
       <Section id="sweatshirts" title="Sweatshirts" products={sweatshirtProducts} />
       <Section id="tees" title="Tees & Tanks" products={teeProducts} />
+      <Section id="bottoms" title="Bottoms" products={bottomProducts} />
       <Section id="sleepwear" title="Sleepwear" products={sleepwearProducts} />
       <Section id="accessories" title="Accessories" products={accessoryProducts} />
     </main>
