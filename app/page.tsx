@@ -4,21 +4,31 @@ export default function HomePage() {
       title: "Sweatshirts",
       subtitle: "Cozy personalized layers for camp nights and cool mornings.",
       image: "/sweatshirts.jpg",
+      link: "/shop#sweatshirts",
     },
     {
-      title: "Tees",
+      title: "Tees & Tanks",
       subtitle: "Easy everyday camp styles with a custom feel.",
       image: "/tees.jpg",
+      link: "/shop#tees",
+    },
+    {
+      title: "Bottoms",
+      subtitle: "Custom shorts and easy camp-ready staples.",
+      image: "/shorts.jpeg",
+      link: "/shop#bottoms",
     },
     {
       title: "Sleepwear",
       subtitle: "Soft camp-ready pieces made for bedtime and bunk life.",
       image: "/sleepwear.jpg",
+      link: "/shop#sleepwear",
     },
     {
       title: "Accessories",
-      subtitle: "Thoughtful extras and gifts",
+      subtitle: "Thoughtful extras and gifts.",
       image: "/accessories.jpg",
+      link: "/shop#accessories",
     },
   ];
 
@@ -47,7 +57,7 @@ export default function HomePage() {
                 href="/shop"
                 className="rounded-full bg-[#6F879E] px-7 py-3 text-sm font-medium text-white transition hover:opacity-90"
               >
-                Shop Camp 
+                Shop Camp Favorites
               </a>
 
               <a
@@ -62,7 +72,7 @@ export default function HomePage() {
           <div>
             <div className="rounded-[32px] border border-[#E6E2DD] bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
               <img
-                src="/hero-main.png"
+                src="/hero-main.jpg"
                 alt="Camp clothing"
                 className="block h-[360px] w-full rounded-[26px] object-cover"
               />
@@ -72,42 +82,44 @@ export default function HomePage() {
       </section>
 
       {/* Categories */}
-      <section className="mx-auto max-w-7xl px-6 py-8 pb-20">
-        <div className="mb-8">
-          <p className="text-sm uppercase tracking-[0.22em] text-[#6F879E]">
-            Shop
-          </p>
-          <h2 className="mt-3 text-3xl font-light text-[#3F3F3F]">
-            Shop by Category
-          </h2>
-        </div>
+      <section className="px-6 pb-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10">
+            <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
+              Shop
+            </p>
+            <h2 className="mt-3 text-3xl font-light text-[#3F3F3F] md:text-4xl">
+              Shop by Category
+            </h2>
+          </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {categories.map((category) => (
-            <a
-              key={category.title}
-              href="/shop"
-              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-5 transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
-            >
-              <img
-                src={category.image}
-                alt={category.title}
-                className="block h-56 w-full rounded-[22px] object-cover"
-              />
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+            {categories.map((category) => (
+              <a
+                key={category.title}
+                href={category.link}
+                className="group rounded-[28px] border border-[#E6E2DD] bg-white p-5 transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
+              >
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className="block h-48 w-full rounded-[22px] object-cover"
+                />
 
-              <h3 className="mt-5 text-xl font-medium text-[#3F3F3F]">
-                {category.title}
-              </h3>
+                <h3 className="mt-5 text-lg font-medium text-[#3F3F3F]">
+                  {category.title}
+                </h3>
 
-              <p className="mt-2 text-sm leading-7 text-[#666]">
-                {category.subtitle}
-              </p>
+                <p className="mt-2 text-sm leading-7 text-[#666]">
+                  {category.subtitle}
+                </p>
 
-              <p className="mt-4 text-sm font-medium text-[#6F879E]">
-                Shop now
-              </p>
-            </a>
-          ))}
+                <p className="mt-4 text-sm font-medium text-[#6F879E]">
+                  Shop now
+                </p>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
     </main>
