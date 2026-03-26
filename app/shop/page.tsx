@@ -64,7 +64,16 @@ const accessoryProducts = [
   },
 ];
 
-function ProductGrid({ products }: { products: any[] }) {
+function ProductGrid({
+  products,
+}: {
+  products: {
+    slug: string;
+    name: string;
+    price: string;
+    image: string;
+  }[];
+}) {
   return (
     <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2 xl:grid-cols-3">
       {products.map((product) => (
@@ -96,9 +105,22 @@ function ProductGrid({ products }: { products: any[] }) {
   );
 }
 
-function Section({ title, products }: { title: string; products: any[] }) {
+function Section({
+  id,
+  title,
+  products,
+}: {
+  id: string;
+  title: string;
+  products: {
+    slug: string;
+    name: string;
+    price: string;
+    image: string;
+  }[];
+}) {
   return (
-    <section className="px-8 pb-16">
+    <section id={id} className="scroll-mt-32 px-8 pb-16">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-10 text-3xl font-light">{title}</h2>
         <ProductGrid products={products} />
@@ -110,7 +132,6 @@ function Section({ title, products }: { title: string; products: any[] }) {
 export default function ShopPage() {
   return (
     <main className="min-h-screen bg-white text-[#2F3A4A]">
-      {/* Header */}
       <section className="px-8 pb-8 pt-10 text-center">
         <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
           Just Made Custom
@@ -121,13 +142,39 @@ export default function ShopPage() {
         <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-500">
           Custom camp clothing designed to feel easy, polished, and special.
         </p>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="#sweatshirts"
+            className="rounded-full border border-[#D8D8D4] px-5 py-2 text-sm hover:border-[#6F879E] hover:text-[#6F879E]"
+          >
+            Sweatshirts
+          </a>
+          <a
+            href="#tees"
+            className="rounded-full border border-[#D8D8D4] px-5 py-2 text-sm hover:border-[#6F879E] hover:text-[#6F879E]"
+          >
+            Tees & Tanks
+          </a>
+          <a
+            href="#sleepwear"
+            className="rounded-full border border-[#D8D8D4] px-5 py-2 text-sm hover:border-[#6F879E] hover:text-[#6F879E]"
+          >
+            Sleepwear
+          </a>
+          <a
+            href="#accessories"
+            className="rounded-full border border-[#D8D8D4] px-5 py-2 text-sm hover:border-[#6F879E] hover:text-[#6F879E]"
+          >
+            Accessories
+          </a>
+        </div>
       </section>
 
-      {/* Sections */}
-      <Section title="Sweatshirts" products={sweatshirtProducts} />
-      <Section title="Tees & Tanks" products={teeProducts} />
-      <Section title="Sleepwear" products={sleepwearProducts} />
-      <Section title="Accessories" products={accessoryProducts} />
+      <Section id="sweatshirts" title="Sweatshirts" products={sweatshirtProducts} />
+      <Section id="tees" title="Tees & Tanks" products={teeProducts} />
+      <Section id="sleepwear" title="Sleepwear" products={sleepwearProducts} />
+      <Section id="accessories" title="Accessories" products={accessoryProducts} />
     </main>
   );
 }
