@@ -2,13 +2,13 @@ const sweatshirtProducts = [
   {
     slug: "hoodie",
     name: "Custom Hoodie",
-    price: "$60",
+    price: "$70",
     image: "/hoodie.jpeg",
   },
   {
     slug: "quarter-zip",
     name: "Custom 1/4 Zip",
-    price: "$58",
+    price: "$65",
     image: "/quarterzip.jpeg",
   },
 ];
@@ -17,13 +17,13 @@ const teeProducts = [
   {
     slug: "tank-top",
     name: "Custom Tank Top",
-    price: "$32",
+    price: "$40",
     image: "/Tank.jpeg",
   },
   {
     slug: "custom-tee",
     name: "Custom Tee",
-    price: "$28",
+    price: "$35",
     image: "/Tee.jpeg",
   },
   {
@@ -44,7 +44,7 @@ const sleepwearProducts = [
   {
     slug: "sleepwear-set",
     name: "Custom Sleep Set",
-    price: "$38",
+    price: "$65",
     image: "/sleepwear.jpg",
   },
 ];
