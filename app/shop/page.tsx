@@ -51,16 +51,16 @@ const sleepwearProducts = [
 
 const accessoryProducts = [
   {
-    slug: "accessories",
-    name: "Bunk Gift Tote",
-    price: "$22",
+    slug: "accessories-slides",
+    name: "Bunk Gift Slides",
+    price: "$60",
     image: "/accessories.jpg",
   },
   {
-    slug: "accessories-pouch",
-    name: "Camp Accessories Pouch",
-    price: "$18",
-    image: "/accessories.jpg",
+    slug: "accessories-socks",
+    name: "Fuzzy Socks",
+    price: "$22",
+    image: "/customsocks.jpg",
   },
 ];
 
