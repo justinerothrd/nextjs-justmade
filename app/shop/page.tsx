@@ -45,7 +45,7 @@ const sleepwearProducts = [
     slug: "sleepwear-set",
     name: "Custom Sleep Set",
     price: "$65",
-    image: "/sleepwear.jpg",
+    image: "/sleepwear-set.jpg",
   },
 ];
 
