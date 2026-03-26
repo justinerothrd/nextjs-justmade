@@ -7,7 +7,7 @@ export default function HomePage() {
     },
     {
       title: "Tees",
-      subtitle: "Easy everyday camp styles with a custom boutique feel.",
+      subtitle: "Easy everyday camp styles with a custom feel.",
       image: "/tees.jpg",
     },
     {
@@ -17,7 +17,7 @@ export default function HomePage() {
     },
     {
       title: "Accessories",
-      subtitle: "Thoughtful extras, gifts, and finishing touches for summer.",
+      subtitle: "Thoughtful extras and gifts",
       image: "/accessories.jpg",
     },
   ];
