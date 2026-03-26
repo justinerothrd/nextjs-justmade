@@ -28,6 +28,14 @@ const teeProducts = [
     
   },
 ];
+const bottomProducts = [
+  {
+    slug: "custom-shorts",
+    name: "Custom Shorts",
+    price: "$36",
+    image: "/shorts.jpeg",
+  },
+];
 
 const sleepwearProducts = [
   {
