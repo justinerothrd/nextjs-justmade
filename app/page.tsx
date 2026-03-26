@@ -47,7 +47,7 @@ export default function HomePage() {
                 href="/shop"
                 className="rounded-full bg-[#6F879E] px-7 py-3 text-sm font-medium text-white transition hover:opacity-90"
               >
-                Shop Camp Favorites
+                Shop Camp 
               </a>
 
               <a
