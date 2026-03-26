@@ -34,6 +34,7 @@ export default function HomePage() {
 
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
+      {/* Hero */}
       <section className="px-6 pb-20 pt-14 md:pb-24 md:pt-16">
         <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-[1fr_.95fr]">
           <div>
@@ -69,16 +70,18 @@ export default function HomePage() {
           </div>
 
           <div>
-  <div className="rounded-[32px] border border-[#E6E2DD] bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-    <img
-      src="/hero-main.jpg"
-      alt="Camp clothing"
-      className="block h-[360px] w-full rounded-[26px] object-cover"
-    />
-  </div>
-</div>
+            <div className="overflow-hidden rounded-[32px] border border-[#E6E2DD] bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+              <img
+                src="/hero-main.jpg"
+                alt="Camp clothing"
+                className="block h-[360px] w-full rounded-[26px] object-cover"
+              />
+            </div>
+          </div>
+        </div>
       </section>
 
+      {/* Categories */}
       <section className="px-6 pb-20">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10">
