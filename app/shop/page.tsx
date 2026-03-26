@@ -86,7 +86,7 @@ function ProductGrid({
               <img
                 src={product.image}
                 alt={product.name}
-                className="h-[420px] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+              className="h-[420px] w-full object-contain bg-[#F7F7F5] p-4 transition duration-500 group-hover:scale-[1.03]"
               />
             </div>
           </a>
