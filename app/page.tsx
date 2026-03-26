@@ -62,7 +62,7 @@ export default function HomePage() {
           <div>
             <div className="rounded-[32px] border border-[#E6E2DD] bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
               <img
-                src="/hero-main.jpg"
+                src="/hero-main.png"
                 alt="Camp clothing"
                 className="block h-[360px] w-full rounded-[26px] object-cover"
               />
