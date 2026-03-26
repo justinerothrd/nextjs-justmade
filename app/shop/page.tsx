@@ -78,25 +78,25 @@ function ProductGrid({
   }[];
 }) {
   return (
-    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {products.map((product) => (
         <div key={product.slug} className="group">
           <a href={`/product/${product.slug}`} className="block">
-            <div className="overflow-hidden rounded-[28px] bg-[#F7F7F5] p-4 transition duration-300 group-hover:shadow-md">
+            <div className="overflow-hidden rounded-[24px] bg-[#F7F7F5] p-3 transition duration-300 group-hover:shadow-md">
               <img
                 src={product.image}
                 alt={product.name}
-                className="h-[340px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+                className="h-[260px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
               />
             </div>
           </a>
 
-          <div className="pt-4">
-            <h3 className="text-[28px] font-light leading-tight text-[#2F3A4A]">
+          <div className="pt-4 text-center">
+            <h3 className="text-xl font-light leading-tight text-[#2F3A4A]">
               {product.name}
             </h3>
 
-            <p className="mt-2 text-base text-gray-500">{product.price}</p>
+            <p className="mt-2 text-sm text-gray-500">{product.price}</p>
 
             <a
               href={`/product/${product.slug}`}
@@ -126,13 +126,12 @@ function Section({
   }[];
 }) {
   return (
-    <section id={id} className="scroll-mt-32 py-14 first:pt-6">
-      <div className="border-t border-[#E8E4DE] pt-10">
-        <h2 className="text-3xl font-light text-[#2F3A4A]">{title}</h2>
-        <div className="mt-8">
-          <ProductGrid products={products} />
-        </div>
+    <section id={id} className="scroll-mt-32 py-10">
+      <div className="mb-8 flex items-center justify-between border-b border-[#E8E4DE] pb-4">
+        <h2 className="text-2xl font-light text-[#2F3A4A]">{title}</h2>
       </div>
+
+      <ProductGrid products={products} />
     </section>
   );
 }
@@ -140,7 +139,7 @@ function Section({
 export default function ShopPage() {
   return (
     <main className="min-h-screen bg-white text-[#2F3A4A]">
-      <section className="px-8 pb-10 pt-12 text-center">
+      <section className="px-6 pb-8 pt-10 text-center">
         <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
           Just Made Custom
         </p>
@@ -185,7 +184,7 @@ export default function ShopPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-8 pb-20">
+      <div className="mx-auto max-w-7xl px-6 pb-20">
         <Section id="sweatshirts" title="Sweatshirts" products={sweatshirtProducts} />
         <Section id="tees" title="Tees & Tanks" products={teeProducts} />
         <Section id="bottoms" title="Bottoms" products={bottomProducts} />
