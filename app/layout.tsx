@@ -2,12 +2,12 @@
 
 import "./globals.css";
 import { useState } from "react";
-import { Inter } from "next/font/google";
+import { Josefin_Sans } from "next/font/google";
 
-const inter = Inter({
+const josefin = Josefin_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-inter",
+  weight: ["300", "400", "600"],
+  variable: "--font-josefin",
 });
 
 export default function RootLayout({
@@ -18,8 +18,8 @@ export default function RootLayout({
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <html lang="en" className={inter.variable}>
-      <body className={`${inter.className} bg-[#F7F7F5] text-[#4B4B4B]`}>
+    <html lang="en" className={josefin.variable}>
+      <body className={`${josefin.className} bg-[#F7F7F5] text-[#4B4B4B]`}>
         <header className="border-b border-[#E3E3E0] bg-[#F7F7F5]">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
@@ -29,7 +29,7 @@ export default function RootLayout({
             </a>
 
             {/* Desktop nav */}
-            <nav className="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+            <nav className="hidden md:flex items-center gap-8 text-sm font-400 tracking-widest uppercase">
               <a href="/" className="hover:text-[#6F879E] transition">Home</a>
               <a href="/shop" className="hover:text-[#6F879E] transition">Shop</a>
               <a href="/custom-orders" className="hover:text-[#6F879E] transition">Custom Orders</a>
@@ -40,7 +40,7 @@ export default function RootLayout({
 
             {/* Right side: Cart + Hamburger */}
             <div className="flex items-center gap-4">
-              <a href="/cart" className="text-sm font-medium hover:text-[#6F879E] transition">Cart</a>
+              <a href="/cart" className="text-sm uppercase tracking-widest hover:text-[#6F879E] transition">Cart</a>
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5"
@@ -55,7 +55,7 @@ export default function RootLayout({
 
           {/* Mobile menu */}
           {menuOpen && (
-            <nav className="md:hidden border-t border-[#E3E3E0] bg-[#F7F7F5] px-6 py-4 flex flex-col gap-4 text-sm font-medium">
+            <nav className="md:hidden border-t border-[#E3E3E0] bg-[#F7F7F5] px-6 py-4 flex flex-col gap-4 text-sm uppercase tracking-widest">
               <a href="/" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Home</a>
               <a href="/shop" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Shop</a>
               <a href="/custom-orders" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Custom Orders</a>
@@ -67,7 +67,7 @@ export default function RootLayout({
           )}
         </header>
 
-        <div className="bg-[#6F879E] py-3 text-center text-sm text-white tracking-wide">
+        <div className="bg-[#6F879E] py-3 text-center text-xs text-white tracking-widest uppercase">
           Personalized camp favorites for kids, bunks, and groups
         </div>
 
