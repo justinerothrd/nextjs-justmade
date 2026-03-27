@@ -29,7 +29,7 @@ export default function ShopPage() {
                 <img
                   src={category.image}
                   alt={category.title}
-                  className="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-56"
+                  className={`h-40 w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-56 ${category.slug === "accessories" ? "object-contain p-4 bg-[#F0EEEB]" : ""}`}
                 />
               </div>
               <h3 className="mt-4 text-base font-medium text-[#3F3F3F] sm:text-lg">{category.title}</h3>
