@@ -116,7 +116,7 @@ export default function ProductPage() {
             <img
               src={product.image}
               alt={product.name}
-              className="h-auto max-h-[600px] w-full object-contain"
+               className={`h-auto max-h-[600px] w-full object-contain transition duration-500 ${slug === "quarter-zip" ? "scale-125" : ""}`}
             />
           </div>
 
