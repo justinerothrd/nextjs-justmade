@@ -25,8 +25,8 @@ const products = {
     price: "$40",
     description: "A lightweight custom tank perfect for hot camp days and summer activities.",
     image: "/Tank.jpeg",
-    colors: ["White", "Light Blue", "Green", "Red"],
-    sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
   "custom-tee": {
     name: "Custom Tee",
@@ -127,7 +127,7 @@ export default function ProductPage() {
             <p className="mt-4 text-base leading-7 text-gray-600">{product.description}</p>
 
             <div className="mt-6">
-              <label className="text-sm">Name on item</label>
+              <label className="text-sm">Camp Name</label>
               <input
                 type="text"
                 placeholder="Enter name"
