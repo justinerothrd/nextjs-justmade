@@ -1,87 +1,188 @@
-export default function HomePage() {
-  const categories = [
-    { title: "Sweatshirts", subtitle: "Cozy personalized layers for camp nights and cool mornings.", image: "/hoodie.jpeg", link: "/shop/sweatshirts" },
-    { title: "Tees & Tanks", subtitle: "Easy everyday camp styles with a custom feel.", image: "/Tank.jpeg", link: "/shop/tees" },
-    { title: "Bottoms", subtitle: "Custom shorts and easy camp-ready staples.", image: "/shorts.jpeg", link: "/shop/bottoms" },
-    { title: "Sleepwear", subtitle: "Soft camp-ready pieces made for bedtime and bunk life.", image: "/sleepwear.jpg", link: "/shop/sleepwear" },
-    { title: "Accessories", subtitle: "Thoughtful extras and gifts.", image: "/accessories.jpg", link: "/shop/accessories" },
-  ];
+"use client";
+
+import { useParams } from "next/navigation";
+import { useState } from "react";
+
+const products = {
+  hoodie: {
+    name: "Custom Hoodie",
+    price: "$70",
+    description: "A cozy custom hoodie for chilly camp nights and cool mornings.",
+    image: "/hoodie.jpeg",
+    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Camp Green", "Camp Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
+  },
+  "quarter-zip": {
+    name: "Custom 1/4 Zip",
+    price: "$65",
+    description: "A polished quarter zip that layers easily for camp, travel, and everyday wear.",
+    image: "/quarterzip.jpeg",
+    colors: ["Heather Gray", "Navy", "White", "Camp Green", "Camp Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
+  },
+  "tank-top": {
+    name: "Custom Tank Top",
+    price: "$40",
+    description: "A lightweight custom tank perfect for hot camp days and summer activities.",
+    image: "/Tank.jpeg",
+    colors: ["White", "Light Blue", "Camp Green", "Camp Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+  },
+  "custom-tee": {
+    name: "Custom Tee",
+    price: "$35",
+    description: "A classic custom tee designed for camp, travel, and summer memories.",
+    image: "/Tee.jpeg",
+    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Camp Green", "Camp Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
+  },
+  "custom-shorts": {
+    name: "Custom Shorts",
+    price: "$36",
+    description: "Comfortable personalized shorts for everyday camp wear and relaxed summer style.",
+    image: "/shorts.jpeg",
+    colors: ["Heather Gray", "Navy", "Camp Green", "Camp Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+  },
+  sleepwear: {
+    name: "Camp Pajama Shorts",
+    price: "$32",
+    description: "Soft camp-ready pajama shorts made for bunk life, bedtime, and easy summer comfort.",
+    image: "/sleepwear.jpg",
+    colors: ["Light Blue", "White", "Camp Green", "Camp Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+  },
+  "sleepwear-set": {
+    name: "Custom Sleep Set",
+    price: "$65",
+    description: "A personalized sleep set with a cozy feel that makes camp nights extra special.",
+    image: "/sleepwear-set.jpg",
+    colors: ["Light Blue", "White", "Camp Green", "Camp Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
+  },
+  "accessories-slides": {
+    name: "Bunk Gift Slides",
+    price: "$60",
+    description: "A fun personalized camp gift that feels special, practical, and easy to wear.",
+    image: "/accessories.jpg",
+    colors: ["White", "Navy", "Camp Green", "Camp Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+  },
+  "accessories-socks": {
+    name: "Fuzzy Socks",
+    price: "$22",
+    description: "Soft fuzzy socks that make a perfect bunk gift or cozy camp extra.",
+    image: "/customsocks.jpg",
+    colors: ["White", "Light Blue", "Camp Green", "Camp Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+  },
+} as const;
+
+export default function ProductPage() {
+  const params = useParams();
+  const slug = params?.slug as string;
+  const product = products[slug as keyof typeof products];
+
+  const [name, setName] = useState("");
+  const [size, setSize] = useState<string>(product?.sizes?.[1] ?? "Youth M");
+  const [color, setColor] = useState<string>(product?.colors?.[0] ?? "Heather Gray");
+  const [quantity, setQuantity] = useState(1);
+
+  if (!product) {
+    return (
+      <main className="min-h-screen bg-[#F7F7F5] px-6 py-16 text-[#4B4B4B]">
+        <div className="mx-auto max-w-5xl text-center">
+          <h1 className="text-3xl font-light">Product not found</h1>
+          <a href="/shop" className="mt-6 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]">
+            Back to Shop
+          </a>
+        </div>
+      </main>
+    );
+  }
+
+  const cartLink = `/cart?product=${encodeURIComponent(product.name)}&price=${encodeURIComponent(product.price)}&name=${encodeURIComponent(name)}&size=${encodeURIComponent(size)}&color=${encodeURIComponent(color)}&quantity=${encodeURIComponent(quantity.toString())}`;
 
   return (
-    <main className="bg-[#F7F7F5] text-[#4B4B4B]">
+    <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-12">
+      <div className="mx-auto max-w-6xl">
+        <a href="/shop" className="text-sm underline underline-offset-4 hover:text-[#6F879E]">
+          Back to Shop
+        </a>
+        <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-12">
 
-      {/* Hero */}
-      <section className="px-4 pb-12 pt-8 sm:px-6 md:pb-24 md:pt-16">
-        <div className="mx-auto max-w-7xl grid items-center gap-8 md:grid-cols-[1fr_.95fr] md:gap-12">
-
-          {/* Text — shown first on mobile */}
-          <div className="text-center md:text-left">
-            <p className="text-xs uppercase tracking-[0.28em] text-[#6F879E]">Just Made Custom</p>
-            <h1 className="mt-4 text-3xl font-light leading-tight text-[#3F3F3F] sm:text-4xl md:text-6xl">
-              Custom camp clothing made for summer memories
-            </h1>
-            <p className="mt-4 text-base leading-7 text-[#5D5D5D] sm:text-lg sm:leading-8">
-              Personalized sweatshirts, tees, sleepwear, and thoughtful camp favorites designed to feel special, wearable, and easy to love all summer long.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start md:mt-8 md:gap-4">
-              <a href="/shop" className="rounded-full bg-[#6F879E] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90">
-                Shop Camp Favorites
-              </a>
-              <a href="/custom-orders" className="rounded-full border border-[#6F879E] px-6 py-3 text-sm font-medium text-[#6F879E] transition hover:bg-[#EEF2F5]">
-                Start a Custom Order
-              </a>
-            </div>
-          </div>
-
-          {/* Image */}
-          <div className="overflow-hidden rounded-[32px] border border-[#E6E2DD] bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.04)] sm:p-5">
+          {/* Image — object-contain so nothing gets cropped */}
+          <div className="flex items-center justify-center overflow-hidden rounded-[28px] bg-white p-6">
             <img
-              src="/hero-main.png"
-              alt="Camp clothing"
-              className="block w-full rounded-[26px] object-cover h-[260px] sm:h-[360px] md:h-[420px]"
+              src={product.image}
+              alt={product.name}
+              className="h-auto max-h-[600px] w-full object-contain"
             />
           </div>
 
-        </div>
-      </section>
+          {/* Details */}
+          <div className="flex flex-col">
+            <h1 className="text-3xl font-light text-[#2F3A4A] sm:text-4xl">{product.name}</h1>
+            <p className="mt-3 text-xl text-[#6F879E]">{product.price}</p>
+            <p className="mt-4 text-base leading-7 text-gray-600">{product.description}</p>
 
-      {/* Categories */}
-      <section className="px-4 pb-16 sm:px-6 sm:pb-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-6 sm:mb-8">
-            <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">Shop</p>
-            <h2 className="mt-2 text-2xl font-light text-[#3F3F3F] sm:text-3xl md:text-4xl">Shop by Category</h2>
-          </div>
+            <div className="mt-6">
+              <label className="text-sm">Name on item</label>
+              <input
+                type="text"
+                placeholder="Enter name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="mt-2 w-full rounded-lg border bg-white p-3"
+              />
+            </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
-            {categories.map((category) => (
-              <a
-                key={category.title}
-                href={category.link}
-                className="group rounded-[24px] border border-[#E6E2DD] bg-white p-3 transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)] sm:rounded-[28px] sm:p-4"
+            <div className="mt-5">
+              <label className="text-sm">Size</label>
+              <select
+                value={size}
+                onChange={(e) => setSize(e.target.value)}
+                className="mt-2 w-full rounded-lg border bg-white p-3"
               >
-                <div className="overflow-hidden rounded-[18px] sm:rounded-[22px]">
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="block h-32 w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-48 md:h-56"
-                  />
-                </div>
-                <h3 className="mt-3 text-sm font-medium text-[#3F3F3F] sm:mt-4 sm:text-base md:text-lg">
-                  {category.title}
-                </h3>
-                <p className="mt-1 hidden text-xs leading-5 text-[#666] sm:block sm:leading-6">
-                  {category.subtitle}
-                </p>
-                <p className="mt-2 text-xs font-medium text-[#6F879E] sm:mt-3 sm:text-sm">
-                  Shop now →
-                </p>
-              </a>
-            ))}
+                {product.sizes.map((sizeOption) => (
+                  <option key={sizeOption}>{sizeOption}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="mt-5">
+              <label className="text-sm">Color</label>
+              <select
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+                className="mt-2 w-full rounded-lg border bg-white p-3"
+              >
+                {product.colors.map((colorOption) => (
+                  <option key={colorOption}>{colorOption}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="mt-5">
+              <label className="text-sm">Quantity</label>
+              <input
+                type="number"
+                min="1"
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                className="mt-2 w-24 rounded-lg border bg-white p-3"
+              />
+            </div>
+
+            <a
+              href={cartLink}
+              className="mt-8 inline-block w-full rounded-full bg-[#6F879E] px-6 py-4 text-center text-white transition hover:opacity-90 sm:w-auto sm:py-3"
+            >
+              Add to Cart
+            </a>
           </div>
         </div>
-      </section>
-
+      </div>
     </main>
   );
 }
