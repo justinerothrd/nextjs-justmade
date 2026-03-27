@@ -35,7 +35,7 @@ export default async function CartPage({
       <section className="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-16">
         <h1 className="mb-6 text-2xl font-light sm:mb-8 sm:text-3xl">Your Cart</h1>
 
-        <div className="rounded-2xl border bg-white p-5 sm:p-8">
+        <div className="rounded-2xl bg-white p-5 sm:p-8">
 
           {/* Product name + price */}
           <div className="flex items-start justify-between gap-4">
