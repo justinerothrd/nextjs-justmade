@@ -21,14 +21,13 @@ const accessoryProducts = [
   { slug: "accessories-slides", name: "Bunk Gift Slides", price: "$60", image: "/accessories.jpg" },
   { slug: "accessories-socks", name: "Fuzzy Socks", price: "$22", image: "/customsocks.jpg" },
 ];
-
 function ProductGrid({
   products,
 }: {
   products: { slug: string; name: string; price: string; image: string }[];
 }) {
   return (
-    <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-x-6 sm:gap-y-10">
+    <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 xl:grid-cols-4">
       {products.map((product) => (
         <div key={product.slug} className="group">
           <a href={`/product/${product.slug}`} className="block">
@@ -38,8 +37,18 @@ function ProductGrid({
                 alt={product.name}
                 className={
                   product.slug === "quarter-zip"
-                    ? "h-[220px] w-full object-contain scale-130 transition duration-500 ease-out group-hover:scale-[1.32] sm:h-[340px]"
-                    : "h-[220px] w-full object-contain transition duration-500 ease-out group-hover:scale-[1.03] sm:h-[340px]"
+                    ? [
+                        "h-[220px] w-full object-contain",
+                        "scale-130 sm:h-[340px]",
+                        "transition duration-500 ease-out",
+                        "group-hover:scale-[1.32]",
+                      ].join(" ")
+                    : [
+                        "h-[220px] w-full object-contain",
+                        "sm:h-[340px]",
+                        "transition duration-500 ease-out",
+                        "group-hover:scale-[1.03]",
+                      ].join(" ")
                 }
               />
             </div>
@@ -48,10 +57,17 @@ function ProductGrid({
             <h3 className="text-base font-light leading-tight text-[#2F3A4A] sm:text-lg">
               {product.name}
             </h3>
-            <p className="mt-1 text-sm text-gray-500">{product.price}</p>
+            <p className="mt-1 text-sm text-gray-500">
+              {product.price}
+            </p>
             
               href={`/product/${product.slug}`}
-              className="mt-2 inline-block text-sm underline underline-offset-4 transition duration-300 ease-out hover:text-[#6F879E] sm:mt-4"
+              className={[
+                "mt-2 inline-block text-sm",
+                "underline underline-offset-4",
+                "transition duration-300 ease-out",
+                "hover:text-[#6F879E] sm:mt-4",
+              ].join(" ")}
             >
               View Product
             </a>
