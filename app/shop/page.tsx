@@ -95,26 +95,23 @@ export default function ShopPage() {
           Custom camp clothing designed to feel easy, polished, and special.
         </p>
 
-        {/* Category pills — scrollable on mobile, centered on desktop */}
         <div className="mt-6 sm:mt-8">
           <div className="flex overflow-x-auto sm:flex-wrap sm:justify-center gap-3 pb-2 sm:pb-0 px-4 sm:px-0 no-scrollbar">
-            {["Sweatshirts", "Tees & Tanks", "Bottoms", "Sleepwear", "Accessories"].map(
-              (label) => {
-                const href =
-                  label === "Tees & Tanks"
-                    ? "#tees"
-                    : `#${label.toLowerCase()}`;
-                return (
-                  
-                    key={label}
-                    href={href}
-                    className="flex-shrink-0 rounded-full border border-[#D8D8D4] px-5 py-2 text-sm transition hover:border-[#6F879E] hover:text-[#6F879E] whitespace-nowrap"
-                  >
-                    {label}
-                  </a>
-                );
-              }
-            )}
+            {[
+              { label: "Sweatshirts", href: "#sweatshirts" },
+              { label: "Tees & Tanks", href: "#tees" },
+              { label: "Bottoms", href: "#bottoms" },
+              { label: "Sleepwear", href: "#sleepwear" },
+              { label: "Accessories", href: "#accessories" },
+            ].map((item) => (
+              
+                key={item.label}
+                href={item.href}
+                className="flex-shrink-0 rounded-full border border-[#D8D8D4] px-5 py-2 text-sm transition hover:border-[#6F879E] hover:text-[#6F879E] whitespace-nowrap"
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
         </div>
       </section>
