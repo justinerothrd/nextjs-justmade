@@ -15,7 +15,7 @@ const sweatshirtProducts = [
 
 const teeProducts = [
   {
-    : "tank-top",
+    slug: "tank-top",
     name: "Custom Tank Top",
     price: "$40",
     image: "/Tank.jpeg",
@@ -84,14 +84,14 @@ function ProductGrid({
           <a href={`/product/${product.slug}`} className="block">
             <div className="overflow-hidden rounded-[24px] bg-transparent transition duration-300">
               <img
-  src={product.image}
-  alt={product.name}
-  className={
-    product.slug === "quarter-zip"
-      ? "h-[340px] w-full object-contain scale-110 transition duration-500 group-hover:scale-[1.12]"
-      : "h-[340px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
-  }
-/>
+                src={product.image}
+                alt={product.name}
+                className={
+                  product.slug === "quarter-zip"
+                    ? "h-[340px] w-full object-contain scale-110 transition duration-500 group-hover:scale-[1.12]"
+                    : "h-[340px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+                }
+              />
             </div>
           </a>
 
