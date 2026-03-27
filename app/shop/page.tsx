@@ -60,10 +60,7 @@ function ProductGrid({
             <p className="mt-1 text-sm text-gray-500">
               {product.price}
             </p>
-            
-              href={`/product/${product.slug}`}
-  className="mt-2 inline-block text-sm underline underline-offset-4 transition duration-300 ease-out hover:text-[#6F879E] sm:mt-4"
->
+            <a href={`/product/${product.slug}`} className="mt-2 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]">
   View Product
 </a>
           </div>
