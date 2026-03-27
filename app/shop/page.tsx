@@ -82,13 +82,13 @@ function ProductGrid({
       {products.map((product) => (
         <div key={product.slug} className="group">
           <a href={`/product/${product.slug}`} className="block">
-            <div className="overflow-hidden rounded-[24px] bg-[#F7F7F5] p-3 transition duration-300 group-hover:shadow-md">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="h-[260px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
-              />
-            </div>
+            <div className="overflow-hidden rounded-[24px] bg-transparent transition duration-300">
+  <img
+    src={product.image}
+    alt={product.name}
+    className="h-[300px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+  />
+</div>
           </a>
 
           <div className="pt-4 text-center">
