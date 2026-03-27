@@ -86,7 +86,7 @@ function ProductGrid({
               <img
                 src={product.image}
                 alt={product.name}
-               className={`h-[340px] w-full object-contain transition duration-500 group-hover:scale-[1.02] ${
+               className={`h-[360px] w-full object-contain transition duration-500 group-hover:scale-[1.02] ${
   product.slug === "quarter-zip" ? "scale-105" : ""
 }`}
               />
