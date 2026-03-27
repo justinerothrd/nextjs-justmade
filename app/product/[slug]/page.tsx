@@ -92,7 +92,6 @@ export default function ProductPage() {
     <main className="bg-white text-[#2F3A4A] min-h-screen">
       <div className="flex justify-between items-center px-6 py-5 border-b">
         <a href="/">
-          <img src="/logo.png" alt="logo" className="h-10" />
         </a>
         <a href="/shop">Back to Shop</a>
       </div>
