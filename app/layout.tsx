@@ -36,6 +36,7 @@ export default function RootLayout({
               <a href="/about" className="hover:text-[#6F879E] transition">About</a>
               <a href="/faq" className="hover:text-[#6F879E] transition">FAQ</a>
               <a href="/contact" className="hover:text-[#6F879E] transition">Contact</a>
+              <a href="/College" className="hover:text-[#6F879E] transition">College</a>
             </nav>
 
             {/* Right side: Cart + Hamburger */}
