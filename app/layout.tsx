@@ -31,12 +31,12 @@ export default function RootLayout({
             {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-8 text-sm font-400 tracking-widest uppercase">
               <a href="/" className="hover:text-[#6F879E] transition">Home</a>
-              <a href="/shop" className="hover:text-[#6F879E] transition">Shop</a>
+              <a href="/shop" className="hover:text-[#6F879E] transition">Shop Camp</a>
               <a href="/custom-orders" className="hover:text-[#6F879E] transition">Custom Orders</a>
               <a href="/about" className="hover:text-[#6F879E] transition">About</a>
               <a href="/faq" className="hover:text-[#6F879E] transition">FAQ</a>
               <a href="/contact" className="hover:text-[#6F879E] transition">Contact</a>
-              <a href="/College" className="hover:text-[#6F879E] transition">College</a>
+              <a href="/Shop College" className="hover:text-[#6F879E] transition">Shop College</a>
             </nav>
 
             {/* Right side: Cart + Hamburger */}
