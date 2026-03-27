@@ -93,8 +93,8 @@ export default function ProductPage() {
   const product = products[slug as keyof typeof products];
 
   const [name, setName] = useState("");
-  const [size, setSize] = useState(product?.sizes?.[1] ?? "Youth M");
-  const [color, setColor] = useState(product?.colors?.[0] ?? "Heather Gray");
+  const [size, setSize] = useState<string>(product?.sizes?.[1] ?? "Youth M");
+  const [color, setColor] = useState<string>(product?.colors?.[0] ?? "Heather Gray");
   const [quantity, setQuantity] = useState(1);
 
   if (!product) {
