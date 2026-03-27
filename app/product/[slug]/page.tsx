@@ -104,7 +104,7 @@ export default function ProductPage() {
   const cartLink = `/cart?product=${encodeURIComponent(product.name)}&price=${encodeURIComponent(product.price)}&name=${encodeURIComponent(name)}&size=${encodeURIComponent(size)}&color=${encodeURIComponent(color)}&quantity=${encodeURIComponent(quantity.toString())}`;
 
   return (
-    <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-16">
+    <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-12">
       <div className="mx-auto max-w-6xl">
 
         <a href="/shop" className="text-sm underline underline-offset-4 hover:text-[#6F879E]">
@@ -113,12 +113,12 @@ export default function ProductPage() {
 
         <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-12">
 
-          {/* Image */}
-          <div className="overflow-hidden rounded-[28px] bg-white">
+          {/* Image — fills the box fully */}
+          <div className="overflow-hidden rounded-[28px] bg-white aspect-square">
             <img
               src={product.image}
               alt={product.name}
-              className="h-[340px] w-full object-contain p-4 sm:h-[480px] md:h-[600px] md:p-8"
+              className="w-full h-full object-cover"
             />
           </div>
 
@@ -194,4 +194,3 @@ export default function ProductPage() {
     </main>
   );
 }
-
