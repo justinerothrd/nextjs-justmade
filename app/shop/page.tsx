@@ -82,21 +82,21 @@ function ProductGrid({
       {products.map((product) => (
         <div key={product.slug} className="group">
           <a href={`/product/${product.slug}`} className="block">
-            <div className="overflow-hidden rounded-[24px] bg-transparent transition duration-300">
+            <div className="overflow-hidden rounded-[24px] bg-transparent transition duration-300 ease-out">
               <img
                 src={product.image}
                 alt={product.name}
                 className={
                   product.slug === "quarter-zip"
-                    ? "h-[340px] w-full object-contain scale-125 transition duration-500 group-hover:scale-[1.17]"
-                    : "h-[340px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+                    ? "h-[340px] w-full object-contain scale-125 transition duration-500 ease-out group-hover:scale-[1.28]"
+                    : "h-[340px] w-full object-contain transition duration-500 ease-out group-hover:scale-[1.03]"
                 }
               />
             </div>
           </a>
 
           <div className="pt-4">
-            <h3 className="text-xl font-light leading-tight text-[#2F3A4A]">
+            <h3 className="text-lg font-light leading-tight text-[#2F3A4A]">
               {product.name}
             </h3>
 
@@ -104,7 +104,7 @@ function ProductGrid({
 
             <a
               href={`/product/${product.slug}`}
-              className="mt-4 inline-block text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
+              className="mt-4 inline-block text-sm underline underline-offset-4 transition duration-300 ease-out hover:text-[#6F879E]"
             >
               View Product
             </a>
