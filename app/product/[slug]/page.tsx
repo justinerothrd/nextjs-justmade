@@ -9,7 +9,7 @@ const products = {
     price: "$70",
     description: "A cozy custom hoodie for chilly camp nights and cool mornings.",
     image: "/hoodie.jpeg",
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Camp Green", "Camp Red"],
+    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
   "quarter-zip": {
@@ -17,7 +17,7 @@ const products = {
     price: "$65",
     description: "A polished quarter zip that layers easily for camp, travel, and everyday wear.",
     image: "/quarterzip.jpeg",
-    colors: ["Heather Gray", "Navy", "White", "Camp Green", "Camp Red"],
+    colors: ["Heather Gray", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
   "tank-top": {
@@ -25,7 +25,7 @@ const products = {
     price: "$40",
     description: "A lightweight custom tank perfect for hot camp days and summer activities.",
     image: "/Tank.jpeg",
-    colors: ["White", "Light Blue", "Camp Green", "Camp Red"],
+    colors: ["White", "Light Blue", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
   "custom-tee": {
@@ -33,7 +33,7 @@ const products = {
     price: "$35",
     description: "A classic custom tee designed for camp, travel, and summer memories.",
     image: "/Tee.jpeg",
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Camp Green", "Camp Red"],
+    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
   "custom-shorts": {
@@ -41,7 +41,7 @@ const products = {
     price: "$36",
     description: "Comfortable personalized shorts for everyday camp wear and relaxed summer style.",
     image: "/shorts.jpeg",
-    colors: ["Heather Gray", "Navy", "Camp Green", "Camp Red"],
+    colors: ["Heather Gray", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
   sleepwear: {
@@ -49,7 +49,7 @@ const products = {
     price: "$32",
     description: "Soft camp-ready pajama shorts made for bunk life, bedtime, and easy summer comfort.",
     image: "/sleepwear.jpg",
-    colors: ["Light Blue", "White", "Camp Green", "Camp Red"],
+    colors: ["Light Blue", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
   "sleepwear-set": {
@@ -57,7 +57,7 @@ const products = {
     price: "$65",
     description: "A personalized sleep set with a cozy feel that makes camp nights extra special.",
     image: "/sleepwear-set.jpg",
-    colors: ["Light Blue", "White", "Camp Green", "Camp Red"],
+    colors: ["Light Blue", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
   "accessories-slides": {
@@ -65,7 +65,7 @@ const products = {
     price: "$60",
     description: "A fun personalized camp gift that feels special, practical, and easy to wear.",
     image: "/accessories.jpg",
-    colors: ["White", "Navy", "Camp Green", "Camp Red"],
+    colors: ["White", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
   "accessories-socks": {
@@ -73,7 +73,7 @@ const products = {
     price: "$22",
     description: "Soft fuzzy socks that make a perfect bunk gift or cozy camp extra.",
     image: "/customsocks.jpg",
-    colors: ["White", "Light Blue", "Camp Green", "Camp Red"],
+    colors: ["White", "Light Blue", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
 } as const;
