@@ -81,11 +81,11 @@ export default async function CategoryPage({
           {category.products.map((product) => (
             <div key={product.slug} className="group">
               <a href={`/product/${product.slug}`} className="block">
-                <div className="overflow-hidden rounded-[24px] bg-[#F7F7F5] transition duration-300 ease-out">
+                <div className="overflow-hidden rounded-[24px] bg-[#F7F7F5]">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className={`w-full object-contain transition duration-500 ease-out group-hover:scale-[1.03] h-[220px] sm:h-[340px] ${product.slug === "quarter-zip" ? "scale-125" : ""}`}
+                    className="h-[220px] w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03] sm:h-[380px]"
                   />
                 </div>
               </a>
