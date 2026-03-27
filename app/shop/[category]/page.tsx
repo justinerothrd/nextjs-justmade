@@ -1,5 +1,3 @@
-import { notFound } from "next/navigation";
-
 const categories = {
   sweatshirts: {
     title: "Sweatshirts",
@@ -42,10 +40,26 @@ const categories = {
   },
 };
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
-  const category = categories[params.category as keyof typeof categories];
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
+  const { category: categorySlug } = await params;
+  const category = categories[categorySlug as keyof typeof categories];
 
-  if (!category) notFound();
+  if (!category) {
+    return (
+      <main className="min-h-screen bg-white text-[#2F3A4A] flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-3xl font-light">Category not found</h1>
+          <a href="/shop" className="mt-6 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]">
+            Back to Shop
+          </a>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-white text-[#2F3A4A]">
