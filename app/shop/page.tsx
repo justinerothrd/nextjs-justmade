@@ -83,12 +83,12 @@ function ProductGrid({
         <div key={product.slug} className="group">
           <a href={`/product/${product.slug}`} className="block">
             <div className="overflow-hidden rounded-[24px] bg-transparent transition duration-300">
-  <img
-    src={product.image}
-    alt={product.name}
-    className="h-[300px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
-  />
-</div>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="h-[300px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+              />
+            </div>
           </a>
 
           <div className="pt-4">
