@@ -96,7 +96,7 @@ function ProductGrid({
           </a>
 
           <div className="pt-4">
-            <h3 className="text-xl font-light leading-tight text-[#2F3A4A]">
+            <h3 className="text-lg font-light leading-tight">-[#2F3A4A]">
               {product.name}
             </h3>
 
