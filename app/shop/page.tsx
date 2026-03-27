@@ -84,19 +84,19 @@ function ProductGrid({
           <a href={`/product/${product.slug}`} className="block">
             <div className="overflow-hidden rounded-[24px] bg-transparent transition duration-300">
               <img
-  src={product.image}
-  alt={product.name}
-  className={
-    product.slug === "quarter-zip"
-      ? "h-[340px] w-full object-contain scale-125 transition duration-500 group-hover:scale-[1.27]"
-      : "h-[340px] w-full object-contain transition duration-500 ease out group-hover:scale-[1.03]"
-  }
-/>
+                src={product.image}
+                alt={product.name}
+                className={
+                  product.slug === "quarter-zip"
+                    ? "h-[340px] w-full object-contain scale-110 transition duration-500 group-hover:scale-[1.12]"
+                    : "h-[340px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+                }
+              />
             </div>
           </a>
 
           <div className="pt-4">
-            <h3 className="text-lg font-light leading-tight"> -[#2F3A4A]">
+            <h3 className="text-xl font-light leading-tight text-[#2F3A4A]">
               {product.name}
             </h3>
 
