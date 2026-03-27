@@ -89,7 +89,7 @@ function ProductGrid({
   className={
     product.slug === "quarter-zip"
       ? "h-[340px] w-full object-contain scale-125 transition duration-500 group-hover:scale-[1.27]"
-      : "h-[340px] w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+      : "h-[340px] w-full object-contain transition duration-500 group-hover:scale-[1.03]"
   }
 />
             </div>
