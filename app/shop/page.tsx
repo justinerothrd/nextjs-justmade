@@ -62,15 +62,10 @@ function ProductGrid({
             </p>
             
               href={`/product/${product.slug}`}
-              className={[
-                "mt-2 inline-block text-sm",
-                "underline underline-offset-4",
-                "transition duration-300 ease-out",
-                "hover:text-[#6F879E] sm:mt-4",
-              ].join(" ")}
-            >
-              View Product
-            </a>
+  className="mt-2 inline-block text-sm underline underline-offset-4 transition duration-300 ease-out hover:text-[#6F879E] sm:mt-4"
+>
+  View Product
+</a>
           </div>
         </div>
       ))}
