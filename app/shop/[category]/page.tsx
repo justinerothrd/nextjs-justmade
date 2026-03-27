@@ -85,7 +85,7 @@ export default async function CategoryPage({
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="h-[220px] w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03] sm:h-[340px]"
+                    className={`w-full object-contain transition duration-500 ease-out group-hover:scale-[1.03] h-[220px] sm:h-[340px] ${product.slug === "quarter-zip" ? "scale-125" : ""}`}
                   />
                 </div>
               </a>
