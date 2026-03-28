@@ -16,7 +16,6 @@ export default function ShopPage() {
           Custom camp clothing designed to feel easy, polished, and special.
         </p>
       </section>
-
       <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20">
         <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
           {categories.map((category) => (
@@ -26,20 +25,19 @@ export default function ShopPage() {
               className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
             >
               <div className={`overflow-hidden rounded-[20px] ${category.slug === "accessories" ? "bg-white" : "bg-[#F7F7F5]"}`}>
-  {category.slug === "accessories" ? (
-    <img
-      src={category.image}
-      alt={category.title}
-      className="h-40 w-full object-contain p-3 transition duration-500 group-hover:scale-[1.03] sm:h-56"
-    />
-  ) : (
-    <img
-      src={category.image}
-      alt={category.title}
-      className="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-56"
-    />
-  )}
-</div>
+                {category.slug === "accessories" ? (
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className="h-40 w-full object-contain p-3 transition duration-500 group-hover:scale-[1.03] sm:h-56"
+                  />
+                ) : (
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-56"
+                  />
+                )}
               </div>
               <h3 className="mt-4 text-base font-medium text-[#3F3F3F] sm:text-lg">{category.title}</h3>
               <p className="mt-1 text-xs leading-6 text-[#666] sm:text-sm">{category.subtitle}</p>
