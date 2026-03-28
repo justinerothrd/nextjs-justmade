@@ -3,7 +3,7 @@ const categories = [
   { slug: "tees", title: "Tees & Tanks", subtitle: "Easy everyday college styles with a custom feel.", image: "/tulane-tee.jpeg" },
   { slug: "bottoms", title: "Bottoms", subtitle: "Custom shorts and easy college-ready staples.", image: "/shorts.jpeg" },
   { slug: "sleepwear", title: "Sleepwear", subtitle: "Soft personalized pieces made for bedtime.", image: "/sleepwear.jpg" },
-  { slug: "accessories", title: "Accessories", subtitle: "Thoughtful extras and gifts.", image: "/accessories.jpg" },
+  { slug: "accessories", title: "Accessories", subtitle: "Thoughtful extras and gifts.", image: "/tulane.tote.jpeg" },
 ];
 
 export default function CollegePage() {
