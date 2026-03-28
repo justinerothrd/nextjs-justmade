@@ -1,13 +1,5 @@
 const colleges = [
   {
-  slug: "tulane",
-  name: "Tulane",
-  products: [
-    { slug: "tulane-crewneck", name: "Tulane Crewneck", price: "$70", image: "/tulane-crewneck.jpeg" },
-    { slug: "tulane-hoodie", name: "Tulane Hoodie", price: "$75", image: "/tulane-hoodie.jpeg" },
-    { slug: "tulane-tee", name: "Tulane Tee", price: "$40", image: "/tulane-tee.jpeg" },
-  ],
-},
     slug: "duke",
     name: "Duke",
     products: [
@@ -43,6 +35,15 @@ const colleges = [
       { slug: "unc-tee", name: "UNC Tee", price: "$40", image: "/unc-tee.jpeg" },
     ],
   },
+  {
+    slug: "tulane",
+    name: "Tulane",
+    products: [
+      { slug: "tulane-crewneck", name: "Tulane Crewneck", price: "$70", image: "/tulane-crewneck.jpeg" },
+      { slug: "tulane-hoodie", name: "Tulane Hoodie", price: "$75", image: "/tulane-hoodie.jpeg" },
+      { slug: "tulane-tee", name: "Tulane Tee", price: "$40", image: "/tulane-tee.jpeg" },
+    ],
+  },
 ];
 
 export default function CollegePage() {
@@ -55,7 +56,6 @@ export default function CollegePage() {
           Custom college sweatshirts, hoodies, and tees personalized for your school.
         </p>
       </section>
-
       <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20">
         {colleges.map((college) => (
           <section key={college.slug} className="py-8 sm:py-10">
@@ -66,7 +66,7 @@ export default function CollegePage() {
               {college.products.map((product) => (
                 <div key={product.slug} className="group">
                   <a href={`/college/${product.slug}`} className="block">
-                    <div className="overflow-hidden rounded-[24px] bg-[#F7F7F5]">
+                    <div className="overflow-hidden rounded-[24px] bg-white">
                       <img
                         src={product.image}
                         alt={product.name}
