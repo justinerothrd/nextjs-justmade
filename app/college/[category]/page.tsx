@@ -3,8 +3,8 @@ const categories = {
     title: "College Sweatshirts",
     subtitle: "Custom college crewnecks and sweatshirts personalized for any school.",
     products: [
-      { slug: "college-crewneck", name: "College Crewneck", price: "$70", image: "/hoodie.jpeg" },
-      { slug: "college-quarter-zip", name: "College 1/4 Zip", price: "$65", image: "/quarterzip.jpeg" },
+      { slug: "college-crewneck", name: "College Crewneck", price: "$70", image: "/tulane-crewneck.jpeg" },
+      { slug: "college-quarter-zip", name: "College 1/4 Zip", price: "$65", image: "/tulane-hoodie.jpeg" },
     ],
   },
   tees: {
@@ -12,7 +12,7 @@ const categories = {
     subtitle: "Easy everyday college styles with a custom feel.",
     products: [
       { slug: "college-tank", name: "College Tank Top", price: "$40", image: "/Tank.jpeg" },
-      { slug: "college-tee", name: "College Tee", price: "$35", image: "/Tee.jpeg" },
+      { slug: "college-tee", name: "College Tee", price: "$35", image: "/tulane-tee.jpeg" },
     ],
   },
   bottoms: {
