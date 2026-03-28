@@ -1,5 +1,13 @@
 const colleges = [
   {
+  slug: "tulane",
+  name: "Tulane",
+  products: [
+    { slug: "tulane-crewneck", name: "Tulane Crewneck", price: "$70", image: "/tulane-crewneck.jpeg" },
+    { slug: "tulane-hoodie", name: "Tulane Hoodie", price: "$75", image: "/tulane-hoodie.jpeg" },
+    { slug: "tulane-tee", name: "Tulane Tee", price: "$40", image: "/tulane-tee.jpeg" },
+  ],
+},
     slug: "duke",
     name: "Duke",
     products: [
