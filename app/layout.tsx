@@ -32,11 +32,11 @@ export default function RootLayout({
             <nav className="hidden md:flex items-center gap-8 text-sm font-400 tracking-widest uppercase">
               <a href="/" className="hover:text-[#6F879E] transition">Home</a>
               <a href="/shop" className="hover:text-[#6F879E] transition">Shop Camp</a>
+              <a href="/college" className="hover:text-[#6F879E] transition">Shop College</a>
               <a href="/custom-orders" className="hover:text-[#6F879E] transition">Custom Orders</a>
               <a href="/about" className="hover:text-[#6F879E] transition">About</a>
               <a href="/faq" className="hover:text-[#6F879E] transition">FAQ</a>
               <a href="/contact" className="hover:text-[#6F879E] transition">Contact</a>
-              <a href="/college" className="hover:text-[#6F879E] transition">Shop College</a>
             </nav>
 
             {/* Right side: Cart + Hamburger */}
@@ -59,6 +59,7 @@ export default function RootLayout({
             <nav className="md:hidden border-t border-[#E3E3E0] bg-[#F7F7F5] px-6 py-4 flex flex-col gap-4 text-sm uppercase tracking-widest">
               <a href="/" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Home</a>
               <a href="/shop" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Shop</a>
+              <a href="/college" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Shop College</a>
               <a href="/custom-orders" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Custom Orders</a>
               <a href="/about" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">About</a>
               <a href="/faq" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">FAQ</a>
