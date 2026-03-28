@@ -84,11 +84,10 @@ export default function ProductPage() {
   const product = products[slug as keyof typeof products];
 
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [size, setSize] = useState<string>(product?.sizes?.[1] ?? "Youth M");
   const [color, setColor] = useState<string>(product?.colors?.[0] ?? "Heather Gray");
   const [quantity, setQuantity] = useState(1);
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [added, setAdded] = useState(false);
 
   if (!product) {
     return (
@@ -103,48 +102,20 @@ export default function ProductPage() {
     );
   }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("sending");
-    try {
-      const res = await fetch("https://formspree.io/f/mlgoglny", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          product: product.name,
-          price: product.price,
-          camp_name: name,
-          email,
-          size,
-          color,
-          quantity,
-        }),
-      });
-      if (res.ok) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-  }
-
-  if (status === "success") {
-    return (
-      <main className="min-h-screen bg-[#F7F7F5] px-4 py-16 text-[#4B4B4B]">
-        <div className="mx-auto max-w-lg text-center">
-          <div className="text-4xl mb-4">🎉</div>
-          <h1 className="text-3xl font-light text-[#2F3A4A]">Order Received!</h1>
-          <p className="mt-4 text-base leading-7 text-gray-600">
-            Thanks for your order! We'll be in touch shortly to confirm your personalized {product.name} and arrange payment.
-          </p>
-          <a href="/shop" className="mt-8 inline-block rounded-full bg-[#6F879E] px-6 py-3 text-sm text-white transition hover:opacity-90">
-            Continue Shopping
-          </a>
-        </div>
-      </main>
-    );
+  function handleAddToCart() {
+    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const newItem = {
+      id: Date.now(),
+      product: product.name,
+      price: product.price,
+      campName: name,
+      size,
+      color,
+      quantity,
+    };
+    localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
   }
 
   return (
@@ -164,13 +135,13 @@ export default function ProductPage() {
             />
           </div>
 
-          {/* Order form */}
+          {/* Details */}
           <div className="flex flex-col">
             <h1 className="text-3xl font-light text-[#2F3A4A] sm:text-4xl">{product.name}</h1>
             <p className="mt-3 text-xl text-[#6F879E]">{product.price}</p>
             <p className="mt-4 text-base leading-7 text-gray-600">{product.description}</p>
 
-            <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-5">
+            <div className="mt-6 flex flex-col gap-5">
               <div>
                 <label className="text-sm">Camp Name</label>
                 <input
@@ -178,19 +149,6 @@ export default function ProductPage() {
                   placeholder="Enter name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  required
-                  className="mt-2 w-full rounded-lg border bg-white p-3"
-                />
-              </div>
-
-              <div>
-                <label className="text-sm">Your Email</label>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
                   className="mt-2 w-full rounded-lg border bg-white p-3"
                 />
               </div>
@@ -232,21 +190,28 @@ export default function ProductPage() {
                 />
               </div>
 
-              {status === "error" && (
-                <p className="text-sm text-red-500">Something went wrong. Please try again.</p>
-              )}
-
               <button
-                type="submit"
-                disabled={status === "sending"}
-                className="mt-2 w-full rounded-full bg-[#6F879E] px-6 py-4 text-center text-sm text-white transition hover:opacity-90 disabled:opacity-50 sm:w-auto sm:py-3"
+                onClick={handleAddToCart}
+                className="mt-2 w-full rounded-full bg-[#6F879E] px-6 py-4 text-center text-sm text-white transition hover:opacity-90 sm:w-auto sm:py-3"
               >
-                {status === "sending" ? "Submitting..." : "Submit Order"}
+                {added ? "Added to Cart ✓" : "Add to Cart"}
               </button>
-            </form>
+
+              {added && (
+                <div className="flex gap-4 text-sm">
+                  <a href="/cart" className="underline underline-offset-4 hover:text-[#6F879E]">
+                    View Cart
+                  </a>
+                  <a href="/shop" className="underline underline-offset-4 hover:text-[#6F879E]">
+                    Continue Shopping
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
     </main>
   );
 }
+
