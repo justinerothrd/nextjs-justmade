@@ -112,6 +112,33 @@ const products = {
     colors: ["Carolina Blue", "White", "Heather Gray"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
+  "tulane-crewneck": {
+    name: "Tulane Crewneck",
+    college: "Tulane",
+    price: "$70",
+    description: "A custom crewneck sweatshirt personalized with your name in Tulane style.",
+    image: "/tulane-crewneck.jpeg",
+    colors: ["Green", "White", "Heather Gray"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
+  },
+  "tulane-hoodie": {
+    name: "Tulane Hoodie",
+    college: "Tulane",
+    price: "$75",
+    description: "A cozy custom hoodie personalized with your name in Tulane style.",
+    image: "/tulane-hoodie.jpeg",
+    colors: ["Green", "White", "Heather Gray"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
+  },
+  "tulane-tee": {
+    name: "Tulane Tee",
+    college: "Tulane",
+    price: "$40",
+    description: "A classic custom tee personalized with your name in Tulane style.",
+    image: "/tulane-tee.jpeg",
+    colors: ["Green", "White", "Heather Gray"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
+  },
 } as const;
 
 export default function CollegeProductPage() {
@@ -146,8 +173,6 @@ export default function CollegeProductPage() {
           Back to College Gear
         </a>
         <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-12">
-
-          {/* Image */}
           <div className="flex items-center justify-center overflow-hidden rounded-[28px] bg-white p-6">
             <img
               src={product.image}
@@ -155,14 +180,11 @@ export default function CollegeProductPage() {
               className="h-auto max-h-[600px] w-full object-contain transition duration-500"
             />
           </div>
-
-          {/* Details */}
           <div className="flex flex-col">
             <p className="text-xs uppercase tracking-widest text-[#6F879E]">{product.college}</p>
             <h1 className="mt-2 text-3xl font-light text-[#2F3A4A] sm:text-4xl">{product.name}</h1>
             <p className="mt-3 text-xl text-[#6F879E]">{product.price}</p>
             <p className="mt-4 text-base leading-7 text-gray-600">{product.description}</p>
-
             <div className="mt-6">
               <label className="text-sm">Name on item</label>
               <input
@@ -173,7 +195,6 @@ export default function CollegeProductPage() {
                 className="mt-2 w-full rounded-lg border bg-white p-3"
               />
             </div>
-
             <div className="mt-5">
               <label className="text-sm">Size</label>
               <select
@@ -186,7 +207,6 @@ export default function CollegeProductPage() {
                 ))}
               </select>
             </div>
-
             <div className="mt-5">
               <label className="text-sm">Color</label>
               <select
@@ -199,7 +219,6 @@ export default function CollegeProductPage() {
                 ))}
               </select>
             </div>
-
             <div className="mt-5">
               <label className="text-sm">Quantity</label>
               <input
@@ -210,7 +229,6 @@ export default function CollegeProductPage() {
                 className="mt-2 w-24 rounded-lg border bg-white p-3"
               />
             </div>
-
             <a
               href={cartLink}
               className="mt-8 inline-block w-full rounded-full bg-[#6F879E] px-6 py-4 text-center text-white transition hover:opacity-90 sm:w-auto sm:py-3"
