@@ -58,7 +58,7 @@ export default function RootLayout({
           {menuOpen && (
             <nav className="md:hidden border-t border-[#E3E3E0] bg-[#F7F7F5] px-6 py-4 flex flex-col gap-4 text-sm uppercase tracking-widest">
               <a href="/" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Home</a>
-              <a href="/shop" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Shop</a>
+              <a href="/shop" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Shop Camp</a>
               <a href="/college" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Shop College</a>
               <a href="/custom-orders" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">Custom Orders</a>
               <a href="/about" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">About</a>
