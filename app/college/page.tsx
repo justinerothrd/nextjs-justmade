@@ -1,8 +1,8 @@
 const categories = [
   { slug: "sweatshirts", title: "Sweatshirts", subtitle: "Custom college crewnecks and sweatshirts.", image: "/tulane-crewneck.jpeg" },
-  { slug: "tees", title: "Tees & Tanks", subtitle: "Easy everyday college styles with a custom feel.", image: "/college.tee.jpg" },
+  { slug: "tees", title: "Tees & Tanks", subtitle: "Easy everyday college styles with a custom feel.", image: "/tulane-tank.jpeg" },
   { slug: "bottoms", title: "Bottoms", subtitle: "Custom shorts and easy college-ready staples.", image: "/shorts.jpeg" },
-  { slug: "sleepwear", title: "Sleepwear", subtitle: "Soft personalized pieces made for bedtime.", image: "/college.sleepwearset.jpg" },
+  { slug: "sleepwear", title: "Sleepwear", subtitle: "Soft personalized pieces made for bedtime.", image: "/tulane.sleepshorts.jpg" },
   { slug: "accessories", title: "Accessories", subtitle: "Thoughtful extras and gifts.", image: "/tulane.tote.jpeg" },
 ];
 
@@ -24,20 +24,12 @@ export default function CollegePage() {
               href={`/college/${category.slug}`}
               className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
             >
-              <div className={`overflow-hidden rounded-[20px] ${category.slug === "accessories" ? "bg-white" : "bg-[#F7F7F5]"}`}>
-                {category.slug === "accessories" ? (
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="h-40 w-full object-contain p-3 transition duration-500 group-hover:scale-[1.03] sm:h-56"
-                  />
-                ) : (
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-56"
-                  />
-                )}
+              <div className="overflow-hidden rounded-[20px] bg-[#F7F7F5]">
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-56"
+                />
               </div>
               <h3 className="mt-4 text-base font-medium text-[#3F3F3F] sm:text-lg">{category.title}</h3>
               <p className="mt-1 text-xs leading-6 text-[#666] sm:text-sm">{category.subtitle}</p>
