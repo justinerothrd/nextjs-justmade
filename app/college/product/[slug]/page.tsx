@@ -63,8 +63,8 @@ const products = {
   "college-slides": {
     name: "College Slides",
     price: "$60",
-    description: "Fun personalized slides with your college name.",
-    image: "/accessories.jpg",
+    description: "Blanket tote bag with your college name.",
+    image: "/tulane.tote.jpeg.jpg",
     colors: ["White", "Navy", "Black", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
