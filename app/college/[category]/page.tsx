@@ -11,7 +11,7 @@ const categories = {
     title: "College Tees & Tanks",
     subtitle: "Easy everyday college styles with a custom feel.",
     products: [
-      { slug: "college-tank", name: "College Tank Top", price: "$40", image: "/Tank.jpeg" },
+      { slug: "college-tank", name: "College Tank Top", price: "$40", image: "/tulane-tank.jpeg" },
       { slug: "college-tee", name: "College Tee", price: "$35", image: "/tulane-tee.jpeg" },
     ],
   },
