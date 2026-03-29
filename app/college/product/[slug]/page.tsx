@@ -24,7 +24,7 @@ const products = {
     name: "College Tank Top",
     price: "$40",
     description: "A lightweight custom tank personalized with your college.",
-    image: "/college-tank.jpeg",
+    image: "/tulane-tank.jpeg",
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
