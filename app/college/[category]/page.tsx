@@ -12,7 +12,7 @@ const categories = {
     subtitle: "Easy everyday college styles with a custom feel.",
     products: [
       { slug: "college-tank", name: "College Tank Top", price: "$40", image: "/tulane-tank.jpeg" },
-      { slug: "college-tee", name: "College Tee", price: "$35", image: "/college.tee.jpg" },
+      { slug: "college-tee", name: "College Tee", price: "$35", image: "/timberlaketee.jpg" },
     ],
   },
   bottoms: {
@@ -27,14 +27,14 @@ const categories = {
     subtitle: "Soft personalized pieces made for bedtime.",
     products: [
       { slug: "college-pajama-shorts", name: "College Pajama Shorts", price: "$32", image: "/tulane.sleepshorts.jpg" },
-      { slug: "college-sleep-set", name: "College Sleep Set", price: "$65", image: "/college.sleepwearset.jpg", },
+      { slug: "college-sleep-set", name: "College Sleep Set", price: "$65", image: "/college.sleepwearset.jpg" },
     ],
   },
   accessories: {
     title: "College Accessories",
     subtitle: "Thoughtful extras and gifts.",
     products: [
-      { slug: "college-totebag", name: "College Totebag", price: "$60", image: "/tulane.tote.jpeg" },
+      { slug: "college-slides", name: "College Slides", price: "$60", image: "/accessories.jpg" },
       { slug: "college-socks", name: "College Socks", price: "$22", image: "/college.fuzzysocks.jpeg" },
     ],
   },
