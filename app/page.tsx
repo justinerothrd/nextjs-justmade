@@ -1,6 +1,6 @@
 export default function HomePage() {
   const categories = [
-    { title: "Sweatshirts", subtitle: "Cozy personalized layers for camp nights and cool mornings.", image: "/hoodie.jpeg", link: "/shop/sweatshirts" },
+    { title: "Sweatshirts", subtitle: "Cozy personalized layers for camp nights and cool mornings.", image: "/hoodie.center-preview.png", link: "/shop/sweatshirts" },
     { title: "Tees & Tanks", subtitle: "Easy everyday camp styles with a custom feel.", image: "/Tank.jpeg", link: "/shop/tees" },
     { title: "Bottoms", subtitle: "Custom shorts and easy camp-ready staples.", image: "/shorts.jpeg", link: "/shop/bottoms" },
     { title: "Sleepwear", subtitle: "Soft camp-ready pieces made for bedtime and bunk life.", image: "/sleepwear.jpg", link: "/shop/sleepwear" },
