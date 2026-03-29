@@ -8,7 +8,7 @@ const products = {
     name: "College Crewneck",
     price: "$70",
     description: "A custom college crewneck personalized with your school name and style.",
-    image: "/tulane-crewneck.jpeg",
+    images: ["/tulane-crewneck.jpeg", "/sweatshirts.jpg"],
     colors: ["Heather Gray", "Navy", "White", "Black", "Red", "Green", "Royal Blue"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
@@ -16,7 +16,7 @@ const products = {
     name: "College 1/4 Zip",
     price: "$65",
     description: "A polished college quarter zip personalized with your school name.",
-    image: "/tulane-hoodie.jpeg",
+    images: ["/tulane-hoodie.jpeg", "/quarterzip.jpeg"],
     colors: ["Heather Gray", "Navy", "White", "Black", "Red", "Green", "Royal Blue"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
@@ -24,7 +24,7 @@ const products = {
     name: "College Tank Top",
     price: "$40",
     description: "A lightweight custom tank personalized with your college.",
-    image: "/tulane-tank.jpeg",
+    images: ["/tulane-tank.jpeg", "/Tank.jpeg"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
@@ -32,7 +32,7 @@ const products = {
     name: "College Tee",
     price: "$35",
     description: "A classic custom tee personalized with your college name and style.",
-    image: "/college.tee.jpg",
+    images: ["/college.tee.jpg", "/timberlaketee.jpg"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
@@ -40,7 +40,7 @@ const products = {
     name: "College Shorts",
     price: "$36",
     description: "Comfortable personalized shorts with your college style.",
-    image: "/shorts.jpeg",
+    images: ["/shorts.jpeg"],
     colors: ["Heather Gray", "Navy", "Black", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
@@ -48,7 +48,7 @@ const products = {
     name: "College Pajama Shorts",
     price: "$32",
     description: "Soft college pajama shorts personalized with your school.",
-    image: "/tulane.sleepshorts.jpg",
+    images: ["/tulane.sleepshorts.jpg", "/sleepwear.jpg"],
     colors: ["Light Blue", "White", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
@@ -56,7 +56,7 @@ const products = {
     name: "College Sleep Set",
     price: "$65",
     description: "A cozy personalized sleep set with your college name.",
-    image: "/college.sleepwearset.jpg",
+    images: ["/college.sleepwearset.jpg", "/UNC.sleepset.jpg"],
     colors: ["Light Blue", "White", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
@@ -64,7 +64,7 @@ const products = {
     name: "College Sleep Shorts Set",
     price: "$65",
     description: "A cozy personalized sleep set with your college name.",
-    image: "/UNC.sleepset.jpg",
+    images: ["/UNC.sleepset.jpg", "/college.sleepwearset.jpg"],
     colors: ["Light Blue", "White", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
@@ -72,7 +72,7 @@ const products = {
     name: "College Tote Bag",
     price: "$60",
     description: "Blanket tote bag with your college name.",
-    image: "/tulane.tote.jpeg",
+    images: ["/tulane.tote.jpeg"],
     colors: ["White", "Navy", "Black", "Red", "Green"],
     sizes: ["One Size"],
   },
@@ -80,7 +80,7 @@ const products = {
     name: "College Socks",
     price: "$22",
     description: "Soft cozy socks personalized with your college.",
-    image: "/college.fuzzysocks.jpeg",
+    images: ["/college.fuzzysocks.jpeg", "/customsocks.jpg"],
     colors: ["White", "Light Blue", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
@@ -91,6 +91,7 @@ export default function CollegeProductPage() {
   const slug = params?.slug as string;
   const product = products[slug as keyof typeof products];
 
+  const [selectedImage, setSelectedImage] = useState(0);
   const [college, setCollege] = useState("");
   const [name, setName] = useState("");
   const [size, setSize] = useState<string>(product?.sizes?.[1] ?? "Youth M");
@@ -135,13 +136,32 @@ export default function CollegeProductPage() {
         </a>
         <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-12">
 
-          {/* Image */}
-          <div className="flex items-center justify-center overflow-hidden rounded-[28px] bg-white p-6">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="h-auto max-h-[600px] w-full object-contain transition duration-500"
-            />
+          {/* Image gallery */}
+          <div className="flex gap-3">
+            {product.images.length > 1 && (
+              <div className="flex flex-col gap-2">
+                {product.images.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSelectedImage(i)}
+                    className={`overflow-hidden rounded-[12px] border-2 transition ${selectedImage === i ? "border-[#6F879E]" : "border-transparent"}`}
+                  >
+                    <img
+                      src={img}
+                      alt={`${product.name} view ${i + 1}`}
+                      className="h-16 w-16 object-contain bg-white p-1"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+            <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[28px] bg-white p-6">
+              <img
+                src={product.images[selectedImage]}
+                alt={product.name}
+                className="h-auto max-h-[600px] w-full object-contain transition duration-500"
+              />
+            </div>
           </div>
 
           {/* Details */}
@@ -153,67 +173,30 @@ export default function CollegeProductPage() {
             <div className="mt-6 flex flex-col gap-5">
               <div>
                 <label className="text-sm">College</label>
-                <input
-                  type="text"
-                  placeholder="e.g. Duke, Penn State, UNC..."
-                  value={college}
-                  onChange={(e) => setCollege(e.target.value)}
-                  className="mt-2 w-full rounded-lg border bg-white p-3"
-                />
+                <input type="text" placeholder="e.g. Duke, Penn State, UNC..." value={college} onChange={(e) => setCollege(e.target.value)} className="mt-2 w-full rounded-lg border bg-white p-3" />
               </div>
-
               <div>
                 <label className="text-sm">Name on item</label>
-                <input
-                  type="text"
-                  placeholder="Enter name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="mt-2 w-full rounded-lg border bg-white p-3"
-                />
+                <input type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} className="mt-2 w-full rounded-lg border bg-white p-3" />
               </div>
-
               <div>
                 <label className="text-sm">Size</label>
-                <select
-                  value={size}
-                  onChange={(e) => setSize(e.target.value)}
-                  className="mt-2 w-full rounded-lg border bg-white p-3"
-                >
-                  {product.sizes.map((s) => (
-                    <option key={s}>{s}</option>
-                  ))}
+                <select value={size} onChange={(e) => setSize(e.target.value)} className="mt-2 w-full rounded-lg border bg-white p-3">
+                  {product.sizes.map((s) => <option key={s}>{s}</option>)}
                 </select>
               </div>
-
               <div>
                 <label className="text-sm">Color</label>
-                <select
-                  value={color}
-                  onChange={(e) => setColor(e.target.value)}
-                  className="mt-2 w-full rounded-lg border bg-white p-3"
-                >
-                  {product.colors.map((c) => (
-                    <option key={c}>{c}</option>
-                  ))}
+                <select value={color} onChange={(e) => setColor(e.target.value)} className="mt-2 w-full rounded-lg border bg-white p-3">
+                  {product.colors.map((c) => <option key={c}>{c}</option>)}
                 </select>
               </div>
-
               <div>
                 <label className="text-sm">Quantity</label>
-                <input
-                  type="number"
-                  min="1"
-                  value={quantity}
-                  onChange={(e) => setQuantity(Number(e.target.value))}
-                  className="mt-2 w-24 rounded-lg border bg-white p-3"
-                />
+                <input type="number" min="1" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} className="mt-2 w-24 rounded-lg border bg-white p-3" />
               </div>
 
-              <button
-                onClick={handleAddToCart}
-                className="mt-2 w-full rounded-full bg-[#6F879E] px-6 py-4 text-center text-sm text-white transition hover:opacity-90 sm:w-auto sm:py-3"
-              >
+              <button onClick={handleAddToCart} className="mt-2 w-full rounded-full bg-[#6F879E] px-6 py-4 text-center text-sm text-white transition hover:opacity-90 sm:w-auto sm:py-3">
                 {added ? "Added to Cart ✓" : "Add to Cart"}
               </button>
 
