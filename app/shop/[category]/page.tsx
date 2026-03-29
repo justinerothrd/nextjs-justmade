@@ -4,7 +4,7 @@ const categories = {
     subtitle: "Cozy personalized layers for camp nights and cool mornings.",
     products: [
       { slug: "hoodie", name: "Custom Hoodie", price: "$70", image: "/hoodie.center-preview.png" },
-      { slug: "quarter-zip", name: "Custom 1/4 Zip", price: "$65", image: "/quarterzip.preview.png" },
+      { slug: "quarter-zip", name: "Custom 1/4 Zip", price: "$65", image: "/quarterzip-preview.png" },
     ],
   },
   tees: {
