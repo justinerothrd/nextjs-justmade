@@ -1,5 +1,5 @@
 const categories = [
-  { slug: "sweatshirts", title: "Sweatshirts", subtitle: "Cozy personalized layers for camp nights and cool mornings.", image: "/hoodie.jpeg" },
+  { slug: "sweatshirts", title: "Sweatshirts", subtitle: "Cozy personalized layers for camp nights and cool mornings.", image: "/hoodie.center-preview.png" },
   { slug: "tees", title: "Tees & Tanks", subtitle: "Easy everyday camp styles with a custom feel.", image: "/Tank.jpeg" },
   { slug: "bottoms", title: "Bottoms", subtitle: "Custom shorts and easy camp-ready staples.", image: "/shorts.jpeg" },
   { slug: "sleepwear", title: "Sleepwear", subtitle: "Soft camp-ready pieces made for bedtime and bunk life.", image: "/sleepwear.jpg" },
