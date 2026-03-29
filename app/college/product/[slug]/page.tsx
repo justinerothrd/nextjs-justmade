@@ -60,6 +60,14 @@ const products = {
     colors: ["Light Blue", "White", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
+  "college-sleep-set": {
+    name: "College Sleep Shorts Set",
+    price: "$65",
+    description: "A cozy personalized sleep set with your college name.",
+    image: "/UNC.sleepset.jpeg",
+    colors: ["Light Blue", "White", "Navy", "Red", "Green"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
+  },
   "college-totebag": {
     name: "College Totebag",
     price: "$60",
