@@ -8,7 +8,7 @@ const products = {
     name: "Custom Hoodie",
     price: "$70",
     description: "A cozy custom hoodie for chilly camp nights and cool mornings.",
-    image: "/hoodie.jpeg",
+    images: ["/hoodie.jpeg", "/sweatshirts.jpg"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
@@ -16,7 +16,7 @@ const products = {
     name: "Custom 1/4 Zip",
     price: "$65",
     description: "A polished quarter zip that layers easily for camp, travel, and everyday wear.",
-    image: "/quarterzip.jpeg",
+    images: ["/quarterzip.jpeg", "/sweatshirts.jpg"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
@@ -24,56 +24,56 @@ const products = {
     name: "Custom Tank Top",
     price: "$40",
     description: "A lightweight custom tank perfect for hot camp days and summer activities.",
-    image: "/Tank.jpeg",
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    images: ["/Tank.jpeg", "/tulane-tank.jpeg"],
+    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
   "custom-tee": {
     name: "Custom Tee",
     price: "$35",
     description: "A classic custom tee designed for camp, travel, and summer memories.",
-    image: "/Tee.jpeg",
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    images: ["/Tee.jpeg", "/timberlaketee.jpg"],
+    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
   "custom-shorts": {
     name: "Custom Shorts",
     price: "$36",
     description: "Comfortable personalized shorts for everyday camp wear and relaxed summer style.",
-    image: "/shorts.jpeg",
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    images: ["/shorts.jpeg"],
+    colors: ["Heather Gray", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
   sleepwear: {
     name: "Camp Pajama Shorts",
     price: "$32",
     description: "Soft camp-ready pajama shorts made for bunk life, bedtime, and easy summer comfort.",
-    image: "/sleepwear.jpg",
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    images: ["/sleepwear.jpg", "/tulane.sleepshorts.jpg"],
+    colors: ["Light Blue", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
   "sleepwear-set": {
     name: "Custom Sleep Set",
     price: "$65",
     description: "A personalized sleep set with a cozy feel that makes camp nights extra special.",
-    image: "/sleepwear-set.jpg",
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    images: ["/sleepwear-set.jpg", "/college.sleepwearset.jpg"],
+    colors: ["Light Blue", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
   "accessories-slides": {
     name: "Bunk Gift Slides",
     price: "$60",
     description: "A fun personalized camp gift that feels special, practical, and easy to wear.",
-    image: "/accessories.jpg",
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    images: ["/accessories.jpg"],
+    colors: ["White", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
   "accessories-socks": {
     name: "Fuzzy Socks",
     price: "$22",
     description: "Soft fuzzy socks that make a perfect bunk gift or cozy camp extra.",
-    image: "/customsocks.jpg",
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    images: ["/customsocks.jpg", "/college.fuzzysocks.jpeg"],
+    colors: ["White", "Light Blue", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
 } as const;
@@ -83,6 +83,7 @@ export default function ProductPage() {
   const slug = params?.slug as string;
   const product = products[slug as keyof typeof products];
 
+  const [selectedImage, setSelectedImage] = useState(0);
   const [name, setName] = useState("");
   const [size, setSize] = useState<string>(product?.sizes?.[1] ?? "Youth M");
   const [color, setColor] = useState<string>(product?.colors?.[0] ?? "Heather Gray");
@@ -126,13 +127,34 @@ export default function ProductPage() {
         </a>
         <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-12">
 
-          {/* Image */}
-          <div className="flex items-center justify-center overflow-hidden rounded-[28px] bg-white p-6">
-            <img
-              src={product.image}
-              alt={product.name}
-              className={`h-auto max-h-[600px] w-full object-contain transition duration-500 ${slug === "quarter-zip" ? "scale-125" : ""}`}
-            />
+          {/* Image gallery */}
+          <div className="flex gap-3">
+            {/* Thumbnails */}
+            {product.images.length > 1 && (
+              <div className="flex flex-col gap-2">
+                {product.images.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSelectedImage(i)}
+                    className={`overflow-hidden rounded-[12px] border-2 transition ${selectedImage === i ? "border-[#6F879E]" : "border-transparent"}`}
+                  >
+                    <img
+                      src={img}
+                      alt={`${product.name} view ${i + 1}`}
+                      className="h-16 w-16 object-contain bg-white p-1"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+            {/* Main image */}
+            <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[28px] bg-white p-6">
+              <img
+                src={product.images[selectedImage]}
+                alt={product.name}
+                className={`h-auto max-h-[600px] w-full object-contain transition duration-500 ${slug === "quarter-zip" ? "scale-125" : ""}`}
+              />
+            </div>
           </div>
 
           {/* Details */}
@@ -152,59 +174,31 @@ export default function ProductPage() {
                   className="mt-2 w-full rounded-lg border bg-white p-3"
                 />
               </div>
-
               <div>
                 <label className="text-sm">Size</label>
-                <select
-                  value={size}
-                  onChange={(e) => setSize(e.target.value)}
-                  className="mt-2 w-full rounded-lg border bg-white p-3"
-                >
-                  {product.sizes.map((s) => (
-                    <option key={s}>{s}</option>
-                  ))}
+                <select value={size} onChange={(e) => setSize(e.target.value)} className="mt-2 w-full rounded-lg border bg-white p-3">
+                  {product.sizes.map((s) => <option key={s}>{s}</option>)}
                 </select>
               </div>
-
               <div>
                 <label className="text-sm">Color</label>
-                <select
-                  value={color}
-                  onChange={(e) => setColor(e.target.value)}
-                  className="mt-2 w-full rounded-lg border bg-white p-3"
-                >
-                  {product.colors.map((c) => (
-                    <option key={c}>{c}</option>
-                  ))}
+                <select value={color} onChange={(e) => setColor(e.target.value)} className="mt-2 w-full rounded-lg border bg-white p-3">
+                  {product.colors.map((c) => <option key={c}>{c}</option>)}
                 </select>
               </div>
-
               <div>
                 <label className="text-sm">Quantity</label>
-                <input
-                  type="number"
-                  min="1"
-                  value={quantity}
-                  onChange={(e) => setQuantity(Number(e.target.value))}
-                  className="mt-2 w-24 rounded-lg border bg-white p-3"
-                />
+                <input type="number" min="1" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} className="mt-2 w-24 rounded-lg border bg-white p-3" />
               </div>
 
-              <button
-                onClick={handleAddToCart}
-                className="mt-2 w-full rounded-full bg-[#6F879E] px-6 py-4 text-center text-sm text-white transition hover:opacity-90 sm:w-auto sm:py-3"
-              >
+              <button onClick={handleAddToCart} className="mt-2 w-full rounded-full bg-[#6F879E] px-6 py-4 text-center text-sm text-white transition hover:opacity-90 sm:w-auto sm:py-3">
                 {added ? "Added to Cart ✓" : "Add to Cart"}
               </button>
 
               {added && (
                 <div className="flex gap-4 text-sm">
-                  <a href="/cart" className="underline underline-offset-4 hover:text-[#6F879E]">
-                    View Cart
-                  </a>
-                  <a href="/shop" className="underline underline-offset-4 hover:text-[#6F879E]">
-                    Continue Shopping
-                  </a>
+                  <a href="/cart" className="underline underline-offset-4 hover:text-[#6F879E]">View Cart</a>
+                  <a href="/shop" className="underline underline-offset-4 hover:text-[#6F879E]">Continue Shopping</a>
                 </div>
               )}
             </div>
@@ -214,4 +208,3 @@ export default function ProductPage() {
     </main>
   );
 }
-
