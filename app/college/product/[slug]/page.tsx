@@ -104,9 +104,9 @@ export default function CollegeProductPage() {
       <main className="min-h-screen bg-[#F7F7F5] px-6 py-16 text-[#4B4B4B]">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="text-3xl font-light">Product not found</h1>
-          <button onClick={() => window.history.back()} className="text-sm underline underline-offset-4 hover:text-[#6F879E]">
-  Back
-</button>
+          <button onClick={() => window.history.back()} className="mt-6 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]">
+            Back
+          </button>
         </div>
       </main>
     );
@@ -131,9 +131,9 @@ export default function CollegeProductPage() {
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-12">
       <div className="mx-auto max-w-6xl">
-        <a href="/college" className="text-sm underline underline-offset-4 hover:text-[#6F879E]">
-          Back to College Gear
-        </a>
+        <button onClick={() => window.history.back()} className="text-sm underline underline-offset-4 hover:text-[#6F879E]">
+          Back
+        </button>
         <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-12">
 
           {/* Image gallery */}
