@@ -104,9 +104,9 @@ export default function CollegeProductPage() {
       <main className="min-h-screen bg-[#F7F7F5] px-6 py-16 text-[#4B4B4B]">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="text-3xl font-light">Product not found</h1>
-          <a href="/college" className="mt-6 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]">
-            Back to College Gear
-          </a>
+          <button onClick={() => window.history.back()} className="text-sm underline underline-offset-4 hover:text-[#6F879E]">
+  Back
+</button>
         </div>
       </main>
     );
