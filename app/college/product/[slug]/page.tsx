@@ -56,7 +56,7 @@ const products = {
     name: "College Sleep Set",
     price: "$65",
     description: "A cozy personalized sleep set with your college name.",
-    image: "/sleepwear-set.jpg",
+    image: "/college.sleepwear-set.jpg",
     colors: ["Light Blue", "White", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
