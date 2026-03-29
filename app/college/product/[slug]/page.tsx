@@ -16,7 +16,7 @@ const products = {
     name: "College 1/4 Zip",
     price: "$65",
     description: "A polished college quarter zip personalized with your school name.",
-    images: ["/tulane-hoodie.jpeg", "/quarterzip.jpeg"],
+    images: ["/tulane-hoodie.jpeg", "/quarterzip.jpeg", "/sweatshirts.jpg"],
     colors: ["Heather Gray", "Navy", "White", "Black", "Red", "Green", "Royal Blue"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
