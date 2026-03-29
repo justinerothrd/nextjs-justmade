@@ -32,7 +32,7 @@ const products = {
     name: "College Tee",
     price: "$35",
     description: "A classic custom tee personalized with your college name and style.",
-    image: "/collegetee.jpg",
+    image: "/college.tee.jpg",
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
