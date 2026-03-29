@@ -27,7 +27,7 @@ const categories = {
     subtitle: "Soft personalized pieces made for bedtime.",
     products: [
       { slug: "college-pajama-shorts", name: "College Pajama Shorts", price: "$32", image: "/sleepwear.jpg" },
-      { slug: "college-sleep-set", name: "College Sleep Set", price: "$65", image: "/sleepwear-set.jpg" },
+      { slug: "college-sleep-set", name: "College Sleep Set", price: "$65", image: "/college.sleepwearset.jpg" },
     ],
   },
   accessories: {
