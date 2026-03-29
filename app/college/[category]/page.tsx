@@ -34,8 +34,8 @@ const categories = {
     title: "College Accessories",
     subtitle: "Thoughtful extras and gifts.",
     products: [
-      { slug: "college-slides", name: "College Slides", price: "$60", image: "/tulane.tote.jpeg" },
-      { slug: "college-socks", name: "College Socks", price: "$22", image: "/customsocks.jpg" },
+      { slug: "college-totebag", name: "College Totebag", price: "$60", image: "/tulane.tote.jpeg" },
+      { slug: "college-socks", name: "College Socks", price: "$22", image: "/college.fuzzysocks.jpeg" },
     ],
   },
 };
