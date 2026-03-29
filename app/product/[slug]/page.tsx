@@ -98,7 +98,6 @@ export default function ProductPage() {
          <button onClick={() => window.history.back()} className="text-sm underline underline-offset-4 hover:text-[#6F879E]">
   Back
 </button>
-            Back to Shop
           </a>
         </div>
       </main>
