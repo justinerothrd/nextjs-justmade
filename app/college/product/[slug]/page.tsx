@@ -60,11 +60,11 @@ const products = {
     colors: ["Light Blue", "White", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
-  "college-slides": {
-    name: "College Slides",
+  "college-totebag": {
+    name: "College Totebag",
     price: "$60",
     description: "Blanket tote bag with your college name.",
-    image: "/tulane.tote.jpeg.jpg",
+    image: "/tulane.tote.jpeg",
     colors: ["White", "Navy", "Black", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
@@ -72,7 +72,7 @@ const products = {
     name: "College Socks",
     price: "$22",
     description: "Soft cozy socks personalized with your college.",
-    image: "/customsocks.jpg",
+    image: "/college.fuzzysocks.jpeg",
     colors: ["White", "Light Blue", "Navy", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
