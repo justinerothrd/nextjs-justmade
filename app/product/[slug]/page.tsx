@@ -16,7 +16,7 @@ const products = {
     name: "Custom 1/4 Zip",
     price: "$65",
     description: "A polished quarter zip that layers easily for camp, travel, and everyday wear.",
-    images: ["/quarterzip.jpeg", "/Wesmont.png", "/quarterzip-preview.png"],
+    images: ["/quarterzip.jpeg", "/quarterzip-preview.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
