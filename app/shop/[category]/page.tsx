@@ -11,7 +11,7 @@ const categories = {
     title: "Tees & Tanks",
     subtitle: "Easy everyday camp styles with a custom feel.",
     products: [
-      { slug: "tank-top", name: "Custom Tank Top", price: "$40", image: "/tank-preview.png" },
+      { slug: "tank-top", name: "Custom Tank Top", price: "$40", image: "/lightblue.tank.png" },
       { slug: "custom-tee", name: "Custom Tee", price: "$35", image: "/tee-preview.png" },
     ],
   },
