@@ -11,15 +11,15 @@ const categories = {
     title: "Tees & Tanks",
     subtitle: "Easy everyday camp styles with a custom feel.",
     products: [
-      { slug: "tank-top", name: "Custom Tank Top", price: "$40", image: "/Tank.jpeg" },
-      { slug: "custom-tee", name: "Custom Tee", price: "$35", image: "/Tee.jpeg" },
+      { slug: "tank-top", name: "Custom Tank Top", price: "$40", image: "/tank-preview.png" },
+      { slug: "custom-tee", name: "Custom Tee", price: "$35", image: "/tee-preview.png" },
     ],
   },
   bottoms: {
     title: "Bottoms",
     subtitle: "Custom shorts and easy camp-ready staples.",
     products: [
-      { slug: "custom-shorts", name: "Custom Shorts", price: "$36", image: "/shorts.jpeg" },
+      { slug: "custom-shorts", name: "Custom Shorts", price: "$36", image: "/shorts-preview.png" },
     ],
   },
   sleepwear: {
@@ -34,7 +34,7 @@ const categories = {
     title: "Accessories",
     subtitle: "Thoughtful extras and gifts.",
     products: [
-      { slug: "accessories-slides", name: "Bunk Gift Slides", price: "$60", image: "/accessories.jpg" },
+      { slug: "accessories-slides", name: "Bunk Gift Slides", price: "$60", image: "/slides-preview.png" },
       { slug: "accessories-socks", name: "Fuzzy Socks", price: "$22", image: "/customsocks.jpg" },
     ],
   },
