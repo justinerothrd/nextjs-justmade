@@ -58,20 +58,16 @@ export default function ShopPage() {
               href={`/shop/${category.slug}`}
               className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
             >
-              <div className="overflow-hidden rounded-[20px] bg-[#F7F7F5]">
-                {category.slug === "accessories" ? (
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="h-40 w-full object-contain p-3 transition duration-500 ease-out group-hover:scale-[1.03] sm:h-56"
-                  />
-                ) : (
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="h-40 w-full object-cover transition duration-500 ease-out group-hover:scale-[1.04] sm:h-56"
-                  />
-                )}
+              <div className="overflow-hidden rounded-[20px] bg-white">
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className={
+                    category.slug === "accessories"
+                      ? "h-40 w-full object-contain p-3 transition duration-500 ease-out group-hover:scale-[1.03] sm:h-56"
+                      : "h-40 w-full object-contain p-4 transition duration-500 ease-out group-hover:scale-[1.03] sm:h-56"
+                  }
+                />
               </div>
 
               <h3 className="mt-4 text-base font-medium text-[#3F3F3F] sm:text-lg">
