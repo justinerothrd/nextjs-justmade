@@ -59,17 +59,17 @@ export default function CollegePage() {
               className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:border-transparent"
             >
               <div className="overflow-hidden rounded-[20px] bg-white">
-                <img
-                  src={category.image}
-                  alt={category.title}
-                  className={
-                    category.slug === "sweatshirts"
-                      ? "h-40 w-full object-contain p-2 scale-[1.01] transition duration-500 ease-out sm:h-56"
-                      : category.slug === "accessories"
-                      ? "h-40 w-full object-contain p-2 transition duration-500 ease-out sm:h-56"
-                      : "h-40 w-full object-contain p-2 transition duration-500 ease-out sm:h-56"
-                  }
-                />
+                <div className="flex h-40 items-end justify-center sm:h-56">
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className={
+                      category.slug === "sweatshirts"
+                        ? "fade-in h-full w-full object-contain p-8 scale-[1.01] transition duration-500 ease-out"
+                        : "fade-in h-full w-full object-contain p-8 transition duration-500 ease-out"
+                    }
+                  />
+                </div>
               </div>
 
               <h3 className="mt-4 text-base font-medium text-[#3F3F3F] sm:text-lg">
