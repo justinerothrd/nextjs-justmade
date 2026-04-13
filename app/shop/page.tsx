@@ -64,8 +64,7 @@ export default function ShopPage() {
                   alt={category.title}
                   className={
                     category.slug === "accessories"
-                      ? "h-40 w-full object-contain p-3 transition duration-500 ease-out group-hover:scale-[1.03] sm:h-56"
-                      : "h-40 w-full object-contain p-4 transition duration-500 ease-out group-hover:scale-[1.03] sm:h-56"
+                     className="h-40 w-full object-contain p-2 transition duration-500 ease-out group-hover:scale-[1.05] sm:h-56"
                   }
                 />
               </div>
