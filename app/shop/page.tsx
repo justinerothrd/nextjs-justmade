@@ -64,7 +64,7 @@ export default function ShopPage() {
                   alt={category.title}
                   className={
                     category.slug === "sweatshirts"
-                      ? "h-40 w-full object-contain p-2 scale-[1.25] transition duration-500 ease-out group-hover:scale-[1.28] sm:h-56"
+                      ? "h-40 w-full object-contain p-2 scale-[1.15] transition duration-500 ease-out group-hover:scale-[1.28] sm:h-56"
                       : "h-40 w-full object-contain p-2 transition duration-500 ease-out group-hover:scale-[1.05] sm:h-56"
                   }
                 />
