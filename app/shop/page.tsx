@@ -56,7 +56,7 @@ export default function ShopPage() {
             <a
               key={category.slug}
               href={`/shop/${category.slug}`}
-              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
+              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:border-transparent"
             >
               <div className="overflow-hidden rounded-[20px] bg-white">
                 <img
@@ -64,8 +64,10 @@ export default function ShopPage() {
                   alt={category.title}
                   className={
                     category.slug === "sweatshirts"
-                      ? "h-40 w-full object-contain p-2 scale-[1.05] transition duration-500 ease-out group-hover:scale-[1.28] sm:h-56"
-                      : "h-40 w-full object-contain p-2 transition duration-500 ease-out group-hover:scale-[1.05] sm:h-56"
+                      ? "h-40 w-full object-contain p-2 scale-[1.05] transition duration-500 ease-out sm:h-56"
+                      : category.slug === "accessories"
+                      ? "h-40 w-full object-contain p-2 transition duration-500 ease-out sm:h-56"
+                      : "h-40 w-full object-contain p-2 transition duration-500 ease-out sm:h-56"
                   }
                 />
               </div>
