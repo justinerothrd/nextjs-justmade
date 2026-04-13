@@ -1,7 +1,7 @@
 const categories = [
   { slug: "sweatshirts", title: "Sweatshirts", subtitle: "Custom college crewnecks and sweatshirts.", image: "/tulane-crewneck.jpeg" },
   { slug: "tees", title: "Tees & Tanks", subtitle: "Easy everyday college styles with a custom feel.", image: "/tulane-tank.jpeg" },
-  { slug: "bottoms", title: "Bottoms", subtitle: "Custom shorts and easy college-ready staples.", image: "/shorts.jpeg" },
+  { slug: "bottoms", title: "Bottoms", subtitle: "Custom shorts and easy college-ready staples.", image: "/collegeshorts.png" },
   { slug: "sleepwear", title: "Sleepwear", subtitle: "Soft personalized pieces made for bedtime.", image: "/tulane.sleepshorts.jpg" },
   { slug: "accessories", title: "Accessories", subtitle: "Thoughtful extras and gifts.", image: "/tulane.tote.jpeg" },
 ];
