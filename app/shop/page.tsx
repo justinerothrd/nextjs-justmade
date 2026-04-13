@@ -63,9 +63,7 @@ export default function ShopPage() {
                   <img
                     src={category.image}
                     alt={category.title}
-                    className={
-                      category.slug === "sweatshirts"
-                        ? "fade-in h-full w-full object-contain p-8 scale-[1.05] transition duration-500 ease-out"
+                   className="fade-in h-full w-full object-contain p-4 sm:p-6 scale-[1.08] transition duration-500 ease-out"
                         : "fade-in h-full w-full object-contain p-8 transition duration-500 ease-out"
                     }
                   />
