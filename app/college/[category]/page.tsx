@@ -71,12 +71,15 @@ export default async function CollegeCategoryPage({
         <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
           Just Made Custom
         </p>
+
         <h1 className="mt-4 text-4xl font-light sm:text-5xl md:text-6xl">
           {meta.title}
         </h1>
+
         <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
           {meta.subtitle}
         </p>
+
         <div className="mt-4">
           <a
             href="/college"
@@ -105,7 +108,9 @@ export default async function CollegeCategoryPage({
                 <h3 className="text-base font-light leading-tight text-[#2F3A4A] sm:text-lg">
                   {product.name}
                 </h3>
+
                 <p className="mt-1 text-sm text-gray-500">{product.price}</p>
+
                 <a
                   href={`/college/product/${product.slug}`}
                   className="mt-2 inline-block text-sm underline underline-offset-4 transition duration-300 ease-out hover:text-[#6F879E] sm:mt-4"
