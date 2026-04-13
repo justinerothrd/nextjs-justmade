@@ -58,20 +58,20 @@ export default function ShopPage() {
               href={`/shop/${category.slug}`}
               className="group rounded-[26px] border border-[#E6E2DD] bg-white p-4 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.06)]"
             >
-              {/* IMAGE FRAME */}
               <div className="flex h-[180px] items-center justify-center overflow-hidden rounded-[20px] bg-[#F7F7F5] sm:h-[220px]">
                 <img
                   src={category.image}
                   alt={category.title}
                   className={
                     category.slug === "accessories"
-                      ? "max-h-full max-w-full object-contain p-4 transition duration-500 ease-out group-hover:scale-[1.03]"
-                      : "max-h-full max-w-full object-contain p-6 transition duration-500 ease-out group-hover:scale-[1.05]"
+                      ? "h-[78%] w-[78%] object-contain transition duration-500 ease-out group-hover:scale-[1.03]"
+                      : category.slug === "sleepwear"
+                      ? "h-[82%] w-[82%] object-contain transition duration-500 ease-out group-hover:scale-[1.04]"
+                      : "h-[90%] w-[90%] object-contain transition duration-500 ease-out group-hover:scale-[1.04]"
                   }
                 />
               </div>
 
-              {/* TEXT */}
               <div className="pt-4">
                 <h3 className="text-[15px] font-medium text-[#2F3A4A] sm:text-[17px]">
                   {category.title}
