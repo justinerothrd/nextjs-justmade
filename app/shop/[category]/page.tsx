@@ -46,7 +46,7 @@ export default async function CategoryPage({
 
   if (!meta || !slugs) {
     return (
-      <main className="min-h-screen bg-white text-[#2F3A4A] flex items-center justify-center">
+      <main className="flex min-h-screen items-center justify-center bg-white text-[#2F3A4A]">
         <div className="text-center">
           <h1 className="text-3xl font-light">Category not found</h1>
           <a
@@ -97,14 +97,16 @@ export default async function CategoryPage({
               <a href={`/product/${product.slug}`} className="block">
                 <div className="overflow-hidden rounded-[24px] bg-[#F7F7F5]">
                   <img
-  src={product.images[0]}
-  alt={product.name}
-  className={
-    product.slug === "accessories-slides"
-      ? "h-[240px] w-full object-contain bg-white p-4 transition duration-500 ease-out group-hover:scale-[1.03] sm:h-[380px]"
-      : "h-[240px] w-full object-cover transition duration-500 ease-out group-hover:scale-[1.04] sm:h-[380px]"
-  }
-/>
+                    src={product.images[0]}
+                    alt={product.name}
+                    className={
+                      product.slug === "accessories-slides"
+                        ? "h-[240px] w-full object-contain bg-white p-4 transition duration-500 ease-out group-hover:scale-[1.03] sm:h-[380px]"
+                        : "h-[240px] w-full object-cover transition duration-500 ease-out group-hover:scale-[1.04] sm:h-[380px]"
+                    }
+                  />
+                </div>
+              </a>
 
               <div className="pt-3 sm:pt-4">
                 <h3 className="text-base font-light leading-tight text-[#2F3A4A] sm:text-lg">
@@ -127,3 +129,4 @@ export default async function CategoryPage({
     </main>
   );
 }
+
