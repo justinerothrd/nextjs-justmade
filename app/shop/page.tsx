@@ -56,35 +56,35 @@ export default function ShopPage() {
             <a
               key={category.slug}
               href={`/shop/${category.slug}`}
-              className="group rounded-[26px] border border-[#E6E2DD] bg-white p-4 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.06)]"
+              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
             >
-              <div className="flex h-[180px] items-center justify-center overflow-hidden rounded-[20px] bg-[#F7F7F5] sm:h-[220px]">
-                <img
-                  src={category.image}
-                  alt={category.title}
-                  className={
-                    category.slug === "accessories"
-                      ? "h-[78%] w-[78%] object-contain transition duration-500 ease-out group-hover:scale-[1.03]"
-                      : category.slug === "sleepwear"
-                      ? "h-[82%] w-[82%] object-contain transition duration-500 ease-out group-hover:scale-[1.04]"
-                      : "h-[90%] w-[90%] object-contain transition duration-500 ease-out group-hover:scale-[1.04]"
-                  }
-                />
+              <div className="overflow-hidden rounded-[20px] bg-[#F7F7F5]">
+                {category.slug === "accessories" ? (
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className="h-40 w-full object-contain p-3 transition duration-500 ease-out group-hover:scale-[1.03] sm:h-56"
+                  />
+                ) : (
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className="h-40 w-full object-cover transition duration-500 ease-out group-hover:scale-[1.04] sm:h-56"
+                  />
+                )}
               </div>
 
-              <div className="pt-4">
-                <h3 className="text-[15px] font-medium text-[#2F3A4A] sm:text-[17px]">
-                  {category.title}
-                </h3>
+              <h3 className="mt-4 text-base font-medium text-[#3F3F3F] sm:text-lg">
+                {category.title}
+              </h3>
 
-                <p className="mt-1 text-[12px] leading-6 text-[#666] sm:text-sm">
-                  {category.subtitle}
-                </p>
+              <p className="mt-1 text-xs leading-6 text-[#666] sm:text-sm">
+                {category.subtitle}
+              </p>
 
-                <p className="mt-3 text-sm font-medium text-[#6F879E]">
-                  Shop now →
-                </p>
-              </div>
+              <p className="mt-3 text-sm font-medium text-[#6F879E]">
+                Shop now →
+              </p>
             </a>
           ))}
         </div>
