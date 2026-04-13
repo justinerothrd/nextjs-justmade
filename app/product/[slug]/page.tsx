@@ -32,6 +32,8 @@ export default function ProductPage() {
     );
   }
 
+  const currentImage = product.images[selectedImage];
+
   function handleAddToCart() {
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
@@ -44,13 +46,21 @@ export default function ProductPage() {
       size,
       color,
       quantity,
-      image: product.images[0],
+      image: currentImage,
     };
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   }
+
+  const mainImageClass = [
+    "h-auto max-h-[760px] w-full object-contain transition duration-500",
+    slug === "quarter-zip" ? "scale-125" : "",
+    slug === "hoodie" && selectedImage === 1 ? "scale-125" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-12">
@@ -86,11 +96,9 @@ export default function ProductPage() {
 
             <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[28px] bg-white p-6 sm:p-8">
               <img
-                src={product.images[selectedImage]}
+                src={currentImage}
                 alt={product.name}
-                className={`h-auto max-h-[700px] w-full object-contain transition duration-500 ${
-                  slug === "quarter-zip" ? "scale-125" : ""
-                }`}
+                className={mainImageClass}
               />
             </div>
           </div>
