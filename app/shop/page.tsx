@@ -62,7 +62,7 @@ export default function ShopPage() {
                 <img
                   src={category.image}
                   alt={category.title}
-                  className="h-40 w-full object-contain p-2 transition duration-500 ease-out group-hover:scale-[1.05] sm:h-56"
+                  className="h-40 w-full object-contain p-1 transition duration-500 ease-out group-hover:scale-[1.05] sm:h-56"
                 />
               </div>
 
