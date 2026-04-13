@@ -40,7 +40,7 @@ const products = {
     name: "College Shorts",
     price: "$36",
     description: "Comfortable personalized shorts with your college style.",
-    images: ["/shorts.jpeg"],
+    images: ["/collegeshorts.png"],
     colors: ["Heather Gray", "Navy", "Black", "Red", "Green"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"],
   },
