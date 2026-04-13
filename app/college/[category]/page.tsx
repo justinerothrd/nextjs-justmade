@@ -19,7 +19,7 @@ const categories = {
     title: "College Bottoms",
     subtitle: "Custom shorts and easy college-ready staples.",
     products: [
-      { slug: "college-shorts", name: "College Shorts", price: "$36", image: "/shorts.jpeg" },
+      { slug: "college-shorts", name: "College Shorts", price: "$36", image: "/collegeshorts.png" },
     ],
   },
   sleepwear: {
