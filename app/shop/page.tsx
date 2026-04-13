@@ -56,7 +56,7 @@ export default function ShopPage() {
             <a
               key={category.slug}
               href={`/shop/${category.slug}`}
-              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
+              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-3 transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
             >
               <div className="overflow-hidden rounded-[20px] bg-white">
                 <img
