@@ -63,32 +63,32 @@ export default function ProductPage() {
         </button>
 
         <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-12">
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             {product.images.length > 1 && (
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3">
                 {product.images.map((img, i) => (
                   <button
                     key={i}
                     onClick={() => setSelectedImage(i)}
-                    className={`overflow-hidden rounded-[12px] border-2 transition ${
+                    className={`overflow-hidden rounded-[14px] border-2 transition ${
                       selectedImage === i ? "border-[#6F879E]" : "border-transparent"
                     }`}
                   >
                     <img
                       src={img}
                       alt={`${product.name} view ${i + 1}`}
-                      className="h-16 w-16 object-contain bg-white p-1"
+                      className="h-20 w-20 object-contain bg-white p-2 sm:h-24 sm:w-24"
                     />
                   </button>
                 ))}
               </div>
             )}
 
-            <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[28px] bg-white p-6">
+            <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[28px] bg-white p-6 sm:p-8">
               <img
                 src={product.images[selectedImage]}
                 alt={product.name}
-                className={`h-auto max-h-[600px] w-full object-contain transition duration-500 ${
+                className={`h-auto max-h-[700px] w-full object-contain transition duration-500 ${
                   slug === "quarter-zip" ? "scale-125" : ""
                 }`}
               />
