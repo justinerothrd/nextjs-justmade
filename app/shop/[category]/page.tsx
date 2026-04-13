@@ -95,14 +95,18 @@ export default async function CategoryPage({
           {categoryProducts.map((product) => (
             <div key={product.slug} className="group">
               <a href={`/product/${product.slug}`} className="block">
-                <div className="overflow-hidden rounded-[24px] bg-[#F7F7F5]">
+                <div className="overflow-hidden rounded-[24px] bg-white">
                   <img
                     src={product.images[0]}
                     alt={product.name}
                     className={
-                      product.slug === "accessories-slides"
-                        ? "h-[240px] w-full object-contain bg-white p-4 transition duration-500 ease-out group-hover:scale-[1.03] sm:h-[380px]"
-                        : "h-[240px] w-full object-cover transition duration-500 ease-out group-hover:scale-[1.04] sm:h-[380px]"
+                      product.slug === "hoodie"
+                        ? "h-[240px] w-full object-contain p-2 scale-[1.01] transition duration-500 ease-out sm:h-[380px]"
+                        : product.slug === "quarter-zip"
+                        ? "h-[240px] w-full object-contain p-3 transition duration-500 ease-out sm:h-[380px]"
+                        : product.slug === "accessories-slides"
+                        ? "h-[240px] w-full object-contain p-4 transition duration-500 ease-out sm:h-[380px]"
+                        : "h-[240px] w-full object-contain p-2 transition duration-500 ease-out sm:h-[380px]"
                     }
                   />
                 </div>
@@ -129,4 +133,3 @@ export default async function CategoryPage({
     </main>
   );
 }
-
