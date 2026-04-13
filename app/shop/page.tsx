@@ -56,17 +56,21 @@ export default function ShopPage() {
             <a
               key={category.slug}
               href={`/shop/${category.slug}`}
-              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-1 transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
+              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
             >
               <div className="overflow-hidden rounded-[20px] bg-white">
                 <img
                   src={category.image}
                   alt={category.title}
-                  className="h-40 w-full object-contain p-1 transition duration-500 ease-out group-hover:scale-[1.05] sm:h-56"
+                  className={
+                    category.slug === "sweatshirts"
+                      ? "h-40 w-full object-contain p-2 scale-110 transition duration-500 ease-out group-hover:scale-[1.13] sm:h-56"
+                      : "h-40 w-full object-contain p-2 transition duration-500 ease-out group-hover:scale-[1.05] sm:h-56"
+                  }
                 />
               </div>
 
-              <h3 className="mt-4 text-base font-medium text-[#3F3F3F] sm:text-lg">
+              <h3 className="mt-4 text-base font-medium text-[#3F3A4A] sm:text-lg">
                 {category.title}
               </h3>
 
