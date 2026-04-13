@@ -22,7 +22,7 @@ export const collegeProducts = {
     price: "$40",
     description:
       "A lightweight custom college tee perfect for warm weather and easy everyday wear.",
-    images: ["/tulane-tee.jpeg"],
+    images: ["/college.tee.jpg"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
