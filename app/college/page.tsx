@@ -40,9 +40,11 @@ export default function CollegePage() {
         <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
           Just Made Custom
         </p>
+
         <h1 className="mt-4 text-4xl font-light sm:text-5xl md:text-6xl">
           College
         </h1>
+
         <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
           Custom college gear designed to feel polished, personal, and easy to wear.
         </p>
@@ -54,34 +56,30 @@ export default function CollegePage() {
             <a
               key={category.slug}
               href={`/college/${category.slug}`}
-              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
+              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:border-transparent"
             >
-              <div
-                className={`overflow-hidden rounded-[20px] ${
-                  category.slug === "accessories" ? "bg-white" : "bg-[#F7F7F5]"
-                }`}
-              >
-                {category.slug === "accessories" ? (
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="h-40 w-full object-contain p-3 transition duration-500 group-hover:scale-[1.03] sm:h-56"
-                  />
-                ) : (
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-56"
-                  />
-                )}
+              <div className="overflow-hidden rounded-[20px] bg-white">
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className={
+                    category.slug === "sweatshirts"
+                      ? "h-40 w-full object-contain p-2 scale-[1.01] transition duration-500 ease-out sm:h-56"
+                      : category.slug === "accessories"
+                      ? "h-40 w-full object-contain p-2 transition duration-500 ease-out sm:h-56"
+                      : "h-40 w-full object-contain p-2 transition duration-500 ease-out sm:h-56"
+                  }
+                />
               </div>
 
               <h3 className="mt-4 text-base font-medium text-[#3F3F3F] sm:text-lg">
                 {category.title}
               </h3>
+
               <p className="mt-1 text-xs leading-6 text-[#666] sm:text-sm">
                 {category.subtitle}
               </p>
+
               <p className="mt-3 text-sm font-medium text-[#6F879E]">
                 Shop now →
               </p>
