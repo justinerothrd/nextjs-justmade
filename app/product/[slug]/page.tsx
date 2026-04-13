@@ -57,7 +57,7 @@ export default function ProductPage() {
   const mainImageClass = [
     "h-auto max-h-[760px] w-full object-contain transition duration-500",
     slug === "quarter-zip" ? "scale-125" : "",
-    slug === "hoodie" && selectedImage === 1 ? "scale-125" : "",
+    slug === "hoodie" ? "scale-120" : "",
   ]
     .filter(Boolean)
     .join(" ");
