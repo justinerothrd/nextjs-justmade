@@ -35,12 +35,19 @@ export default function MiniCart() {
       loadCart();
     }
 
+    function handleOpenMiniCart() {
+      loadCart();
+      setOpen(true);
+    }
+
     window.addEventListener("cartUpdated", handleCartUpdated);
     window.addEventListener("storage", handleStorage);
+    window.addEventListener("openMiniCart", handleOpenMiniCart);
 
     return () => {
       window.removeEventListener("cartUpdated", handleCartUpdated);
       window.removeEventListener("storage", handleStorage);
+      window.removeEventListener("openMiniCart", handleOpenMiniCart);
     };
   }, []);
 
