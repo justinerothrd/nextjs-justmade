@@ -55,46 +55,48 @@ export default function ProductPage() {
   }
 
   const mainImageClass = [
-    "h-auto max-h-[760px] w-full object-contain transition duration-500",
-    slug === "quarter-zip" ? "scale-[1.2]" : "",
-    slug === "hoodie" ? "scale-[1.06]" : "",
+    "h-auto max-h-[780px] w-full object-contain transition duration-500",
+    slug === "quarter-zip" ? "scale-[1.12]" : "",
+    slug === "hoodie" ? "scale-[1.04]" : "",
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-12">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <button
           onClick={() => window.history.back()}
-          className="text-sm underline underline-offset-4 hover:text-[#6F879E]"
+          className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
         >
           Back
         </button>
 
-        <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-12">
+        <div className="mt-6 grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
           <div className="flex gap-4">
             {product.images.length > 1 && (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 pt-1">
                 {product.images.map((img, i) => (
                   <button
                     key={i}
                     onClick={() => setSelectedImage(i)}
-                    className={`overflow-hidden rounded-[14px] border-2 transition ${
-                      selectedImage === i ? "border-[#6F879E]" : "border-transparent"
+                    className={`overflow-hidden rounded-[16px] border-2 bg-white transition ${
+                      selectedImage === i
+                        ? "border-[#6F879E] shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
+                        : "border-transparent hover:border-[#D9D4CE]"
                     }`}
                   >
                     <img
                       src={img}
                       alt={`${product.name} view ${i + 1}`}
-                      className="h-20 w-20 object-contain bg-white p-2 sm:h-24 sm:w-24"
+                      className="h-20 w-20 object-contain p-2 sm:h-24 sm:w-24"
                     />
                   </button>
                 ))}
               </div>
             )}
 
-            <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[28px] bg-white p-6 sm:p-8">
+            <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white p-8 shadow-[0_12px_32px_rgba(0,0,0,0.035)] sm:p-10">
               <img
                 src={currentImage}
                 alt={product.name}
@@ -104,83 +106,89 @@ export default function ProductPage() {
           </div>
 
           <div className="flex flex-col">
-            <h1 className="text-3xl font-light text-[#2F3A4A] sm:text-4xl">
+            <p className="text-xs uppercase tracking-[0.24em] text-[#6F879E]">
+              Just Made Custom
+            </p>
+
+            <h1 className="mt-3 text-3xl font-light tracking-[0.01em] text-[#2F3A4A] sm:text-5xl">
               {product.name}
             </h1>
 
-            <p className="mt-3 text-xl text-[#6F879E]">{product.price}</p>
+            <p className="mt-4 text-2xl font-light text-[#6F879E]">{product.price}</p>
 
-            <p className="mt-4 text-base leading-7 text-gray-600">
+            <p className="mt-5 max-w-xl text-[15px] leading-7 text-gray-600 sm:text-base">
               {product.description}
             </p>
 
-            <div className="mt-6 flex flex-col gap-5">
+            <div className="mt-8 flex flex-col gap-5">
               <div>
-                <label className="text-sm">Camp Name</label>
+                <label className="text-sm font-medium text-[#3F3F3F]">Camp Name</label>
                 <input
                   type="text"
                   placeholder="Enter name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="mt-2 w-full rounded-lg border bg-white p-3"
+                  className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
                 />
               </div>
 
-              <div>
-                <label className="text-sm">Size</label>
-                <select
-                  value={size}
-                  onChange={(e) => setSize(e.target.value)}
-                  className="mt-2 w-full rounded-lg border bg-white p-3"
-                >
-                  {product.sizes.map((s) => (
-                    <option key={s}>{s}</option>
-                  ))}
-                </select>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label className="text-sm font-medium text-[#3F3F3F]">Size</label>
+                  <select
+                    value={size}
+                    onChange={(e) => setSize(e.target.value)}
+                    className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+                  >
+                    {product.sizes.map((s) => (
+                      <option key={s}>{s}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-[#3F3F3F]">Color</label>
+                  <select
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                    className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+                  >
+                    {product.colors.map((c) => (
+                      <option key={c}>{c}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div>
-                <label className="text-sm">Color</label>
-                <select
-                  value={color}
-                  onChange={(e) => setColor(e.target.value)}
-                  className="mt-2 w-full rounded-lg border bg-white p-3"
-                >
-                  {product.colors.map((c) => (
-                    <option key={c}>{c}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="text-sm">Quantity</label>
+                <label className="text-sm font-medium text-[#3F3F3F]">Quantity</label>
                 <input
                   type="number"
                   min="1"
                   value={quantity}
                   onChange={(e) => setQuantity(Number(e.target.value))}
-                  className="mt-2 w-24 rounded-lg border bg-white p-3"
+                  className="mt-2 w-24 rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
                 />
               </div>
 
               <button
                 onClick={handleAddToCart}
-                className="mt-2 w-full rounded-full bg-[#6F879E] px-6 py-4 text-center text-sm text-white transition hover:opacity-90 sm:w-auto sm:py-3"
+                className="mt-2 inline-flex items-center justify-center rounded-full bg-[#6F879E] px-8 py-4 text-sm font-medium text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)]"
               >
                 {added ? "Added to Cart ✓" : "Add to Cart"}
               </button>
 
               {added && (
-                <div className="flex gap-4 text-sm">
+                <div className="flex gap-5 text-sm">
                   <a
                     href="/cart"
-                    className="underline underline-offset-4 hover:text-[#6F879E]"
+                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
                   >
                     View Cart
                   </a>
                   <a
                     href="/shop"
-                    className="underline underline-offset-4 hover:text-[#6F879E]"
+                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
                   >
                     Continue Shopping
                   </a>
