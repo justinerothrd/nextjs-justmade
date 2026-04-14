@@ -65,7 +65,7 @@ export default function ShopPage() {
                     alt={category.title}
                     className={
                       category.slug === "sweatshirts"
-                        ? "fade-in h-full w-full object-contain p-4 sm:p-6 scale-[1.04] transition duration-500 ease-out"
+                        ? "fade-in h-full w-full object-contain p-4 sm:p-5 scale-[1.08] transition duration-500 ease-out"
                         : "fade-in h-full w-full object-contain p-4 sm:p-3 scale-[1.12] transition duration-500 ease-out"
                     }
                   />
