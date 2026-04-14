@@ -38,6 +38,7 @@ export default function CartPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("sending");
+
     try {
       const res = await fetch("https://formspree.io/f/mlgoglny", {
         method: "POST",
@@ -50,6 +51,7 @@ export default function CartPage() {
           ).join("\n"),
         }),
       });
+
       if (res.ok) {
         setStatus("success");
         localStorage.removeItem("cart");
@@ -63,14 +65,23 @@ export default function CartPage() {
 
   if (status === "success") {
     return (
-      <main className="min-h-screen bg-[#F7F7F5] px-4 py-16 text-[#4B4B4B]">
+      <main className="min-h-screen bg-[#F7F7F5] px-4 py-20 text-[#4B4B4B]">
         <div className="mx-auto max-w-lg text-center">
-          <div className="text-4xl mb-4">🎉</div>
-          <h1 className="text-3xl font-light text-[#2F3A4A]">Order Received!</h1>
+          <div className="text-5xl mb-6">🎉</div>
+
+          <h1 className="text-3xl font-light text-[#2F3A4A]">
+            Order Received
+          </h1>
+
           <p className="mt-4 text-base leading-7 text-gray-600">
-            Thanks for your order! We'll be in touch at {email} shortly to confirm your items and arrange payment.
+            Thanks for your order! We'll be in touch at{" "}
+            <span className="font-medium">{email}</span> shortly to confirm your items and arrange payment.
           </p>
-          <a href="/shop" className="mt-8 inline-block rounded-full bg-[#6F879E] px-6 py-3 text-sm text-white transition hover:opacity-90">
+
+          <a
+            href="/shop"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#6F879E] px-8 py-4 text-sm text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)]"
+          >
             Continue Shopping
           </a>
         </div>
@@ -79,48 +90,63 @@ export default function CartPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-16">
-      <div className="mx-auto max-w-2xl">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-light sm:text-3xl">Your Cart</h1>
-          <a href="/shop" className="text-sm underline underline-offset-4 hover:text-[#6F879E]">
+    <main className="min-h-screen bg-[#F7F7F5] px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-16">
+      <div className="mx-auto max-w-3xl">
+
+        {/* Header */}
+        <div className="mb-8 flex items-center justify-between">
+          <h1 className="text-3xl font-light text-[#2F3A4A]">Your Cart</h1>
+
+          <a
+            href="/shop"
+            className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
+          >
             Continue Shopping
           </a>
         </div>
 
         {cart.length === 0 ? (
-          <div className="text-center py-16">
+          <div className="py-20 text-center">
             <p className="text-gray-500">Your cart is empty.</p>
-            <a href="/shop" className="mt-4 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]">
+
+            <a
+              href="/shop"
+              className="mt-4 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]"
+            >
               Start Shopping
             </a>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-4">
+
+            {/* Items */}
+            <div className="flex flex-col gap-5">
               {cart.map((item) => (
-                <div key={item.id} className="rounded-2xl bg-white p-5">
+                <div
+                  key={item.id}
+                  className="rounded-3xl border border-[#ECE7E1] bg-white p-6 shadow-[0_8px_24px_rgba(0,0,0,0.03)]"
+                >
                   <div className="flex items-start justify-between gap-4">
-                    <h2 className="text-base font-medium sm:text-lg">{item.product}</h2>
-                    <p className="shrink-0 text-[#6F879E]">{item.price}</p>
+                    <h2 className="text-lg font-medium text-[#2F3A4A]">
+                      {item.product}
+                    </h2>
+
+                    <p className="text-[#6F879E] font-medium">
+                      {item.price}
+                    </p>
                   </div>
-                  <div className="mt-3 divide-y divide-[#F0EEEB]">
-                    {[
-                      { label: "Camp Name", value: item.campName || "N/A" },
-                      { label: "Size", value: item.size },
-                      { label: "Color", value: item.color },
-                      { label: "Quantity", value: item.quantity.toString() },
-                    ].map((row) => (
-                      <div key={row.label} className="flex justify-between py-2 text-sm">
-                        <span className="text-gray-500">{row.label}</span>
-                        <span className="font-medium text-[#2F3A4A]">{row.value}</span>
-                      </div>
-                    ))}
+
+                  <div className="mt-4 space-y-2 text-sm">
+                    <p><span className="text-gray-500">Camp Name:</span> {item.campName || "N/A"}</p>
+                    <p><span className="text-gray-500">Size:</span> {item.size}</p>
+                    <p><span className="text-gray-500">Color:</span> {item.color}</p>
+                    <p><span className="text-gray-500">Quantity:</span> {item.quantity}</p>
                   </div>
+
                   <button
                     type="button"
                     onClick={() => removeItem(item.id)}
-                    className="mt-3 text-xs text-gray-400 underline underline-offset-4 hover:text-red-400"
+                    className="mt-4 text-xs text-gray-400 underline underline-offset-4 transition hover:text-red-400"
                   >
                     Remove
                   </button>
@@ -129,35 +155,44 @@ export default function CartPage() {
             </div>
 
             {/* Total */}
-            <div className="mt-4 flex justify-between rounded-2xl bg-white px-5 py-4 text-sm font-medium">
+            <div className="mt-6 flex items-center justify-between rounded-3xl border border-[#ECE7E1] bg-white px-6 py-5 text-base font-medium shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
               <span>Total</span>
-              <span className="text-[#6F879E]">${getTotal()}</span>
+              <span className="text-[#6F879E] text-lg">
+                ${getTotal()}
+              </span>
             </div>
 
             {/* Email */}
-            <div className="mt-6">
-              <label className="text-sm">Your Email</label>
+            <div className="mt-8">
+              <label className="text-sm font-medium text-[#3F3F3F]">
+                Your Email
+              </label>
+
               <input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="mt-2 w-full rounded-lg border bg-white p-3"
+                className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
               />
             </div>
 
             {status === "error" && (
-              <p className="mt-3 text-sm text-red-500">Something went wrong. Please try again.</p>
+              <p className="mt-3 text-sm text-red-500">
+                Something went wrong. Please try again.
+              </p>
             )}
 
+            {/* Submit */}
             <button
               type="submit"
               disabled={status === "sending"}
-              className="mt-6 w-full rounded-full bg-[#6F879E] px-6 py-4 text-center text-sm text-white transition hover:opacity-90 disabled:opacity-50"
+              className="mt-8 w-full rounded-full bg-[#6F879E] px-8 py-4 text-sm text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)] disabled:opacity-50"
             >
               {status === "sending" ? "Submitting..." : "Submit Order"}
             </button>
+
           </form>
         )}
       </div>
