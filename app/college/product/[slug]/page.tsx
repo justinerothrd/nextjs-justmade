@@ -49,7 +49,10 @@ export default function CollegeProductPage() {
       image: currentImage,
     };
 
-    localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));window.dispatchEvent(new Event("cartUpdated"));
+    localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
+    window.dispatchEvent(new Event("cartUpdated"));
+    window.dispatchEvent(new Event("openMiniCart"));
+
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   }
