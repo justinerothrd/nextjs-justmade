@@ -48,9 +48,51 @@ export default function CartPage() {
     }, 0);
   }
 
+  function formatOrderEmail(orderNumber: string, submittedAt: string) {
+    const itemLines = cart
+      .map((item, index) => {
+        return [
+          `${index + 1}. ${item.product}`,
+          `   Price: ${item.price}`,
+          `   Quantity: ${item.quantity}`,
+          `   Size: ${item.size}`,
+          `   Color: ${item.color}`,
+          `   Camp Name: ${item.campName || "N/A"}`,
+          `   Line Total: $${(
+            parseFloat(item.price.replace("$", "")) * item.quantity
+          ).toFixed(2)}`,
+        ].join("\n");
+      })
+      .join("\n\n");
+
+    return [
+      "JUST MADE CUSTOM — ORDER REQUEST",
+      "",
+      `Order Number: ${orderNumber}`,
+      `Submitted: ${submittedAt}`,
+      `Customer Email: ${email}`,
+      "",
+      "ORDER SUMMARY",
+      "------------------------------",
+      itemLines,
+      "",
+      "------------------------------",
+      `Order Total: $${getTotal().toFixed(2)}`,
+      "",
+      "NEXT STEP",
+      "Please review this order and follow up with confirmation and payment instructions.",
+    ].join("\n");
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("sending");
+
+    const orderNumber = `JM-${Date.now().toString().slice(-6)}`;
+    const submittedAt = new Date().toLocaleString("en-US", {
+      dateStyle: "long",
+      timeStyle: "short",
+    });
 
     try {
       const res = await fetch("https://formspree.io/f/mlgoglny", {
@@ -58,13 +100,11 @@ export default function CartPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
-          total: `$${getTotal()}`,
-          items: cart
-            .map(
-              (item) =>
-                `${item.product} — Camp Name: ${item.campName || "N/A"}, Size: ${item.size}, Color: ${item.color}, Qty: ${item.quantity}, Price: ${item.price}`
-            )
-            .join("\n"),
+          subject: `New Just Made Order ${orderNumber}`,
+          orderNumber,
+          submittedAt,
+          total: `$${getTotal().toFixed(2)}`,
+          message: formatOrderEmail(orderNumber, submittedAt),
         }),
       });
 
@@ -95,7 +135,8 @@ export default function CartPage() {
           </p>
 
           <p className="mt-3 text-sm text-gray-500">
-            Payment will be completed after your order is confirmed.
+            Each order is carefully reviewed — we&apos;ll follow up shortly with
+            confirmation and payment details.
           </p>
 
           <a
@@ -207,7 +248,7 @@ export default function CartPage() {
 
             <div className="mt-6 flex items-center justify-between rounded-3xl border border-[#ECE7E1] bg-white px-6 py-5 text-base font-medium shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
               <span>Total</span>
-              <span className="text-lg text-[#6F879E]">${getTotal()}</span>
+              <span className="text-lg text-[#6F879E]">${getTotal().toFixed(2)}</span>
             </div>
 
             <div className="mt-8">
@@ -225,9 +266,10 @@ export default function CartPage() {
               />
             </div>
 
-            <p className="mt-10 text-sm text-gray-600">
-  We’ll review your order and follow up shortly with confirmation and payment details.
-</p>
+            <p className="mt-6 text-sm text-gray-600">
+              Each order is carefully reviewed — we&apos;ll follow up shortly with
+              confirmation and payment details.
+            </p>
 
             {status === "error" && (
               <p className="mt-3 text-sm text-red-500">
