@@ -71,7 +71,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[32px] border border-[#E6E2DD] bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.04)] sm:p-5">
+          <div className="group rounded-[24px] border border-[#E6E2DD] bg-white p-3 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)]" sm:p-5">
             <img
               src="/hero-main.png"
               alt="Camp clothing"
