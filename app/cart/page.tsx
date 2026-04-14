@@ -86,12 +86,16 @@ export default function CartPage() {
         <div className="mx-auto max-w-lg text-center">
           <div className="mb-6 text-5xl">🎉</div>
 
-          <h1 className="text-3xl font-light text-[#2F3A4A]">Order Received</h1>
+          <h1 className="text-3xl font-light text-[#2F3A4A]">Order Submitted</h1>
 
           <p className="mt-4 text-base leading-7 text-gray-600">
-            Thanks for your order! We&apos;ll be in touch at{" "}
-            <span className="font-medium">{email}</span> shortly to confirm your
-            items and arrange payment.
+            Thanks for your order! We&apos;re reviewing your selections and will
+            reach out shortly at <span className="font-medium">{email}</span> with
+            confirmation and payment instructions.
+          </p>
+
+          <p className="mt-3 text-sm text-gray-500">
+            Payment will be completed after your order is confirmed.
           </p>
 
           <a
@@ -221,6 +225,11 @@ export default function CartPage() {
               />
             </div>
 
+            <p className="mt-6 text-xs leading-6 text-gray-500">
+              After submitting, we&apos;ll review your order and email you with
+              confirmation and payment instructions.
+            </p>
+
             {status === "error" && (
               <p className="mt-3 text-sm text-red-500">
                 Something went wrong. Please try again.
@@ -232,7 +241,7 @@ export default function CartPage() {
               disabled={status === "sending"}
               className="mt-8 w-full rounded-full bg-[#6F879E] px-8 py-4 text-sm text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)] disabled:opacity-50"
             >
-              {status === "sending" ? "Submitting..." : "Submit Order"}
+              {status === "sending" ? "Submitting..." : "Submit Order Request"}
             </button>
           </form>
         )}
