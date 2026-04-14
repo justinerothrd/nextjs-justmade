@@ -6,10 +6,11 @@ type CartItem = {
   id: number;
   product: string;
   price: string;
-  campName: string;
+  campName?: string;
   size: string;
   color: string;
   quantity: number;
+  image?: string;
 };
 
 export default function CartPage() {
@@ -46,9 +47,12 @@ export default function CartPage() {
         body: JSON.stringify({
           email,
           total: `$${getTotal()}`,
-          items: cart.map((item) =>
-            `${item.product} — Camp Name: ${item.campName || "N/A"}, Size: ${item.size}, Color: ${item.color}, Qty: ${item.quantity}, Price: ${item.price}`
-          ).join("\n"),
+          items: cart
+            .map(
+              (item) =>
+                `${item.product} — Camp/College Name: ${item.campName || "N/A"}, Size: ${item.size}, Color: ${item.color}, Qty: ${item.quantity}, Price: ${item.price}`
+            )
+            .join("\n"),
         }),
       });
 
@@ -67,15 +71,14 @@ export default function CartPage() {
     return (
       <main className="min-h-screen bg-[#F7F7F5] px-4 py-20 text-[#4B4B4B]">
         <div className="mx-auto max-w-lg text-center">
-          <div className="text-5xl mb-6">🎉</div>
+          <div className="mb-6 text-5xl">🎉</div>
 
-          <h1 className="text-3xl font-light text-[#2F3A4A]">
-            Order Received
-          </h1>
+          <h1 className="text-3xl font-light text-[#2F3A4A]">Order Received</h1>
 
           <p className="mt-4 text-base leading-7 text-gray-600">
-            Thanks for your order! We'll be in touch at{" "}
-            <span className="font-medium">{email}</span> shortly to confirm your items and arrange payment.
+            Thanks for your order! We&apos;ll be in touch at{" "}
+            <span className="font-medium">{email}</span> shortly to confirm your
+            items and arrange payment.
           </p>
 
           <a
@@ -92,8 +95,6 @@ export default function CartPage() {
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-16">
       <div className="mx-auto max-w-3xl">
-
-        {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <h1 className="text-3xl font-light text-[#2F3A4A]">Your Cart</h1>
 
@@ -118,51 +119,73 @@ export default function CartPage() {
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
-
-            {/* Items */}
             <div className="flex flex-col gap-5">
               {cart.map((item) => (
                 <div
                   key={item.id}
-                  className="rounded-3xl border border-[#ECE7E1] bg-white p-6 shadow-[0_8px_24px_rgba(0,0,0,0.03)]"
+                  className="rounded-3xl border border-[#ECE7E1] bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.03)] sm:p-6"
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <h2 className="text-lg font-medium text-[#2F3A4A]">
-                      {item.product}
-                    </h2>
+                  <div className="flex gap-4">
+                    <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#F7F7F5] sm:h-28 sm:w-28">
+                      {item.image ? (
+                        <img
+                          src={item.image}
+                          alt={item.product}
+                          className="h-full w-full object-contain p-2"
+                        />
+                      ) : (
+                        <div className="text-center text-xs text-gray-400">
+                          No image
+                        </div>
+                      )}
+                    </div>
 
-                    <p className="text-[#6F879E] font-medium">
-                      {item.price}
-                    </p>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-start justify-between gap-4">
+                        <h2 className="text-lg font-medium text-[#2F3A4A]">
+                          {item.product}
+                        </h2>
+
+                        <p className="shrink-0 font-medium text-[#6F879E]">
+                          {item.price}
+                        </p>
+                      </div>
+
+                      <div className="mt-3 space-y-2 text-sm">
+                        <p>
+                          <span className="text-gray-500">Camp Name:</span>{" "}
+                          {item.campName || "N/A"}
+                        </p>
+                        <p>
+                          <span className="text-gray-500">Size:</span> {item.size}
+                        </p>
+                        <p>
+                          <span className="text-gray-500">Color:</span> {item.color}
+                        </p>
+                        <p>
+                          <span className="text-gray-500">Quantity:</span>{" "}
+                          {item.quantity}
+                        </p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => removeItem(item.id)}
+                        className="mt-4 text-xs text-gray-400 underline underline-offset-4 transition hover:text-red-400"
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
-
-                  <div className="mt-4 space-y-2 text-sm">
-                    <p><span className="text-gray-500">Camp Name:</span> {item.campName || "N/A"}</p>
-                    <p><span className="text-gray-500">Size:</span> {item.size}</p>
-                    <p><span className="text-gray-500">Color:</span> {item.color}</p>
-                    <p><span className="text-gray-500">Quantity:</span> {item.quantity}</p>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => removeItem(item.id)}
-                    className="mt-4 text-xs text-gray-400 underline underline-offset-4 transition hover:text-red-400"
-                  >
-                    Remove
-                  </button>
                 </div>
               ))}
             </div>
 
-            {/* Total */}
             <div className="mt-6 flex items-center justify-between rounded-3xl border border-[#ECE7E1] bg-white px-6 py-5 text-base font-medium shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
               <span>Total</span>
-              <span className="text-[#6F879E] text-lg">
-                ${getTotal()}
-              </span>
+              <span className="text-lg text-[#6F879E]">${getTotal()}</span>
             </div>
 
-            {/* Email */}
             <div className="mt-8">
               <label className="text-sm font-medium text-[#3F3F3F]">
                 Your Email
@@ -184,7 +207,6 @@ export default function CartPage() {
               </p>
             )}
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={status === "sending"}
@@ -192,7 +214,6 @@ export default function CartPage() {
             >
               {status === "sending" ? "Submitting..." : "Submit Order"}
             </button>
-
           </form>
         )}
       </div>
