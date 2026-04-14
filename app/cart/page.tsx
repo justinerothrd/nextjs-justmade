@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 type CartItem = {
   id: number;
+  slug?: string;
   product: string;
   price: string;
   campName?: string;
@@ -27,6 +28,17 @@ export default function CartPage() {
     const updated = cart.filter((item) => item.id !== id);
     setCart(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
+    window.dispatchEvent(new Event("cartUpdated"));
+  }
+
+  function getItemHref(item: CartItem) {
+    if (!item.slug) return "/cart";
+
+    if (item.slug.startsWith("college-")) {
+      return `/college/product/${item.slug}`;
+    }
+
+    return `/product/${item.slug}`;
   }
 
   function getTotal() {
@@ -50,7 +62,7 @@ export default function CartPage() {
           items: cart
             .map(
               (item) =>
-                `${item.product} — Camp/College Name: ${item.campName || "N/A"}, Size: ${item.size}, Color: ${item.color}, Qty: ${item.quantity}, Price: ${item.price}`
+                `${item.product} — Camp Name: ${item.campName || "N/A"}, Size: ${item.size}, Color: ${item.color}, Qty: ${item.quantity}, Price: ${item.price}`
             )
             .join("\n"),
         }),
@@ -59,6 +71,7 @@ export default function CartPage() {
       if (res.ok) {
         setStatus("success");
         localStorage.removeItem("cart");
+        window.dispatchEvent(new Event("cartUpdated"));
       } else {
         setStatus("error");
       }
@@ -126,7 +139,11 @@ export default function CartPage() {
                   className="rounded-3xl border border-[#ECE7E1] bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.03)] sm:p-6"
                 >
                   <div className="flex gap-4">
-                    <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#F7F7F5] sm:h-28 sm:w-28">
+                    <a
+                      href={getItemHref(item)}
+                      className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#F7F7F5] transition hover:opacity-90 sm:h-28 sm:w-28"
+                      aria-label={`View ${item.product}`}
+                    >
                       {item.image ? (
                         <img
                           src={item.image}
@@ -138,13 +155,16 @@ export default function CartPage() {
                           No image
                         </div>
                       )}
-                    </div>
+                    </a>
 
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-4">
-                        <h2 className="text-lg font-medium text-[#2F3A4A]">
+                        <a
+                          href={getItemHref(item)}
+                          className="text-lg font-medium text-[#2F3A4A] transition hover:text-[#6F879E]"
+                        >
                           {item.product}
-                        </h2>
+                        </a>
 
                         <p className="shrink-0 font-medium text-[#6F879E]">
                           {item.price}
