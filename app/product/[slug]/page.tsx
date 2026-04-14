@@ -49,7 +49,7 @@ export default function ProductPage() {
       image: currentImage,
     };
 
-    localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
+    localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));window.dispatchEvent(new Event("cartUpdated"));
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   }
