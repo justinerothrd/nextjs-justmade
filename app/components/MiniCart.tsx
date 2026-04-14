@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 type CartItem = {
   id: number;
+  slug?: string;
   product: string;
   price: string;
   campName?: string;
@@ -61,6 +62,16 @@ export default function MiniCart() {
     }, 0);
   }
 
+  function getItemHref(item: CartItem) {
+    if (!item.slug) return "/cart";
+
+    if (item.slug.startsWith("college-")) {
+      return `/college/product/${item.slug}`;
+    }
+
+    return `/product/${item.slug}`;
+  }
+
   return (
     <>
       <button
@@ -115,7 +126,12 @@ export default function MiniCart() {
                       className="rounded-2xl border border-[#ECE7E1] bg-[#FCFCFB] p-4"
                     >
                       <div className="flex gap-3">
-                        <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white">
+                        <a
+                          href={getItemHref(item)}
+                          onClick={() => setOpen(false)}
+                          className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white transition hover:opacity-90"
+                          aria-label={`View ${item.product}`}
+                        >
                           {item.image ? (
                             <img
                               src={item.image}
@@ -125,13 +141,18 @@ export default function MiniCart() {
                           ) : (
                             <div className="text-xs text-gray-400">No image</div>
                           )}
-                        </div>
+                        </a>
 
                         <div className="min-w-0 flex-1">
                           <div className="flex items-start justify-between gap-3">
-                            <h3 className="text-sm font-medium text-[#2F3A4A]">
+                            <a
+                              href={getItemHref(item)}
+                              onClick={() => setOpen(false)}
+                              className="text-sm font-medium text-[#2F3A4A] transition hover:text-[#6F879E]"
+                            >
                               {item.product}
-                            </h3>
+                            </a>
+
                             <p className="shrink-0 text-sm font-medium text-[#6F879E]">
                               {item.price}
                             </p>
@@ -153,7 +174,7 @@ export default function MiniCart() {
                           <button
                             type="button"
                             onClick={() => removeItem(item.id)}
-                            className="mt-3 text-xs underline underline-offset-4 text-gray-400 transition hover:text-red-400"
+                            className="mt-3 text-xs text-gray-400 underline underline-offset-4 transition hover:text-red-400"
                           >
                             Remove
                           </button>
