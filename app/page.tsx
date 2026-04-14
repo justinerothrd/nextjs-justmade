@@ -4,7 +4,7 @@ export default function HomePage() {
       slug: "sweatshirts",
       title: "Sweatshirts",
       subtitle: "Cozy personalized layers for camp nights and cool mornings.",
-      image: "/hoodie.jpg",
+      image: "/hoodie.jpeg",
       link: "/shop/sweatshirts",
     },
     {
