@@ -68,7 +68,7 @@ export default function CollegePage() {
                         ? "fade-in h-full w-full object-contain p-2 sm:p-3 scale-[1.08] transition duration-500 ease-out"
                         : category.slug === "accessories"
                         ? "fade-in h-full w-full object-contain p-3 sm:p-4 scale-[1.05] transition duration-500 ease-out"
-                        : "fade-in h-full w-full object-contain p-1 sm:p-2 scale-[1.20] transition duration-500 ease-out"
+                        : "fade-in h-full w-full object-contain p-1 sm:p-2 scale-[1.24] transition duration-500 ease-out"
                     }
                   />
                 </div>
