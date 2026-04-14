@@ -91,7 +91,7 @@ export default function HomePage() {
 
           <div className="mb-6 sm:mb-8">
             <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
-              Shop
+            
             </p>
 
             <h2 className="mt-2 text-2xl font-light text-[#3F3F3F] sm:text-3xl md:text-4xl">
