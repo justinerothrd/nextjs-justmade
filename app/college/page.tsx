@@ -65,8 +65,10 @@ export default function CollegePage() {
                     alt={category.title}
                     className={
                       category.slug === "sweatshirts"
-                        ? "fade-in h-full w-full object-contain p-4 sm:p-6 scale-[1.04] transition duration-500 ease-out"
-                        : "fade-in h-full w-full object-contain p-4 sm:p-6 scale-[1.08] transition duration-500 ease-out"
+                        ? "fade-in h-full w-full object-contain p-2 sm:p-3 scale-[1.08] transition duration-500 ease-out"
+                        : category.slug === "accessories"
+                        ? "fade-in h-full w-full object-contain p-3 sm:p-4 scale-[1.05] transition duration-500 ease-out"
+                        : "fade-in h-full w-full object-contain p-2 sm:p-3 scale-[1.12] transition duration-500 ease-out"
                     }
                   />
                 </div>
