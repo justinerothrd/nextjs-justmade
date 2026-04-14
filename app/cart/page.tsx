@@ -225,10 +225,9 @@ export default function CartPage() {
               />
             </div>
 
-            <p className="mt-6 text-xs leading-6 text-gray-500">
-              After submitting, we&apos;ll review your order and email you with
-              confirmation and payment instructions.
-            </p>
+            <p className="mt-10 text-sm text-gray-600">
+  We’ll review your order and follow up shortly with confirmation and payment details.
+</p>
 
             {status === "error" && (
               <p className="mt-3 text-sm text-red-500">
