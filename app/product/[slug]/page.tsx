@@ -1,11 +1,10 @@
 "use client";
 
+import { useParams } from "next/navigation";
+import { useMemo, useState } from "react";
+import { getProductBySlug } from "@/lib/products";
 import LogoPicker from "@/app/components/LogoPicker";
 import { logos } from "@/app/data/logos";
-import { useMemo } from "react";
-import { useParams } from "next/navigation";
-import { useState } from "react";
-import { getProductBySlug } from "@/lib/products";
 
 export default function ProductPage() {
   const params = useParams();
@@ -19,6 +18,10 @@ export default function ProductPage() {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [selectedLogo, setSelectedLogo] = useState("");
+
+  const selectedLogoObject = useMemo(() => {
+    return logos.find((l) => l.slug === selectedLogo);
+  }, [selectedLogo]);
 
   if (!product) {
     return (
@@ -51,6 +54,8 @@ export default function ProductPage() {
       color,
       quantity,
       image: currentImage,
+      logoSlug: selectedLogo,
+      logoName: selectedLogoObject?.name || "",
     };
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
@@ -166,6 +171,12 @@ export default function ProductPage() {
                   </select>
                 </div>
               </div>
+
+              <LogoPicker
+                logos={logos}
+                selectedLogo={selectedLogo}
+                onSelectLogo={setSelectedLogo}
+              />
 
               <div>
                 <label className="text-sm font-medium text-[#3F3F3F]">Quantity</label>
