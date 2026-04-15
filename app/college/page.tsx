@@ -36,73 +36,23 @@ const categories = [
 export default function CollegePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
-      <section className="px-4 pb-10 pt-8 sm:px-6 md:pb-16 md:pt-14">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1fr_.95fr] lg:gap-12">
-          <div className="text-center lg:text-left">
-            <p className="text-xs uppercase tracking-[0.28em] text-[#6F879E]">
+      <section className="px-4 pb-16 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
               Just Made Custom
             </p>
 
-            <h1 className="mt-4 text-4xl font-light leading-tight text-[#3F3F3F] sm:text-5xl md:text-6xl">
-              Custom college clothing
-              <br className="hidden md:block" /> made to feel personal
+            <h1 className="mt-4 text-4xl font-light text-[#2F3A4A] sm:text-5xl md:text-6xl">
+              Shop College
             </h1>
 
-            <p className="mt-5 max-w-2xl text-base leading-7 text-[#5D5D5D] sm:text-lg sm:leading-8 lg:mx-0 mx-auto">
-              Personalized sweatshirts, tees, sleepwear, and thoughtful college
-              favorites designed to feel polished, wearable, and easy to love.
-            </p>
-
-            <div className="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start">
-              <a
-                href="/college/sweatshirts"
-                className="rounded-full bg-[#6F879E] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
-              >
-                Shop College
-              </a>
-
-              <a
-                href="/designs"
-                className="rounded-full border border-[#6F879E] px-6 py-3 text-sm font-medium text-[#6F879E] transition hover:bg-[#EEF2F5]"
-              >
-                Browse Designs
-              </a>
-            </div>
-
-            <div className="mt-4">
-              <a
-                href="/custom-orders"
-                className="text-sm font-medium text-[#6F879E] underline underline-offset-4 transition hover:opacity-80"
-              >
-                Need something custom? Start a custom order
-              </a>
-            </div>
-          </div>
-
-          <div className="overflow-hidden rounded-[32px] border border-[#E6E2DD] bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] sm:p-5">
-            <img
-              src={collegeProducts["college-crewneck"].images[0]}
-              alt="College clothing"
-              className="block h-[260px] w-full rounded-[26px] object-contain sm:h-[340px] md:h-[400px]"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 pb-16 sm:px-6 sm:pb-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-6 sm:mb-8">
-            <h2 className="text-2xl font-light text-[#3F3F3F] sm:text-3xl md:text-4xl">
-              Shop College by Category
-            </h2>
-
-            <p className="mt-2 max-w-2xl text-sm leading-7 text-[#666]">
-              Custom college favorites — cozy layers, everyday tees, sleepwear,
-              and thoughtful extras.
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
+              Custom college clothing designed to feel easy, polished, and special.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
             {categories.map((category) => (
               <a
                 key={category.slug}
@@ -116,10 +66,10 @@ export default function CollegePage() {
                       alt={category.title}
                       className={
                         category.slug === "sweatshirts"
-                          ? "h-full w-full scale-[1.04] object-contain p-2 transition duration-500 ease-out sm:p-3"
+                          ? "h-full w-full object-contain p-2 sm:p-3 scale-[1.03] transition duration-500 ease-out"
                           : category.slug === "accessories"
-                          ? "h-full w-full scale-[1.02] object-contain p-3 transition duration-500 ease-out sm:p-4"
-                          : "h-full w-full scale-[1.12] object-contain p-2 transition duration-500 ease-out sm:p-3"
+                          ? "h-full w-full object-contain p-3 sm:p-4 scale-[1.02] transition duration-500 ease-out"
+                          : "h-full w-full object-contain p-2 sm:p-3 transition duration-500 ease-out"
                       }
                     />
                   </div>
