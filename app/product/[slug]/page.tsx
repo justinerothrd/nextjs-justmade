@@ -1,5 +1,8 @@
 "use client";
 
+import LogoPicker from "@/app/components/LogoPicker";
+import { logos } from "@/app/data/logos";
+import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { getProductBySlug } from "@/lib/products";
@@ -15,6 +18,7 @@ export default function ProductPage() {
   const [color, setColor] = useState<string>(product?.colors?.[0] ?? "Heather Gray");
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [selectedLogo, setSelectedLogo] = useState("");
 
   if (!product) {
     return (
