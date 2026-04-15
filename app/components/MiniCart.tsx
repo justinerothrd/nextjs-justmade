@@ -1,221 +1,228 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useMemo, useState } from "react";
-import { getProductBySlug } from "@/lib/products";
-import LogoPicker from "@/app/components/LogoPicker";
-import { logos } from "@/app/data/logos";
+import { useEffect, useState } from "react";
 
-export default function ProductPage() {
-  const params = useParams();
-  const slug = params?.slug as string;
-  const product = getProductBySlug(slug);
+type CartItem = {
+  id: number;
+  slug?: string;
+  product: string;
+  price: string;
+  campName?: string;
+  college?: string;
+  size: string;
+  color: string;
+  quantity: number;
+  image?: string;
+  logoName?: string;
+};
 
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [name, setName] = useState("");
-  const [size, setSize] = useState<string>(product?.sizes?.[1] ?? "Youth M");
-  const [color, setColor] = useState<string>(product?.colors?.[0] ?? "Heather Gray");
-  const [quantity, setQuantity] = useState(1);
-  const [added, setAdded] = useState(false);
-  const [selectedLogo, setSelectedLogo] = useState("");
+export default function MiniCart() {
+  const [open, setOpen] = useState(false);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
-  const selectedLogoObject = useMemo(() => {
-    return logos.find((l) => l.slug === selectedLogo);
-  }, [selectedLogo]);
-
-  if (!product) {
-    return (
-      <main className="min-h-screen bg-[#F7F7F5] px-6 py-16 text-[#4B4B4B]">
-        <div className="mx-auto max-w-5xl text-center">
-          <h1 className="text-3xl font-light">Product not found</h1>
-          <button
-            onClick={() => window.history.back()}
-            className="mt-6 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]"
-          >
-            Back
-          </button>
-        </div>
-      </main>
-    );
+  function loadCart() {
+    const stored = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCart(stored);
   }
 
-  const currentImage = product.images[selectedImage];
+  useEffect(() => {
+    loadCart();
 
-  function handleAddToCart() {
-    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    function handleCartUpdated() {
+      loadCart();
+    }
 
-    const newItem = {
-      id: Date.now(),
-      slug,
-      product: product.name,
-      price: product.price,
-      campName: name,
-      size,
-      color,
-      quantity,
-      image: currentImage,
-      logoSlug: selectedLogo,
-      logoName: selectedLogoObject?.name || "",
+    function handleStorage() {
+      loadCart();
+    }
+
+    function handleOpenMiniCart() {
+      loadCart();
+      setOpen(true);
+    }
+
+    window.addEventListener("cartUpdated", handleCartUpdated);
+    window.addEventListener("storage", handleStorage);
+    window.addEventListener("openMiniCart", handleOpenMiniCart);
+
+    return () => {
+      window.removeEventListener("cartUpdated", handleCartUpdated);
+      window.removeEventListener("storage", handleStorage);
+      window.removeEventListener("openMiniCart", handleOpenMiniCart);
     };
+  }, []);
 
-    localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
+  function removeItem(id: number) {
+    const updated = cart.filter((item) => item.id !== id);
+    setCart(updated);
+    localStorage.setItem("cart", JSON.stringify(updated));
     window.dispatchEvent(new Event("cartUpdated"));
-    window.dispatchEvent(new Event("openMiniCart"));
-
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
   }
 
-  const mainImageClass = [
-    "h-auto max-h-[780px] w-full object-contain transition duration-500",
-    slug === "quarter-zip" ? "scale-[1.12]" : "",
-    slug === "hoodie" ? "scale-[1.04]" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
+  function getItemCount() {
+    return cart.reduce((sum, item) => sum + item.quantity, 0);
+  }
+
+  function getTotal() {
+    return cart.reduce((sum, item) => {
+      const price = parseFloat(item.price.replace("$", ""));
+      return sum + price * item.quantity;
+    }, 0);
+  }
+
+  function getItemHref(item: CartItem) {
+    if (!item.slug) return "/cart";
+
+    if (item.slug.startsWith("college-")) {
+      return `/college/product/${item.slug}`;
+    }
+
+    return `/product/${item.slug}`;
+  }
 
   return (
-    <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-12">
-      <div className="mx-auto max-w-7xl">
-        <button
-          onClick={() => window.history.back()}
-          className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
-        >
-          Back
-        </button>
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        className="relative text-sm uppercase tracking-widest transition hover:text-[#6F879E]"
+        aria-label="Open cart"
+      >
+        Cart
+        {getItemCount() > 0 && (
+          <span className="ml-2 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#6F879E] px-1.5 text-[10px] text-white">
+            {getItemCount()}
+          </span>
+        )}
+      </button>
 
-        <div className="mt-6 grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
-          <div className="flex gap-4">
-            {product.images.length > 1 && (
-              <div className="flex flex-col gap-3 pt-1">
-                {product.images.map((img, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setSelectedImage(i)}
-                    className={`overflow-hidden rounded-[16px] border-2 bg-white transition ${
-                      selectedImage === i
-                        ? "border-[#6F879E] shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
-                        : "border-transparent hover:border-[#D9D4CE]"
-                    }`}
-                  >
-                    <img
-                      src={img}
-                      alt={`${product.name} view ${i + 1}`}
-                      className="h-20 w-20 object-contain p-2 sm:h-24 sm:w-24"
-                    />
-                  </button>
-                ))}
-              </div>
-            )}
+      {open && (
+        <>
+          <button
+            aria-label="Close cart"
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 z-40 bg-black/20"
+          />
 
-            <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white p-8 shadow-[0_12px_32px_rgba(0,0,0,0.035)] sm:p-10">
-              <img
-                src={currentImage}
-                alt={product.name}
-                className={mainImageClass}
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-col">
-            <p className="text-xs uppercase tracking-[0.24em] text-[#6F879E]">
-              Just Made Custom
-            </p>
-
-            <h1 className="mt-3 text-3xl font-light tracking-[0.01em] text-[#2F3A4A] sm:text-5xl">
-              {product.name}
-            </h1>
-
-            <p className="mt-4 text-2xl font-light text-[#6F879E]">{product.price}</p>
-
-            <p className="mt-5 max-w-xl text-[15px] leading-7 text-gray-600 sm:text-base">
-              {product.description}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-5">
-              <div>
-                <label className="text-sm font-medium text-[#3F3F3F]">Camp Name</label>
-                <input
-                  type="text"
-                  placeholder="Enter name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-                />
-              </div>
-
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label className="text-sm font-medium text-[#3F3F3F]">Size</label>
-                  <select
-                    value={size}
-                    onChange={(e) => setSize(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-                  >
-                    {product.sizes.map((s) => (
-                      <option key={s}>{s}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="text-sm font-medium text-[#3F3F3F]">Color</label>
-                  <select
-                    value={color}
-                    onChange={(e) => setColor(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-                  >
-                    {product.colors.map((c) => (
-                      <option key={c}>{c}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <LogoPicker
-                logos={logos}
-                selectedLogo={selectedLogo}
-                onSelectLogo={setSelectedLogo}
-              />
-
-              <div>
-                <label className="text-sm font-medium text-[#3F3F3F]">Quantity</label>
-                <input
-                  type="number"
-                  min="1"
-                  value={quantity}
-                  onChange={(e) => setQuantity(Number(e.target.value))}
-                  className="mt-2 w-24 rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-                />
-              </div>
-
+          <aside className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-[#E6E2DD] bg-white shadow-[0_0_40px_rgba(0,0,0,0.12)]">
+            <div className="flex items-center justify-between border-b border-[#ECE7E1] px-5 py-4">
+              <h2 className="text-xl font-light text-[#2F3A4A]">Your Cart</h2>
               <button
-                onClick={handleAddToCart}
-                className="mt-2 inline-flex items-center justify-center rounded-full bg-[#6F879E] px-8 py-4 text-sm font-medium text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)]"
+                onClick={() => setOpen(false)}
+                className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
               >
-                {added ? "Added to Cart ✓" : "Add to Cart"}
+                Close
               </button>
+            </div>
 
-              {added && (
-                <div className="flex gap-5 text-sm">
-                  <a
-                    href="/cart"
-                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
-                  >
-                    View Cart
-                  </a>
+            <div className="flex-1 overflow-y-auto px-4 py-4">
+              {cart.length === 0 ? (
+                <div className="pt-20 text-center">
+                  <p className="text-gray-500">Your cart is empty.</p>
                   <a
                     href="/shop"
-                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
+                    onClick={() => setOpen(false)}
+                    className="mt-4 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]"
                   >
-                    Continue Shopping
+                    Start Shopping
                   </a>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-4">
+                  {cart.map((item) => (
+                    <div
+                      key={item.id}
+                      className="rounded-2xl border border-[#ECE7E1] bg-[#FCFCFB] p-4"
+                    >
+                      <div className="flex gap-3">
+                        <a
+                          href={getItemHref(item)}
+                          onClick={() => setOpen(false)}
+                          className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white transition hover:opacity-90"
+                          aria-label={`View ${item.product}`}
+                        >
+                          {item.image ? (
+                            <img
+                              src={item.image}
+                              alt={item.product}
+                              className="h-full w-full object-contain p-2"
+                            />
+                          ) : (
+                            <div className="text-xs text-gray-400">No image</div>
+                          )}
+                        </a>
+
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-start justify-between gap-3">
+                            <a
+                              href={getItemHref(item)}
+                              onClick={() => setOpen(false)}
+                              className="text-sm font-medium text-[#2F3A4A] transition hover:text-[#6F879E]"
+                            >
+                              {item.product}
+                            </a>
+
+                            <p className="shrink-0 text-sm font-medium text-[#6F879E]">
+                              {item.price}
+                            </p>
+                          </div>
+
+                          <div className="mt-2 space-y-1 text-xs text-gray-500">
+                            <p>
+                              {item.campName
+                                ? `Camp Name: ${item.campName}`
+                                : item.college
+                                ? `College: ${item.college}`
+                                : "Name: N/A"}
+                            </p>
+                            <p>
+                              {item.size} · {item.color} · Qty {item.quantity}
+                            </p>
+                            {item.logoName && <p>Design: {item.logoName}</p>}
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => removeItem(item.id)}
+                            className="mt-3 text-xs text-gray-400 underline underline-offset-4 transition hover:text-red-400"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
-          </div>
-        </div>
-      </div>
-    </main>
+
+            <div className="border-t border-[#ECE7E1] px-5 py-4">
+              <div className="mb-4 flex items-center justify-between text-sm">
+                <span className="font-medium text-[#2F3A4A]">Total</span>
+                <span className="text-lg font-medium text-[#6F879E]">
+                  ${getTotal()}
+                </span>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <a
+                  href="/cart"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex items-center justify-center rounded-full bg-[#6F879E] px-6 py-3 text-sm text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)]"
+                >
+                  View Cart
+                </a>
+
+                <button
+                  onClick={() => setOpen(false)}
+                  className="inline-flex items-center justify-center rounded-full border border-[#D8D3CD] px-6 py-3 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
+                >
+                  Continue Shopping
+                </button>
+              </div>
+            </div>
+          </aside>
+        </>
+      )}
+    </>
   );
 }
