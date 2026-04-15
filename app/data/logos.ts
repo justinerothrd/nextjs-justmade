@@ -9,31 +9,25 @@ export const logos: Logo[] = [
   {
     slug: "tyler-hill",
     name: "Tyler Hill",
-    image: "/logos/camps/tyler-hill.png",
+    image: "/logos/tyler-hill.png",
     category: "Camp",
   },
   {
-    slug: "wesmont",
-    name: "Camp Westmont",
-    image: "/logos/camps/matoaka.png",
+    slug: "westmont",
+    name: "Westmont",
+    image: "/logos/westmont.png",
     category: "Camp",
   },
   {
     slug: "michigan",
     name: "Michigan",
-    image: "/logos/colleges/michigan.png",
+    image: "/logos/michigan.png",
     category: "College",
   },
   {
     slug: "wisconsin",
     name: "Wisconsin",
-    image: "/logos/colleges/wisconsin.png",
+    image: "/logos/wisconsin.png",
     category: "College",
-  },
-  {
-    slug: "ski-club",
-    name: "Ski Club",
-    image: "/logos/custom/ski-club.png",
-    category: "Custom",
   },
 ];
