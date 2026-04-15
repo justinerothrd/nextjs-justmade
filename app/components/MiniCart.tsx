@@ -207,7 +207,7 @@ export default function MiniCart() {
                   onClick={() => setOpen(false)}
                   className="inline-flex items-center justify-center rounded-full bg-[#6F879E] px-6 py-3 text-sm text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)]"
                 >
-                  View Full Cart
+                  View Cart
                 </a>
 
                 <button
