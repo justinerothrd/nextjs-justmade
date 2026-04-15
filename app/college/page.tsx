@@ -36,23 +36,24 @@ const categories = [
 export default function CollegePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
-      <section className="px-4 pb-12 pt-8 sm:px-6 md:pb-24 md:pt-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 md:grid-cols-[1fr_.95fr] md:gap-12">
-          <div className="text-center md:text-left">
+      <section className="px-4 pb-10 pt-8 sm:px-6 md:pb-16 md:pt-14">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1fr_.95fr] lg:gap-12">
+          <div className="text-center lg:text-left">
             <p className="text-xs uppercase tracking-[0.28em] text-[#6F879E]">
               Just Made Custom
             </p>
 
-            <h1 className="mt-4 text-3xl font-light leading-tight text-[#3F3F3F] sm:text-4xl md:text-6xl">
-              Custom college clothing made to feel personal
+            <h1 className="mt-4 text-4xl font-light leading-tight text-[#3F3F3F] sm:text-5xl md:text-6xl">
+              Custom college clothing
+              <br className="hidden md:block" /> made to feel personal
             </h1>
 
-            <p className="mt-4 text-base leading-7 text-[#5D5D5D] sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-[#5D5D5D] sm:text-lg sm:leading-8 lg:mx-0 mx-auto">
               Personalized sweatshirts, tees, sleepwear, and thoughtful college
               favorites designed to feel polished, wearable, and easy to love.
             </p>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-3 md:mt-8 md:justify-start md:gap-4">
+            <div className="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start">
               <a
                 href="/college/sweatshirts"
                 className="rounded-full bg-[#6F879E] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
@@ -78,11 +79,11 @@ export default function CollegePage() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[32px] border border-[#E6E2DD] bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.04)] sm:p-5">
+          <div className="overflow-hidden rounded-[32px] border border-[#E6E2DD] bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] sm:p-5">
             <img
               src={collegeProducts["college-crewneck"].images[0]}
               alt="College clothing"
-              className="block h-[260px] w-full rounded-[26px] object-cover sm:h-[360px] md:h-[420px]"
+              className="block h-[260px] w-full rounded-[26px] object-contain sm:h-[340px] md:h-[400px]"
             />
           </div>
         </div>
@@ -91,7 +92,7 @@ export default function CollegePage() {
       <section className="px-4 pb-16 sm:px-6 sm:pb-20">
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 sm:mb-8">
-            <h2 className="mt-2 text-2xl font-light text-[#3F3F3F] sm:text-3xl md:text-4xl">
+            <h2 className="text-2xl font-light text-[#3F3F3F] sm:text-3xl md:text-4xl">
               Shop College by Category
             </h2>
 
@@ -115,10 +116,10 @@ export default function CollegePage() {
                       alt={category.title}
                       className={
                         category.slug === "sweatshirts"
-                          ? "h-full w-full scale-[1.05] object-contain p-2 transition duration-500 ease-out sm:p-3"
+                          ? "h-full w-full scale-[1.04] object-contain p-2 transition duration-500 ease-out sm:p-3"
                           : category.slug === "accessories"
-                          ? "h-full w-full scale-[1.03] object-contain p-3 transition duration-500 ease-out sm:p-4"
-                          : "h-full w-full scale-[1.14] object-contain p-2 transition duration-500 ease-out sm:p-3"
+                          ? "h-full w-full scale-[1.02] object-contain p-3 transition duration-500 ease-out sm:p-4"
+                          : "h-full w-full scale-[1.12] object-contain p-2 transition duration-500 ease-out sm:p-3"
                       }
                     />
                   </div>
