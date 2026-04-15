@@ -53,35 +53,37 @@ export default function ProductPage() {
   const currentImage = product.images?.[selectedImage] ?? product.images?.[0] ?? "";
 
   function handleAddToCart() {
-    if (!selectedLogo) {
-      alert("Please select a design");
-      return;
-    }
+  if (!product || !slug) return;
 
-    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
-
-    const newItem = {
-      id: Date.now(),
-      slug,
-      product: product.name,
-      price: product.price,
-      campName: customDetails,
-      size,
-      color,
-      quantity,
-      image: currentImage,
-      logoSlug: selectedLogo,
-      logoName: selectedLogoObject?.name || "",
-      placement,
-    };
-
-    localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
-    window.dispatchEvent(new Event("cartUpdated"));
-    window.dispatchEvent(new Event("openMiniCart"));
-
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
+  if (!selectedLogo) {
+    alert("Please select a design");
+    return;
   }
+
+  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  const newItem = {
+    id: Date.now(),
+    slug,
+    product: product.name,
+    price: product.price,
+    campName: customDetails,
+    size,
+    color,
+    quantity,
+    image: currentImage,
+    logoSlug: selectedLogo,
+    logoName: selectedLogoObject?.name || "",
+    placement,
+  };
+
+  localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
+  window.dispatchEvent(new Event("cartUpdated"));
+  window.dispatchEvent(new Event("openMiniCart"));
+
+  setAdded(true);
+  setTimeout(() => setAdded(false), 2000);
+}
 
   const mainImageClass = [
     "h-auto max-h-[780px] w-full object-contain transition duration-500",
