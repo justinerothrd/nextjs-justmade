@@ -40,43 +40,46 @@ export default function HomePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
       {/* HERO */}
-      <section className="relative h-[75vh] min-h-[520px] w-full">
-        <img
-          src="/hero-main.png"
-          alt="Custom apparel"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+      <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
+  {/* Background Image */}
+  <img
+    src="/hero-main.png"
+    alt="Custom apparel"
+    className="absolute inset-0 h-full w-full object-cover"
+  />
 
-        <div className="absolute inset-0 bg-black/20" />
+  {/* Gradient overlay (key upgrade) */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
 
-        <div className="relative z-10 flex h-full items-end">
-          <div className="mx-auto w-full max-w-7xl px-6 pb-12 sm:pb-16">
-            <p className="text-xs uppercase tracking-[0.25em] text-white/80">
-              Made to be custom
-            </p>
+  {/* Content */}
+  <div className="relative z-10 flex h-full items-end">
+    <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
+      <p className="text-xs uppercase tracking-[0.25em] text-white/70">
+        Made to be custom
+      </p>
 
-            <p className="mt-4 max-w-xl text-2xl font-light leading-relaxed text-white sm:text-3xl md:text-4xl">
-              Custom pieces for camp, college, and everyday wear.
-            </p>
+      <p className="mt-4 max-w-2xl text-3xl font-light leading-[1.2] text-white sm:text-4xl md:text-5xl">
+        Custom pieces for camp, college, and everyday wear.
+      </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href="/shop"
-                className="rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
-              >
-                Shop Camp
-              </a>
+      <div className="mt-7 flex flex-wrap gap-3">
+        <a
+          href="/shop"
+          className="rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
+        >
+          Shop Camp
+        </a>
 
-              <a
-                href="/college"
-                className="rounded-full border border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
-              >
-                Shop College
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+        <a
+          href="/college"
+          className="rounded-full border border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+        >
+          Shop College
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* CATEGORIES */}
       <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
