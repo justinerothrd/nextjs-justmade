@@ -40,7 +40,7 @@ export default function HomePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
       {/* HERO */}
-      <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
+    <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
   {/* Background Image */}
   <img
     src="/hero-main.png"
