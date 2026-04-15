@@ -45,17 +45,19 @@ export default function HomePage() {
           <div className="max-w-xl text-center lg:text-left">
             <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
               Just Made Custom
-            </p>
+            <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
+  Made to be custom
+</p>
 
-            <h1 className="mt-5 text-4xl font-light leading-[1.05] text-[#3F3F3F] sm:text-5xl md:text-6xl">
-              Custom clothing
-              <br />
-              for camp &amp; college
-            </h1>
+<h1 className="mt-5 text-4xl font-light leading-[1.05] text-[#3F3F3F] sm:text-5xl md:text-6xl">
+  Custom pieces for camp,
+  <br />
+  college, and everyday wear.
+</h1>
 
-            <p className="mt-5 max-w-lg text-base leading-8 text-[#5D5D5D] sm:text-lg">
-              Clean, custom pieces designed for everyday wear.
-            </p>
+<p className="mt-5 max-w-md text-base leading-7 text-[#5D5D5D] sm:text-lg">
+  Designed to feel personal, wearable, and easy to love.
+</p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               <a
