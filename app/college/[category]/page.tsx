@@ -69,24 +69,24 @@ export default async function CollegeCategoryPage({
     <main className="min-h-screen bg-[#F7F7F5] text-[#4B4B4B]">
       <section className="px-4 pb-8 pt-8 sm:px-6 sm:pb-10 sm:pt-10">
         <div className="mx-auto max-w-7xl">
-          <p className="text-center text-xs uppercase tracking-[0.25em] text-[#6F879E] md:text-left">
-            Just Made Custom
-          </p>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
+                Just Made Custom
+              </p>
 
-          <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="text-center md:text-left">
-              <h1 className="text-4xl font-light text-[#3F3F3F] sm:text-5xl md:text-6xl">
+              <h1 className="mt-4 text-4xl font-light text-[#3F3F3F] sm:text-5xl md:text-6xl">
                 {meta.title}
               </h1>
 
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#666] sm:text-lg sm:leading-8 md:mx-0">
+              <p className="mt-4 max-w-2xl text-base leading-7 text-[#666] sm:text-lg sm:leading-8">
                 {meta.subtitle}
               </p>
             </div>
 
             <a
               href="/college"
-              className="text-center text-sm underline underline-offset-4 transition hover:text-[#6F879E] md:text-right"
+              className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
             >
               Back to All Categories
             </a>
@@ -117,9 +117,9 @@ export default async function CollegeCategoryPage({
                         : product.slug === "college-socks"
                         ? "h-full w-full scale-[1.02] object-contain p-3 transition duration-500 ease-out sm:p-4"
                         : product.slug === "college-tee"
-                        ? "h-full w-full scale-[1.12] object-contain p-2 transition duration-500 ease-out sm:p-3"
+                        ? "h-full w-full scale-[1.10] object-contain p-2 transition duration-500 ease-out sm:p-3"
                         : product.slug === "college-tank"
-                        ? "h-full w-full scale-[1.12] object-contain p-2 transition duration-500 ease-out sm:p-3"
+                        ? "h-full w-full scale-[1.10] object-contain p-2 transition duration-500 ease-out sm:p-3"
                         : product.slug === "college-shorts"
                         ? "h-full w-full scale-[1.08] object-contain p-2 transition duration-500 ease-out sm:p-3"
                         : "h-full w-full object-contain p-2 transition duration-500 ease-out sm:p-3"
@@ -146,3 +146,4 @@ export default async function CollegeCategoryPage({
     </main>
   );
 }
+
