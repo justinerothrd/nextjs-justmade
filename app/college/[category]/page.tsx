@@ -46,7 +46,7 @@ export default async function CollegeCategoryPage({
 
   if (!meta || !slugs) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-white text-[#2F3A4A]">
+      <main className="flex min-h-screen items-center justify-center bg-[#F7F7F5] text-[#2F3A4A]">
         <div className="text-center">
           <h1 className="text-3xl font-light">Category not found</h1>
           <a
@@ -66,67 +66,80 @@ export default async function CollegeCategoryPage({
   }));
 
   return (
-    <main className="min-h-screen bg-white text-[#2F3A4A]">
-      <section className="px-4 pb-6 pt-8 text-center sm:px-6 sm:pb-8 sm:pt-10">
-        <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
-          Just Made Custom
-        </p>
+    <main className="min-h-screen bg-[#F7F7F5] text-[#4B4B4B]">
+      <section className="px-4 pb-8 pt-8 sm:px-6 sm:pb-10 sm:pt-10">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-center text-xs uppercase tracking-[0.25em] text-[#6F879E] md:text-left">
+            Just Made Custom
+          </p>
 
-        <h1 className="mt-4 text-4xl font-light sm:text-5xl md:text-6xl">
-          {meta.title}
-        </h1>
+          <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="text-center md:text-left">
+              <h1 className="text-4xl font-light text-[#3F3F3F] sm:text-5xl md:text-6xl">
+                {meta.title}
+              </h1>
 
-        <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
-          {meta.subtitle}
-        </p>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#666] sm:text-lg sm:leading-8 md:mx-0">
+                {meta.subtitle}
+              </p>
+            </div>
 
-        <div className="mt-4">
-          <a
-            href="/college"
-            className="text-sm underline underline-offset-4 hover:text-[#6F879E]"
-          >
-            Back to All Categories
-          </a>
+            <a
+              href="/college"
+              className="text-center text-sm underline underline-offset-4 transition hover:text-[#6F879E] md:text-right"
+            >
+              Back to All Categories
+            </a>
+          </div>
         </div>
       </section>
 
       <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20">
-        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
           {categoryProducts.map((product) => (
-            <div key={product.slug} className="group">
-              <a href={`/college/product/${product.slug}`} className="block">
-                <div className="overflow-hidden rounded-[24px] bg-white">
+            <a
+              key={product.slug}
+              href={`/college/product/${product.slug}`}
+              className="group rounded-[24px] border border-[#E6E2DD] bg-white p-3 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] sm:p-4"
+            >
+              <div className="overflow-hidden rounded-[18px] bg-white sm:rounded-[22px]">
+                <div className="flex h-40 items-end justify-center sm:h-56 md:h-64">
                   <img
                     src={product.images[0]}
                     alt={product.name}
                     className={
                       product.slug === "college-crewneck"
-                        ? "h-[240px] w-full object-contain p-2 scale-[1.01] transition duration-500 ease-out sm:h-[380px]"
+                        ? "h-full w-full scale-[1.02] object-contain p-2 transition duration-500 ease-out sm:p-3"
                         : product.slug === "college-hoodie"
-                        ? "h-[240px] w-full object-contain p-2 scale-[1.01] transition duration-500 ease-out sm:h-[380px]"
+                        ? "h-full w-full scale-[1.02] object-contain p-2 transition duration-500 ease-out sm:p-3"
                         : product.slug === "college-slides"
-                        ? "h-[240px] w-full object-contain p-4 transition duration-500 ease-out sm:h-[380px]"
-                        : "h-[240px] w-full object-contain p-2 transition duration-500 ease-out sm:h-[380px]"
+                        ? "h-full w-full scale-[1.02] object-contain p-3 transition duration-500 ease-out sm:p-4"
+                        : product.slug === "college-socks"
+                        ? "h-full w-full scale-[1.02] object-contain p-3 transition duration-500 ease-out sm:p-4"
+                        : product.slug === "college-tee"
+                        ? "h-full w-full scale-[1.12] object-contain p-2 transition duration-500 ease-out sm:p-3"
+                        : product.slug === "college-tank"
+                        ? "h-full w-full scale-[1.12] object-contain p-2 transition duration-500 ease-out sm:p-3"
+                        : product.slug === "college-shorts"
+                        ? "h-full w-full scale-[1.08] object-contain p-2 transition duration-500 ease-out sm:p-3"
+                        : "h-full w-full object-contain p-2 transition duration-500 ease-out sm:p-3"
                     }
                   />
                 </div>
-              </a>
+              </div>
 
               <div className="pt-3 sm:pt-4">
-                <h3 className="text-base font-light leading-tight text-[#2F3A4A] sm:text-lg">
+                <h3 className="text-sm font-medium text-[#3F3F3F] sm:text-base md:text-lg">
                   {product.name}
                 </h3>
 
                 <p className="mt-1 text-sm text-gray-500">{product.price}</p>
 
-                <a
-                  href={`/college/product/${product.slug}`}
-                  className="mt-2 inline-block text-sm underline underline-offset-4 transition duration-300 ease-out hover:text-[#6F879E] sm:mt-4"
-                >
-                  View Product
-                </a>
+                <p className="mt-2 text-xs font-medium text-[#6F879E] sm:mt-3 sm:text-sm">
+                  View Product →
+                </p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
