@@ -13,12 +13,6 @@ export const logos: Logo[] = [
     category: "Camp",
   },
   {
-    slug: "westmont",
-    name: "Westmont",
-    image: "/logos/westmont.png",
-    category: "Camp",
-  },
-  {
     slug: "michigan",
     name: "Michigan",
     image: "/logos/michigan.png",
