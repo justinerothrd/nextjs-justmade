@@ -41,19 +41,18 @@ export default function HomePage() {
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
       {/* HERO */}
       <section className="px-4 pb-16 pt-10 sm:px-6 md:pb-24 md:pt-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
-          <div className="max-w-xl text-center lg:text-left">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.15fr_.85fr] lg:gap-16">
+          <div className="max-w-2xl text-center lg:text-left">
             <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
               Made to be custom
             </p>
 
-            <h1 className="mt-5 text-4xl font-light leading-[1.05] text-[#3F3F3F] sm:text-5xl md:text-6xl">
+            <h1 className="mt-5 text-4xl font-light leading-[1.08] text-[#3F3F3F] sm:text-5xl md:text-6xl">
               Custom pieces for camp,
-              <br />
               college, and everyday wear.
             </h1>
 
-            <p className="mt-5 max-w-md text-base leading-7 text-[#5D5D5D] sm:text-lg lg:mx-0 mx-auto">
+            <p className="mt-5 max-w-lg text-base leading-7 text-[#5D5D5D] sm:text-lg lg:mx-0 mx-auto">
               Designed to feel personal, wearable, and easy to love.
             </p>
 
@@ -83,11 +82,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="lg:pl-4">
+          <div className="lg:pl-2">
             <img
               src="/hero-main.png"
               alt="Custom apparel"
-              className="block h-[380px] w-full rounded-[32px] object-cover sm:h-[460px] lg:h-[560px]"
+              className="block h-[360px] w-full rounded-[32px] object-cover sm:h-[430px] lg:h-[520px]"
             />
           </div>
         </div>
