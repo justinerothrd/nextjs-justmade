@@ -127,17 +127,17 @@ export default function ProductPage() {
               </div>
             )}
 
-            <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white p-8 shadow-[0_12px_32px_rgba(0,0,0,0.035)] sm:p-10">
-              {currentImage ? (
-                <img
-                  src={currentImage}
-                  alt={product.name}
-                  className={mainImageClass}
-                />
-              ) : (
-                <div className="text-sm text-gray-400">No image available</div>
-              )}
-            </div>
+            <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white px-6 py-6 shadow-[0_12px_32px_rgba(0,0,0,0.035)] sm:px-8 sm:py-8">
+  {currentImage ? (
+    <img
+      src={currentImage}
+      alt={product.name}
+      className={mainImageClass}
+    />
+  ) : (
+    <div className="text-sm text-gray-400">No image available</div>
+  )}
+</div>
           </div>
 
           <div className="flex flex-col">
