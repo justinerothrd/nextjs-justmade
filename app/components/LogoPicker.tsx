@@ -95,10 +95,18 @@ export default function LogoPicker({
                     />
                   </div>
 
-                  <div className="mt-3">
-                    <p className="text-sm font-medium">{logo.name}</p>
-                    <p className="text-xs text-gray-500">{logo.category}</p>
-                  </div>
+                 <div className="mt-3 flex items-center justify-between">
+  <div>
+    <p className="text-sm font-medium">{logo.name}</p>
+    <p className="text-xs text-gray-500">{logo.category}</p>
+  </div>
+
+  {isSelected && (
+    <span className="rounded-full bg-[#6F879E] px-2 py-1 text-[10px] text-white">
+      Selected
+    </span>
+  )}
+</div>
                 </button>
 
                 <button
