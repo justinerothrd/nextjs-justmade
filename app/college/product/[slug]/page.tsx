@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { getCollegeProductBySlug } from "@/lib/college-products";
 import LogoPicker from "@/app/components/LogoPicker";
-import { logos } from "@/app/data/logos";
+import { collegeLogos as logos } from "@/app/data/college-logos";
 
 export default function CollegeProductPage() {
   const params = useParams();
