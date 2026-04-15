@@ -14,6 +14,7 @@ type CartItem = {
   quantity: number;
   image?: string;
   logoName?: string;
+  placement?: string;
 };
 
 export default function CartPage() {
@@ -59,8 +60,9 @@ export default function CartPage() {
           `   Quantity: ${item.quantity}`,
           `   Size: ${item.size}`,
           `   Color: ${item.color}`,
-          `   Camp Name: ${item.campName || "N/A"}`,
+          `   Customization Details: ${item.campName || "N/A"}`,
           `   Design: ${item.logoName || "N/A"}`,
+          `   Placement: ${item.placement || "N/A"}`,
           `   Line Total: $${(
             parseFloat(item.price.replace("$", "")) * item.quantity
           ).toFixed(2)}`,
@@ -221,7 +223,9 @@ export default function CartPage() {
 
                       <div className="mt-3 space-y-2 text-sm">
                         <p>
-                          <span className="text-gray-500">Camp Name:</span>{" "}
+                          <span className="text-gray-500">
+                            Customization Details:
+                          </span>{" "}
                           {item.campName || "N/A"}
                         </p>
                         <p>
@@ -238,6 +242,12 @@ export default function CartPage() {
                           <p>
                             <span className="text-gray-500">Design:</span>{" "}
                             {item.logoName}
+                          </p>
+                        )}
+                        {item.placement && (
+                          <p>
+                            <span className="text-gray-500">Placement:</span>{" "}
+                            {item.placement}
                           </p>
                         )}
                       </div>
