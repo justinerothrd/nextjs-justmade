@@ -18,7 +18,7 @@ export default function HomePage() {
       slug: "bottoms",
       title: "Bottoms",
       subtitle: "Custom shorts and easy camp-ready staples.",
-      image: "/bottoms.jpg",
+      image: "/shorts.jpeg",
       link: "/shop/bottoms",
     },
     {
@@ -44,20 +44,18 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <div className="max-w-xl text-center lg:text-left">
             <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
-              Just Made Custom
-            <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
-  Made to be custom
-</p>
+              Made to be custom
+            </p>
 
-<h1 className="mt-5 text-4xl font-light leading-[1.05] text-[#3F3F3F] sm:text-5xl md:text-6xl">
-  Custom pieces for camp,
-  <br />
-  college, and everyday wear.
-</h1>
+            <h1 className="mt-5 text-4xl font-light leading-[1.05] text-[#3F3F3F] sm:text-5xl md:text-6xl">
+              Custom pieces for camp,
+              <br />
+              college, and everyday wear.
+            </h1>
 
-<p className="mt-5 max-w-md text-base leading-7 text-[#5D5D5D] sm:text-lg">
-  Designed to feel personal, wearable, and easy to love.
-</p>
+            <p className="mt-5 max-w-md text-base leading-7 text-[#5D5D5D] sm:text-lg lg:mx-0 mx-auto">
+              Designed to feel personal, wearable, and easy to love.
+            </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               <a
