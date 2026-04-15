@@ -26,6 +26,24 @@ export default function LogoPicker({
     return logos.filter((logo) => logo.category === activeFilter);
   }, [logos, activeFilter]);
 
+  const previewIndex = previewLogo
+    ? filteredLogos.findIndex((logo) => logo.slug === previewLogo.slug)
+    : -1;
+
+  function goToPrevious() {
+    if (!previewLogo || filteredLogos.length === 0) return;
+    const nextIndex =
+      previewIndex <= 0 ? filteredLogos.length - 1 : previewIndex - 1;
+    setPreviewLogo(filteredLogos[nextIndex]);
+  }
+
+  function goToNext() {
+    if (!previewLogo || filteredLogos.length === 0) return;
+    const nextIndex =
+      previewIndex >= filteredLogos.length - 1 ? 0 : previewIndex + 1;
+    setPreviewLogo(filteredLogos[nextIndex]);
+  }
+
   return (
     <>
       <div className="mt-8">
@@ -137,6 +155,28 @@ export default function LogoPicker({
                   fill
                   className="object-contain p-6"
                 />
+              </div>
+
+              <div className="mt-4 flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={goToPrevious}
+                  className="rounded-full border border-[#D8D3CD] px-5 py-2 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
+                >
+                  ← Previous
+                </button>
+
+                <p className="text-xs text-gray-500">
+                  {previewIndex + 1} of {filteredLogos.length}
+                </p>
+
+                <button
+                  type="button"
+                  onClick={goToNext}
+                  className="rounded-full border border-[#D8D3CD] px-5 py-2 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
+                >
+                  Next →
+                </button>
               </div>
 
               <div className="mt-5 flex flex-wrap gap-3">
