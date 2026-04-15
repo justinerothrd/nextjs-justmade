@@ -40,33 +40,40 @@ export default function HomePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
       {/* HERO */}
-      <section className="px-4 pb-16 pt-10 sm:px-6 md:pb-24 md:pt-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.15fr_.85fr] lg:gap-16">
-          <div className="max-w-2xl text-center lg:text-left">
-            <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
+      <section className="relative h-[75vh] min-h-[520px] w-full overflow-hidden">
+        <img
+          src="/hero-main.png"
+          alt="Custom apparel"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+
+        <div className="absolute inset-0 bg-black/20" />
+
+        <div className="relative z-10 flex h-full items-end">
+          <div className="mx-auto w-full max-w-7xl px-6 pb-12 sm:pb-16">
+            <p className="text-sm uppercase tracking-[0.3em] text-white/85">
               Made to be custom
             </p>
 
-            <h1 className="mt-5 text-4xl font-light leading-[1.08] text-[#3F3F3F] sm:text-5xl md:text-6xl">
-              Custom pieces for camp,
-              college, and everyday wear.
-            </h1>
+            <p className="mt-4 max-w-2xl text-3xl font-light leading-relaxed text-white sm:text-4xl md:text-5xl">
+              Custom pieces for camp, college, and everyday wear.
+            </p>
 
-            <p className="mt-5 max-w-lg text-base leading-7 text-[#5D5D5D] sm:text-lg lg:mx-0 mx-auto">
+            <p className="mt-4 max-w-xl text-base leading-7 text-white/85 sm:text-lg">
               Designed to feel personal, wearable, and easy to love.
             </p>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="/shop"
-                className="rounded-full bg-[#6F879E] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
+                className="rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
               >
                 Shop Camp
               </a>
 
               <a
                 href="/college"
-                className="rounded-full border border-[#6F879E] px-6 py-3 text-sm font-medium text-[#6F879E] transition hover:bg-[#EEF2F5]"
+                className="rounded-full border border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
               >
                 Shop College
               </a>
@@ -75,25 +82,17 @@ export default function HomePage() {
             <div className="mt-4">
               <a
                 href="/custom-orders"
-                className="text-sm font-medium text-[#6F879E] underline underline-offset-4 transition hover:opacity-80"
+                className="text-sm font-medium text-white underline underline-offset-4 transition hover:opacity-80"
               >
                 Need something custom? Start a custom order
               </a>
             </div>
           </div>
-
-          <div className="lg:pl-2">
-            <img
-              src="/hero-main.png"
-              alt="Custom apparel"
-              className="block h-[360px] w-full rounded-[32px] object-cover sm:h-[430px] lg:h-[520px]"
-            />
-          </div>
         </div>
       </section>
 
       {/* CATEGORIES */}
-      <section className="px-4 pb-16 sm:px-6 sm:pb-20">
+      <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 sm:mb-8">
             <h2 className="text-2xl font-light text-[#3F3F3F] sm:text-3xl md:text-4xl">
