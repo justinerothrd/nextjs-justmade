@@ -18,7 +18,7 @@ export default function HomePage() {
       slug: "bottoms",
       title: "Bottoms",
       subtitle: "Custom shorts and easy camp-ready staples.",
-      image: "/bottoms.jpg",
+      image: "/shorts.jpeg",
       link: "/shop/bottoms",
     },
     {
@@ -40,34 +40,34 @@ export default function HomePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
       {/* HERO */}
-      <section className="px-4 pb-14 pt-10 sm:px-6 md:pb-20 md:pt-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-14">
+      <section className="px-4 pb-16 pt-10 sm:px-6 md:pb-24 md:pt-16">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <div className="max-w-xl text-center lg:text-left">
             <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
               Just Made Custom
             </p>
 
-            <h1 className="mt-4 text-4xl font-light leading-tight text-[#3F3F3F] sm:text-5xl md:text-6xl">
-              Custom camp &amp; college
+            <h1 className="mt-5 text-4xl font-light leading-[1.05] text-[#3F3F3F] sm:text-5xl md:text-6xl">
+              Custom clothing
               <br />
-              clothing, made easy
+              for camp &amp; college
             </h1>
 
-            <p className="mt-5 max-w-md text-base leading-7 text-gray-600 sm:text-lg lg:mx-0 mx-auto">
-              Clean, custom pieces designed for everyday wear.
+            <p className="mt-5 max-w-lg text-base leading-8 text-[#5D5D5D] sm:text-lg">
+              Thoughtfully designed pieces that feel personal, wearable, and easy to love.
             </p>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-4 lg:justify-start">
+            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               <a
                 href="/shop"
-                className="rounded-full bg-[#6F879E] px-6 py-3 text-sm text-white transition hover:opacity-90"
+                className="rounded-full bg-[#6F879E] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
               >
                 Shop Camp
               </a>
 
               <a
                 href="/college"
-                className="rounded-full border border-[#6F879E] px-6 py-3 text-sm text-[#6F879E] transition hover:bg-[#6F879E] hover:text-white"
+                className="rounded-full border border-[#6F879E] px-6 py-3 text-sm font-medium text-[#6F879E] transition hover:bg-[#EEF2F5]"
               >
                 Shop College
               </a>
@@ -83,14 +83,12 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div>
-            <div className="overflow-hidden rounded-[32px]">
-              <img
-                src="/hero-main.png"
-                alt="Custom apparel"
-                className="block h-[320px] w-full object-cover sm:h-[420px] lg:h-[560px]"
-              />
-            </div>
+          <div className="lg:pl-4">
+            <img
+              src="/hero-main.png"
+              alt="Custom apparel"
+              className="block h-[380px] w-full rounded-[32px] object-cover sm:h-[460px] lg:h-[560px]"
+            />
           </div>
         </div>
       </section>
@@ -122,8 +120,8 @@ export default function HomePage() {
                       alt={category.title}
                       className={
                         category.slug === "sweatshirts"
-                          ? "h-full w-full object-contain p-2 sm:p-3 scale-[1.03] transition duration-500 ease-out"
-                          : "h-full w-full object-contain p-2 sm:p-3 transition duration-500 ease-out"
+                          ? "h-full w-full scale-[1.03] object-contain p-2 transition duration-500 ease-out sm:p-3"
+                          : "h-full w-full object-contain p-2 transition duration-500 ease-out sm:p-3"
                       }
                     />
                   </div>
