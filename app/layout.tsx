@@ -2,6 +2,7 @@
 
 import "./globals.css";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Josefin_Sans } from "next/font/google";
 import MiniCart from "./components/MiniCart";
 
@@ -17,6 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  let announcementText = "Personalized custom clothing for camp, college, and more";
+
+  if (pathname.startsWith("/college")) {
+    announcementText = "Personalized college favorites designed to feel special";
+  } else if (pathname.startsWith("/shop") || pathname.startsWith("/product")) {
+    announcementText = "Personalized camp favorites for kids, bunks, and groups";
+  }
 
   return (
     <html lang="en" className={josefin.variable}>
@@ -115,7 +125,7 @@ export default function RootLayout({
         </header>
 
         <div className="bg-[#6F879E] py-3 text-center text-xs uppercase tracking-widest text-white">
-          Personalized camp favorites for kids, bunks, and groups
+          {announcementText}
         </div>
 
         {children}
