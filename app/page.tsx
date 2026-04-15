@@ -54,7 +54,7 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-5 max-w-lg text-base leading-8 text-[#5D5D5D] sm:text-lg">
-              Thoughtfully designed pieces that feel personal, wearable, and easy to love.
+              Clean, custom pieces designed for everyday wear.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
