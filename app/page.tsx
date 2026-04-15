@@ -40,7 +40,7 @@ export default function HomePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
       {/* HERO */}
-      <section className="relative h-[75vh] min-h-[520px] w-full overflow-hidden">
+      <section className="relative h-[75vh] min-h-[520px] w-full">
         <img
           src="/hero-main.png"
           alt="Custom apparel"
@@ -51,19 +51,15 @@ export default function HomePage() {
 
         <div className="relative z-10 flex h-full items-end">
           <div className="mx-auto w-full max-w-7xl px-6 pb-12 sm:pb-16">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/85">
+            <p className="text-xs uppercase tracking-[0.25em] text-white/80">
               Made to be custom
             </p>
 
-            <p className="mt-4 max-w-2xl text-3xl font-light leading-relaxed text-white sm:text-4xl md:text-5xl">
+            <p className="mt-4 max-w-xl text-2xl font-light leading-relaxed text-white sm:text-3xl md:text-4xl">
               Custom pieces for camp, college, and everyday wear.
             </p>
 
-            <p className="mt-4 max-w-xl text-base leading-7 text-white/85 sm:text-lg">
-              Designed to feel personal, wearable, and easy to love.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="/shop"
                 className="rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
@@ -76,15 +72,6 @@ export default function HomePage() {
                 className="rounded-full border border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
               >
                 Shop College
-              </a>
-            </div>
-
-            <div className="mt-4">
-              <a
-                href="/custom-orders"
-                className="text-sm font-medium text-white underline underline-offset-4 transition hover:opacity-80"
-              >
-                Need something custom? Start a custom order
               </a>
             </div>
           </div>
