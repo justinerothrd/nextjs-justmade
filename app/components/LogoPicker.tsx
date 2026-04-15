@@ -95,24 +95,24 @@ export default function LogoPicker({
                     />
                   </div>
 
-                 <div className="mt-3 flex items-center justify-between">
-  <div>
-    <p className="text-sm font-medium">{logo.name}</p>
-    <p className="text-xs text-gray-500">{logo.category}</p>
-  </div>
+                  <div className="mt-3 flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium">{logo.name}</p>
+                      <p className="text-xs text-gray-500">{logo.category}</p>
+                    </div>
 
-  {isSelected && (
-    <span className="rounded-full bg-[#6F879E] px-2 py-1 text-[10px] text-white">
-      Selected
-    </span>
-  )}
-</div>
+                    {isSelected && (
+                      <span className="rounded-full bg-[#6F879E] px-2 py-1 text-[10px] text-white">
+                        Selected
+                      </span>
+                    )}
+                  </div>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setPreviewLogo(logo)}
-                  className="mt-2 text-xs underline underline-offset-4 transition hover:text-[#6F879E]"
+                  className="mt-2 text-xs text-[#6F879E] underline underline-offset-4"
                 >
                   Preview larger
                 </button>
@@ -135,77 +135,83 @@ export default function LogoPicker({
             className="fixed inset-0 z-40 bg-black/40"
           />
 
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div className="w-full max-w-2xl rounded-[28px] bg-white p-5 shadow-[0_24px_60px_rgba(0,0,0,0.18)] sm:p-6">
-              <div className="mb-4 flex items-start justify-between gap-4">
-                <div>
-                  <h4 className="text-xl font-medium text-[#2F3A4A]">
-                    {previewLogo.name}
-                  </h4>
-                  <p className="mt-1 text-sm text-gray-500">
-                    {previewLogo.category}
-                  </p>
+          <div className="fixed inset-0 z-50 overflow-y-auto p-4">
+            <div className="flex min-h-full items-center justify-center">
+              <div className="my-6 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-[28px] bg-white shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
+                <div className="flex items-start justify-between gap-4 border-b border-[#ECE7E1] px-5 py-4 sm:px-6">
+                  <div>
+                    <h4 className="text-xl font-medium text-[#2F3A4A]">
+                      {previewLogo.name}
+                    </h4>
+                    <p className="mt-1 text-sm text-gray-500">
+                      {previewLogo.category}
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setPreviewLogo(null)}
+                    className="shrink-0 text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
+                  >
+                    Close
+                  </button>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => setPreviewLogo(null)}
-                  className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
-                >
-                  Close
-                </button>
-              </div>
+                <div className="flex-1 overflow-y-auto px-5 py-4 sm:px-6">
+                  <div className="relative mx-auto flex aspect-square max-h-[55vh] w-full max-w-[700px] items-center justify-center overflow-hidden rounded-2xl bg-[#F7F7F5]">
+                    <Image
+                      src={previewLogo.image}
+                      alt={previewLogo.name}
+                      fill
+                      className="object-contain p-6"
+                    />
+                  </div>
 
-              <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-2xl bg-[#F7F7F5]">
-                <Image
-                  src={previewLogo.image}
-                  alt={previewLogo.name}
-                  fill
-                  className="object-contain p-6"
-                />
-              </div>
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      onClick={goToPrevious}
+                      className="rounded-full border border-[#D8D3CD] px-5 py-2 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
+                    >
+                      ← Previous
+                    </button>
 
-              <div className="mt-4 flex items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={goToPrevious}
-                  className="rounded-full border border-[#D8D3CD] px-5 py-2 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
-                >
-                  ← Previous
-                </button>
+                    <p className="text-xs text-gray-500">
+                      {previewIndex + 1} of {filteredLogos.length}
+                    </p>
 
-                <p className="text-xs text-gray-500">
-                  {previewIndex + 1} of {filteredLogos.length}
-                </p>
+                    <button
+                      type="button"
+                      onClick={goToNext}
+                      className="rounded-full border border-[#D8D3CD] px-5 py-2 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
+                    >
+                      Next →
+                    </button>
+                  </div>
+                </div>
 
-                <button
-                  type="button"
-                  onClick={goToNext}
-                  className="rounded-full border border-[#D8D3CD] px-5 py-2 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
-                >
-                  Next →
-                </button>
-              </div>
+                <div className="border-t border-[#ECE7E1] px-5 py-4 sm:px-6">
+                  <div className="flex flex-wrap gap-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onSelectLogo(previewLogo.slug);
+                        setPreviewLogo(null);
+                      }}
+                      className="rounded-full bg-[#6F879E] px-6 py-3 text-sm text-white transition hover:opacity-95"
+                    >
+                      Select This Design
+                    </button>
 
-              <div className="mt-5 flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectLogo(previewLogo.slug);
-                    setPreviewLogo(null);
-                  }}
-                  className="rounded-full bg-[#6F879E] px-6 py-3 text-sm text-white transition hover:opacity-95"
-                >
-                  Select This Design
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setPreviewLogo(null)}
-                  className="rounded-full border border-[#D8D3CD] px-6 py-3 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
-                >
-                  Keep Browsing
-                </button>
+                    <button
+                      type="button"
+                      onClick={() => setPreviewLogo(null)}
+                      className="rounded-full border border-[#D8D3CD] px-6 py-3 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
+                    >
+                      Keep Browsing
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
