@@ -124,9 +124,9 @@ export default function RootLayout({
           )}
         </header>
 
-        <div className="bg-[#6F879E] py-3 text-center text-xs uppercase tracking-widest text-white">
-          {announcementText}
-        </div>
+        <div className="bg-[#6F879E] py-3 text-center text-xs uppercase tracking-[0.2em] text-white">
+  Personalized pieces for camp, college, and more
+</div>
 
         {children}
       </body>
