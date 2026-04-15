@@ -31,7 +31,7 @@ export default function HomePage() {
     {
       slug: "accessories",
       title: "Accessories",
-      subtitle: "Thoughtful extras and gifts.",
+      subtitle: "Custom extras and gifts.",
       image: "/accessories.jpg",
       link: "/shop/accessories",
     },
@@ -47,13 +47,8 @@ export default function HomePage() {
               Just Made Custom
             </p>
 
-            <h1 className="mt-5 text-4xl font-light leading-[1.02] text-[#3F3F3F] sm:text-5xl md:text-6xl">
-              Custom camp and college clothing
-            </h1>
-
             <p className="mt-5 text-base leading-8 text-[#5D5D5D] sm:text-lg">
-              Thoughtfully designed pieces that feel personal, wearable, and easy
-              to love.
+              Thoughtfully designed pieces that feel unique and fun.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
