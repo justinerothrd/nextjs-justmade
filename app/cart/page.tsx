@@ -8,10 +8,12 @@ type CartItem = {
   product: string;
   price: string;
   campName?: string;
+  college?: string;
   size: string;
   color: string;
   quantity: number;
   image?: string;
+  logoName?: string;
 };
 
 export default function CartPage() {
@@ -58,6 +60,7 @@ export default function CartPage() {
           `   Size: ${item.size}`,
           `   Color: ${item.color}`,
           `   Camp Name: ${item.campName || "N/A"}`,
+          `   Design: ${item.logoName || "N/A"}`,
           `   Line Total: $${(
             parseFloat(item.price.replace("$", "")) * item.quantity
           ).toFixed(2)}`,
@@ -231,6 +234,12 @@ export default function CartPage() {
                           <span className="text-gray-500">Quantity:</span>{" "}
                           {item.quantity}
                         </p>
+                        {item.logoName && (
+                          <p>
+                            <span className="text-gray-500">Design:</span>{" "}
+                            {item.logoName}
+                          </p>
+                        )}
                       </div>
 
                       <button
