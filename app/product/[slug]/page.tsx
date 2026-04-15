@@ -100,7 +100,7 @@ export default function ProductPage() {
     .join(" ");
 
   const imageBoxClass = [
-    "relative flex items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white px-6 py-6 shadow-[0_12px_32px_rgba(0,0,0,0.035)] sm:px-8 sm:py-8",
+    "flex items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white px-6 py-6 shadow-[0_12px_32px_rgba(0,0,0,0.035)] sm:px-8 sm:py-8",
     slug === "hoodie" ? "h-[620px]" : "",
     slug === "quarter-zip" ? "h-[620px]" : "",
     slug === "tank-top" ? "h-[440px]" : "",
@@ -150,52 +150,11 @@ export default function ProductPage() {
 
             <div className={imageBoxClass}>
               {currentImage ? (
-                <>
-                  <img
-                    src={currentImage}
-                    alt={product.name}
-                    className={mainImageClass}
-                  />
-
-                  {selectedLogoObject?.name && (
-                    <div
-                      className={[
-                        "pointer-events-none absolute text-center font-semibold uppercase tracking-wide text-[#2F3A4A]/80",
-                        slug === "hoodie" && placement === "Full Front"
-                          ? "left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-3xl"
-                          : "",
-                        slug === "hoodie" && placement === "Left Chest"
-                          ? "left-[63%] top-[30%] text-xs sm:text-sm"
-                          : "",
-                        slug === "hoodie" && placement === "Back"
-                          ? "left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-3xl"
-                          : "",
-                        slug === "quarter-zip" && placement === "Left Chest"
-                          ? "left-[63%] top-[28%] text-[10px] sm:text-xs"
-                          : "",
-                        slug === "quarter-zip" && placement === "Full Front"
-                          ? "left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 text-xl sm:text-2xl"
-                          : "",
-                        slug === "tank-top" && placement === "Full Front"
-                          ? "left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 text-lg sm:text-xl"
-                          : "",
-                        slug === "tank-top" && placement === "Left Chest"
-                          ? "left-[58%] top-[34%] text-[10px] sm:text-xs"
-                          : "",
-                        slug === "custom-tee" && placement === "Full Front"
-                          ? "left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 text-xl sm:text-2xl"
-                          : "",
-                        slug === "custom-tee" && placement === "Left Chest"
-                          ? "left-[61%] top-[31%] text-xs sm:text-sm"
-                          : "",
-                      ]
-                        .filter(Boolean)
-                        .join(" ")}
-                    >
-                      {selectedLogoObject.name}
-                    </div>
-                  )}
-                </>
+                <img
+                  src={currentImage}
+                  alt={product.name}
+                  className={mainImageClass}
+                />
               ) : (
                 <div className="text-sm text-gray-400">No image available</div>
               )}
