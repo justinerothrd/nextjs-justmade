@@ -18,8 +18,7 @@ export default function HomePage() {
       slug: "bottoms",
       title: "Bottoms",
       subtitle: "Custom shorts and easy camp-ready staples.",
-      image: "/shorts.jpeg",
-      link: "/shop/bottoms",
+      image: "/shop/bottoms",
     },
     {
       slug: "sleepwear",
@@ -31,7 +30,7 @@ export default function HomePage() {
     {
       slug: "accessories",
       title: "Accessories",
-      subtitle: "Custom extras and gifts.",
+      subtitle: "Thoughtful extras and gifts.",
       image: "/accessories.jpg",
       link: "/shop/accessories",
     },
@@ -41,27 +40,33 @@ export default function HomePage() {
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
       {/* HERO */}
       <section className="px-4 pb-14 pt-10 sm:px-6 md:pb-20 md:pt-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[.92fr_1.08fr] lg:gap-14">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-14">
           <div className="max-w-xl text-center lg:text-left">
-            <p className="text-xs uppercase tracking-[0.28em] text-[#6F879E]">
+            <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
               Just Made Custom
             </p>
 
-            <p className="mt-5 text-base leading-8 text-[#5D5D5D] sm:text-lg">
-              Thoughtfully designed pieces that feel unique and fun.
+            <h1 className="mt-4 text-4xl font-light leading-tight text-[#3F3F3F] sm:text-5xl md:text-6xl">
+              Custom camp &amp; college
+              <br />
+              clothing, made easy
+            </h1>
+
+            <p className="mt-5 max-w-md text-base leading-7 text-gray-600 sm:text-lg lg:mx-0 mx-auto">
+              Clean, custom pieces designed for everyday wear.
             </p>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+            <div className="mt-6 flex flex-wrap justify-center gap-4 lg:justify-start">
               <a
                 href="/shop"
-                className="rounded-full bg-[#6F879E] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
+                className="rounded-full bg-[#6F879E] px-6 py-3 text-sm text-white transition hover:opacity-90"
               >
                 Shop Camp
               </a>
 
               <a
                 href="/college"
-                className="rounded-full border border-[#6F879E] px-6 py-3 text-sm font-medium text-[#6F879E] transition hover:bg-[#EEF2F5]"
+                className="rounded-full border border-[#6F879E] px-6 py-3 text-sm text-[#6F879E] transition hover:bg-[#6F879E] hover:text-white"
               >
                 Shop College
               </a>
@@ -77,12 +82,12 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="lg:pl-4">
-            <div className="overflow-hidden rounded-[28px] bg-[#EFECE7]">
+          <div>
+            <div className="overflow-hidden rounded-[32px]">
               <img
                 src="/hero-main.png"
-                alt="Just Made custom clothing"
-                className="block h-[300px] w-full object-cover sm:h-[420px] lg:h-[520px]"
+                alt="Custom apparel"
+                className="block h-[320px] w-full object-cover sm:h-[420px] lg:h-[560px]"
               />
             </div>
           </div>
@@ -116,8 +121,8 @@ export default function HomePage() {
                       alt={category.title}
                       className={
                         category.slug === "sweatshirts"
-                          ? "h-full w-full scale-[1.03] object-contain p-2 transition duration-500 ease-out sm:p-3"
-                          : "h-full w-full object-contain p-2 transition duration-500 ease-out sm:p-3"
+                          ? "h-full w-full object-contain p-2 sm:p-3 scale-[1.03] transition duration-500 ease-out"
+                          : "h-full w-full object-contain p-2 sm:p-3 transition duration-500 ease-out"
                       }
                     />
                   </div>
