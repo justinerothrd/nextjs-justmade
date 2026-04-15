@@ -18,7 +18,8 @@ export default function HomePage() {
       slug: "bottoms",
       title: "Bottoms",
       subtitle: "Custom shorts and easy camp-ready staples.",
-      image: "/shop/bottoms",
+      image: "/bottoms.jpg",
+      link: "/shop/bottoms",
     },
     {
       slug: "sleepwear",
