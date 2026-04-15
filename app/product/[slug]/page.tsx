@@ -1,29 +1,40 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getProductBySlug } from "@/lib/products";
 import LogoPicker from "@/app/components/LogoPicker";
 import { logos } from "@/app/data/logos";
 
 export default function ProductPage() {
   const params = useParams();
-  const slug = params?.slug as string;
-  const product = getProductBySlug(slug);
+  const rawSlug = params?.slug;
+  const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
+
+  const product = slug ? getProductBySlug(slug) : null;
 
   const [selectedImage, setSelectedImage] = useState(0);
-  const [name, setName] = useState("");
-  const [size, setSize] = useState<string>(product?.sizes?.[1] ?? "Youth M");
-  const [color, setColor] = useState<string>(product?.colors?.[0] ?? "Heather Gray");
+  const [customDetails, setCustomDetails] = useState("");
+  const [selectedLogo, setSelectedLogo] = useState("");
+  const [placement, setPlacement] = useState("Left Chest");
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
-  const [selectedLogo, setSelectedLogo] = useState("");
+  const [size, setSize] = useState("Youth M");
+  const [color, setColor] = useState("Heather Gray");
+
+  useEffect(() => {
+    if (product) {
+      setSelectedImage(0);
+      setSize(product.sizes?.[1] ?? product.sizes?.[0] ?? "Youth M");
+      setColor(product.colors?.[0] ?? "Heather Gray");
+    }
+  }, [product]);
 
   const selectedLogoObject = useMemo(() => {
     return logos.find((l) => l.slug === selectedLogo);
   }, [selectedLogo]);
 
-  if (!product) {
+  if (!slug || !product) {
     return (
       <main className="min-h-screen bg-[#F7F7F5] px-6 py-16 text-[#4B4B4B]">
         <div className="mx-auto max-w-5xl text-center">
@@ -39,9 +50,14 @@ export default function ProductPage() {
     );
   }
 
-  const currentImage = product.images[selectedImage];
+  const currentImage = product.images?.[selectedImage] ?? product.images?.[0] ?? "";
 
   function handleAddToCart() {
+    if (!selectedLogo) {
+      alert("Please select a design");
+      return;
+    }
+
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const newItem = {
@@ -49,13 +65,14 @@ export default function ProductPage() {
       slug,
       product: product.name,
       price: product.price,
-      campName: name,
+      campName: customDetails,
       size,
       color,
       quantity,
       image: currentImage,
       logoSlug: selectedLogo,
       logoName: selectedLogoObject?.name || "",
+      placement,
     };
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
@@ -109,11 +126,15 @@ export default function ProductPage() {
             )}
 
             <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white p-8 shadow-[0_12px_32px_rgba(0,0,0,0.035)] sm:p-10">
-              <img
-                src={currentImage}
-                alt={product.name}
-                className={mainImageClass}
-              />
+              {currentImage ? (
+                <img
+                  src={currentImage}
+                  alt={product.name}
+                  className={mainImageClass}
+                />
+              ) : (
+                <div className="text-sm text-gray-400">No image available</div>
+              )}
             </div>
           </div>
 
@@ -134,12 +155,14 @@ export default function ProductPage() {
 
             <div className="mt-8 flex flex-col gap-5">
               <div>
-                <label className="text-sm font-medium text-[#3F3F3F]">Camp Name</label>
+                <label className="text-sm font-medium text-[#3F3F3F]">
+                  Customization Details
+                </label>
                 <input
                   type="text"
-                  placeholder="Enter name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Camp name, player name, number, special request, etc."
+                  value={customDetails}
+                  onChange={(e) => setCustomDetails(e.target.value)}
                   className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
                 />
               </div>
@@ -177,6 +200,29 @@ export default function ProductPage() {
                 selectedLogo={selectedLogo}
                 onSelectLogo={setSelectedLogo}
               />
+
+              <a
+                href="/designs"
+                className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
+              >
+                View all designs
+              </a>
+
+              <div>
+                <label className="text-sm font-medium text-[#3F3F3F]">
+                  Logo Placement
+                </label>
+                <select
+                  value={placement}
+                  onChange={(e) => setPlacement(e.target.value)}
+                  className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+                >
+                  <option>Left Chest</option>
+                  <option>Full Front</option>
+                  <option>Back</option>
+                  <option>Sleeve</option>
+                </select>
+              </div>
 
               <div>
                 <label className="text-sm font-medium text-[#3F3F3F]">Quantity</label>
