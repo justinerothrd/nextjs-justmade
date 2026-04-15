@@ -23,9 +23,9 @@ export default function RootLayout({
   let announcementText = "Personalized custom clothing for camp, college, and more";
 
   if (pathname.startsWith("/college")) {
-    announcementText = "Personalized college favorites designed to feel special";
+    announcementText = "Personalized college favorites designed to feel custom";
   } else if (pathname.startsWith("/shop") || pathname.startsWith("/product")) {
-    announcementText = "Personalized camp favorites for kids, bunks, and groups";
+    announcementText = "Personalized camp favorites designed to feel custom";
   }
 
   return (
