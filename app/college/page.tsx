@@ -36,7 +36,6 @@ const categories = [
 export default function CollegePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
-      {/* HERO */}
       <section className="px-4 pb-12 pt-8 sm:px-6 md:pb-24 md:pt-16">
         <div className="mx-auto grid max-w-7xl items-center gap-8 md:grid-cols-[1fr_.95fr] md:gap-12">
           <div className="text-center md:text-left">
@@ -89,7 +88,6 @@ export default function CollegePage() {
         </div>
       </section>
 
-      {/* CATEGORIES */}
       <section className="px-4 pb-16 sm:px-6 sm:pb-20">
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 sm:mb-8">
