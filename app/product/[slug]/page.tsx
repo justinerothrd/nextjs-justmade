@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { getProductBySlug } from "@/lib/products";
 import LogoPicker from "@/app/components/LogoPicker";
 import { logos } from "@/app/data/logos";
-
+#ECE7E1
 export default function ProductPage() {
   const params = useParams();
   const rawSlug = params?.slug;
@@ -132,7 +132,17 @@ export default function ProductPage() {
               </div>
             )}
 
-            <div className="flex flex-1 items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white px-6 py-6 shadow-[0_12px_32px_rgba(0,0,0,0.035)] sm:px-8 sm:py-8">
+            <div 
+  className={`flex items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white shadow-[0_12px_32px_rgba(0,0,0,0.035)]
+  ${slug === "hoodie" ? "h-[620px]" : ""}
+  ${slug === "quarter-zip" ? "h-[620px]" : ""}
+  ${slug === "tank-top" ? "h-[480px]" : ""}
+  ${slug === "custom-tee" ? "h-[520px]" : ""}
+  ${slug === "custom-shorts" ? "h-[420px]" : ""}
+  ${slug === "sleepwear" ? "h-[460px]" : ""}
+  ${slug === "sleepwear-set" ? "h-[520px]" : ""}
+  px-6 py-6 sm:px-8 sm:py-8`}
+>
   {currentImage ? (
     <img
       src={currentImage}
