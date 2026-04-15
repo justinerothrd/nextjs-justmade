@@ -14,6 +14,7 @@ type CartItem = {
   quantity: number;
   image?: string;
   logoName?: string;
+  placement?: string;
 };
 
 export default function MiniCart() {
@@ -169,15 +170,16 @@ export default function MiniCart() {
                           <div className="mt-2 space-y-1 text-xs text-gray-500">
                             <p>
                               {item.campName
-                                ? `Camp Name: ${item.campName}`
+                                ? `Customization: ${item.campName}`
                                 : item.college
                                 ? `College: ${item.college}`
-                                : "Name: N/A"}
+                                : "Customization: N/A"}
                             </p>
                             <p>
                               {item.size} · {item.color} · Qty {item.quantity}
                             </p>
                             {item.logoName && <p>Design: {item.logoName}</p>}
+                            {item.placement && <p>Placement: {item.placement}</p>}
                           </div>
 
                           <button
