@@ -86,12 +86,17 @@ export default function ProductPage() {
 }
 
   const mainImageClass = [
-    "h-auto max-h-[780px] w-full object-contain transition duration-500",
-    slug === "quarter-zip" ? "scale-[1.12]" : "",
-    slug === "hoodie" ? "scale-[1.04]" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
+  "h-auto w-full object-contain transition duration-500",
+  slug === "quarter-zip" ? "max-h-[760px] scale-[1.12]" : "",
+  slug === "hoodie" ? "max-h-[760px] scale-[1.04]" : "",
+  slug === "tank-top" ? "max-h-[520px]" : "",
+  slug === "custom-tee" ? "max-h-[620px]" : "",
+  slug === "custom-shorts" ? "max-h-[520px]" : "",
+  slug === "sleepwear" ? "max-h-[520px]" : "",
+  slug === "sleepwear-set" ? "max-h-[620px]" : "",
+]
+  .filter(Boolean)
+  .join(" ");
 
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-12">
