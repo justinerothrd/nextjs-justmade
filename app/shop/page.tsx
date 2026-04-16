@@ -38,7 +38,6 @@ export default function ShopPage() {
     <main className="min-h-screen bg-white text-[#2F3A4A]">
       <section className="px-4 pb-6 pt-8 text-center sm:px-6 sm:pb-8 sm:pt-10">
         <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
-          Just Made Custom
         </p>
 
         <h1 className="mt-4 text-4xl font-light sm:text-5xl md:text-6xl">
