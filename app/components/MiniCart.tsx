@@ -90,7 +90,7 @@ export default function MiniCart() {
 >
   Cart
         {getItemCount() > 0 && (
-          <span className="ml-2 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#6F879E] px-1.5 text-[10px] text-white">
+          <span className="ml-2 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#373535] px-1.5 text-[10px] text-white">
             {getItemCount()}
           </span>
         )}
