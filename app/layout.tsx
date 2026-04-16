@@ -2,6 +2,7 @@
 
 import "./globals.css";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Josefin_Sans } from "next/font/google";
 import MiniCart from "./components/MiniCart";
 
@@ -17,6 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <html lang="en" className={josefin.variable}>
@@ -149,8 +151,12 @@ export default function RootLayout({
           )}
         </header>
 
-        {/* CLEAN BLUE STRIP (NO TEXT) */}
-        <div className="bg-[#6F879E] py-3" />
+        {/* BLUE BAR — hidden only on homepage */}
+        {pathname !== "/" && (
+          <div className="bg-[#6F879E] py-3 text-center text-xs uppercase tracking-[0.2em] text-white">
+            Custom designs for clothing and more
+          </div>
+        )}
 
         {children}
       </body>
