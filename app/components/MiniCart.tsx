@@ -91,9 +91,9 @@ export default function MiniCart() {
         <span>Cart</span>
 
         {getItemCount() > 0 && (
-          <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#6F879E] text-[10px] font-medium leading-none text-white transition-transform duration-200 hover:scale-105">
-  {getItemCount()}
-</span>
+          <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#5F7A94] text-[10px] font-medium leading-none text-white">
+            {getItemCount()}
+          </span>
         )}
       </button>
 
@@ -106,8 +106,8 @@ export default function MiniCart() {
           />
 
           <aside className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-[#EAE6E1] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-            <div className="flex items-center justify-between border-b border-[#ECE7E1] px-5 py-4">
-              <h2 className="text-xl font-medium tracking-[0.04em] text-[#3F3F3F]">
+            <div className="flex items-center justify-between border-b border-[#EAE6E1] px-5 py-4">
+              <h2 className="text-xl font-medium tracking-[0.01em] text-[#3F3F3F]">
                 Your Cart
               </h2>
 
@@ -134,12 +134,15 @@ export default function MiniCart() {
               ) : (
                 <div className="flex flex-col gap-4">
                   {cart.map((item) => (
-                    <div key={item.id} className="rounded-xl bg-white p-4">
+                    <div
+                      key={item.id}
+                      className="rounded-[28px] border border-[#EAE6E1] bg-white p-4"
+                    >
                       <div className="flex gap-3">
                         <a
                           href={getItemHref(item)}
                           onClick={() => setOpen(false)}
-                          className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white transition hover:opacity-90"
+                          className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#F7F7F5] transition hover:opacity-90"
                           aria-label={`View ${item.product}`}
                         >
                           {item.image ? (
@@ -198,11 +201,11 @@ export default function MiniCart() {
               )}
             </div>
 
-            <div className="border-t border-[#ECE7E1] px-5 py-4">
+            <div className="border-t border-[#EAE6E1] px-5 py-4">
               <div className="mb-4 flex items-center justify-between text-sm">
                 <span className="font-medium text-[#3F3F3F]">Total</span>
                 <span className="text-lg font-medium text-[#5F7A94]">
-                  ${getTotal()}
+                  ${getTotal().toFixed(2)}
                 </span>
               </div>
 
@@ -210,7 +213,7 @@ export default function MiniCart() {
                 <a
                   href="/cart"
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center rounded-full bg-[#3F3F3F] px-6 py-3 text-sm text-white transition-all duration-200 hover:bg-[#2C2C2C] hover:shadow-[0_12px_24px_rgba(0,0,0,0.18)]"
+                  className="inline-flex items-center justify-center rounded-full bg-[#3F3F3F] px-6 py-3 text-sm text-white transition-all duration-200 hover:bg-[#2C2C2C]"
                 >
                   View Cart
                 </a>
