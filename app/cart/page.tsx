@@ -188,7 +188,7 @@ export default function CartPage() {
               {cart.map((item) => (
                 <div
                   key={item.id}
-                  className="rounded-3xl border border-[#ECE7E1] bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.03)] sm:p-6"
+                  className="rounded-[28px] border border-[#EAE6E1] bg-white p-5 sm:p-6"
                 >
                   <div className="flex gap-4">
                     <a
@@ -213,7 +213,7 @@ export default function CartPage() {
                       <div className="flex items-start justify-between gap-4">
                         <a
                           href={getItemHref(item)}
-                          className="text-lg font-medium text-[#2F3A4A] transition hover:text-[#6F879E]"
+                          className="text-lg font-medium text-[#3F3F3F] transition hover:text-[#6F879E]"
                         >
                           {item.product}
                         </a>
