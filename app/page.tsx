@@ -89,7 +89,6 @@ export default function HomePage() {
             </h2>
 
             <p className="mt-2 max-w-2xl text-sm leading-7 text-[#666]">
-              Cozy layers, everyday tees, sleepwear, and thoughtful extras.
             </p>
           </div>
 
