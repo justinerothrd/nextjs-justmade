@@ -20,12 +20,12 @@ export default function RootLayout({
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  let announcementText = "Personalized custom clothing for camp, college, and more";
+  let announcementText = "Personalized custom gear for camp, college, and more";
 
   if (pathname.startsWith("/college")) {
-    announcementText = "Personalized college favorites designed to feel custom";
+    announcementText = "Custom college favorites designed for you";
   } else if (pathname.startsWith("/shop") || pathname.startsWith("/product")) {
-    announcementText = "Personalized camp favorites designed to feel custom";
+    announcementText = "Custom camp favorites designed for you";
   }
 
   return (
@@ -37,7 +37,7 @@ export default function RootLayout({
               <img
                 src="/logo.png"
                 alt="Just Made Custom logo"
-                className="h-24 w-auto"
+                className="h-28 w-auto"
               />
             </a>
 
@@ -125,7 +125,7 @@ export default function RootLayout({
         </header>
 
         <div className="bg-[#6F879E] py-3 text-center text-xs uppercase tracking-[0.2em] text-white">
-  Personalized pieces for camp, college, and more
+  Custom designs for camp, college, and more
 </div>
 
         {children}
