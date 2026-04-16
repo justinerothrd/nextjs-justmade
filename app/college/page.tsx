@@ -40,7 +40,6 @@ export default function CollegePage() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
-              Just Made Custom
             </p>
 
             <h1 className="mt-4 text-4xl font-light text-[#2F3A4A] sm:text-5xl md:text-6xl">
