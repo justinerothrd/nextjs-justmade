@@ -50,11 +50,14 @@ export default function HomePage() {
 
         <div className="relative z-10 flex h-full items-end">
           <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
-            <p className="text-left text-base font-semibold uppercase tracking-[0.3em] text-white/85 sm:text-lg">
-              MADE TO BE CUSTOM
-            </p>
+            <p
+  className="text-left text-base font-semibold uppercase tracking-[0.28em] text-white/90 sm:text-lg"
+  style={{ fontFamily: "Glacial" }}
+>
+  MADE TO BE CUSTOM
+</p>
 
-           <p
+<p
   className="mt-4 max-w-xl text-3xl font-bold leading-[1.18] tracking-[-0.01em] text-white sm:text-4xl md:text-5xl"
   style={{ fontFamily: "Glacial" }}
 >
