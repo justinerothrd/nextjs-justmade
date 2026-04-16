@@ -3,17 +3,13 @@
 import "./globals.css";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Josefin_Sans, Inter } from "next/font/google";
+import { Josefin_Sans } from "next/font/google";
 import MiniCart from "./components/MiniCart";
 
-const playfair = Playfair_Display({
+const josefin = Josefin_Sans({
   subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "600"],
+  variable: "--font-josefin",
 });
 
 export default function RootLayout({
