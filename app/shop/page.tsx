@@ -46,7 +46,7 @@ export default function ShopPage() {
         </h1>
 
         <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
-          Custom camp clothing designed to feel easy, polished, and special.
+          Custom camp clothing designed for you
         </p>
       </section>
 
