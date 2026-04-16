@@ -57,7 +57,7 @@ export default function RootLayout({
   <a href="/" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
     Home
   </a>
-  <a href="/shop" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]"">
+  <a href="/shop" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
     Shop Camp
   </a>
   <a href="/college" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
