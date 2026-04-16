@@ -149,8 +149,8 @@ export default function RootLayout({
           )}
         </header>
 
-        <div className="bg-[#6F879E] py-3 
-        </div>
+        {/* CLEAN BLUE STRIP (NO TEXT) */}
+        <div className="bg-[#6F879E] py-3" />
 
         {children}
       </body>
