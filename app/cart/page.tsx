@@ -159,7 +159,9 @@ export default function CartPage() {
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-16">
       <div className="mx-auto max-w-3xl">
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-3xl font-light text-[#2F3A4A]">Your Cart</h1>
+  <h1 className="text-[40px] font-light tracking-[0.01em] text-[#3F3F3F]">
+    Your Cart
+  </h1>
 
           <a
             href="/shop"
