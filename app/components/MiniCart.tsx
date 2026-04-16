@@ -91,7 +91,7 @@ export default function MiniCart() {
         <span>Cart</span>
 
         {getItemCount() > 0 && (
-          <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#6F879E] text-[10px] font-medium leading-none text-white">
+          <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#6F879E] text-[10px] font-medium leading-none text-white transition-transform duration-200 hover:scale-105">
   {getItemCount()}
 </span>
         )}
