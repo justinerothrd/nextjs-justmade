@@ -53,7 +53,7 @@ export default function RootLayout({
               />
             </a>
 
-            <nav className="hidden items-center gap-10 text-[13px] font-medium uppercase tracking-[0.12em] md:flex">
+            <nav className="hidden items-center gap-10 text-[15px] font-medium uppercase tracking-[0.12em] md:flex">
   <a href="/" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
     Home
   </a>
