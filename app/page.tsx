@@ -70,7 +70,7 @@ export default function HomePage() {
 
                 <a
                   href="/college"
-                  className="rounded-full border border-white/80 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+                  className="rounded-full border border-white/80 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/15"
                 >
                   Shop College
                 </a>
