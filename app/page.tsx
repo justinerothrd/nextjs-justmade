@@ -65,14 +65,14 @@ export default function HomePage() {
             <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href="/shop"
-                className="rounded-full bg-white px-9 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
+                className="rounded-full bg-white px-5 py-5 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
               >
                 Shop Camp
               </a>
 
               <a
                 href="/college"
-                className="rounded-full border border-white/80 bg-white/10 px-9 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
+                className="rounded-full border border-white/80 bg-white/10 px-5 py-5 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
               >
                 Shop College
               </a>
