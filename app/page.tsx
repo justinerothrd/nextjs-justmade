@@ -55,18 +55,11 @@ export default function HomePage() {
     fontFamily:
       "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   }}
-  className="text-left text-base font-semibold uppercase tracking-[0.3em] text-white/85 sm:text-lg"
->
+  <p className={`${inter.className} text-left text-base font-semibold uppercase tracking-[0.25em] text-white/85 sm:text-lg`}>
   MADE TO BE CUSTOM
 </p>
 
-<p
-  style={{
-    fontFamily:
-      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  }}
-  className="mt-3 max-w-2xl text-left text-3xl font-medium leading-snug text-white sm:text-4xl md:text-5xl"
->
+<p className={`${inter.className} mt-3 max-w-2xl text-left text-3xl font-medium leading-snug text-white sm:text-4xl md:text-5xl`}>
   Personalized gear for camp, college, and everyday.
 </p>
 
