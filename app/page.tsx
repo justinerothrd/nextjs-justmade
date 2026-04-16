@@ -18,7 +18,7 @@ export default function HomePage() {
       slug: "bottoms",
       title: "Bottoms",
       subtitle: "Custom shorts and easy camp-ready staples.",
-      image: "/bottoms.jpg",
+      image: "/shorts.jpeg",
       link: "/shop/bottoms",
     },
     {
@@ -39,7 +39,6 @@ export default function HomePage() {
 
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
-      {/* HERO */}
       <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
         <img
           src="/hero-main.png"
@@ -52,13 +51,13 @@ export default function HomePage() {
         <div className="relative z-10 flex h-full items-end">
           <div className="w-full">
             <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
-             <p className="text-left text-base sm:text-lg font-semibold uppercase tracking-[0.3em] text-white">
-  MADE TO BE CUSTOM
-</p>
+              <p className="text-left text-base font-semibold uppercase tracking-[0.3em] text-white sm:text-lg">
+                MADE TO BE CUSTOM
+              </p>
 
-<p className="mt-4 max-w-2xl text-left text-3xl sm:text-4xl md:text-5xl font-normal leading-snug text-white">
-  Personalized gear for camp, college, and everyday.
-</p>
+              <p className="mt-4 max-w-2xl text-left text-3xl font-normal leading-snug text-white sm:text-4xl md:text-5xl">
+                Personalized gear for camp, college, and everyday.
+              </p>
 
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
@@ -70,7 +69,7 @@ export default function HomePage() {
 
                 <a
                   href="/college"
-                <p className="rounded-full border border-white/80 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
+                  className="rounded-full border border-white/80 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
                 >
                   Shop College
                 </a>
@@ -80,7 +79,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CATEGORIES */}
       <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 sm:mb-8">
