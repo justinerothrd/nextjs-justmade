@@ -317,17 +317,3 @@ export default function CartPage() {
     </main>
   );
 }
-
-            <button
-              type="submit"
-              disabled={status === "sending"}
-              className="mt-8 w-full rounded-full bg-[#6F879E] px-8 py-4 text-sm text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)] disabled:opacity-50"
-            >
-              {status === "sending" ? "Submitting..." : "Submit Order Request"}
-            </button>
-          </form>
-        )}
-      </div>
-    </main>
-  );
-}
