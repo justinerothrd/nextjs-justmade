@@ -55,7 +55,7 @@ export default function HomePage() {
                 MADE TO BE CUSTOM
               </p>
 
-              <p className="mt-4 max-w-2xl text-left text-3xl font-normal leading-snug text-white sm:text-4xl md:text-5xl">
+              <p className="mt-3 max-w-2xl text-left text-3xl font-normal leading-snug text-white sm:text-4xl md:text-5xl">
                 Personalized gear for camp, college, and everyday.
               </p>
 
