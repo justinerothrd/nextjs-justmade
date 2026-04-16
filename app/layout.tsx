@@ -54,28 +54,25 @@ export default function RootLayout({
             </a>
 
             <nav className="hidden items-center gap-8 text-sm font-light uppercase tracking-widest md:flex">
-  <a href="/" className="text-[#5F6F7F] transition hover:text-[#6F879E]">
+  <a href="/" className="text-[#3F3F3F] transition hover:text-[#6F879E]">
     Home
   </a>
-  <a href="/shop" className="text-[#5F6F7F] transition hover:text-[#6F879E]">
+  <a href="/shop" className="text-[#3F3F3F] transition hover:text-[#6F879E]">
     Shop Camp
   </a>
-  <a href="/college" className="text-[#5F6F7F] transition hover:text-[#6F879E]">
+  <a href="/college" className="text-[#3F3F3F] transition hover:text-[#6F879E]">
     Shop College
   </a>
-  <a
-    href="/custom-orders"
-    className="text-[#5F6F7F] transition hover:text-[#6F879E]"
-  >
+  <a href="/custom-orders" className="text-[#3F3F3F] transition hover:text-[#6F879E]">
     Custom Orders
   </a>
-  <a href="/about" className="text-[#5F6F7F] transition hover:text-[#6F879E]">
+  <a href="/about" className="text-[#3F3F3F] transition hover:text-[#6F879E]">
     About
   </a>
-  <a href="/faq" className="text-[#5F6F7F] transition hover:text-[#6F879E]">
+  <a href="/faq" className="text-[#3F3F3F] transition hover:text-[#6F879E]">
     FAQ
   </a>
-  <a href="/contact" className="text-[#5F6F7F] transition hover:text-[#6F879E]">
+  <a href="/contact" className="text-[#3F3F3F] transition hover:text-[#6F879E]">
     Contact
   </a>
 </nav>
