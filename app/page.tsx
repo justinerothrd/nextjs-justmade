@@ -38,7 +38,7 @@ export default function HomePage() {
   ];
 
   return (
-    <main className="bg-[#F7F7F5] text-[#4B4B4B]">
+    <main className="bg-[##06076d] text-[#06076d]">
       {/* HERO */}
   <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
   {/* Background Image */}
@@ -62,7 +62,7 @@ export default function HomePage() {
 
       {/* SUBLINE */}
       <p className="mt-4 max-w-xl text-lg font-light text-white/85 sm:text-xl">
-        Personalized for camp, college, and everyday wear.
+        Personalized gear for camp, college, and everyday.
       </p>
 
       {/* BUTTONS */}
