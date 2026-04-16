@@ -3,11 +3,10 @@ export default function CustomOrdersPage() {
     <main className="bg-[#F7F7F5] min-h-screen px-6 py-16 text-[#4B4B4B]">
       <div className="mx-auto max-w-5xl">
         <p className="text-sm uppercase tracking-[0.2em] text-[#6F879E]">
-          Just Made Custom
+          Custom Orders
         </p>
 
         <h1 className="mt-3 text-4xl font-light text-[#3F3F3F] md:text-5xl">
-          Custom Orders
         </h1>
 
         <p className="mt-6 max-w-3xl text-lg leading-8 text-[#5D5D5D]">
