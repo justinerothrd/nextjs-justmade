@@ -150,14 +150,12 @@ export default function RootLayout({
             </nav>
           )}
         </header>
-
         {/* BLUE BAR — hidden only on homepage */}
         {pathname !== "/" && (
           <div className="bg-[#6F879E] py-3 text-center text-xs uppercase tracking-[0.2em] text-white">
             Custom designs for clothing and more
           </div>
         )}
-
         {children}
       </body>
     </html>
