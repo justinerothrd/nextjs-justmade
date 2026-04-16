@@ -88,7 +88,7 @@ export default function MiniCart() {
         className="relative flex items-center gap-2 text-[15px] font-medium uppercase tracking-[0.12em] text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]"
         aria-label="Open cart"
       >
-        <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#6F879E] text-[10px] font-medium leading-none text-white">
+<span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#6F879E] text-[10px] font-medium leading-none text-white">
   {getItemCount()}
 </span>
         )}
