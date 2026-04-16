@@ -61,7 +61,7 @@ export default function HomePage() {
   Personalized gear for camp, college, and everyday.
 </p>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap gap-3">
               <a
                 href="/shop"
                 className="rounded-full bg-white px-5 py-5 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
