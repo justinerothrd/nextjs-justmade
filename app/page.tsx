@@ -52,13 +52,13 @@ export default function HomePage() {
         <div className="relative z-10 flex h-full items-end">
           <div className="w-full">
             <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
-              <p className="text-left text-base sm:text-lg font-medium uppercase tracking-[0.35em] text-white"
-                Made to be custom
-              </p>
+             <p className="text-left text-base sm:text-lg font-semibold uppercase tracking-[0.3em] text-white">
+  MADE TO BE CUSTOM
+</p>
 
-              <p className="mt-4 max-w-2xl text-left text-3xl font-normal leading-snug text-white sm:text-4xl md:text-5xl">
-                Personalized gear for camp, college, and everyday.
-              </p>
+<p className="mt-4 max-w-2xl text-left text-3xl sm:text-4xl md:text-5xl font-normal leading-snug text-white">
+  Personalized gear for camp, college, and everyday.
+</p>
 
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
