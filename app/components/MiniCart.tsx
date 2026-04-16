@@ -84,13 +84,14 @@ export default function MiniCart() {
   return (
     <>
       <button
-  onClick={() => setOpen(true)}
-  className="relative text-sm font-light uppercase tracking-[0.18em] text-[#5F6F7F] transition hover:text-[#6F879E]"
-  aria-label="Open cart"
->
-  Cart
+        onClick={() => setOpen(true)}
+        className="relative flex items-center gap-2 text-[15px] font-medium uppercase tracking-[0.12em] text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]"
+        aria-label="Open cart"
+      >
+        <span>Cart</span>
+
         {getItemCount() > 0 && (
-          <span className="ml-2 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#373535] px-1.5 text-[10px] text-white">
+          <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#3F3F3F] text-[10px] font-medium leading-none text-white">
             {getItemCount()}
           </span>
         )}
@@ -104,9 +105,12 @@ export default function MiniCart() {
             className="fixed inset-0 z-40 bg-black/20"
           />
 
-          <aside className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-[#E6E2DD] bg-white shadow-[0_0_40px_rgba(0,0,0,0.12)]">
+          <aside className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-[#EAE6E1] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
             <div className="flex items-center justify-between border-b border-[#ECE7E1] px-5 py-4">
-              <h2 className="text-xl font-light text-[#2F3A4A]">Your Cart</h2>
+              <h2 className="text-xl font-medium tracking-[0.04em] text-[#3F3F3F]">
+                Your Cart
+              </h2>
+
               <button
                 onClick={() => setOpen(false)}
                 className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
@@ -130,10 +134,7 @@ export default function MiniCart() {
               ) : (
                 <div className="flex flex-col gap-4">
                   {cart.map((item) => (
-                    <div
-                      key={item.id}
-                      className="rounded-2xl border border-[#ECE7E1] bg-[#FCFCFB] p-4"
-                    >
+                    <div key={item.id} className="rounded-xl bg-white p-4">
                       <div className="flex gap-3">
                         <a
                           href={getItemHref(item)}
@@ -157,12 +158,12 @@ export default function MiniCart() {
                             <a
                               href={getItemHref(item)}
                               onClick={() => setOpen(false)}
-                              className="text-sm font-medium text-[#2F3A4A] transition hover:text-[#6F879E]"
+                              className="text-sm font-medium text-[#3F3F3F] transition hover:text-[#6F879E]"
                             >
                               {item.product}
                             </a>
 
-                            <p className="shrink-0 text-sm font-medium text-[#6F879E]">
+                            <p className="shrink-0 text-sm font-medium text-[#5F7A94]">
                               {item.price}
                             </p>
                           </div>
@@ -185,7 +186,7 @@ export default function MiniCart() {
                           <button
                             type="button"
                             onClick={() => removeItem(item.id)}
-                            className="mt-3 text-xs text-gray-400 underline underline-offset-4 transition hover:text-red-400"
+                            className="mt-3 text-xs text-gray-400 underline underline-offset-4 transition hover:text-[#9CA3AF]"
                           >
                             Remove
                           </button>
@@ -199,8 +200,8 @@ export default function MiniCart() {
 
             <div className="border-t border-[#ECE7E1] px-5 py-4">
               <div className="mb-4 flex items-center justify-between text-sm">
-                <span className="font-medium text-[#2F3A4A]">Total</span>
-                <span className="text-lg font-medium text-[#6F879E]">
+                <span className="font-medium text-[#3F3F3F]">Total</span>
+                <span className="text-lg font-medium text-[#5F7A94]">
                   ${getTotal()}
                 </span>
               </div>
@@ -209,14 +210,14 @@ export default function MiniCart() {
                 <a
                   href="/cart"
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center rounded-full bg-[#6F879E] px-6 py-3 text-sm text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)]"
+                  className="inline-flex items-center justify-center rounded-full bg-[#3F3F3F] px-6 py-3 text-sm text-white transition-all duration-200 hover:bg-[#2C2C2C] hover:shadow-[0_12px_24px_rgba(0,0,0,0.18)]"
                 >
                   View Cart
                 </a>
 
                 <button
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center rounded-full border border-[#D8D3CD] px-6 py-3 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
+                  className="inline-flex items-center justify-center rounded-full border border-[#D8D3CD] px-6 py-3 text-sm text-[#3F3F3F] transition hover:bg-[#F7F7F5]"
                 >
                   Continue Shopping
                 </button>
