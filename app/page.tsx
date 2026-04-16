@@ -50,13 +50,25 @@ export default function HomePage() {
 
         <div className="relative z-10 flex h-full items-end">
           <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
-            <p className="text-left text-base font-semibold uppercase tracking-[0.3em] text-white/85 sm:text-lg">
-              MADE TO BE CUSTOM
-            </p>
+            <p
+  style={{
+    fontFamily:
+      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  }}
+  className="text-left text-base font-semibold uppercase tracking-[0.3em] text-white/85 sm:text-lg"
+>
+  MADE TO BE CUSTOM
+</p>
 
-            <p className="mt-3 max-w-2xl text-left text-3xl font-normal leading-snug text-white sm:text-4xl md:text-5xl">
-              Personalized gear for camp, college, and everyday.
-            </p>
+<p
+  style={{
+    fontFamily:
+      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  }}
+  className="mt-3 max-w-2xl text-left text-3xl font-medium leading-snug text-white sm:text-4xl md:text-5xl"
+>
+  Personalized gear for camp, college, and everyday.
+</p>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <a
