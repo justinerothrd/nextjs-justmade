@@ -84,11 +84,11 @@ export default function MiniCart() {
   return (
     <>
       <button
-        onClick={() => setOpen(true)}
-        className="relative text-sm uppercase tracking-widest transition hover:text-[#6F879E]"
-        aria-label="Open cart"
-      >
-        Cart
+  onClick={() => setOpen(true)}
+  className="relative text-sm font-light uppercase tracking-[0.18em] text-[#5F6F7F] transition hover:text-[#6F879E]"
+  aria-label="Open cart"
+>
+  Cart
         {getItemCount() > 0 && (
           <span className="ml-2 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#6F879E] px-1.5 text-[10px] text-white">
             {getItemCount()}
