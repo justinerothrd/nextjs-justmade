@@ -43,7 +43,6 @@ export default function CollegePage() {
             </p>
 
             <h1 className="mt-4 text-4xl font-light text-[#2F3A4A] sm:text-5xl md:text-6xl">
-              Shop College
             </h1>
 
             <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
