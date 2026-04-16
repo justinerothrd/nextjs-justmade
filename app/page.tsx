@@ -52,7 +52,7 @@ export default function HomePage() {
         <div className="relative z-10 flex h-full items-end">
           <div className="w-full">
             <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
-              <p className="text-left text-sm font-medium uppercase tracking-[0.3em] text-white">
+              </p> className="text-left text-base sm:text-lg font-semibold uppercase tracking-[0.3em] text-white"
                 Made to be custom
               </p>
 
@@ -70,7 +70,7 @@ export default function HomePage() {
 
                 <a
                   href="/college"
-                  className="rounded-full border border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+                  className="rounded-full border border-white/80 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
                 >
                   Shop College
                 </a>
