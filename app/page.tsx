@@ -55,7 +55,7 @@ export default function HomePage() {
 </p>
 
 <p
-  className="mt-4 max-w-2xl text-3xl leading-[1.3] tracking-[0.02em] text-white/90 sm:text-4xl md:text-5xl"
+  className="mt-4 max-w-[700px] text-3xl leading-[1.3] tracking-[0.02em] text-white/90 sm:text-4xl md:text-5xl"
   style={{ fontFamily: "Glacial" }}
 >
   Personalized gear for camp, college, and everyday.
