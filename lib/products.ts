@@ -12,7 +12,7 @@ hoodie: {
   name: "Custom Hoodie",
   price: "$70",
   description: "A cozy custom hoodie for chilly camp nights and cool mornings.",
-  images: ["/hoodie.center-preview.png", "/hoodie.jpeg"],
+  images: ["/hoodie.center-preview.png", "/hoodie.jpeg", "/skims hoodie front.png", "/skims hoodie back.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
