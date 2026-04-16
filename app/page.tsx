@@ -11,14 +11,14 @@ export default function HomePage() {
       slug: "tees",
       title: "Tees & Tanks",
       subtitle: "Easy everyday camp styles with a custom feel.",
-      image: "/tank with script.png",
+      image: "/Tank.jpeg",
       link: "/shop/tees",
     },
     {
       slug: "bottoms",
       title: "Bottoms",
       subtitle: "Custom shorts and easy camp-ready staples.",
-      image: "/bottoms.jpg",
+      image: "/shorts.jpeg",
       link: "/shop/bottoms",
     },
     {
@@ -49,32 +49,29 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/35" />
 
         <div className="relative z-10 flex h-full items-end">
-          <div className="w-full">
-            <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
-              <p className={`${playfair.className} text-left text-base sm:text-lg font-medium uppercase tracking-[0.3em] text-white`}>
- <p className="text-left text-base font-semibold uppercase tracking-[0.3em] text-white/85 sm:text-lg">
-  MADE TO BE CUSTOM
-</p>
+          <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
+            <p className="text-left text-base font-semibold uppercase tracking-[0.3em] text-white/85 sm:text-lg">
+              MADE TO BE CUSTOM
+            </p>
 
-<p className="mt-3 max-w-2xl text-left text-3xl font-normal leading-snug text-white sm:text-4xl md:text-5xl">
-  Personalized gear for camp, college, and everyday.
-</p>
+            <p className="mt-3 max-w-2xl text-left text-3xl font-normal leading-snug text-white sm:text-4xl md:text-5xl">
+              Personalized gear for camp, college, and everyday.
+            </p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
-                <a
-                  href="/shop"
-                  className="rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
-                >
-                  Shop Camp
-                </a>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="/shop"
+                className="rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
+              >
+                Shop Camp
+              </a>
 
-                <a
-                  href="/college"
-                  className="rounded-full border border-white/80 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
-                >
-                  Shop College
-                </a>
-              </div>
+              <a
+                href="/college"
+                className="rounded-full border border-white/80 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
+              >
+                Shop College
+              </a>
             </div>
           </div>
         </div>
