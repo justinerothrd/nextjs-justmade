@@ -11,7 +11,7 @@ export default function HomePage() {
       slug: "tees",
       title: "Tees & Tanks",
       subtitle: "Easy everyday camp styles with a custom feel.",
-      image: "/Tank.jpeg",
+      image: "/tank with script.png",
       link: "/shop/tees",
     },
     {
