@@ -179,9 +179,11 @@ export default function MiniCart() {
                                 ? `College: ${item.college}`
                                 : "Customization: N/A"}
                             </p>
+
                             <p>
                               {item.size} · {item.color} · Qty {item.quantity}
                             </p>
+
                             {item.logoName && <p>Design: {item.logoName}</p>}
                             {item.placement && <p>Placement: {item.placement}</p>}
                           </div>
