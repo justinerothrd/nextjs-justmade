@@ -55,11 +55,10 @@ export default function HomePage() {
 </p>
 
 <p
-  className="mt-5 max-w-xl text-[28px] leading-[1.35] tracking-[0.01em] text-white sm:text-[34px] md:text-[40px]"
+  className="mt-5 max-w-xl text-[26px] leading-[1.4] tracking-[0.02em] text-white sm:text-[32px] md:text-[38px]"
   style={{ fontFamily: "Glacial" }}
 >
-  Personalized gear for camp,
-  college, and everyday.
+  Personalized gear for camp, college, and everyday.
 </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
