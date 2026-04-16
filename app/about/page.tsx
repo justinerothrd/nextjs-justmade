@@ -7,7 +7,6 @@ export default function AboutPage() {
         </p>
 
         <h1 className="mt-3 text-4xl font-light text-[#3F3F3F] md:text-5xl">
-          Made for camp memories
         </h1>
 
         <p className="mt-6 max-w-3xl text-lg leading-8 text-[#5D5D5D]">
