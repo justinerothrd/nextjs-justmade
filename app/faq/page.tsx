@@ -7,7 +7,6 @@ export default function FaqPage() {
         </p>
 
         <h1 className="mt-3 text-4xl font-light text-[#3F3F3F] md:text-5xl">
-          Frequently Asked Questions
         </h1>
 
         <div className="mt-10 space-y-4">
@@ -22,7 +21,7 @@ export default function FaqPage() {
             },
             {
               q: "Can I order for multiple kids or a group?",
-              a: "Yes. We can help with sibling sets, bunk orders, and group camp apparel.",
+              a: "Yes. We can help with siblings, bunk orders, and all groups.",
             },
             {
               q: "How do I choose sizing?",
