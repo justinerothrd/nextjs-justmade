@@ -28,7 +28,7 @@ hoodie: {
     name: "Custom Tank Top",
     price: "$40",
     description: "A lightweight custom tank perfect for hot camp days and summer activities.",
-    images: ["/tank-preview.png", "/Tank.jpeg", "/tulane-tank.jpeg"],
+    images: ["/tank-preview.png", "/Tank.jpeg", "/tank with script.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
