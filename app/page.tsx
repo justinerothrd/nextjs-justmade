@@ -18,7 +18,7 @@ export default function HomePage() {
       slug: "bottoms",
       title: "Bottoms",
       subtitle: "Custom shorts and easy camp-ready staples.",
-      image: "/bottoms.jpg",
+      image: "/bottoms.jpeg",
       link: "/shop/bottoms",
     },
     {
@@ -38,53 +38,47 @@ export default function HomePage() {
   ];
 
   return (
-    <main className="bg-[##06076d] text-[#06076d]">
+    <main className="bg-[#F7F7F5] text-[#4B4B4B]">
       {/* HERO */}
-  <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
-  {/* Background Image */}
-  <img
-    src="/hero-main.png"
-    alt="Custom apparel"
-    className="absolute inset-0 h-full w-full object-cover"
-  />
+      <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
+        <img
+          src="/hero-main.png"
+          alt="Custom apparel"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
 
-  {/* Gradient overlay */}
-  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-black/35" />
 
-  {/* Content */}
-  <div className="relative z-10 flex h-full items-end">
-    <div className="mx-auto w-full max-w-7xl px-6 pb-16 sm:pb-20">
-      
-      {/* HEADLINE */}
-      <h1 className="text-4xl font-light uppercase tracking-[0.08em] text-white sm:text-6xl md:text-7xl">
-        Made to be custom
-      </h1>
+        <div className="relative z-10 flex h-full items-end">
+          <div className="w-full">
+            <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
+              <p className="text-left text-sm font-medium uppercase tracking-[0.3em] text-white">
+                Made to be custom
+              </p>
 
-      {/* SUBLINE */}
-      <p className="mt-4 max-w-xl text-lg font-light text-white/85 sm:text-xl">
-        Personalized gear for camp, college, and everyday.
-      </p>
+              <p className="mt-4 max-w-2xl text-left text-3xl font-normal leading-snug text-white sm:text-4xl md:text-5xl">
+                Personalized gear for camp, college, and everyday.
+              </p>
 
-      {/* BUTTONS */}
-      <div className="mt-7 flex flex-wrap gap-3">
-        <a
-          href="/shop"
-          className="rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
-        >
-          Shop Camp
-        </a>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <a
+                  href="/shop"
+                  className="rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
+                >
+                  Shop Camp
+                </a>
 
-        <a
-          href="/college"
-          className="rounded-full border border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
-        >
-          Shop College
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
+                <a
+                  href="/college"
+                  className="rounded-full border border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+                >
+                  Shop College
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CATEGORIES */}
       <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
