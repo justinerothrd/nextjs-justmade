@@ -18,7 +18,7 @@ export default function HomePage() {
       slug: "bottoms",
       title: "Bottoms",
       subtitle: "Custom shorts and easy camp-ready staples.",
-      image: "/shorts.jpeg",
+      image: "/bottoms.jpg",
       link: "/shop/bottoms",
     },
     {
@@ -70,7 +70,7 @@ export default function HomePage() {
 
                 <a
                   href="/college"
-                  className="rounded-full border border-white/80 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/15"
+                  className="rounded-full border border-white/80 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
                 >
                   Shop College
                 </a>
