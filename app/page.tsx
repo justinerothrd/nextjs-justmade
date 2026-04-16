@@ -50,7 +50,7 @@ export default function HomePage() {
 
         <div className="relative z-10 flex h-full items-end">
           <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
-            <p className="text-left text-[18px] font-semibold uppercase tracking-[0.24em] text-white/90 sm:text-base">
+            <p className="text-left text-[18px] font-semibold uppercase tracking-[0.28em] text-white/80 sm:text-base">
   MADE TO BE CUSTOM
 </p>
 
@@ -61,7 +61,7 @@ export default function HomePage() {
   Personalized gear for camp, college, and everyday.
 </p>
 
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href="/shop"
                 className="rounded-full bg-white px-5 py-5 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
