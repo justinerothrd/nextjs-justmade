@@ -20,7 +20,9 @@ type CartItem = {
 export default function CartPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
+    "idle"
+  );
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -131,7 +133,9 @@ export default function CartPage() {
         <div className="mx-auto max-w-lg text-center">
           <div className="mb-6 text-5xl">🎉</div>
 
-          <h1 className="text-3xl font-light text-[#2F3A4A]">Order Submitted</h1>
+          <h1 className="text-3xl font-light text-[#3F3F3F]">
+            Order Submitted
+          </h1>
 
           <p className="mt-4 text-base leading-7 text-gray-600">
             Thanks for your order! We&apos;re reviewing your selections and will
@@ -146,7 +150,7 @@ export default function CartPage() {
 
           <a
             href="/shop"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#6F879E] px-8 py-4 text-sm text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)]"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#3F3F3F] px-8 py-4 text-sm text-white transition-all duration-200 hover:bg-[#2C2C2C]"
           >
             Continue Shopping
           </a>
@@ -159,9 +163,9 @@ export default function CartPage() {
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-16">
       <div className="mx-auto max-w-3xl">
         <div className="mb-8 flex items-center justify-between">
-  <h1 className="text-[40px] font-light tracking-[0.01em] text-[#3F3F3F]">
-    Your Cart
-  </h1>
+          <h1 className="text-[40px] font-light tracking-[0.01em] text-[#3F3F3F]">
+            Your Cart
+          </h1>
 
           <a
             href="/shop"
@@ -218,7 +222,7 @@ export default function CartPage() {
                           {item.product}
                         </a>
 
-                        <p className="shrink-0 font-medium text-[#6F879E]">
+                        <p className="shrink-0 font-medium text-[#5F7A94]">
                           {item.price}
                         </p>
                       </div>
@@ -257,7 +261,7 @@ export default function CartPage() {
                       <button
                         type="button"
                         onClick={() => removeItem(item.id)}
-                        className="mt-4 text-xs text-gray-400 underline underline-offset-4 transition hover:text-red-400"
+                        className="mt-4 text-xs text-gray-400 underline underline-offset-4 transition hover:text-[#9CA3AF]"
                       >
                         Remove
                       </button>
@@ -267,9 +271,11 @@ export default function CartPage() {
               ))}
             </div>
 
-            <div className="mt-6 flex items-center justify-between rounded-3xl border border-[#ECE7E1] bg-white px-6 py-5 text-base font-medium shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
+            <div className="mt-6 flex items-center justify-between rounded-[28px] border border-[#EAE6E1] bg-white px-6 py-5 text-base font-medium">
               <span>Total</span>
-              <span className="text-lg text-[#6F879E]">${getTotal().toFixed(2)}</span>
+              <span className="text-lg text-[#5F7A94]">
+                ${getTotal().toFixed(2)}
+              </span>
             </div>
 
             <div className="mt-8">
@@ -283,7 +289,7 @@ export default function CartPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+                className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#5F7A94]"
               />
             </div>
 
@@ -297,6 +303,20 @@ export default function CartPage() {
                 Something went wrong. Please try again.
               </p>
             )}
+
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="mt-8 w-full rounded-full bg-[#3F3F3F] px-8 py-4 text-sm text-white transition-all duration-200 hover:bg-[#2C2C2C] disabled:opacity-50"
+            >
+              {status === "sending" ? "Submitting..." : "Submit Order Request"}
+            </button>
+          </form>
+        )}
+      </div>
+    </main>
+  );
+}
 
             <button
               type="submit"
