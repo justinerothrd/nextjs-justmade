@@ -51,7 +51,7 @@ export default function HomePage() {
         <div className="relative z-10 flex h-full items-end">
           <div className="w-full">
             <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
-              <p className="text-left text-base font-semibold uppercase tracking-[0.3em] text-white sm:text-lg">
+              <p className="text-left text-base font-semibold uppercase tracking-[0.3em] text-white/85 sm:text-lg">
                 MADE TO BE CUSTOM
               </p>
 
