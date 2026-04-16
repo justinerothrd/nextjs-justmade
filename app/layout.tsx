@@ -20,8 +20,6 @@ export default function RootLayout({
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  let announcementText = "Personalized custom gear for camp, college, and more";
-
   if (pathname.startsWith("/college")) {
     announcementText = "Custom college favorites designed for you";
   } else if (pathname.startsWith("/shop") || pathname.startsWith("/product")) {
