@@ -2,7 +2,6 @@
 
 import "./globals.css";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import { Josefin_Sans } from "next/font/google";
 import MiniCart from "./components/MiniCart";
 
@@ -18,13 +17,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname();
-
-  if (pathname.startsWith("/college")) {
-    announcementText = "Custom college favorites designed for you";
-  } else if (pathname.startsWith("/shop") || pathname.startsWith("/product")) {
-    announcementText = "Custom camp favorites designed for you";
-  }
 
   return (
     <html lang="en" className={josefin.variable}>
@@ -49,7 +41,10 @@ export default function RootLayout({
               <a href="/college" className="transition hover:text-[#6F879E]">
                 Shop College
               </a>
-              <a href="/custom-orders" className="transition hover:text-[#6F879E]">
+              <a
+                href="/custom-orders"
+                className="transition hover:text-[#6F879E]"
+              >
                 Custom Orders
               </a>
               <a href="/about" className="transition hover:text-[#6F879E]">
@@ -94,37 +89,68 @@ export default function RootLayout({
 
           {menuOpen && (
             <nav className="flex flex-col gap-4 border-t border-[#E3E3E0] bg-[#F7F7F5] px-6 py-4 text-sm uppercase tracking-widest md:hidden">
-              <a href="/" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+              <a
+                href="/"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#6F879E]"
+              >
                 Home
               </a>
-              <a href="/shop" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+              <a
+                href="/shop"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#6F879E]"
+              >
                 Shop Camp
               </a>
-              <a href="/college" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+              <a
+                href="/college"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#6F879E]"
+              >
                 Shop College
               </a>
-              <a href="/custom-orders" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+              <a
+                href="/custom-orders"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#6F879E]"
+              >
                 Custom Orders
               </a>
-              <a href="/about" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+              <a
+                href="/about"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#6F879E]"
+              >
                 About
               </a>
-              <a href="/faq" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+              <a
+                href="/faq"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#6F879E]"
+              >
                 FAQ
               </a>
-              <a href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+              <a
+                href="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#6F879E]"
+              >
                 Contact
               </a>
-              <a href="/cart" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+              <a
+                href="/cart"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#6F879E]"
+              >
                 Full Cart
               </a>
             </nav>
           )}
         </header>
 
-        <div className="bg-[#6F879E] py-3 text-center text-xs uppercase tracking-[0.2em] text-white">
-  Custom designs for camp, college, and more
-</div>
+        <div className="bg-[#6F879E] py-3 
+        </div>
 
         {children}
       </body>
