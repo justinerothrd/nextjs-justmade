@@ -40,7 +40,7 @@ export default function HomePage() {
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
       {/* HERO */}
-    <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
+  <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
   {/* Background Image */}
   <img
     src="/hero-main.png"
@@ -48,20 +48,24 @@ export default function HomePage() {
     className="absolute inset-0 h-full w-full object-cover"
   />
 
-  {/* Gradient overlay (key upgrade) */}
+  {/* Gradient overlay */}
   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
 
   {/* Content */}
   <div className="relative z-10 flex h-full items-end">
-    <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
-      <p className="text-xs uppercase tracking-[0.25em] text-white/70">
+    <div className="mx-auto w-full max-w-7xl px-6 pb-16 sm:pb-20">
+      
+      {/* HEADLINE */}
+      <h1 className="text-4xl font-light uppercase tracking-[0.08em] text-white sm:text-6xl md:text-7xl">
         Made to be custom
+      </h1>
+
+      {/* SUBLINE */}
+      <p className="mt-4 max-w-xl text-lg font-light text-white/85 sm:text-xl">
+        Personalized for camp, college, and everyday wear.
       </p>
 
-      <p className="mt-4 max-w-2xl text-3xl font-light leading-[1.2] text-white sm:text-4xl md:text-5xl">
-        Custom pieces for camp, college, and everyday wear.
-      </p>
-
+      {/* BUTTONS */}
       <div className="mt-7 flex flex-wrap gap-3">
         <a
           href="/shop"
@@ -77,6 +81,7 @@ export default function HomePage() {
           Shop College
         </a>
       </div>
+
     </div>
   </div>
 </section>
