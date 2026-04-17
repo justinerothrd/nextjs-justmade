@@ -107,7 +107,7 @@ export default function MiniCart() {
 
           <aside className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-[#EAE6E1] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
             <div className="flex items-center justify-between border-b border-[#EAE6E1] px-5 py-4">
-              <h2 className="text-xl font-medium tracking-[0.01em] text-[#3F3F3F]">
+              <h2 className="text-[20px] font-light tracking-[0.02em] text-[#3F3F3F]">
                 Your Cart
               </h2>
 
@@ -161,7 +161,7 @@ export default function MiniCart() {
                             <a
                               href={getItemHref(item)}
                               onClick={() => setOpen(false)}
-                              className="text-sm font-medium text-[#3F3F3F] transition hover:text-[#6F879E]"
+                              className="text-[15px] font-medium tracking-[0.01em] text-[#3F3F3F] transition hover:text-[#6F879E]"
                             >
                               {item.product}
                             </a>
@@ -179,11 +179,9 @@ export default function MiniCart() {
                                 ? `College: ${item.college}`
                                 : "Customization: N/A"}
                             </p>
-
                             <p>
                               {item.size} · {item.color} · Qty {item.quantity}
                             </p>
-
                             {item.logoName && <p>Design: {item.logoName}</p>}
                             {item.placement && <p>Placement: {item.placement}</p>}
                           </div>
@@ -215,14 +213,14 @@ export default function MiniCart() {
                 <a
                   href="/cart"
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center rounded-full bg-[#3F3F3F] px-6 py-3 text-sm text-white transition-all duration-200 hover:bg-[#2C2C2C]"
+                  className="w-full rounded-full bg-[#5F7A94] px-7 py-3.5 text-center text-[15px] font-medium tracking-[0.08em] text-white transition-all duration-200 hover:bg-[#536C84]"
                 >
                   View Cart
                 </a>
 
                 <button
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center rounded-full border border-[#D8D3CD] px-6 py-3 text-sm text-[#3F3F3F] transition hover:bg-[#F7F7F5]"
+                  className="w-full rounded-full border border-[#D8D3CD] px-7 py-3.5 text-[15px] font-medium tracking-[0.08em] text-[#3F3F3F] transition hover:bg-[#F7F7F5]"
                 >
                   Continue Shopping
                 </button>
