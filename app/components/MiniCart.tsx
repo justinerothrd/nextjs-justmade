@@ -119,9 +119,9 @@ export default function MiniCart() {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-4 py-4">
-              {cart.length === 0 ? (
-                <div className="pt-20 text-center">
+            <div className="hidden">
+  {/* old cart trigger */}
+</div>
                   <p className="text-gray-500">Your cart is empty.</p>
                   <a
                     href="/shop"
