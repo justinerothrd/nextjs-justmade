@@ -55,7 +55,7 @@ export default function RootLayout({
       <img
         src="/logo.png"
         alt="Just Made Custom logo"
-        className="h-14 w-auto sm:h-16 md:h-18"
+        className="h-16 w-auto sm:h-18 md:h-20"
       />
     </a>
 
