@@ -213,7 +213,7 @@ export default function MiniCart() {
                 <a
                   href="/cart"
                   onClick={() => setOpen(false)}
-                  className="w-full rounded-full bg-[#5F7A94] px-7 py-3.5 text-[15px] font-medium tracking-[0.08em] text-white transition-all duration-200 hover:bg-[#536C84] hover:-translate-y-[1px] hover:opacity-95"
+                  className="w-full rounded-full bg-[#5F7A94] px-7 py-3.5 text-center text-[15px] font-medium tracking-[0.08em] text-white transition-all duration-200 hover:bg-[#536C84] hover:opacity-95"
                 >
                   View Cart
                 </a>
