@@ -150,7 +150,7 @@ export default function CartPage() {
 
           <a
             href="/shop"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#3F3F3F] px-8 py-4 text-sm text-white transition-all duration-200 hover:bg-[#2C2C2C]"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#5F7A94] px-8 py-3.5 text-[15px] font-medium tracking-[0.08em] text-white transition-all duration-200 hover:bg-[#536C84]"
           >
             Continue Shopping
           </a>
@@ -163,7 +163,7 @@ export default function CartPage() {
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-16">
       <div className="mx-auto max-w-3xl">
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-[40px] font-light tracking-[0.01em] text-[#3F3F3F]">
+          <h1 className="text-[36px] font-light tracking-[0.01em] text-[#3F3F3F]">
             Your Cart
           </h1>
 
@@ -217,7 +217,7 @@ export default function CartPage() {
                       <div className="flex items-start justify-between gap-4">
                         <a
                           href={getItemHref(item)}
-                          className="text-lg font-medium text-[#3F3F3F] transition hover:text-[#6F879E]"
+                          className="text-[15px] font-medium tracking-[0.01em] text-[#3F3F3F] transition hover:text-[#6F879E]"
                         >
                           {item.product}
                         </a>
@@ -307,7 +307,7 @@ export default function CartPage() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full rounded-full bg-[#3F3F3F] px-7 py-3.5 text-[15px] font-medium tracking-[0.08em] text-white transition-all duration-200 hover:bg-[#2C2C2C]"
+              className="mt-8 w-full rounded-full bg-[#5F7A94] px-7 py-3.5 text-[15px] font-medium tracking-[0.08em] text-white transition-all duration-200 hover:bg-[#536C84] disabled:opacity-50"
             >
               {status === "sending" ? "Submitting..." : "Submit Order Request"}
             </button>
