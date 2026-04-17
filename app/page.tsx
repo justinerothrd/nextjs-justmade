@@ -39,7 +39,7 @@ export default function HomePage() {
 
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
-      <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
+      <section className="relative h-[68vh] min-h-[460px] w-full overflow-hidden sm:h-[75vh] sm:min-h-[520px] md:h-[80vh] md:min-h-[560px]">
         <img
           src="/hero-main.png"
           alt="Custom apparel"
@@ -49,29 +49,29 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/35" />
 
         <div className="relative z-10 flex h-full items-end">
-          <div className="mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-20">
-            <p className="text-left text-[18px] font-semibold uppercase tracking-[0.28em] text-white/90 sm:text-base">
-  MADE TO BE CUSTOM
-</p>
+          <div className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 sm:pb-14 md:pb-20">
+            <p className="text-left text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90 sm:text-[13px] md:text-base">
+              MADE TO BE CUSTOM
+            </p>
 
-<p
-  className="mt-4 max-w-[700px] text-3xl leading-[1.3] tracking-[0.02em] text-white/90 sm:text-4xl md:text-5xl"
-  style={{ fontFamily: "Glacial" }}
->
-  Personalized gear for camp, college, and everyday.
-</p>
+            <p
+              className="mt-3 max-w-[700px] text-[28px] leading-[1.18] tracking-[0.01em] text-white/90 sm:mt-4 sm:text-4xl sm:leading-[1.22] md:text-5xl md:leading-[1.3]"
+              style={{ fontFamily: "Glacial" }}
+            >
+              Personalized gear for camp, college, and everyday.
+            </p>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap">
               <a
                 href="/shop"
-                className="rounded-full bg-white px-5 py-5 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90"
+                className="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90 sm:px-5 sm:py-4"
               >
                 Shop Camp
               </a>
 
               <a
                 href="/college"
-                className="rounded-full border border-white/80 bg-white/10 px-5 py-5 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
+                className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:px-5 sm:py-4"
               >
                 Shop College
               </a>
@@ -80,15 +80,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
+      <section className="px-4 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 sm:mb-8">
             <h2 className="text-2xl font-light text-[#3F3F3F] sm:text-3xl md:text-4xl">
               Shop Camp by Category
             </h2>
 
-            <p className="mt-2 max-w-2xl text-sm leading-7 text-[#666]">
-            </p>
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-[#666]"></p>
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
@@ -96,10 +95,10 @@ export default function HomePage() {
               <a
                 key={category.title}
                 href={category.link}
-                className="group rounded-[24px] border border-[#E6E2DD] bg-white p-3 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] sm:p-4"
+                className="group rounded-[20px] border border-[#E6E2DD] bg-white p-2.5 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] sm:rounded-[24px] sm:p-4"
               >
-                <div className="overflow-hidden rounded-[18px] bg-white sm:rounded-[22px]">
-                  <div className="flex h-32 items-end justify-center sm:h-48 md:h-56">
+                <div className="overflow-hidden rounded-[16px] bg-white sm:rounded-[22px]">
+                  <div className="flex aspect-[4/5] items-end justify-center sm:h-48 sm:aspect-auto md:h-56">
                     <img
                       src={category.image}
                       alt={category.title}
@@ -112,7 +111,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <h3 className="mt-3 text-sm font-medium text-[#3F3F3F] sm:mt-4 sm:text-base md:text-lg">
+                <h3 className="mt-3 text-[13px] font-medium text-[#3F3F3F] sm:mt-4 sm:text-base md:text-lg">
                   {category.title}
                 </h3>
 
