@@ -50,7 +50,7 @@ export default function RootLayout({
     <html lang="en" className={josefin.variable}>
       <body className={`${josefin.className} bg-[#F7F7F5] text-[#4B4B4B]`}>
         <header className="sticky top-0 z-50 bg-[#F7F7F5]/95 backdrop-blur-sm">
-  <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-5">
+  <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
     <a href="/" className="flex items-center">
       <img
         src="/logo.png"
