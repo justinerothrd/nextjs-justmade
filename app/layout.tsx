@@ -83,14 +83,6 @@ export default function RootLayout({
 
             <div className="flex items-center gap-4">
               <button
-                onClick={() => window.dispatchEvent(new Event("open-cart"))}
-                className="hidden md:flex items-center text-sm font-medium uppercase tracking-[0.12em] hover:text-[#6F879E]"
-                aria-label="Open cart"
-              >
-                Cart
-              </button>
-
-              <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
                 aria-label="Toggle menu"
@@ -157,8 +149,8 @@ export default function RootLayout({
         )}
 
         <div className="hidden md:block">
-  <MiniCart />
-</div>
+          <MiniCart />
+        </div>
 
         {children}
       </body>
