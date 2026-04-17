@@ -22,6 +22,10 @@ export default function RootLayout({
   const pathname = usePathname();
 
   useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
     if (pathname === "/") {
       setShowBar(false);
       return;
@@ -40,42 +44,60 @@ export default function RootLayout({
     announcementText = "CAMP COLLECTION";
   }
 
+  const isHome = pathname === "/";
+
   return (
     <html lang="en" className={josefin.variable}>
       <body className={`${josefin.className} bg-[#F7F7F5] text-[#4B4B4B]`}>
-        <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
-          <div className="mx-auto w-full max-w-7xl px-4 pb-10 pt-24 sm:pt-28 ...">
+        <header
+          className={
+            isHome
+              ? "absolute inset-x-0 top-0 z-50 bg-transparent"
+              : "sticky top-0 z-50 bg-[#F7F7F5]/95 backdrop-blur-sm"
+          }
+        >
+          <div
+            className={
+              isHome
+                ? "mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-5 sm:px-6 sm:py-6"
+                : "mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-5"
+            }
+          >
             <a href="/" className="flex items-center">
               <img
                 src="/logo.png"
                 alt="Just Made Custom logo"
-                className="h-24 w-auto"
+                className={isHome ? "h-12 w-auto sm:h-14" : "h-10 w-auto sm:h-12"}
               />
             </a>
 
             <nav className="hidden items-center gap-10 text-[15px] font-medium uppercase tracking-[0.14em] md:flex">
-  <a href="/" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
-    Home
-  </a>
-  <a href="/shop" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
-    Shop Camp
-  </a>
-  <a href="/college" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
-    Shop College
-  </a>
-  <a href="/custom-orders" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
-    Custom Orders
-  </a>
-  <a href="/about" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
-    About
-  </a>
-  <a href="/faq" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
-    FAQ
-  </a>
-  <a href="/contact" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
-    Contact
-  </a>
-</nav>
+              <a href="/" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
+                Home
+              </a>
+              <a href="/shop" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
+                Shop Camp
+              </a>
+              <a href="/college" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
+                Shop College
+              </a>
+              <a
+                href="/custom-orders"
+                className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]"
+              >
+                Custom Orders
+              </a>
+              <a href="/about" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
+                About
+              </a>
+              <a href="/faq" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
+                FAQ
+              </a>
+              <a href="/contact" className="text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]">
+                Contact
+              </a>
+            </nav>
+
             <div className="flex items-center gap-4">
               <div className="hidden md:block">
                 <MiniCart />
@@ -83,21 +105,21 @@ export default function RootLayout({
 
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="flex h-8 w-8 flex-col items-center justify-center gap-1.5 md:hidden"
+                className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
                 aria-label="Toggle menu"
               >
                 <span
-                  className={`block h-0.5 w-6 bg-[#4B4B4B] transition-all duration-300 ${
+                  className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
                     menuOpen ? "translate-y-2 rotate-45" : ""
                   }`}
                 />
                 <span
-                  className={`block h-0.5 w-6 bg-[#4B4B4B] transition-all duration-300 ${
+                  className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
                     menuOpen ? "opacity-0" : ""
                   }`}
                 />
                 <span
-                  className={`block h-0.5 w-6 bg-[#4B4B4B] transition-all duration-300 ${
+                  className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
                     menuOpen ? "-translate-y-2 -rotate-45" : ""
                   }`}
                 />
@@ -106,44 +128,42 @@ export default function RootLayout({
           </div>
 
           {menuOpen && (
-            <nav className="flex flex-col gap-4 border-t border-[#E3E3E0] bg-[#F7F7F5] px-6 py-4 text-sm uppercase tracking-widest md:hidden">
-              <a href="/" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
-                Home
-              </a>
-              <a href="/shop" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
-                Shop Camp
-              </a>
-              <a href="/college" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
-                Shop College
-              </a>
-              <a
-                href="/custom-orders"
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-[#6F879E]"
-              >
-                Custom Orders
-              </a>
-              <a href="/about" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
-                About
-              </a>
-              <a href="/faq" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
-                FAQ
-              </a>
-              <a
-                href="/contact"
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-[#6F879E]"
-              >
-                Contact
-              </a>
-              <a href="/cart" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
-                Full Cart
-              </a>
+            <nav className="border-t border-[#E3E3E0] bg-[#F7F7F5] px-6 py-5 text-sm uppercase tracking-widest md:hidden">
+              <div className="flex flex-col gap-4">
+                <a href="/" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+                  Home
+                </a>
+                <a href="/shop" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+                  Shop Camp
+                </a>
+                <a href="/college" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+                  Shop College
+                </a>
+                <a
+                  href="/custom-orders"
+                  onClick={() => setMenuOpen(false)}
+                  className="hover:text-[#6F879E]"
+                >
+                  Custom Orders
+                </a>
+                <a href="/about" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+                  About
+                </a>
+                <a href="/faq" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+                  FAQ
+                </a>
+                <a href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+                  Contact
+                </a>
+                <a href="/cart" onClick={() => setMenuOpen(false)} className="hover:text-[#6F879E]">
+                  View Cart
+                </a>
+              </div>
             </nav>
           )}
         </header>
 
-        {pathname !== "/" && announcementText && (
+        {!isHome && announcementText && (
           <div
             className={`bg-[#5E748A] py-2.5 text-center text-xs uppercase tracking-[0.3em] text-white transition-all duration-500 ${
               showBar ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0"
