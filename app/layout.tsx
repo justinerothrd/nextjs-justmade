@@ -47,65 +47,105 @@ export default function RootLayout({
   return (
     <html lang="en" className={josefin.variable}>
       <body className={`${josefin.className} bg-[#F7F7F5] text-[#4B4B4B]`}>
-        
-        {/* HEADER */}
         <header className="sticky top-0 z-40 bg-[#F7F7F5]/95 backdrop-blur-sm">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
-            
-            {/* LOGO */}
             <a href="/" className="flex items-center">
               <img
                 src="/logo.png"
                 alt="Just Made Custom logo"
-                className="h-14 w-auto sm:h-16 md:h-18"
+                className="h-14 w-auto sm:h-16"
               />
             </a>
 
-            {/* DESKTOP NAV */}
             <nav className="hidden items-center gap-10 text-[15px] font-medium uppercase tracking-[0.14em] md:flex">
-              <a href="/" className="hover:text-[#6F879E]">Home</a>
-              <a href="/shop" className="hover:text-[#6F879E]">Shop Camp</a>
-              <a href="/college" className="hover:text-[#6F879E]">Shop College</a>
-              <a href="/custom-orders" className="hover:text-[#6F879E]">Custom Orders</a>
-              <a href="/about" className="hover:text-[#6F879E]">About</a>
-              <a href="/faq" className="hover:text-[#6F879E]">FAQ</a>
-              <a href="/contact" className="hover:text-[#6F879E]">Contact</a>
+              <a href="/" className="hover:text-[#6F879E]">
+                Home
+              </a>
+              <a href="/shop" className="hover:text-[#6F879E]">
+                Shop Camp
+              </a>
+              <a href="/college" className="hover:text-[#6F879E]">
+                Shop College
+              </a>
+              <a href="/custom-orders" className="hover:text-[#6F879E]">
+                Custom Orders
+              </a>
+              <a href="/about" className="hover:text-[#6F879E]">
+                About
+              </a>
+              <a href="/faq" className="hover:text-[#6F879E]">
+                FAQ
+              </a>
+              <a href="/contact" className="hover:text-[#6F879E]">
+                Contact
+              </a>
             </nav>
 
-            {/* RIGHT SIDE */}
             <div className="flex items-center gap-4">
-              
-              {/* HAMBURGER */}
+              <button
+                onClick={() => window.dispatchEvent(new Event("open-cart"))}
+                className="hidden md:flex items-center text-sm font-medium uppercase tracking-[0.12em] hover:text-[#6F879E]"
+                aria-label="Open cart"
+              >
+                Cart
+              </button>
+
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
                 aria-label="Toggle menu"
               >
-                <span className={`block h-0.5 w-7 bg-[#4B4B4B] transition ${menuOpen ? "translate-y-2 rotate-45" : ""}`} />
-                <span className={`block h-0.5 w-7 bg-[#4B4B4B] transition ${menuOpen ? "opacity-0" : ""}`} />
-                <span className={`block h-0.5 w-7 bg-[#4B4B4B] transition ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+                <span
+                  className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
+                    menuOpen ? "translate-y-2 rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
+                    menuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
+                    menuOpen ? "-translate-y-2 -rotate-45" : ""
+                  }`}
+                />
               </button>
             </div>
           </div>
 
-          {/* MOBILE MENU */}
           {menuOpen && (
             <nav className="border-t border-[#E3E3E0] bg-[#F7F7F5] px-6 py-5 text-sm uppercase tracking-widest md:hidden">
               <div className="flex flex-col gap-4">
-                <a href="/" onClick={() => setMenuOpen(false)}>Home</a>
-                <a href="/shop" onClick={() => setMenuOpen(false)}>Shop Camp</a>
-                <a href="/college" onClick={() => setMenuOpen(false)}>Shop College</a>
-                <a href="/custom-orders" onClick={() => setMenuOpen(false)}>Custom Orders</a>
-                <a href="/about" onClick={() => setMenuOpen(false)}>About</a>
-                <a href="/faq" onClick={() => setMenuOpen(false)}>FAQ</a>
-                <a href="/contact" onClick={() => setMenuOpen(false)}>Contact</a>
-                <a href="/cart" onClick={() => setMenuOpen(false)}>View Cart</a>
+                <a href="/" onClick={() => setMenuOpen(false)}>
+                  Home
+                </a>
+                <a href="/shop" onClick={() => setMenuOpen(false)}>
+                  Shop Camp
+                </a>
+                <a href="/college" onClick={() => setMenuOpen(false)}>
+                  Shop College
+                </a>
+                <a href="/custom-orders" onClick={() => setMenuOpen(false)}>
+                  Custom Orders
+                </a>
+                <a href="/about" onClick={() => setMenuOpen(false)}>
+                  About
+                </a>
+                <a href="/faq" onClick={() => setMenuOpen(false)}>
+                  FAQ
+                </a>
+                <a href="/contact" onClick={() => setMenuOpen(false)}>
+                  Contact
+                </a>
+                <a href="/cart" onClick={() => setMenuOpen(false)}>
+                  View Cart
+                </a>
               </div>
             </nav>
           )}
         </header>
 
-        {/* ANNOUNCEMENT BAR */}
         {pathname !== "/" && announcementText && (
           <div
             className={`bg-[#5E748A] py-2.5 text-center text-xs uppercase tracking-[0.3em] text-white transition ${
@@ -116,12 +156,9 @@ export default function RootLayout({
           </div>
         )}
 
-        {/* ✅ MINI CART (MOVED OUTSIDE HEADER) */}
         <MiniCart />
 
-        {/* PAGE CONTENT */}
         {children}
-
       </body>
     </html>
   );
