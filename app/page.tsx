@@ -46,7 +46,7 @@ export default function HomePage() {
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-black/10" />
 
         <div className="relative z-10 flex h-full items-end">
           <div className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 sm:pb-14 md:pb-20">
