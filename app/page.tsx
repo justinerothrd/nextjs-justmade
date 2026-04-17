@@ -115,9 +115,9 @@ export default function HomePage() {
                   {category.title}
                 </h3>
 
-                <p className="mt-1 hidden text-xs leading-5 text-[#666] sm:block sm:leading-6">
-                  {category.subtitle}
-                </p>
+                <p className="mt-1 hidden text-[11px] leading-5 text-[#666] sm:block sm:text-sm sm:leading-6">
+  {category.subtitle}
+</p>
 
                 <p className="mt-2 text-xs font-medium text-[#6F879E] sm:mt-3 sm:text-sm">
                   Shop now →
