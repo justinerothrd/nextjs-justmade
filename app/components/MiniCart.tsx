@@ -149,7 +149,7 @@ export default function MiniCart() {
                             <img
                               src={item.image}
                               alt={item.product}
-                              className="h-full w-full object-contain p-2"
+                              className="h-full w-full object-contain p-2 transition duration-300 hover:scale-[1.03]"
                             />
                           ) : (
                             <div className="text-xs text-gray-400">No image</div>
