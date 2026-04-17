@@ -204,7 +204,7 @@ export default function CartPage() {
                         <img
                           src={item.image}
                           alt={item.product}
-                          className="h-full w-full object-contain p-2"
+                          className="h-full w-full object-contain p-2 transition duration-300 hover:scale-[1.03]"
                         />
                       ) : (
                         <div className="text-center text-xs text-gray-400">
@@ -271,7 +271,7 @@ export default function CartPage() {
               ))}
             </div>
 
-            <div className="mt-6 flex items-center justify-between rounded-[28px] border border-[#EAE6E1] bg-white px-6 py-5 text-base font-medium">
+            <div className="mt-6 flex items-center justify-between rounded-[28px] border border-[#EFECE8] bg-white px-6 py-5 text-base font-medium">
               <span>Total</span>
               <span className="text-lg text-[#5F7A94]">
                 ${getTotal().toFixed(2)}
