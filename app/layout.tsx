@@ -156,7 +156,9 @@ export default function RootLayout({
           </div>
         )}
 
-        <MiniCart />
+        <div className="hidden md:block">
+  <MiniCart />
+</div>
 
         {children}
       </body>
