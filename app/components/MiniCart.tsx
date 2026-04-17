@@ -105,7 +105,7 @@ export default function MiniCart() {
             className="fixed inset-0 z-40 bg-black/20"
           />
 
-          <aside className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-[#EAE6E1] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+          <aside className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-[#EFECE8] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
             <div className="flex items-center justify-between border-b border-[#EAE6E1] px-5 py-4">
               <h2 className="text-[20px] font-light tracking-[0.02em] text-[#3F3F3F]">
                 Your Cart
