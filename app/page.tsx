@@ -49,7 +49,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/10 sm:bg-black/20" />
 
         <div className="relative z-10 flex h-full items-end">
-          <div className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 sm:pb-14 md:pb-20">
+          <div className="mx-auto w-full max-w-7xl px-4 pb-10 pt-24 sm:px-6 sm:pb-14 sm:pt-28 md:pb-20">
             <p className="text-left text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90 sm:text-[13px] md:text-base">
               MADE TO BE CUSTOM
             </p>
