@@ -36,48 +36,45 @@ const categories = [
 export default function ShopPage() {
   return (
     <main className="min-h-screen bg-white text-[#2F3A4A]">
-      <section className="px-4 pb-6 pt-8 text-center sm:px-6 sm:pb-8 sm:pt-10">
-        <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
-        </p>
+      <section className="px-4 pb-4 pt-6 text-center sm:px-6 sm:pb-8 sm:pt-10">
+        <p className="text-xs uppercase tracking-[0.22em] text-[#6F879E] sm:text-sm"></p>
 
-        <h1 className="mt-4 text-4xl font-light sm:text-5xl md:text-6xl">
-        </h1>
+        <h1 className="mt-3 text-3xl font-light sm:mt-4 sm:text-5xl md:text-6xl"></h1>
 
-        <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
-        </p>
+        <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-gray-500 sm:mt-4 sm:text-lg sm:leading-8"></p>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20">
-        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-20">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
           {categories.map((category) => (
             <a
               key={category.slug}
               href={`/shop/${category.slug}`}
-              className="group rounded-[28px] border border-[#E6E2DD] bg-white p-4 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] hover:border-transparent"
+              className="group rounded-[20px] border border-[#E6E2DD] bg-white p-2.5 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] sm:rounded-[28px] sm:p-4"
             >
-              <div className="overflow-hidden rounded-[20px] bg-white">
-                <div className="flex h-44 items-end justify-center sm:h-60">
+              <div className="overflow-hidden rounded-[16px] bg-white sm:rounded-[20px]">
+                <div className="flex aspect-[4/5] items-end justify-center sm:h-60 sm:aspect-auto">
                   <img
                     src={category.image}
                     alt={category.title}
                     className={
                       category.slug === "sweatshirts"
-                        ? "fade-in h-full w-full object-contain p-4 sm:p-5 scale-[1.08] transition duration-500 ease-out"
-                        : "fade-in h-full w-full object-contain p-4 sm:p-3 scale-[1.12] transition duration-500 ease-out"
+                        ? "fade-in h-full w-full scale-[1.06] object-contain p-2.5 transition duration-500 ease-out sm:p-5"
+                        : "fade-in h-full w-full scale-[1.1] object-contain p-2.5 transition duration-500 ease-out sm:p-3"
                     }
                   />
                 </div>
               </div>
 
-              <h3 className="mt-4 text-base font-medium text-[#3F3F3F] sm:text-lg">
+              <h3 className="mt-3 text-[13px] font-medium text-[#3F3F3F] sm:mt-4 sm:text-lg">
                 {category.title}
               </h3>
 
-              <p className="mt-1 text-xs leading-6 text-[#666] sm:text-sm">
+              <p className="mt-1 text-[11px] leading-5 text-[#666] sm:text-sm sm:leading-6">
                 {category.subtitle}
               </p>
 
-              <p className="mt-3 text-sm font-medium text-[#6F879E]">
+              <p className="mt-2 text-xs font-medium text-[#6F879E] sm:mt-3 sm:text-sm">
                 Shop now →
               </p>
             </a>
