@@ -39,14 +39,14 @@ export default function HomePage() {
 
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
-      <section className="relative h-[68vh] min-h-[460px] w-full overflow-hidden sm:h-[75vh] sm:min-h-[520px] md:h-[80vh] md:min-h-[560px]">
+      <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden sm:h-[75vh] sm:min-h-[520px] md:h-[80vh] md:min-h-[560px]">
         <img
           src="/hero-main.png"
           alt="Custom apparel"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-[70%_center] sm:object-center"
         />
 
-        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 bg-black/10 sm:bg-black/20" />
 
         <div className="relative z-10 flex h-full items-end">
           <div className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 sm:pb-14 md:pb-20">
@@ -115,9 +115,9 @@ export default function HomePage() {
                   {category.title}
                 </h3>
 
-                <p className="mt-1 hidden text-[11px] leading-5 text-[#666] sm:block sm:text-sm sm:leading-6">
-  {category.subtitle}
-</p>
+                <p className="mt-1 hidden text-xs leading-5 text-[#666] sm:block sm:leading-6">
+                  {category.subtitle}
+                </p>
 
                 <p className="mt-2 text-xs font-medium text-[#6F879E] sm:mt-3 sm:text-sm">
                   Shop now →
