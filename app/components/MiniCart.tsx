@@ -128,11 +128,28 @@ export default function MiniCart() {
                     onClick={() => setOpen(false)}
                     className="mt-4 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]"
                   >
-                    Start Shopping
-                  </a>
-                </div>
-              ) : (
-                <div className="flex flex-col gap-4">
+                    {cart.length === 0 ? (
+  <div className="flex flex-col items-center justify-center py-16 text-center">
+    <p className="text-sm text-[#6B7280]">Your cart is empty.</p>
+    <a
+      href="/shop"
+      className="mt-6 inline-flex items-center justify-center rounded-full bg-[#6F879E] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
+    >
+      Start Shopping
+    </a>
+  </div>
+) : (
+  <div className="flex flex-col gap-4">
+    {cart.map((item) => (
+      <div
+        key={item.id}
+        className="flex items-start gap-4 border-b border-[#E5E7EB] pb-4"
+      >
+        {/* your existing item markup stays here */}
+      </div>
+    ))}
+  </div>
+)}
                   {cart.map((item) => (
                     <div
                       key={item.id}
