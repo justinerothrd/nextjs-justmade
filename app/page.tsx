@@ -39,17 +39,16 @@ export default function HomePage() {
 
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
-      <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden sm:h-[75vh] sm:min-h-[520px] md:h-[80vh] md:min-h-[560px]">
-        <img
-          src="/hero-main.png"
-          alt="Custom apparel"
-          className="absolute inset-0 h-full w-full object-cover object-[70%_center] sm:object-center"
-        />
-
-        <div className="absolute inset-0 bg-black/10 sm:bg-black/20" />
+      <section className="relative h-[58vh] min-h-[380px] w-full overflow-hidden sm:h-[68vh] sm:min-h-[480px] md:h-[80vh] md:min-h-[560px]">
+  <img
+    src="/hero-main.png"
+    alt="Custom apparel"
+    className="absolute inset-0 h-full w-full object-cover object-[62%_center] sm:object-center"
+  />
+  <div className="absolute inset-0 bg-black/12 sm:bg-black/20" />
 
         <div className="relative z-10 flex h-full items-end">
-          <div className="mx-auto w-full max-w-7xl px-4 pb-10 pt-24 sm:px-6 sm:pb-14 sm:pt-28 md:pb-20">
+          <div className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 sm:pb-14 md:pb-20">
             <p className="text-left text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90 sm:text-[13px] md:text-base">
               MADE TO BE CUSTOM
             </p>
