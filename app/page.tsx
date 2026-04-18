@@ -39,46 +39,52 @@ export default function HomePage() {
 
   return (
     <main className="bg-white text-[#4B4B4B]">
-      <section className="relative -mt-2 h-[60vh] min-h-[380px] w-full overflow-hidden sm:mt-0 sm:h-[68vh] sm:min-h-[480px] md:h-[80vh] md:min-h-[560px]">
-        <img
-          src="/hero-main.png"
-          alt="Custom apparel"
-          className="absolute left-0 top-[-10%] h-[118%] w-full object-cover sm:top-0 sm:h-full sm:object-center"
-        />
+      <section className="relative h-[52vh] min-h-[340px] w-full overflow-hidden sm:h-[68vh] sm:min-h-[480px] md:h-[80vh] md:min-h-[560px]">
+  <img
+    src="/hero-main.png"
+    alt="Custom apparel"
+    className="absolute left-0 top-[-22%] h-[138%] w-full object-cover object-center sm:top-0 sm:h-full"
+  />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/18 via-black/8 to-transparent sm:bg-black/20" />
+  <div className="absolute inset-0 bg-black/22 sm:bg-black/20" />
 
-        <div className="relative z-10 flex h-full items-center">
-          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
-            <p className="text-left text-[10px] font-semibold uppercase tracking-[0.22em] text-white/90 sm:text-[13px] md:text-base">
-              MADE TO BE CUSTOM
-            </p>
+  <div className="relative z-10 flex h-full items-center">
+    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+      <p
+        className="text-left text-[10px] font-semibold uppercase tracking-[0.22em] text-white sm:text-[13px] md:text-base"
+        style={{ textShadow: "0 1px 10px rgba(0,0,0,0.35)" }}
+      >
+        MADE TO BE CUSTOM
+      </p>
 
-            <p
-              className="mt-3 max-w-[340px] text-[20px] leading-[1.08] tracking-[0.01em] text-white/90 sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:max-w-[700px] md:text-5xl md:leading-[1.3]"
-              style={{ fontFamily: "Glacial" }}
-            >
-              Personalized gear for camp, college, and everyday.
-            </p>
+      <p
+        className="mt-3 max-w-[360px] text-[19px] leading-[1.08] tracking-[0.01em] text-white sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:max-w-[700px] md:text-5xl md:leading-[1.3]"
+        style={{
+          fontFamily: "Glacial",
+          textShadow: "0 2px 16px rgba(0,0,0,0.35)",
+        }}
+      >
+        Personalized gear for camp, college, and everyday.
+      </p>
 
-            <div className="mt-5 flex flex-row flex-wrap items-center gap-2 sm:mt-7 sm:gap-4">
-  <a
-    href="/shop"
-    className="inline-flex items-center justify-center rounded-full bg-white px-3 py-1 text-[11px] font-medium text-[#2F3A4A] transition hover:opacity-90 sm:px-7 sm:py-3.5 sm:text-sm"
-  >
-    Shop Camp
-  </a>
+      <div className="mt-5 flex flex-row flex-wrap items-center gap-2 sm:mt-7 sm:gap-4">
+        <a
+          href="/shop"
+          className="inline-flex items-center justify-center rounded-full bg-white px-3 py-1 text-[11px] font-medium text-[#2F3A4A] transition hover:opacity-90 sm:px-7 sm:py-3.5 sm:text-sm"
+        >
+          Shop Camp
+        </a>
 
-  <a
-    href="/college"
-    className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-3 py-1 text-[11px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:px-7 sm:py-3.5 sm:text-sm"
-  >
-    Shop College
-  </a>
-</div>
-          </div>
-        </div>
-      </section>
+        <a
+          href="/college"
+          className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-3 py-1 text-[11px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:px-7 sm:py-3.5 sm:text-sm"
+        >
+          Shop College
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="px-4 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
