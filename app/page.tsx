@@ -39,49 +39,48 @@ export default function HomePage() {
 
   return (
     <main className="bg-white text-[#4B4B4B]">
-      <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden sm:h-[68vh] sm:min-h-[480px] md:h-[80vh] md:min-h-[560px]">
+      <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden sm:h-[70vh] sm:min-h-[520px] md:h-[90vh] md:min-h-[650px]">
   <img
     src="/hero-main.png"
     alt="Custom apparel"
-    className="absolute inset-0 h-full w-full object-cover object-center md:object-[50%_18%]"
+    className="absolute inset-0 h-full w-full object-cover object-center"
   />
 
   <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/12 to-transparent sm:bg-black/20" />
 
   <div className="relative z-10 flex h-full items-end pb-14 sm:items-center sm:pb-0">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+      
       <p
-        className="text-left text-[10px] font-semibold uppercase tracking-[0.22em] text-white/80 sm:text-[13px] md:text-base"
-        style={{ textShadow: "0 1px 10px rgba(0,0,0,0.35)" }}
+        className="text-left text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80 sm:text-[13px] md:text-base"
+        style={{ textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}
       >
         MADE TO BE CUSTOM
       </p>
 
       <p
-        className="mt-3 max-w-[360px] text-[19px] leading-[1.08] tracking-[0.01em] text-white sm:mt-4 max-w-[520px] sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:max-w-[700px] md:text-5xl md:leading-[1.3]"
-        style={{
-          fontFamily: "Glacial",
-          textShadow: "0 2px 16px rgba(0,0,0,0.35)",
-        }}
+        className="mt-3 max-w-[520px] text-[26px] leading-[1.15] tracking-[0.01em] text-white sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:text-5xl md:leading-[1.3]"
+        style={{ fontFamily: "Glacial", textShadow: "0 2px 12px rgba(0,0,0,0.35)" }}
       >
         Personalized gear for camp, college, and everyday.
       </p>
 
-      <div className="mt-5 flex flex-row flex-wrap items-center gap-2 sm:mt-7 sm:gap-4">
+      <div className="mt-5 flex flex-col items-start gap-3 sm:mt-7 sm:flex-row sm:items-center sm:gap-4">
         <a
           href="/shop"
-          className="inline-flex items-center justify-center rounded-full bg-white px-3 py-1 text-[11px] font-medium text-[#2F3A4A] transition hover:opacity-90 sm:px-7 sm:py-3.5 sm:text-sm"
+          className="inline-flex w-[150px] items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90 sm:w-auto sm:px-7 sm:py-3.5"
         >
           Shop Camp
         </a>
 
         <a
           href="/college"
-          className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-3 py-1 text-[11px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:px-7 sm:py-3.5 sm:text-sm"
+          className="inline-flex w-[150px] items-center justify-center rounded-full border border-white/80 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:w-auto sm:px-7 sm:py-3.5"
         >
           Shop College
         </a>
       </div>
+
     </div>
   </div>
 </section>
