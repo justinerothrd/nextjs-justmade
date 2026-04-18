@@ -61,7 +61,7 @@ export default function HomePage() {
               Personalized gear for camp, college, and everyday.
             </p>
 
-            <div className="mt-5 flex flex-col items-start gap-2 sm:mt-7 sm:flex-row sm:items-center sm:gap-4">
+            <div className="mt-5 flex flex-col items-center gap-2 sm:mt-7 sm:flex-row sm:items-center sm:gap-4">
   <a
     href="/shop"
     className="inline-flex w-[135px] items-center justify-center rounded-full bg-white px-3 py-1.5 text-[12px] font-medium text-[#2F3A4A] transition hover:opacity-90 sm:w-auto sm:px-7 sm:py-3.5 sm:text-sm"
