@@ -82,28 +82,32 @@ export default function RootLayout({
             </nav>
 
             <div className="flex items-center gap-4">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
-                aria-label="Toggle menu"
-              >
-                <span
-                  className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
-                    menuOpen ? "translate-y-2 rotate-45" : ""
-                  }`}
-                />
-                <span
-                  className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
-                    menuOpen ? "opacity-0" : ""
-                  }`}
-                />
-                <span
-                  className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
-                    menuOpen ? "-translate-y-2 -rotate-45" : ""
-                  }`}
-                />
-              </button>
-            </div>
+  <div className="hidden md:block">
+    <MiniCart />
+  </div>
+
+  <button
+    onClick={() => setMenuOpen(!menuOpen)}
+    className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+    aria-label="Toggle menu"
+  >
+    <span
+      className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
+        menuOpen ? "translate-y-2 rotate-45" : ""
+      }`}
+    />
+    <span
+      className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
+        menuOpen ? "opacity-0" : ""
+      }`}
+    />
+    <span
+      className={`block h-0.5 w-7 bg-[#4B4B4B] transition-all duration-300 ${
+        menuOpen ? "-translate-y-2 -rotate-45" : ""
+      }`}
+    />
+  </button>
+</div>
           </div>
 
           {menuOpen && (
