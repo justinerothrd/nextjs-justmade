@@ -60,10 +60,6 @@ export default function MiniCart() {
     window.dispatchEvent(new Event("cartUpdated"));
   }
 
-  function getItemCount() {
-    return cart.reduce((sum, item) => sum + item.quantity, 0);
-  }
-
   function getTotal() {
     return cart.reduce((sum, item) => {
       const price = parseFloat(item.price.replace("$", ""));
@@ -83,20 +79,6 @@ export default function MiniCart() {
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        className="relative flex items-center gap-2 text-[15px] font-medium uppercase tracking-[0.12em] text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]"
-        aria-label="Open cart"
-      >
-        <span>Cart</span>
-
-        {getItemCount() > 0 && (
-          <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#5F7A94] text-[10px] font-medium leading-none text-white">
-            {getItemCount()}
-          </span>
-        )}
-      </button>
-
       {open && (
         <>
           <button
