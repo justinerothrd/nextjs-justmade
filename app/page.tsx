@@ -48,7 +48,7 @@ export default function HomePage() {
 
   <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/12 to-transparent sm:bg-black/20" />
 
-  <div className="relative z-10 flex h-full items-center">
+  <div className="relative z-10 flex h-full items-end pb-14 sm:items-center sm:pb-0">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
       <p
         className="text-left text-[10px] font-semibold uppercase tracking-[0.22em] text-white sm:text-[13px] md:text-base"
