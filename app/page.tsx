@@ -39,14 +39,14 @@ export default function HomePage() {
 
   return (
     <main className="bg-white text-[#4B4B4B]">
-      <section className="relative h-[52vh] min-h-[340px] w-full overflow-hidden sm:h-[68vh] sm:min-h-[480px] md:h-[80vh] md:min-h-[560px]">
+      <<section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden sm:h-[68vh] sm:min-h-[480px] md:h-[80vh] md:min-h-[560px]">
   <img
     src="/hero-main.png"
     alt="Custom apparel"
     className="absolute left-0 top-[-22%] h-[138%] w-full object-cover object-center sm:top-0 sm:h-full"
   />
 
-  <div className="absolute inset-0 bg-black/22 sm:bg-black/20" />
+  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/12 to-transparent sm:bg-black/20" />
 
   <div className="relative z-10 flex h-full items-center">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
