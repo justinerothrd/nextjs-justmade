@@ -39,18 +39,23 @@ export default function HomePage() {
 
   return (
     <main className="bg-white text-[#4B4B4B]">
-      <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden sm:h-[72vh] sm:min-h-[560px] md:h-[105vh] md:min-h-[820px]">
+      <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden sm:h-[72vh] sm:min-h-[560px] md:h-[90vh] md:min-h-[700px]">
+  <img
+    src="/hero-mobile.png"
+    alt="Custom apparel"
+    className="absolute inset-0 h-full w-full object-cover object-center sm:hidden"
+  />
+
   <img
     src="/hero-main.png"
     alt="Custom apparel"
-    className="absolute inset-0 h-full w-full object-cover object-center"
+    className="absolute inset-0 hidden h-full w-full object-cover object-center sm:block"
   />
 
   <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/12 to-transparent sm:bg-black/20" />
 
   <div className="relative z-10 flex h-full items-end pb-14 sm:items-center sm:pb-0">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
-      
       <p
         className="text-left text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80 sm:text-[13px] md:text-base"
         style={{ textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}
@@ -67,20 +72,19 @@ export default function HomePage() {
 
       <div className="mt-5 flex flex-row items-center gap-3 sm:mt-7 sm:gap-4">
         <a
-  href="/shop"
-  className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-[12px] font-medium text-[#2F3A4A] transition hover:opacity-90 sm:px-7 sm:py-3.5 sm:text-sm"
->
-  Shop Camp
-</a>
+          href="/shop"
+          className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-[12px] font-medium text-[#2F3A4A] transition hover:opacity-90 sm:px-7 sm:py-3.5 sm:text-sm"
+        >
+          Shop Camp
+        </a>
 
         <a
-  href="/college"
-  className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-4 py-2 text-[12px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:px-7 sm:py-3.5 sm:text-sm"
->
-  Shop College
-</a>
+          href="/college"
+          className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-4 py-2 text-[12px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:px-7 sm:py-3.5 sm:text-sm"
+        >
+          Shop College
+        </a>
       </div>
-
     </div>
   </div>
 </section>
