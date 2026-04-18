@@ -64,14 +64,14 @@ export default function HomePage() {
             <div className="mt-5 flex flex-col items-start gap-2 sm:mt-7 sm:flex-row sm:items-center sm:gap-4">
   <a
     href="/shop"
-    className="inline-flex w-[140px] items-center justify-center rounded-full bg-white px-4 py-2 text-[13px] font-medium text-[#2F3A4A] transition hover:opacity-90 sm:w-auto sm:px-7 sm:py-3.5 sm:text-sm"
+    className="inline-flex w-[135px] items-center justify-center rounded-full bg-white px-3 py-1.5 text-[12px] font-medium text-[#2F3A4A] transition hover:opacity-90 sm:w-auto sm:px-7 sm:py-3.5 sm:text-sm"
   >
     Shop Camp
   </a>
 
   <a
     href="/college"
-    className="inline-flex w-[140px] items-center justify-center rounded-full border border-white/80 bg-white/10 px-4 py-2 text-[13px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:w-auto sm:px-7 sm:py-3.5 sm:text-sm"
+    className="inline-flex w-[135px] items-center justify-center rounded-full border border-white/80 bg-white/10 px-3 py-1.5 text-[12px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:w-auto sm:px-7 sm:py-3.5 sm:text-sm"
   >
     Shop College
   </a>
