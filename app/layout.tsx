@@ -20,7 +20,7 @@ export default function RootLayout({
   const [menuOpen, setMenuOpen] = useState(false);
   const [showBar, setShowBar] = useState(false);
   const pathname = usePathname();
-
+  const [cartCount, setCartCount] = useState(0);
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
