@@ -17,39 +17,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [cartCount, setCartCount] = useState(0);
-  useEffect(() => {
-  function loadCartCount() {
-    const stored = JSON.parse(localStorage.getItem("cart") || "[]");
-    const count = stored.reduce(
-      (sum: number, item: { quantity: number }) => sum + item.quantity,
-      0
-    );
-    setCartCount(count);
-  }
-
-  loadCartCount();
-
-  function handleCartUpdated() {
-    loadCartCount();
-  }
-
-  function handleStorage() {
-    loadCartCount();
-  }
-
-  window.addEventListener("cartUpdated", handleCartUpdated);
-  window.addEventListener("storage", handleStorage);
-
-  return () => {
-    window.removeEventListener("cartUpdated", handleCartUpdated);
-    window.removeEventListener("storage", handleStorage);
-  };
-}, []);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showBar, setShowBar] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   const pathname = usePathname();
-  
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   useEffect(() => {
     if (pathname === "/") {
       setShowBar(false);
@@ -60,6 +36,35 @@ export default function RootLayout({
     const timer = window.setTimeout(() => setShowBar(true), 120);
     return () => window.clearTimeout(timer);
   }, [pathname]);
+
+  useEffect(() => {
+    function loadCartCount() {
+      const stored = JSON.parse(localStorage.getItem("cart") || "[]");
+      const count = stored.reduce(
+        (sum: number, item: { quantity: number }) => sum + item.quantity,
+        0
+      );
+      setCartCount(count);
+    }
+
+    loadCartCount();
+
+    function handleCartUpdated() {
+      loadCartCount();
+    }
+
+    function handleStorage() {
+      loadCartCount();
+    }
+
+    window.addEventListener("cartUpdated", handleCartUpdated);
+    window.addEventListener("storage", handleStorage);
+
+    return () => {
+      window.removeEventListener("cartUpdated", handleCartUpdated);
+      window.removeEventListener("storage", handleStorage);
+    };
+  }, []);
 
   let announcementText = "";
 
@@ -113,6 +118,12 @@ export default function RootLayout({
                 aria-label="Open cart"
               >
                 <span>Cart</span>
+
+                {cartCount > 0 && (
+                  <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#5F7A94] text-[10px] font-medium leading-none text-white">
+                    {cartCount}
+                  </span>
+                )}
               </button>
 
               <button
