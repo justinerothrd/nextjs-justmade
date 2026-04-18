@@ -64,9 +64,12 @@ export default function HomePage() {
       </p>
 
       <p
-        className="mt-3 max-w-[520px] text-[26px] leading-[1.15] tracking-[0.01em] text-white sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:text-5xl md:leading-[1.3]"
-        style={{ fontFamily: "Glacial", textShadow: "0 2px 12px rgba(0,0,0,0.35)" }}
-      >
+  className="mt-3 max-w-[500px] text-[28px] leading-[1.1] tracking-[0.01em] text-white sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:text-5xl md:leading-[1.3]"
+  style={{
+    fontFamily: "Glacial",
+    textShadow: "0 3px 18px rgba(0,0,0,0.45)",
+  }}
+>
         Personalized gear for camp, college, and everyday.
       </p>
 
