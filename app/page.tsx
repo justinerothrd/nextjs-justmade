@@ -57,7 +57,7 @@ export default function HomePage() {
   <div className="relative z-10 flex h-full items-end pb-14 sm:items-center sm:pb-0">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
       <p
-        className="text-left text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80 sm:text-[13px] md:text-base"
+        className="text-left text-[11px] font-bold uppercase tracking-[0.22em] text-white sm:text-[13px] md:text-base"
         style={{ textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}
       >
         MADE TO BE CUSTOM
