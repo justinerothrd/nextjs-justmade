@@ -39,14 +39,14 @@ export default function HomePage() {
 
   return (
     <main className="bg-[#F7F7F5] text-[#4B4B4B]">
-      <section className="relative h-[65vh] min-h-[420px] w-full overflow-hidden sm:h-[68vh] sm:min-h-[480px] md:h-[80vh] md:min-h-[560px]">
-  <img
-    src="/hero-main.png"
-    alt="Custom apparel"
-    className="absolute inset-0 h-full w-full object-cover object-top sm:object-center"
-  />
+      <section className="relative h-[56vh] min-h-[360px] w-full overflow-hidden sm:h-[68vh] sm:min-h-[480px] md:h-[80vh] md:min-h-[560px]">
+        <img
+          src="/hero-main.png"
+          alt="Custom apparel"
+          className="absolute inset-0 h-full w-full object-cover object-[58%_22%] sm:object-center"
+        />
 
-  <div className="absolute inset-0 bg-black/10 sm:bg-black/20" />
+        <div className="absolute inset-0 bg-black/10 sm:bg-black/20" />
 
         <div className="relative z-10 flex h-full items-center">
           <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
@@ -55,7 +55,7 @@ export default function HomePage() {
             </p>
 
             <p
-              className="mt-3 max-w-[640px] text-[26px] leading-[1.15] tracking-[0.01em] text-white/90 sm:mt-4 sm:text-4xl sm:leading-[1.22] md:max-w-[700px] md:text-5xl md:leading-[1.3]"
+              className="mt-3 max-w-[640px] text-[22px] leading-[1.12] tracking-[0.01em] text-white/90 sm:mt-4 sm:text-4xl sm:leading-[1.22] md:max-w-[700px] md:text-5xl md:leading-[1.3]"
               style={{ fontFamily: "Glacial" }}
             >
               Personalized gear for camp, college, and everyday.
@@ -64,14 +64,14 @@ export default function HomePage() {
             <div className="mt-5 flex flex-col items-start gap-3 sm:mt-7 sm:flex-row sm:items-center sm:gap-4">
               <a
                 href="/shop"
-                className="inline-flex w-[150px] items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90 sm:w-auto sm:px-7 sm:py-3.5"
+                className="inline-flex min-w-[170px] items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90 sm:min-w-0 sm:px-7 sm:py-3.5"
               >
                 Shop Camp
               </a>
 
               <a
                 href="/college"
-                className="inline-flex w-[150px] items-center justify-center rounded-full border border-white/80 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:w-auto sm:px-7 sm:py-3.5"
+                className="inline-flex min-w-[170px] items-center justify-center rounded-full border border-white/80 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:min-w-0 sm:px-7 sm:py-3.5"
               >
                 Shop College
               </a>
