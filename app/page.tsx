@@ -46,7 +46,7 @@ export default function HomePage() {
           className="absolute left-0 top-[-10%] h-[118%] w-full object-cover sm:top-0 sm:h-full sm:object-center"
         />
 
-        <div className="absolute inset-0 bg-black/10 sm:bg-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/18 via-black/8 to-transparent sm:bg-black/20" />
 
         <div className="relative z-10 flex h-full items-center">
           <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
