@@ -61,21 +61,21 @@ export default function HomePage() {
               Personalized gear for camp, college, and everyday.
             </p>
 
-            <div className="mt-5 flex flex-col items-start gap-3 sm:mt-7 sm:flex-row sm:items-center sm:gap-4">
-              <a
-                href="/shop"
-                className="inline-flex min-w-[160px] items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2F3A4A] transition hover:opacity-90 sm:min-w-0 sm:px-7 sm:py-3.5"
-              >
-                Shop Camp
-              </a>
+            <div className="mt-5 flex flex-col items-start gap-2 sm:mt-7 sm:flex-row sm:items-center sm:gap-4">
+  <a
+    href="/shop"
+    className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-[13px] font-medium text-[#2F3A4A] transition hover:opacity-90 sm:px-7 sm:py-3.5 sm:text-sm"
+  >
+    Shop Camp
+  </a>
 
-              <a
-                href="/college"
-                className="inline-flex min-w-[160px] items-center justify-center rounded-full border border-white/80 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:min-w-0 sm:px-7 sm:py-3.5"
-              >
-                Shop College
-              </a>
-            </div>
+  <a
+    href="/college"
+    className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-4 py-2 text-[13px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:px-7 sm:py-3.5 sm:text-sm"
+  >
+    Shop College
+  </a>
+</div>
           </div>
         </div>
       </section>
