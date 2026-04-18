@@ -78,10 +78,10 @@ export default function HomePage() {
           Shop Camp
         </a>
 
-        <a
-          href="/college"
-          className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-4 py-2 text-[12px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:px-7 sm:py-3.5 sm:text-sm"
-        >
+      <a
+  href="/college"
+  className="inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-3.5 py-2 text-[12px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:px-6 sm:py-3 sm:text-sm"
+>
           Shop College
         </a>
       </div>
