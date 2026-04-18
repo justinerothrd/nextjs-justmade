@@ -71,7 +71,7 @@ export default function HomePage() {
 
   <a
     href="/college"
-    className="inline-flex w-[135px] items-center justify-center rounded-full border border-white/80 bg-white/10 px-3 py-1.5 text-[12px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:w-auto sm:px-7 sm:py-3.5 sm:text-sm"
+    className="inline-flex w-[135px] items-start justify-center rounded-full border border-white/80 bg-white/10 px-3 py-1.5 text-[12px] font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:w-auto sm:px-7 sm:py-3.5 sm:text-sm"
   >
     Shop College
   </a>
