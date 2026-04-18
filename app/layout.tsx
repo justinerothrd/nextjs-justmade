@@ -86,7 +86,13 @@ export default function RootLayout({
     <MiniCart />
   </div>
 
-  <button
+  <button>
+  onClick={() => window.dispatchEvent(new Event("openMiniCart"))}
+  className="hidden md:flex items-center gap-2 text-[15px] font-medium uppercase tracking-[0.12em] text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]"
+  aria-label="Open cart"
+>
+  <span>Cart</span>
+</button>
     onClick={() => setMenuOpen(!menuOpen)}
     className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
     aria-label="Toggle menu"
