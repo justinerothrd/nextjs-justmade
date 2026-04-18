@@ -17,11 +17,40 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [cartCount, setCartCount] = useState(0);
+  useEffect(() => {
+  function loadCartCount() {
+    const stored = JSON.parse(localStorage.getItem("cart") || "[]");
+    const count = stored.reduce(
+      (sum: number, item: { quantity: number }) => sum + item.quantity,
+      0
+    );
+    setCartCount(count);
+  }
+
+  loadCartCount();
+
+  function handleCartUpdated() {
+    loadCartCount();
+  }
+
+  function handleStorage() {
+    loadCartCount();
+  }
+
+  window.addEventListener("cartUpdated", handleCartUpdated);
+  window.addEventListener("storage", handleStorage);
+
+  return () => {
+    window.removeEventListener("cartUpdated", handleCartUpdated);
+    window.removeEventListener("storage", handleStorage);
+  };
+}, []);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showBar, setShowBar] = useState(false);
   const pathname = usePathname();
   const [cartCount, setCartCount] = useState(0);
-  useEffect(() => {
+  use(() => {
     setMenuOpen(false);
   }, [pathname]);
 
