@@ -70,7 +70,7 @@ export default function HomePage() {
     textShadow: "0 3px 18px rgba(0,0,0,0.45)",
   }}
 >
-        Personalized gear for <span className="font-semibold">camp</span>, college, and everyday.
+        Personalized gear for camp, college, and everyday.
       </p>
 
       <div className="mt-5 flex flex-row items-center gap-3 sm:mt-7 sm:gap-4">
