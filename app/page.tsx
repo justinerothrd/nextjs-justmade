@@ -43,7 +43,7 @@ export default function HomePage() {
   <img
     src="/hero-main.png"
     alt="Custom apparel"
-    className="absolute inset-0 h-full w-full object-cover object-center"
+    className="absolute inset-0 h-full w-full object-cover object-center md:object-[50%_18%]"
   />
 
   <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/12 to-transparent sm:bg-black/20" />
