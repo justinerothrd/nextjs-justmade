@@ -119,37 +119,20 @@ export default function MiniCart() {
               </button>
             </div>
 
-            <div className="hidden">
-  {/* old cart trigger */}
-</div>
-                  <p className="text-gray-500">Your cart is empty.</p>
+            <div className="flex-1 overflow-y-auto px-5 py-5">
+              {cart.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-16 text-center">
+                  <p className="text-sm text-[#6B7280]">Your cart is empty.</p>
                   <a
                     href="/shop"
                     onClick={() => setOpen(false)}
-                    className="mt-4 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]"
+                    className="mt-6 inline-flex items-center justify-center rounded-full bg-[#6F879E] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
                   >
-                    {cart.length === 0 ? (
-  <div className="flex flex-col items-center justify-center py-16 text-center">
-    <p className="text-sm text-[#6B7280]">Your cart is empty.</p>
-    <a
-      href="/shop"
-      className="mt-6 inline-flex items-center justify-center rounded-full bg-[#6F879E] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
-    >
-      Start Shopping
-    </a>
-  </div>
-) : (
-  <div className="flex flex-col gap-4">
-    {cart.map((item) => (
-      <div
-        key={item.id}
-        className="flex items-start gap-4 border-b border-[#E5E7EB] pb-4"
-      >
-        {/* your existing item markup stays here */}
-      </div>
-    ))}
-  </div>
-)}
+                    Start Shopping
+                  </a>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-4">
                   {cart.map((item) => (
                     <div
                       key={item.id}
