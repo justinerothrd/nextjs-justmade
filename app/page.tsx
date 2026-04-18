@@ -39,7 +39,7 @@ export default function HomePage() {
 
   return (
     <main className="bg-white text-[#4B4B4B]">
-      <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden sm:h-[72vh] sm:min-h-[560px] md:h-[100vh] md:min-h-[760px]">
+      <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden sm:h-[72vh] sm:min-h-[560px] md:h-[105vh] md:min-h-[820px]">
   <img
     src="/hero-main.png"
     alt="Custom apparel"
