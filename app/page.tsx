@@ -56,6 +56,7 @@ export default function HomePage() {
 
   <div className="relative z-10 flex h-full items-end pb-14 sm:items-center sm:pb-0">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+  <div className="inline-block rounded-lg bg-black/35 px-3 py-2 sm:bg-transparent sm:p-0">
       <p
   className="text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-white sm:text-white/80 sm:text-[13px] md:text-base"
   style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)"
