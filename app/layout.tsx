@@ -49,11 +49,7 @@ export default function RootLayout({
   const [menuOpen, setMenuOpen] = useState(false);
   const [showBar, setShowBar] = useState(false);
   const pathname = usePathname();
-  const [cartCount, setCartCount] = useState(0);
-  use(() => {
-    setMenuOpen(false);
-  }, [pathname]);
-
+  
   useEffect(() => {
     if (pathname === "/") {
       setShowBar(false);
