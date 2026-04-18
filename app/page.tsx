@@ -58,7 +58,7 @@ export default function HomePage() {
       </p>
 
       <p
-        className="mt-3 max-w-[360px] text-[19px] leading-[1.08] tracking-[0.01em] text-white sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:max-w-[700px] md:text-5xl md:leading-[1.3]"
+        className="mt-3 max-w-[360px] text-[19px] leading-[1.08] tracking-[0.01em] text-white sm:mt-4 max-w-[520px] sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:max-w-[700px] md:text-5xl md:leading-[1.3]"
         style={{
           fontFamily: "Glacial",
           textShadow: "0 2px 16px rgba(0,0,0,0.35)",
