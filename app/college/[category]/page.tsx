@@ -72,7 +72,6 @@ export default async function CollegeCategoryPage({
             </h1>
 
             <p className="mt-3 max-w-[520px] text-[15px] leading-[1.6] text-[#6B7280] sm:text-[17px] sm:leading-[1.7]">
-              {meta.description}
             </p>
 
             <a
