@@ -14,7 +14,7 @@ export default function ShopPage() {
   {
     slug: "bottoms",
     title: "Bottoms",
-    image: products["custom-bottoms"].images[0],
+    image: products["custom-shorts"].images[0],
   },
   {
     slug: "sleepwear",
