@@ -1,6 +1,6 @@
 export default function AboutPage() {
   return (
-    <main className="bg-[#F7F7F5] min-h-screen px-6 py-16 text-[#4B4B4B]">
+    <main className="bg-[#F7F7F5] min-h-screen px-10 py-16 text-[#4B4B4B]">
       <div className="mx-auto max-w-5xl">
         <p className="text-sm uppercase tracking-[0.2em] text-[#6F879E]">
           About
