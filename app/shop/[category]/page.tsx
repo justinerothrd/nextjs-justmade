@@ -3,28 +3,23 @@ import { products } from "@/lib/products";
 const categoryMeta = {
   sweatshirts: {
     title: "Sweatshirts",
-    subtitle: "Cozy personalized layers for camp nights and cool mornings.",
-    image: "/hoodie.jpeg",
+    description: "Cozy personalized layers for camp nights and cool mornings.",
   },
   tees: {
     title: "Tees & Tanks",
-    subtitle: "Easy everyday camp styles with a custom feel.",
-    image: "/Tank.jpeg",
+    description: "Easy everyday camp styles with a custom feel.",
   },
   bottoms: {
     title: "Bottoms",
-    subtitle: "Custom shorts and easy camp-ready staples.",
-    image: "/bottoms.jpg",
+    description: "Custom shorts and easy camp-ready staples.",
   },
   sleepwear: {
-    title: "Sleepwear",
-    subtitle: "Soft camp-ready pieces made for bedtime and bunk life.",
-    image: "/sleepwear.jpg",
+    title: "Sleep & Loungewear",
+    description: "Soft camp-ready pieces made for bedtime and bunk life.",
   },
   accessories: {
-    title: "Accessories",
-    subtitle: "Thoughtful extras and gifts.",
-    image: "/accessories.jpg",
+    title: "Accessories & Gifts",
+    description: "Thoughtful extras and gifts.",
   },
 } as const;
 
@@ -51,15 +46,17 @@ export default async function CategoryPage({
 
   if (!meta || !slugs) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-white text-[#2F3A4A]">
-        <div className="text-center">
-          <h1 className="text-3xl font-light">Category not found</h1>
-          <a
-            href="/shop"
-            className="mt-6 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]"
-          >
-            Back to Shop
-          </a>
+      <main className="min-h-screen bg-white text-[#2F3A4A]">
+        <div className="flex min-h-screen items-center justify-center px-6">
+          <div className="text-center">
+            <h1 className="text-3xl font-light">Category not found</h1>
+            <a
+              href="/shop"
+              className="mt-6 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]"
+            >
+              Back to Shop
+            </a>
+          </div>
         </div>
       </main>
     );
@@ -71,80 +68,57 @@ export default async function CategoryPage({
   }));
 
   return (
-    <main className="min-h-screen bg-white text-[#2F3A4A]">
-      <section className="px-4 pb-6 pt-8 text-center sm:px-6 sm:pb-8 sm:pt-10">
-        <p className="text-sm uppercase tracking-[0.25em] text-[#6F879E]">
-          Just Made Custom
-        </p>
+    <main className="bg-white text-[#4B4B4B]">
+      <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10 sm:mb-14">
+            <h1 className="text-[36px] font-light leading-[1.02] tracking-[-0.02em] text-[#2F2F2F] sm:text-[48px] md:text-[60px]">
+              {meta.title}
+            </h1>
 
-        <h1 className="mt-4 text-4xl font-light sm:text-5xl md:text-6xl">
-          {meta.title}
-        </h1>
+            <p className="mt-3 max-w-[520px] text-[15px] leading-[1.6] text-[#6B7280] sm:text-[17px] sm:leading-[1.7]">
+              {meta.description}
+            </p>
 
-        <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
-          {meta.subtitle}
-        </p>
-
-        <div className="mx-auto mt-8 max-w-md">
-          <div className="overflow-hidden rounded-[24px] border border-[#F0ECE6] bg-white p-4 sm:p-6">
-            <img
-              src={meta.image}
-              alt={meta.title}
-              className="h-[220px] w-full object-contain sm:h-[320px]"
-            />
+            <a
+              href="/shop"
+              className="mt-5 inline-block text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
+            >
+              Back to All Categories
+            </a>
           </div>
-        </div>
 
-        <div className="mt-6">
-          <a
-            href="/shop"
-            className="text-sm underline underline-offset-4 hover:text-[#6F879E]"
-          >
-            Back to All Categories
-          </a>
-        </div>
-      </section>
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+            {categoryProducts.map((product) => (
+              <a
+                key={product.slug}
+                href={`/product/${product.slug}`}
+                className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
+              >
+                <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
+                  <div className="flex h-[220px] items-center justify-center p-5 sm:h-[280px] sm:p-7">
+                    <img
+                      src={product.images[0]}
+                      alt={product.name}
+                      className="max-h-full max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
+                </div>
 
-      <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20">
-        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 xl:grid-cols-4">
-          {categoryProducts.map((product) => (
-            <div key={product.slug} className="group">
-              <a href={`/product/${product.slug}`} className="block">
-                <div className="overflow-hidden rounded-[24px] bg-white">
-                  <img
-                    src={product.images[0]}
-                    alt={product.name}
-                    className={
-                      product.slug === "hoodie"
-                        ? "h-[240px] w-full object-contain p-2 scale-[1.01] transition duration-500 ease-out sm:h-[380px]"
-                        : product.slug === "quarter-zip"
-                        ? "h-[240px] w-full object-contain p-3 transition duration-500 ease-out sm:h-[380px]"
-                        : product.slug === "accessories-slides"
-                        ? "h-[240px] w-full object-contain p-4 transition duration-500 ease-out sm:h-[380px]"
-                        : "h-[240px] w-full object-contain p-2 transition duration-500 ease-out sm:h-[380px]"
-                    }
-                  />
+                <div className="pt-2 text-center">
+                  <h3 className="mt-3 text-center text-[14px] font-medium text-[#2F3A4A] sm:mt-4 sm:text-[15px] md:text-[16px]">
+                    {product.name}
+                  </h3>
+
+                  <p className="mt-1 text-[13px] text-[#6B7280] sm:text-[14px]">
+                    {product.price}
+                  </p>
                 </div>
               </a>
-
-              <div className="pt-3 sm:pt-4">
-                <h3 className="text-base font-light leading-tight text-[#2F3A4A] sm:text-lg">
-                  {product.name}
-                </h3>
-
-                <p className="mt-1 text-sm text-gray-500">{product.price}</p>
-
-                <a
-                  href={`/product/${product.slug}`}
-                  className="mt-2 inline-block text-sm underline underline-offset-4 transition duration-300 ease-out hover:text-[#6F879E] sm:mt-4"
-                >
-                  View Product
-                </a>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }
