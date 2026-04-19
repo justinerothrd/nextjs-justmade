@@ -36,7 +36,7 @@ hoodie: {
     name: "Custom Tee",
     price: "$35",
     description: "A classic custom tee designed for camp, travel, and summer memories.",
-    images: ["/tee-preview.png", "/Tee.jpeg", "/timberlaketee.jpg"],
+    images: ["/thbeartee.png", "/tee-preview.png", "/Tee.jpeg", "/timberlaketee.jpg"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
