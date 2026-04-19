@@ -57,20 +57,30 @@ export default function HomePage() {
   <div className="relative z-10 flex h-full items-end pb-14 sm:items-center sm:pb-0">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
       <div className="inline-block rounded-lg bg-black/20 px-3 py-2 sm:bg-transparent sm:p-0">
-        <p
-  className="text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-white sm:text-white/80 sm:text-[13px] md:text-base"
-  style={{ textShadow: "0 3px 12px rgba(0,0,0,0.7)" }}
->
-  MADE TO BE CUSTOM
-</p>
-          className="mt-3 max-w-[500px] text-[28px] leading-[1.1] tracking-[0.01em] text-white sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:text-5xl md:leading-[1.3]"
-          style={{
-            fontFamily: "Glacial",
-            textShadow: "0 3px 18px rgba(0,0,0,0.45)",
-          }}
-        >
-          Personalized gear for camp, college, and everyday.
-        </p>
+        <div className="relative z-10 flex h-full items-end pb-14 sm:items-center sm:pb-0">
+  <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+    <p
+      className="text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-white sm:text-white/80 sm:text-[13px] md:text-base"
+      style={{ textShadow: "0 3px 12px rgba(0,0,0,0.7)" }}
+    >
+      MADE TO BE CUSTOM
+    </p>
+
+    <p
+      className="mt-3 max-w-[500px] text-[28px] leading-[1.1] tracking-[0.01em] text-white sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:text-5xl md:leading-[1.3]"
+      style={{
+        fontFamily: "Glacial",
+        textShadow: "0 3px 18px rgba(0,0,0,0.45)",
+      }}
+    >
+      Personalized gear for camp, college, and everyday.
+    </p>
+
+    <div className="mt-5 flex flex-row items-center gap-3 sm:mt-7 sm:gap-4">
+      ...
+    </div>
+  </div>
+</div>
 
         <div className="mt-5 flex flex-row items-center gap-3 sm:mt-7 sm:gap-4">
           <a
