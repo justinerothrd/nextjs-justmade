@@ -23,77 +23,84 @@ const categoryMeta = {
   },
 } as const;
 
+import { products } from "@/lib/products";
+
 const categoryStyles = {
   sweatshirts: [
     {
       slug: "hoodie",
       title: "Hoodies",
-      image: "/hoodie.center-preview.png",
+      image: products["hoodie"].images[0],
       href: "/product/hoodie",
     },
     {
       slug: "quarter-zip",
-      title: "1/4 Zips",
-      image: "/quarterzip-preview.png",
+      title: "Quarter Zips",
+      image: products["quarter-zip"].images[0],
       href: "/product/quarter-zip",
     },
   ],
+
   tees: [
     {
       slug: "tank-top",
       title: "Tank Tops",
-      image: "/tank-preview.png",
+      image: products["tank-top"].images[0],
       href: "/product/tank-top",
     },
     {
       slug: "custom-tee",
       title: "Tees",
-      image: "/tee-preview.png",
+      image: products["custom-tee"].images[0],
       href: "/product/custom-tee",
     },
   ],
+
   bottoms: [
     {
       slug: "custom-shorts",
       title: "Shorts",
-      image: "/shorts.jpeg",
+      image: products["custom-shorts"].images[0],
       href: "/product/custom-shorts",
     },
     {
       slug: "sweatpants",
       title: "Sweatpants",
-      image: "/PCsweatpants.jpg",
+      image: products["sweatpants"].images[0],
       href: "/product/sweatpants",
     },
   ],
+
   sleepwear: [
     {
       slug: "sleepwear",
       title: "Pajama Shorts",
-      image: "/sleepwear.jpg",
+      image: products["sleepwear"].images[0],
       href: "/product/sleepwear",
     },
     {
       slug: "sleepwear-set",
       title: "Sleep Sets",
-      image: "/sleepwear-set.jpg",
+      image: products["sleepwear-set"].images[0],
       href: "/product/sleepwear-set",
     },
   ],
+
   accessories: [
     {
       slug: "accessories-slides",
       title: "Slides",
-      image: "/slides-preview.png",
+      image: products["accessories-slides"].images[0],
       href: "/product/accessories-slides",
     },
     {
       slug: "accessories-socks",
-      title: "Fuzzy Socks",
-      image: "/customsocks.jpg",
+      title: "Socks",
+      image: products["accessories-socks"].images[0],
       href: "/product/accessories-socks",
     },
   ],
+};
 } as const;
 
 type CategorySlug = keyof typeof categoryMeta;
