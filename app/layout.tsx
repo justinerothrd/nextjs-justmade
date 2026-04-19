@@ -125,12 +125,13 @@ export default function RootLayout({
           )}
         </header>
 
-        {/* 🔵 GLOBAL ANNOUNCEMENT BAR */}
-        <div className="bg-[#6F879E] py-2.5 text-center text-xs uppercase tracking-[0.3em] text-white">
-          {announcementText || "\u00A0"}
-        </div>
+{pathname !== "/" && (
+  <div className="bg-[#6F879E] py-2.5 text-center text-xs uppercase tracking-[0.3em] text-white">
+    {announcementText || "\u00A0"}
+  </div>
+)}
 
-        <MiniCart />
+<MiniCart />
 
         {children}
 
