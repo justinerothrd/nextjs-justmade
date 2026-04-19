@@ -119,17 +119,17 @@ export default function ProductPage() {
               </div>
             )}
 
-            <div className="flex flex-1 items-end justify-center rounded-[24px] border border-[#F0ECE6] bg-white p-4 sm:p-6">
+            <div className="flex flex-1 items-center justify-center rounded-[24px] border border-[#F0ECE6] bg-white p-4 sm:p-6">
   {currentImage ? (
     <img
       src={currentImage}
       alt={product.name}
-      className="h-full w-full object-contain object-bottom"
+      className="h-full w-full object-contain"
     />
-              ) : (
-                <div className="text-sm text-gray-400">No image available</div>
-              )}
-            </div>
+  ) : (
+    <div className="text-sm text-gray-400">No image available</div>
+  )}
+</div>
           </div>
 
           <div className="flex flex-col">
