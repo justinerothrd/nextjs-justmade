@@ -15,7 +15,7 @@ export default function HomePage() {
     {
       slug: "bottoms",
       title: "Bottoms",
-      image: "/bottoms.jpg",
+      image: "/PCsweatpants.jpg",
       link: "/shop/bottoms",
     },
     {
