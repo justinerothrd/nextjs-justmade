@@ -24,12 +24,12 @@ export default function ShopPage() {
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
                   <div className="flex h-[220px] items-center justify-center p-5 sm:h-[280px] sm:p-7">
-                    <img
-                      src={category.image}
-                      alt={category.title}
-                      className="max-h-full max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
-                    />
-                  </div>
+  <img
+    src={style.image}
+    alt={style.title}
+    className="max-h-full max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+  />
+</div>
                 </div>
 
                 <div className="pt-2 text-center">
