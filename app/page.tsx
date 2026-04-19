@@ -95,7 +95,7 @@ export default function HomePage() {
   </div>
 </section>
 
-      <section className="px-4 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
+      <section className="px-4 pb-28 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 sm:mb-8">
             <h2 className="text-2xl font-light text-[#3F3F3F] sm:text-3xl md:text-4xl">
