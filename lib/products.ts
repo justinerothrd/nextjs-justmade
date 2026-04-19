@@ -53,7 +53,7 @@ export const products = {
     name: "Custom Sweatpants",
     price: "$48",
     description: "Cozy custom sweatpants designed for camp, travel, and everyday wear.",
-    images: ["/PCsweatpants.jpg", "WMsweatpants.png"],
+    images: ["/PCsweatpants.jpg", "/WMsweatpants.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
   },
