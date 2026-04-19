@@ -7,7 +7,7 @@ export const categories = [
   {
     slug: "tees",
     title: "Tees & Tanks",
-    image: "/Tank.jpeg",
+    image: "/WS81tank.png",
   },
   {
     slug: "bottoms",
