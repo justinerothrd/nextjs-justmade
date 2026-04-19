@@ -8,7 +8,7 @@ export default function ShopPage() {
     {
       slug: "tees",
       title: "Tees & Tanks",
-      image: "/Tank.jpeg",
+      image: "/WM81tank.png",
     },
     {
       slug: "bottoms",
