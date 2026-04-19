@@ -54,18 +54,17 @@ export default function HomePage() {
 
   <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/10 to-transparent sm:bg-black/20" />
 
-  <div className="relative z-10 flex h-full items-end pb-8 sm:items-center sm:pb-0">
+  <div className="relative z-10 flex h-full items-end pb-14 sm:items-center sm:pb-0">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
       <div className="inline-block sm:bg-transparent sm:p-0">
         <p
-          className="text-left text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-white/80 sm:text-[13px] md:text-base"
-          style={{
-            textShadow: "0 3px 12px rgba(0,0,0,0.7)",
-          }}
-        >
-          MADE TO BE CUSTOM
-        </p>
-
+  className="text-left text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-white/80 sm:text-[13px] md:text-base"
+  style={{
+    textShadow: "0 3px 12px rgba(0,0,0,0.7)",
+  }}
+>
+  MADE TO BE CUSTOM
+</p>
         <p
           className="mt-3 max-w-[500px] text-[28px] leading-[1.1] tracking-[0.01em] text-white sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:text-5xl md:leading-[1.3]"
           style={{
@@ -96,7 +95,7 @@ export default function HomePage() {
   </div>
 </section>
 
-      <section className="px-4 pb-28 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
+      <section className="px-4 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 sm:mb-8">
             <h2 className="text-2xl font-light text-[#3F3F3F] sm:text-3xl md:text-4xl">
