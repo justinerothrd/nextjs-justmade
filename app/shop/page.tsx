@@ -1,32 +1,6 @@
-export default function ShopPage() {
-  const categories = [
-    {
-      slug: "sweatshirts",
-      title: "Sweatshirts",
-      image: "/hoodie.jpeg",
-    },
-    {
-      slug: "tees",
-      title: "Tees & Tanks",
-      image: "/WM81tank.png",
-    },
-    {
-      slug: "bottoms",
-      title: "Bottoms",
-      image: "/PCsweatpants.jpg",
-    },
-    {
-      slug: "sleepwear",
-      title: "Sleep & Loungewear",
-      image: "/sleepwear.jpg",
-    },
-    {
-      slug: "accessories",
-      title: "Accessories & Gifts",
-      image: "/accessories.jpg",
-    },
-  ];
+import { categories } from "@/lib/categories";
 
+export default function ShopPage() {
   return (
     <main className="bg-white text-[#4B4B4B]">
       <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
@@ -44,7 +18,7 @@ export default function ShopPage() {
           <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
             {categories.map((category) => (
               <a
-                key={category.title}
+                key={category.slug}
                 href={`/shop/${category.slug}`}
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
