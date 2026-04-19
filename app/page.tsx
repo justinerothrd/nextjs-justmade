@@ -91,7 +91,7 @@ style={{ textShadow: "0 2px 6px rgba(0,0,0,0.6)" }}
 
       <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
   <div className="mx-auto max-w-7xl">
-    <div className="mb-8 sm:mb-10">
+    <div className="mb-6 sm:mb-8>
       <h2 className="text-[34px] font-light leading-[1.02] tracking-[-0.02em] text-[#2F2F2F] sm:text-[44px] md:text-[56px]">
         Camp Collection
       </h2>
@@ -102,9 +102,9 @@ style={{ textShadow: "0 2px 6px rgba(0,0,0,0.6)" }}
         <a
           key={category.title}
           href={category.link}
-          className="group block"
+          className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
         >
-          <div className="overflow-hidden rounded-[22px] border border-[#ECE8E2] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
+          <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
             <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
               <img
                 src={category.image}
