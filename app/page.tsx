@@ -99,9 +99,6 @@ export default function HomePage() {
         </div>
       </div>
     </div>
-  </div>
-</section>
-
       <section className="px-4 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 sm:mb-8">
