@@ -59,7 +59,7 @@ export default function HomePage() {
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
       <div className="inline-block sm:bg-transparent sm:p-0">
         <p
-  className="text-left text-[13px] font-bold uppercase tracking-[0.12em] text-white sm:text-white/80 md:text-base"
+  className="text-left text-[18px] font-bold uppercase tracking-[0.12em] text-white sm:text-white/80 md:text-base"
 style={{ textShadow: "0 2px 6px rgba(0,0,0,0.6)" }}
 >
   MADE TO BE CUSTOM
@@ -68,7 +68,7 @@ style={{ textShadow: "0 2px 6px rgba(0,0,0,0.6)" }}
           className="mt-3 max-w-[500px] text-[28px] leading-[1.1] tracking-[0.01em] text-white sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:text-5xl md:leading-[1.3]"
           style={{
             fontFamily: "Glacial",
-            textShadow: "0 3px 18px rgba(0,0,0,0.45)",
+            textShadow: "0 3px 20px rgba(0,0,0,0.45)",
           }}
         >
           Personalized gear for camp, college, and everyday.
