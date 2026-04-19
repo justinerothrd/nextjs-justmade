@@ -58,7 +58,7 @@ export default function HomePage() {
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
       <div className="inline-block sm:bg-transparent sm:p-0">
         <p
-  className="text-left text-[16px] font-semibold uppercase tracking-[0.2em] text-white sm:text-white/80 sm:text-[13px] md:text-base"
+  className="text-left text-[16px] font-semibold uppercase tracking-[0.2em] text-white sm:text-white/80 sm:text-[16px] md:text-base"
   style={{ textShadow: "0 3px 18px rgba(0,0,0,0.7)" }}
 >
   MADE TO BE CUSTOM
