@@ -1,4 +1,4 @@
-export default function HomePage() {
+import { categories } from "@/lib/categories";
   const categories = [
     {
       slug: "sweatshirts",
@@ -101,7 +101,7 @@ style={{ textShadow: "0 2px 6px rgba(0,0,0,0.6)" }}
       {categories.map((category) => (
         <a
           key={category.title}
-          href={category.link}
+          href={`/shop/${category.slug}`}
           className="group block"
         >
           <div className="overflow-hidden rounded-[22px] border border-[#ECE8E2] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
