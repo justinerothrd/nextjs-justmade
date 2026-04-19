@@ -31,7 +31,7 @@ const categoryMeta = {
 const categoryProductSlugs = {
   sweatshirts: ["hoodie", "quarter-zip"],
   tees: ["tank-top", "custom-tee"],
-  bottoms: ["custom-bottoms"],
+  bottoms: ["custom-shorts"],
   sleepwear: ["sleepwear", "sleepwear-set"],
   accessories: ["accessories-slides", "accessories-socks"],
 } as const;
@@ -81,7 +81,7 @@ export default async function CategoryPage({
           {meta.title}
         </h1>
 
-                        <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
+        <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
           {meta.subtitle}
         </p>
 
@@ -103,6 +103,8 @@ export default async function CategoryPage({
             Back to All Categories
           </a>
         </div>
+      </section>
+
       <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20">
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 xl:grid-cols-4">
           {categoryProducts.map((product) => (
