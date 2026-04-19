@@ -23,13 +23,13 @@ export default function ShopPage() {
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                  <div className="flex h-[240px] items-end justify-center p-3 sm:h-[280px] sm:p-4">
-                    <img
-  src={category.image}
-  alt={category.title}
-  className="h-full w-full object-contain object-bottom transition duration-500 ease-out group-hover:scale-[1.02]"
-/>
-                  </div>
+                  <div className="flex h-[240px] items-center justify-center p-3 sm:h-[280px] sm:p-4">
+  <img
+    src={category.image}
+    alt={category.title}
+    className="h-full w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+  />
+</div>
                 </div>
 
                 <div className="pt-2 text-center">
