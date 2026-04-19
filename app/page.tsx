@@ -94,47 +94,57 @@ style={{ textShadow: "0 2px 6px rgba(0,0,0,0.6)" }}
   </div>
 </section>
 
-      <section className="px-4 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-6 sm:mb-8">
-            <h2 className="text-2xl font-light text-[#3F3F3F] sm:text-3xl md:text-4xl">
-              Shop Camp by Category
-            </h2>
+      <section className="px-4 pb-20 pt-16 sm:px-6 sm:pb-28 sm:pt-24">
+  <div className="mx-auto max-w-7xl">
+    <div className="mb-10 sm:mb-14">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8794] sm:text-[12px]">
+        Camp Collection
+      </p>
+
+      <h2 className="mt-3 text-[36px] font-light leading-[1.05] tracking-[-0.02em] text-[#2F2F2F] sm:text-[44px] md:text-[52px]">
+        Shop Camp by Category
+      </h2>
+
+      <p className="mt-4 max-w-[560px] text-sm leading-7 text-[#6B7280] sm:text-[15px]">
+        Personalized camp staples designed to feel clean, easy, and elevated.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
+      {categories.map((category) => (
+        <a
+          key={category.title}
+          href={category.link}
+          className="group block"
+        >
+          <div className="overflow-hidden rounded-[26px] bg-[#F8F8F6] transition duration-500 ease-out group-hover:shadow-[0_18px_40px_rgba(0,0,0,0.07)]">
+            <div className="flex aspect-[4/5] items-end justify-center overflow-hidden p-4 sm:p-5">
+              <img
+                src={category.image}
+                alt={category.title}
+                className="h-full w-full object-contain transition duration-700 ease-out group-hover:scale-[1.035]"
+              />
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
-            {categories.map((category) => (
-              <a
-                key={category.title}
-                href={category.link}
-                className="group rounded-[20px] border border-[#E6E2DD] bg-white p-2.5 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] sm:rounded-[24px] sm:p-4"
-              >
-                <div className="overflow-hidden rounded-[16px] bg-white sm:rounded-[22px]">
-                  <div className="flex aspect-[4/5] items-end justify-center sm:h-48 sm:aspect-auto md:h-56">
-                    <img
-                      src={category.image}
-                      alt={category.title}
-                      className="h-full w-full object-contain p-2 transition duration-500 ease-out sm:p-3"
-                    />
-                  </div>
-                </div>
+          <div className="pt-4 sm:pt-5">
+            <h3 className="text-[15px] font-medium tracking-[0.01em] text-[#2F2F2F] sm:text-[17px]">
+              {category.title}
+            </h3>
 
-                <h3 className="mt-3 text-[13px] font-medium text-[#3F3F3F] sm:mt-4 sm:text-base md:text-lg">
-                  {category.title}
-                </h3>
+            <p className="mt-1 text-[13px] leading-6 text-[#7A7A7A]">
+              {category.subtitle}
+            </p>
 
-                <p className="mt-1 hidden text-xs leading-5 text-[#666] sm:block sm:leading-6">
-                  {category.subtitle}
-                </p>
-
-                <p className="mt-2 text-xs font-medium text-[#6F879E] sm:mt-3 sm:text-sm">
-                  Shop now →
-                </p>
-              </a>
-            ))}
+            <p className="mt-3 text-[12px] font-medium uppercase tracking-[0.12em] text-[#7B8794] transition group-hover:text-[#4F6478]">
+              Shop
+            </p>
           </div>
-        </div>
-      </section>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
     </main>
   );
 }
