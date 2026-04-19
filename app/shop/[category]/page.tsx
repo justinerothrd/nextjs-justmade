@@ -11,7 +11,7 @@ const categoryMeta = {
   },
   bottoms: {
     title: "Bottoms",
-    description: "Custom shorts and easy camp-ready staples.",
+    description: "Custom shorts, sweatpants, and easy camp-ready staples.",
   },
   sleepwear: {
     title: "Sleep & Loungewear",
@@ -23,12 +23,77 @@ const categoryMeta = {
   },
 } as const;
 
-const categoryProductSlugs = {
-  sweatshirts: ["hoodie", "quarter-zip"],
-  tees: ["tank-top", "custom-tee"],
-  bottoms: ["custom-shorts"],
-  sleepwear: ["sleepwear", "sleepwear-set"],
-  accessories: ["accessories-slides", "accessories-socks"],
+const categoryStyles = {
+  sweatshirts: [
+    {
+      slug: "hoodie",
+      title: "Hoodies",
+      image: "/hoodie.center-preview.png",
+      href: "/product/hoodie",
+    },
+    {
+      slug: "quarter-zip",
+      title: "1/4 Zips",
+      image: "/quarterzip-preview.png",
+      href: "/product/quarter-zip",
+    },
+  ],
+  tees: [
+    {
+      slug: "tank-top",
+      title: "Tank Tops",
+      image: "/tank-preview.png",
+      href: "/product/tank-top",
+    },
+    {
+      slug: "custom-tee",
+      title: "Tees",
+      image: "/tee-preview.png",
+      href: "/product/custom-tee",
+    },
+  ],
+  bottoms: [
+    {
+      slug: "custom-shorts",
+      title: "Shorts",
+      image: "/bottoms-shorts.jpg",
+      href: "/product/custom-shorts",
+    },
+    {
+      slug: "sweatpants",
+      title: "Sweatpants",
+      image: "/bottoms-sweatpants.jpg",
+      href: "/product/sweatpants",
+    },
+  ],
+  sleepwear: [
+    {
+      slug: "sleepwear",
+      title: "Pajama Shorts",
+      image: "/sleepwear.jpg",
+      href: "/product/sleepwear",
+    },
+    {
+      slug: "sleepwear-set",
+      title: "Sleep Sets",
+      image: "/sleepwear-set.jpg",
+      href: "/product/sleepwear-set",
+    },
+  ],
+  accessories: [
+    {
+      slug: "accessories-slides",
+      title: "Slides",
+      image: "/slides-preview.png",
+      href: "/product/accessories-slides",
+    },
+    {
+      slug: "accessories-socks",
+      title: "Fuzzy Socks",
+      image: "/customsocks.jpg",
+      href: "/product/accessories-socks",
+    },
+  ],
 } as const;
 
 type CategorySlug = keyof typeof categoryMeta;
@@ -42,9 +107,9 @@ export default async function CategoryPage({
   const { category: categorySlug } = await params;
 
   const meta = categoryMeta[categorySlug as CategorySlug];
-  const slugs = categoryProductSlugs[categorySlug as CategorySlug];
+  const styles = categoryStyles[categorySlug as keyof typeof categoryStyles];
 
-  if (!meta || !slugs) {
+  if (!meta || !styles) {
     return (
       <main className="min-h-screen bg-white text-[#2F3A4A]">
         <div className="flex min-h-screen items-center justify-center px-6">
@@ -61,11 +126,6 @@ export default async function CategoryPage({
       </main>
     );
   }
-
-  const categoryProducts = slugs.map((slug) => ({
-    slug,
-    ...products[slug as ProductSlug],
-  }));
 
   return (
     <main className="bg-white text-[#4B4B4B]">
@@ -89,17 +149,17 @@ export default async function CategoryPage({
           </div>
 
           <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-            {categoryProducts.map((product) => (
+            {styles.map((style) => (
               <a
-                key={product.slug}
-                href={`/product/${product.slug}`}
+                key={style.slug}
+                href={style.href}
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
                   <div className="flex h-[220px] items-center justify-center p-5 sm:h-[280px] sm:p-7">
                     <img
-                      src={product.images[0]}
-                      alt={product.name}
+                      src={style.image}
+                      alt={style.title}
                       className="max-h-full max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
                     />
                   </div>
@@ -107,12 +167,14 @@ export default async function CategoryPage({
 
                 <div className="pt-2 text-center">
                   <h3 className="mt-3 text-center text-[14px] font-medium text-[#2F3A4A] sm:mt-4 sm:text-[15px] md:text-[16px]">
-                    {product.name}
+                    {style.title}
                   </h3>
 
-                  <p className="mt-1 text-[13px] text-[#6B7280] sm:text-[14px]">
-                    {product.price}
-                  </p>
+                  {style.slug in products && (
+                    <p className="mt-1 text-[13px] text-[#6B7280] sm:text-[14px]">
+                      {products[style.slug as ProductSlug].price}
+                    </p>
+                  )}
                 </div>
               </a>
             ))}
