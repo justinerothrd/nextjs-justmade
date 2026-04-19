@@ -54,7 +54,7 @@ export default function HomePage() {
 
   <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/10 to-transparent sm:bg-black/20" />
 
-  <div className="relative z-10 flex h-full items-start pt-24 sm:items-center sm:pt-0">
+  <div className="relative z-10 flex h-full items-end pb-28 sm:items-center sm:pb-0">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
       <div className="inline-block sm:bg-transparent sm:p-0">
         <p
