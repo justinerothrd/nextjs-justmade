@@ -36,11 +36,15 @@ export default function ShopPage() {
     <main className="bg-white text-[#4B4B4B]">
       <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-8 sm:mb-10">
-            <h1 className="text-[34px] font-light leading-[1.02] tracking-[-0.02em] text-[#2F2F2F] sm:text-[44px] md:text-[56px]">
-              Camp Collection
-            </h1>
-          </div>
+          <div className="mb-10 sm:mb-12">
+  <h1 className="text-[34px] font-light leading-[1.02] tracking-[-0.02em] text-[#2F2F2F] sm:text-[44px] md:text-[56px]">
+    Camp Collection
+  </h1>
+
+  <p className="mt-3 max-w-[520px] text-[20px] leading-7 text-[#6B7280] sm:text-[20px]">
+    Custom apparel and acessories for all your camp needs. 
+  </p>
+</div>
 
           <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
             {categories.map((category) => (
