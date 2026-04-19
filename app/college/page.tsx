@@ -1,88 +1,69 @@
-import { collegeProducts } from "@/lib/college-products";
-
-const categories = [
-  {
-    slug: "sweatshirts",
-    title: "Sweatshirts",
-    subtitle: "Custom college sweatshirts and cozy layers.",
-    image: collegeProducts["college-crewneck"].images[0],
-  },
-  {
-    slug: "tees",
-    title: "Tees & Tanks",
-    subtitle: "Easy college tees and tanks with a custom feel.",
-    image: collegeProducts["college-tee"].images[0],
-  },
-  {
-    slug: "bottoms",
-    title: "Bottoms",
-    subtitle: "Custom shorts and easy everyday staples.",
-    image: collegeProducts["college-shorts"].images[0],
-  },
-  {
-    slug: "sleepwear",
-    title: "Sleepwear",
-    subtitle: "Soft college sleepwear made for comfort.",
-    image: collegeProducts["college-sleepwear"].images[0],
-  },
-  {
-    slug: "accessories",
-    title: "Accessories",
-    subtitle: "Thoughtful extras and gifts.",
-    image: collegeProducts["college-slides"].images[0],
-  },
-];
-
 export default function CollegePage() {
+  const categories = [
+    {
+      slug: "sweatshirts",
+      title: "Sweatshirts",
+      image: "/college-hoodie.jpg",
+      link: "/college/sweatshirts",
+    },
+    {
+      slug: "tees",
+      title: "Tees & Tanks",
+      image: "/college-tee.jpg",
+      link: "/college/tees",
+    },
+    {
+      slug: "bottoms",
+      title: "Bottoms",
+      image: "/college-bottoms.jpg",
+      link: "/college/bottoms",
+    },
+    {
+      slug: "sleepwear",
+      title: "Sleep & Loungewear",
+      image: "/college-sleepwear.jpg",
+      link: "/college/sleepwear",
+    },
+    {
+      slug: "accessories",
+      title: "Accessories & Gifts",
+      image: "/college-accessories.jpg",
+      link: "/college/accessories",
+    },
+  ];
+
   return (
-    <main className="bg-[#F7F7F5] text-[#4B4B4B]">
-      <section className="px-4 pb-16 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
+    <main className="bg-white text-[#4B4B4B]">
+      <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-[#6F879E]">
-            </p>
-
-            <h1 className="mt-4 text-4xl font-light text-[#2F3A4A] sm:text-5xl md:text-6xl">
+          <div className="mb-8 sm:mb-10">
+            <h1 className="text-[34px] font-light leading-[1.02] tracking-[-0.02em] text-[#2F2F2F] sm:text-[44px] md:text-[56px]">
+              College Collection
             </h1>
-
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 sm:text-lg sm:leading-8">
-            </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
             {categories.map((category) => (
               <a
-                key={category.slug}
-                href={`/college/${category.slug}`}
-                className="group rounded-[24px] border border-[#E6E2DD] bg-white p-3 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] sm:p-4"
+                key={category.title}
+                href={category.link}
+                className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
-                <div className="overflow-hidden rounded-[18px] bg-white sm:rounded-[22px]">
-                  <div className="flex h-32 items-end justify-center sm:h-48 md:h-56">
+                <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
+                  <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
                     <img
                       src={category.image}
                       alt={category.title}
-                      className={
-                        category.slug === "sweatshirts"
-                          ? "h-full w-full object-contain p-2 sm:p-3 scale-[1.03] transition duration-500 ease-out"
-                          : category.slug === "accessories"
-                          ? "h-full w-full object-contain p-3 sm:p-4 scale-[1.02] transition duration-500 ease-out"
-                          : "h-full w-full object-contain p-2 sm:p-3 transition duration-500 ease-out"
-                      }
+                      className="max-h-full max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
                     />
                   </div>
                 </div>
 
-                <h3 className="mt-3 text-sm font-medium text-[#3F3F3F] sm:mt-4 sm:text-base md:text-lg">
-                  {category.title}
-                </h3>
-
-                <p className="mt-1 hidden text-xs leading-5 text-[#666] sm:block sm:leading-6">
-                  {category.subtitle}
-                </p>
-
-                <p className="mt-2 text-xs font-medium text-[#6F879E] sm:mt-3 sm:text-sm">
-                  Shop now →
-                </p>
+                <div className="pt-3 text-center">
+                  <h3 className="text-[15px] font-medium tracking-[0.02em] text-[#2F2F2F] sm:text-[17px]">
+                    {category.title}
+                  </h3>
+                </div>
               </a>
             ))}
           </div>
