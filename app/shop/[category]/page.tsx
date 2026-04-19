@@ -4,22 +4,27 @@ const categoryMeta = {
   sweatshirts: {
     title: "Sweatshirts",
     subtitle: "Cozy personalized layers for camp nights and cool mornings.",
+    image: "/hoodie.jpeg",
   },
   tees: {
     title: "Tees & Tanks",
     subtitle: "Easy everyday camp styles with a custom feel.",
+    image: "/Tank.jpeg",
   },
   bottoms: {
     title: "Bottoms",
     subtitle: "Custom shorts and easy camp-ready staples.",
+    image: "/bottoms.jpg",
   },
   sleepwear: {
     title: "Sleepwear",
     subtitle: "Soft camp-ready pieces made for bedtime and bunk life.",
+    image: "/sleepwear.jpg",
   },
   accessories: {
     title: "Accessories",
     subtitle: "Thoughtful extras and gifts.",
+    image: "/accessories.jpg",
   },
 } as const;
 
