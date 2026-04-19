@@ -43,7 +43,7 @@ export default function HomePage() {
   <img
     src="/hero-mobile.png"
     alt="Custom apparel"
-    className="absolute inset-0 h-full w-full object-cover object-center sm:hidden"
+    className="absolute inset-0 hidden h-full w-full object-cover object-[50%_65%] sm:block"
   />
 
   <img
