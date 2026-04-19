@@ -178,12 +178,12 @@ const imageBoxClass = [
               </div>
             )}
 
-            <div className="flex flex-1 items-center justify-center rounded-[24px] border border-[#F0ECE6] bg-white p-6 sm:p-8">
+            <div className={imageBoxClass}>
   {currentImage ? (
     <img
       src={currentImage}
       alt={product.name}
-      className="w-full object-contain"
+      className={mainImageClass}
     />
   ) : (
     <div className="text-sm text-gray-400">No image available</div>
