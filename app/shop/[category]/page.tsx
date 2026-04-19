@@ -26,7 +26,7 @@ const categoryMeta = {
 const categoryProductSlugs = {
   sweatshirts: ["hoodie", "quarter-zip"],
   tees: ["tank-top", "custom-tee"],
-  bottoms: ["custom-shorts"],
+  bottoms: ["custom-bottoms"],
   sleepwear: ["sleepwear", "sleepwear-set"],
   accessories: ["accessories-slides", "accessories-socks"],
 } as const;
