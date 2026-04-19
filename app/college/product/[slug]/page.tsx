@@ -50,37 +50,7 @@ export default function CollegeProductPage() {
   }
 
   const currentImage = product.images?.[selectedImage] ?? product.images?.[0] ?? "";
-const mainImageClass = [
-  "h-auto w-full object-contain transition duration-500",
-  slug === "hoodie" ? "max-h-[760px] scale-[1.06]" : "",
-  slug === "quarter-zip" ? "max-h-[760px] scale-[1.06]" : "",
-  slug === "custom-tee" ? "max-h-[520px]" : "",
-  slug === "tank-top" ? "max-h-[420px]" : "",
-  slug === "custom-shorts" ? "max-h-[420px]" : "",
-  slug === "sweatpants" ? "max-h-[520px]" : "",
-  slug === "sleepwear" ? "max-h-[460px]" : "",
-  slug === "sleepwear-set" ? "max-h-[520px]" : "",
-  slug === "accessories-slides" ? "max-h-[420px]" : "",
-  slug === "accessories-socks" ? "max-h-[360px]" : "",
-]
-  .filter(Boolean)
-  .join(" ");
 
-const imageBoxClass = [
-  "flex items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white px-6 py-6 shadow-[0_12px_32px_rgba(0,0,0,0.035)] sm:px-8 sm:py-8",
-  slug === "hoodie" ? "h-[620px]" : "",
-  slug === "quarter-zip" ? "h-[620px]" : "",
-  slug === "custom-tee" ? "h-[520px]" : "",
-  slug === "tank-top" ? "h-[440px]" : "",
-  slug === "custom-shorts" ? "h-[420px]" : "",
-  slug === "sweatpants" ? "h-[520px]" : "",
-  slug === "sleepwear" ? "h-[460px]" : "",
-  slug === "sleepwear-set" ? "h-[520px]" : "",
-  slug === "accessories-slides" ? "h-[420px]" : "",
-  slug === "accessories-socks" ? "h-[360px]" : "",
-]
-  .filter(Boolean)
-  .join(" ");
   function handleAddToCart() {
     if (!product || !slug) return;
 
@@ -179,16 +149,16 @@ const imageBoxClass = [
             )}
 
             <div className={imageBoxClass}>
-  {currentImage ? (
-    <img
-      src={currentImage}
-      alt={product.name}
-      className={mainImageClass}
-    />
-  ) : (
-    <div className="text-sm text-gray-400">No image available</div>
-  )}
-</div>
+              {currentImage ? (
+                <img
+                  src={currentImage}
+                  alt={product.name}
+                  className={mainImageClass}
+                />
+              ) : (
+                <div className="text-sm text-gray-400">No image available</div>
+              )}
+            </div>
           </div>
 
           <div className="flex flex-col">
