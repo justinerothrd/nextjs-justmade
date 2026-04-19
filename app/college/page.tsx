@@ -5,31 +5,26 @@ const categories = [
     slug: "sweatshirts",
     title: "Sweatshirts",
     image: collegeProducts["college-crewneck"].images[0],
-    link: "/college/sweatshirts",
   },
   {
     slug: "tees",
     title: "Tees & Tanks",
     image: collegeProducts["college-tee"].images[0],
-    link: "/college/tees",
   },
   {
     slug: "bottoms",
     title: "Bottoms",
     image: collegeProducts["college-shorts"].images[0],
-    link: "/college/bottoms",
   },
   {
     slug: "sleepwear",
     title: "Sleep & Loungewear",
     image: collegeProducts["college-sleepwear"].images[0],
-    link: "/college/sleepwear",
   },
   {
     slug: "accessories",
     title: "Accessories & Gifts",
     image: collegeProducts["college-slides"].images[0],
-    link: "/college/accessories",
   },
 ];
 
@@ -52,7 +47,7 @@ export default function CollegePage() {
             {categories.map((category) => (
               <a
                 key={category.slug}
-                href={category.link}
+                href={`/college/${category.slug}`}
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
