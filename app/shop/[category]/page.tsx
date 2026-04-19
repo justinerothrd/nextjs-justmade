@@ -56,13 +56,13 @@ const categoryStyles = {
     {
       slug: "custom-shorts",
       title: "Shorts",
-      image: "/bottoms-shorts.jpg",
+      image: "/shorts.jpeg",
       href: "/product/custom-shorts",
     },
     {
       slug: "sweatpants",
       title: "Sweatpants",
-      image: "/bottoms-sweatpants.jpg",
+      image: "/bottoms.jpg",
       href: "/product/sweatpants",
     },
   ],
