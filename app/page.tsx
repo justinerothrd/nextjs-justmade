@@ -114,13 +114,10 @@ style={{ textShadow: "0 2px 6px rgba(0,0,0,0.6)" }}
             </div>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-3">
             <h3 className="text-[15px] font-medium tracking-[0.01em] text-[#2F2F2F] sm:text-[17px]">
               {category.title}
             </h3>
-
-            <p className="mt-1 text-[13px] leading-6 text-[#7A7A7A]">
-            </p>
           </div>
         </a>
       ))}
