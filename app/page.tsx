@@ -63,7 +63,6 @@ export default function HomePage() {
 >
   MADE TO BE CUSTOM
 </p>
-
         <p
           className="mt-3 max-w-[500px] text-[28px] leading-[1.1] tracking-[0.01em] text-white sm:mt-4 sm:max-w-[640px] sm:text-4xl sm:leading-[1.22] md:text-5xl md:leading-[1.3]"
           style={{
