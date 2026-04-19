@@ -56,7 +56,7 @@ export default function HomePage() {
 
   <div className="relative z-10 flex h-full items-end pb-14 sm:items-center sm:pb-0">
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
-      <div className="inline-block rounded-lg bg-black/20 px-3 py-2 sm:bg-transparent sm:p-0">
+
         <div className="relative z-10 flex h-full items-end pb-14 sm:items-center sm:pb-0">
   <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
     <p
