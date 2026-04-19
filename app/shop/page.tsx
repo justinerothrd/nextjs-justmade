@@ -42,7 +42,7 @@ export default function ShopPage() {
   </h1>
 
   <p className="mt-3 max-w-[520px] text-[20px] leading-7 text-[#6B7280] sm:text-[20px]">
-    Custom apparel and acessories for all your camp needs. 
+    Custom apparel and acessories designed for all things camp.
   </p>
 </div>
 
