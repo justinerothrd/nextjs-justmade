@@ -115,176 +115,184 @@ export default function ProductPage() {
     .join(" ");
 
   return (
-    <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-12">
-      <div className="mx-auto max-w-7xl">
-        <button
-          onClick={() => window.history.back()}
-          className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
-        >
-          Back
-        </button>
+  <main className="min-h-screen bg-white px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-14">
+    <div className="mx-auto max-w-6xl">
 
-        <div className="mt-6 grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
-          <div className="flex gap-4">
-            {product.images.length > 1 && (
-              <div className="flex flex-col gap-3 pt-1">
-                {product.images.map((img, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setSelectedImage(i)}
-                    className={`overflow-hidden rounded-[16px] border-2 bg-white transition ${
-                      selectedImage === i
-                        ? "border-[#6F879E] shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
-                        : "border-transparent hover:border-[#D9D4CE]"
-                    }`}
-                  >
-                    <img
-                      src={img}
-                      alt={`${product.name} view ${i + 1}`}
-                      className="h-20 w-20 object-contain p-2 sm:h-24 sm:w-24"
-                    />
-                  </button>
-                ))}
-              </div>
-            )}
+      <button
+        onClick={() => window.history.back()}
+        className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
+      >
+        Back
+      </button>
 
-            <div className={imageBoxClass}>
-              {currentImage ? (
-                <img
-                  src={currentImage}
-                  alt={product.name}
-                  className={mainImageClass}
-                />
-              ) : (
-                <div className="text-sm text-gray-400">No image available</div>
-              )}
+      <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-14">
+
+        {/* LEFT: IMAGE */}
+        <div className="flex gap-4">
+
+          {product.images.length > 1 && (
+            <div className="flex flex-col gap-3 pt-1">
+              {product.images.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedImage(i)}
+                  className={`overflow-hidden rounded-[14px] border transition ${
+                    selectedImage === i
+                      ? "border-[#6F879E]"
+                      : "border-transparent hover:border-[#D9D4CE]"
+                  }`}
+                >
+                  <img
+                    src={img}
+                    alt=""
+                    className="h-16 w-16 object-contain p-2 sm:h-20 sm:w-20"
+                  />
+                </button>
+              ))}
             </div>
+          )}
+
+          <div className="flex-1 rounded-[24px] border border-[#F0ECE6] bg-white p-6 sm:p-8">
+            <img
+              src={currentImage}
+              alt={product.name}
+              className="w-full object-contain"
+            />
           </div>
+        </div>
 
-          <div className="flex flex-col">
-            <p className="text-xs uppercase tracking-[0.24em] text-[#6F879E]">
-              Just Made Custom
-            </p>
+        {/* RIGHT: INFO */}
+        <div className="flex flex-col">
 
-            <h1 className="mt-3 text-3xl font-light tracking-[0.01em] text-[#2F3A4A] sm:text-5xl">
-              {product.name}
-            </h1>
+          <h1 className="text-[28px] font-light text-[#2F2F2F] sm:text-[34px]">
+            {product.name}
+          </h1>
 
-            <p className="mt-4 text-2xl font-light text-[#6F879E]">{product.price}</p>
+          <p className="mt-2 text-[18px] text-[#5F7A94]">
+            {product.price}
+          </p>
 
-            <p className="mt-5 max-w-xl text-[15px] leading-7 text-gray-600 sm:text-base">
-              {product.description}
-            </p>
+          <p className="mt-5 max-w-md text-[14px] leading-6 text-[#6B7280]">
+            {product.description}
+          </p>
 
-            <div className="mt-8 flex flex-col gap-5">
-              <div>
-                <label className="text-sm font-medium text-[#3F3F3F]">
-                  Customization Details
-                </label>
-                <input
-                  type="text"
-                  placeholder="Camp name, player name, number, special request, etc."
-                  value={customDetails}
-                  onChange={(e) => setCustomDetails(e.target.value)}
-                  className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-                />
-              </div>
+          <div className="mt-6 space-y-5">
 
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label className="text-sm font-medium text-[#3F3F3F]">Size</label>
-                  <select
-                    value={size}
-                    onChange={(e) => setSize(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-                  >
-                    {product.sizes.map((s) => (
-                      <option key={s}>{s}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="text-sm font-medium text-[#3F3F3F]">Color</label>
-                  <select
-                    value={color}
-                    onChange={(e) => setColor(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-                  >
-                    {product.colors.map((c) => (
-                      <option key={c}>{c}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <LogoPicker
-                logos={logos}
-                selectedLogo={selectedLogo}
-                onSelectLogo={setSelectedLogo}
+            {/* CUSTOM TEXT */}
+            <div>
+              <label className="text-[13px] uppercase tracking-[0.12em] text-[#6B7280]">
+                Customization
+              </label>
+              <input
+                type="text"
+                placeholder="Camp name, number, etc."
+                value={customDetails}
+                onChange={(e) => setCustomDetails(e.target.value)}
+                className="mt-2 w-full rounded-full border border-[#D8D3CD] px-4 py-3 text-sm outline-none focus:border-[#6F879E]"
               />
+            </div>
 
-              <a
-                href="/designs"
-                className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
-              >
-                View all designs
-              </a>
+            {/* SIZE + COLOR */}
+            <div className="grid gap-5 sm:grid-cols-2">
 
               <div>
-                <label className="text-sm font-medium text-[#3F3F3F]">
-                  Logo Placement
+                <label className="text-[13px] uppercase tracking-[0.12em] text-[#6B7280]">
+                  Size
                 </label>
                 <select
-                  value={placement}
-                  onChange={(e) => setPlacement(e.target.value)}
-                  className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+                  value={size}
+                  onChange={(e) => setSize(e.target.value)}
+                  className="mt-2 w-full rounded-full border border-[#D8D3CD] px-4 py-3 text-sm focus:border-[#6F879E]"
                 >
-                  <option>Left Chest</option>
-                  <option>Full Front</option>
-                  <option>Back</option>
-                  <option>Sleeve</option>
+                  {product.sizes.map((s) => (
+                    <option key={s}>{s}</option>
+                  ))}
                 </select>
               </div>
 
               <div>
-                <label className="text-sm font-medium text-[#3F3F3F]">Quantity</label>
-                <input
-                  type="number"
-                  min="1"
-                  value={quantity}
-                  onChange={(e) => setQuantity(Number(e.target.value))}
-                  className="mt-2 w-24 rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-                />
+                <label className="text-[13px] uppercase tracking-[0.12em] text-[#6B7280]">
+                  Color
+                </label>
+                <select
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  className="mt-2 w-full rounded-full border border-[#D8D3CD] px-4 py-3 text-sm focus:border-[#6F879E]"
+                >
+                  {product.colors.map((c) => (
+                    <option key={c}>{c}</option>
+                  ))}
+                </select>
               </div>
-
-              <button
-                onClick={handleAddToCart}
-                className="mt-2 inline-flex items-center justify-center rounded-full bg-[#6F879E] px-8 py-4 text-sm font-medium text-white transition-all duration-200 hover:opacity-95 hover:shadow-[0_12px_24px_rgba(111,135,158,0.25)]"
-              >
-                {added ? "Added to Cart ✓" : "Add to Cart"}
-              </button>
-
-              {added && (
-                <div className="flex gap-5 text-sm">
-                  <a
-                    href="/cart"
-                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
-                  >
-                    View Cart
-                  </a>
-                  <a
-                    href="/shop"
-                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
-                  >
-                    Continue Shopping
-                  </a>
-                </div>
-              )}
             </div>
+
+            {/* LOGO PICKER */}
+            <LogoPicker
+              logos={logos}
+              selectedLogo={selectedLogo}
+              onSelectLogo={setSelectedLogo}
+            />
+
+            <a
+              href="/designs"
+              className="text-sm underline underline-offset-4 hover:text-[#6F879E]"
+            >
+              View all designs
+            </a>
+
+            {/* PLACEMENT */}
+            <div>
+              <label className="text-[13px] uppercase tracking-[0.12em] text-[#6B7280]">
+                Placement
+              </label>
+              <select
+                value={placement}
+                onChange={(e) => setPlacement(e.target.value)}
+                className="mt-2 w-full rounded-full border border-[#D8D3CD] px-4 py-3 text-sm focus:border-[#6F879E]"
+              >
+                <option>Left Chest</option>
+                <option>Full Front</option>
+                <option>Back</option>
+                <option>Sleeve</option>
+              </select>
+            </div>
+
+            {/* QUANTITY */}
+            <div>
+              <label className="text-[13px] uppercase tracking-[0.12em] text-[#6B7280]">
+                Quantity
+              </label>
+              <input
+                type="number"
+                min="1"
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                className="mt-2 w-24 rounded-full border border-[#D8D3CD] px-4 py-3 text-sm focus:border-[#6F879E]"
+              />
+            </div>
+
+            {/* ADD TO CART */}
+            <button
+              onClick={handleAddToCart}
+              className="mt-6 w-full rounded-full bg-[#5F7A94] py-3.5 text-[14px] font-medium text-white transition hover:bg-[#536C84]"
+            >
+              {added ? "Added to Cart ✓" : "Add to Cart"}
+            </button>
+
+            {added && (
+              <div className="flex gap-5 text-sm">
+                <a href="/cart" className="underline hover:text-[#6F879E]">
+                  View Cart
+                </a>
+                <a href="/shop" className="underline hover:text-[#6F879E]">
+                  Continue Shopping
+                </a>
+              </div>
+            )}
+
           </div>
         </div>
       </div>
-    </main>
-  );
-}
+    </div>
+  </main>
+);
