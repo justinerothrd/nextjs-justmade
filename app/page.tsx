@@ -59,7 +59,7 @@ export default function HomePage() {
       <div className="inline-block sm:bg-transparent sm:p-0">
         <p
   className="text-left text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-white/80 sm:text-[13px] md:text-base"
-  style={{ textShadow: "0 2px 10px rgba(0,0,0,0.65)" }}
+  style={{ textShadow: "0 3px 12px rgba(0,0,0,0.7)" }}
 >
   MADE TO BE CUSTOM
 </p>
