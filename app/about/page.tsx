@@ -10,7 +10,7 @@ export default function AboutPage() {
         </h1>
 
         <p className="mt-6 max-w-3xl text-lg leading-8 text-[#5D5D5D]">
-          We create custom styles for camp, college, and every occasion in between. From clothing to accessories and gifts— our designs are unique, fun and always the best quality!
+          We create custom styles for camp, college, and every occasion in between. From clothing to accessories and gifts— our designs are unique, fun and always the best quality. 
         </p>
 
         <div className="mt-12 grid gap-10 md:grid-cols-2">
