@@ -41,10 +41,11 @@ export default function HomePage() {
     <main className="bg-white text-[#4B4B4B]">
       <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden sm:h-[72vh] sm:min-h-[560px] md:h-[90vh] md:min-h-[700px]">
   <img
-    src="/hero-mobile.png"
-    alt="Custom apparel"
-    className="absolute inset-0 h-full w-full object-cover object-center sm:hidden"
-  />
+  src="/hero-mobile.png"
+  alt="Custom apparel"
+  className="absolute inset-0 h-full w-full object-cover sm:hidden"
+  style={{ objectPosition: "50% 35%" }}
+/>
 
   <img
     src="/hero-main.png"
