@@ -62,7 +62,7 @@ const categoryStyles = {
     {
       slug: "sweatpants",
       title: "Sweatpants",
-      image: "/bottoms.jpg",
+      image: "/PCsweatpants.jpg",
       href: "/product/sweatpants",
     },
   ],
