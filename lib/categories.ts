@@ -7,12 +7,12 @@ export const categories = [
   {
     slug: "tees",
     title: "Tees & Tanks",
-    image: "/WM81tank.png",
+    image: "/Tank.jpeg",
   },
   {
     slug: "bottoms",
     title: "Bottoms",
-    image: "/PCsweatpants.jpg", // 👈 ONLY CHANGE HERE EVER
+    image: "/PCsweatpants.jpg",
   },
   {
     slug: "sleepwear",
@@ -24,4 +24,4 @@ export const categories = [
     title: "Accessories & Gifts",
     image: "/accessories.jpg",
   },
-];
+] as const;
