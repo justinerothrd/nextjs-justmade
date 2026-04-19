@@ -12,7 +12,7 @@ hoodie: {
   name: "Custom Hoodie",
   price: "$70",
   description: "A cozy custom hoodie for chilly camp nights and cool mornings.",
-  images: ["/hoodie.jpeg", "/skims hoodie front.png", "/skims hoodie back.png", "/hoodie.center-preview.png",],
+  images: ["/hoodie.jpeg", "/skims hoodie front.png", "/skims hoodie back.png", "/hoodie.center-preview.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", Adult S", "Adult M", Adult L"],
   },
@@ -28,7 +28,7 @@ hoodie: {
     name: "Custom Tank Top",
     price: "$40",
     description: "A lightweight custom tank perfect for hot camp days and summer activities.",
-    images: ["/Tank.jpeg", "/PCTank.jpeg", "/tank with script.png"], "/tank-preview.png",]
+    images: ["/Tank.jpeg", "/PCTank.jpeg", "/tank with script.png"], "/tank-preview.png"]
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", Adult S", "Adult M", Adult L"],
   },
