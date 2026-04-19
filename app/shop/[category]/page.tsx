@@ -23,8 +23,6 @@ const categoryMeta = {
   },
 } as const;
 
-import { products } from "@/lib/products";
-
 const categoryStyles = {
   sweatshirts: [
     {
@@ -40,7 +38,6 @@ const categoryStyles = {
       href: "/product/quarter-zip",
     },
   ],
-
   tees: [
     {
       slug: "tank-top",
@@ -55,7 +52,6 @@ const categoryStyles = {
       href: "/product/custom-tee",
     },
   ],
-
   bottoms: [
     {
       slug: "custom-shorts",
@@ -70,7 +66,6 @@ const categoryStyles = {
       href: "/product/sweatpants",
     },
   ],
-
   sleepwear: [
     {
       slug: "sleepwear",
@@ -85,7 +80,6 @@ const categoryStyles = {
       href: "/product/sleepwear-set",
     },
   ],
-
   accessories: [
     {
       slug: "accessories-slides",
@@ -100,7 +94,6 @@ const categoryStyles = {
       href: "/product/accessories-socks",
     },
   ],
-};
 } as const;
 
 type CategorySlug = keyof typeof categoryMeta;
