@@ -120,7 +120,6 @@ style={{ textShadow: "0 2px 6px rgba(0,0,0,0.6)" }}
             </h3>
 
             <p className="mt-1 text-[13px] leading-6 text-[#7A7A7A]">
-              {category.subtitle}
             </p>
           </div>
         </a>
