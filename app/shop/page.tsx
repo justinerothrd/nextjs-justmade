@@ -54,7 +54,7 @@ Custom apparel and acessories designed for all things camp.
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                  <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
+                  <div className="flex h-[220px] items-center justify-center p-6 sm:h-[280px] sm:p-8">
                     <img
                       src={category.image}
                       alt={category.title}
@@ -63,7 +63,7 @@ Custom apparel and acessories designed for all things camp.
                   </div>
                 </div>
 
-                <div className="pt-3 text-center">
+                <div className="pt-2 text-center">
                   <h3 className="text-[15px] font-medium tracking-[0.02em] text-[#2F2F2F] sm:text-[17px]">
                     {category.title}
                   </h3>
