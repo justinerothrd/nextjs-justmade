@@ -61,7 +61,6 @@ export default function HomePage() {
         <p
   className="text-left text-[13px] font-semibold uppercase tracking-[0.12em] text-white sm:text-white/80 md:text-base"
 style={{ textShadow: "0 2px 6px rgba(0,0,0,0.6)" }}
-  }}
 >
   MADE TO BE CUSTOM
 </p>
