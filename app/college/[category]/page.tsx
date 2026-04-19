@@ -3,23 +3,18 @@ import { collegeProducts } from "@/lib/college-products";
 const categoryMeta = {
   sweatshirts: {
     title: "Sweatshirts",
-    description: "Custom college sweatshirts and cozy layers.",
   },
   tees: {
     title: "Tees & Tanks",
-    description: "Easy college tees and tanks with a custom feel.",
   },
   bottoms: {
     title: "Bottoms",
-    description: "Custom shorts and easy everyday staples.",
   },
   sleepwear: {
     title: "Sleep & Loungewear",
-    description: "Soft college sleepwear made for comfort.",
   },
   accessories: {
     title: "Accessories & Gifts",
-    description: "Thoughtful extras and gifts.",
   },
 } as const;
 
