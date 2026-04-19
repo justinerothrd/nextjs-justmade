@@ -183,13 +183,9 @@ export default function RootLayout({
         </header>
 
         {pathname !== "/" && announcementText && (
-          <div
-            className={`bg-[#5E748A] py-2.5 text-center text-xs uppercase tracking-[0.3em] text-white transition ${
-              showBar ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0"
-            }`}
-          >
-            {announcementText}
-          </div>
+          <div className="bg-[#6F879E] py-2.5 text-center text-xs uppercase tracking-[0.3em] text-white">
+  {" "}
+</div>
         )}
 
         <MiniCart />
