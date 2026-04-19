@@ -11,6 +11,7 @@ const categoryMeta = {
   },
   bottoms: {
     title: "Bottoms",
+    subtitle: "Custom shorts and easy camp-ready staples.",
   },
   sleepwear: {
     title: "Sleepwear",
