@@ -9,7 +9,7 @@ export default function HomePage() {
     {
       slug: "tees",
       title: "Tees & Tanks",
-      image: "/Tank.jpeg",
+      image: "/WM81tank.png",
       link: "/shop/tees",
     },
     {
