@@ -95,7 +95,7 @@ export default function ProductPage() {
           Back
         </button>
 
-        <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-14">
+        <div className="mt-8 grid items-start gap-10 md:grid-cols-2 md:gap-14">
           <div className="flex gap-4">
             {product.images.length > 1 && (
               <div className="flex flex-col gap-3 pt-1">
