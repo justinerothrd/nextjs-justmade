@@ -1,5 +1,23 @@
 import { products } from "@/lib/products";
 
+const categoryMeta = {
+  sweatshirts: {
+    title: "Sweatshirts",
+  },
+  tees: {
+    title: "Tees & Tanks",
+  },
+  bottoms: {
+    title: "Bottoms",
+  },
+  sleepwear: {
+    title: "Sleep & Loungewear",
+  },
+  accessories: {
+    title: "Accessories & Gifts",
+  },
+} as const;
+
 const categoryStyles = {
   sweatshirts: [
     {
@@ -82,7 +100,7 @@ const categoryStyles = {
     },
   ],
 } as const;
-
+type CategorySlug = keyof typeof categoryMeta;
 type ProductSlug = keyof typeof products;
 
 export default async function CategoryPage({
@@ -136,27 +154,29 @@ export default async function CategoryPage({
                 href={style.href}
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
-               <div className="flex h-[260px] sm:h-[320px] items-center justify-center p-3 sm:p-4">
+                <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
+                  <div className="flex h-[260px] sm:h-[320px] items-center justify-center p-3 sm:p-4">
   <img
     src={style.image}
     alt={style.title}
-    className="max-h-[92%] max-w-[94%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+    className="max-h-[94%] max-w-[94%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
   />
 </div>
+                </div>
 
                 <div className="mt-3 text-center">
-                  <h3 className="text-[15px] font-medium tracking-wide text-[#2F2F2F] sm:text-[16px]">
-                    {style.title}
-                  </h3>
+  <h3 className="text-[15px] font-medium tracking-wide text-[#2F2F2F] sm:text-[16px]">
+    {style.title}
+  </h3>
 
-                  <div className="mx-auto mt-3 h-[1px] w-6 bg-[#D8D8D8]"></div>
+  <div className="mx-auto mt-3 h-[1px] w-6 bg-[#D8D8D8]"></div>
 
-                  {style.slug in products && (
-                    <p className="mt-2 text-[13px] text-[#6B7280] sm:text-[14px]">
-                      {products[style.slug as ProductSlug].price}
-                    </p>
-                  )}
-                </div>
+  {style.slug in products && (
+    <p className="mt-2 text-[13px] text-[#6B7280] sm:text-[14px]">
+      {products[style.slug as ProductSlug].price}
+    </p>
+  )}
+</div>
               </a>
             ))}
           </div>
