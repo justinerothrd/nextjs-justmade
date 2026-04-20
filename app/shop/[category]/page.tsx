@@ -138,7 +138,7 @@ export default async function CategoryPage({
             </a>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="mt-4 grid grid-cols-2 gap-4 ...
             {styles.map((style) => (
               <a
                 key={style.slug}
