@@ -91,7 +91,7 @@ export default async function CollegeCategoryPage({
                     <img
                       src={product.images[0]}
                       alt={product.name}
-                      className="max-h-[94%] max-w-[94%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+                      className="h-full w-full object-contain scale-[0.92] transition duration-500 ease-out group-hover:scale-[0.96]"
                     />
                   </div>
                 </div>
