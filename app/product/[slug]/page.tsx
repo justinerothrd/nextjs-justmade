@@ -124,7 +124,7 @@ export default function ProductPage() {
     <img
       src={currentImage}
       alt={product.name}
-      className="max-h-[90%] max-w-[90%] object-contain"
+      className="max-h-[94%] max-w-[94%] object-contain"
     />
   ) : (
     <div className="text-sm text-gray-400">No image available</div>
