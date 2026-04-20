@@ -180,7 +180,7 @@ const currentImageClass =
     <img
       src={currentImage}
       alt={product.name}
-      cclassName={`${currentImageClass} object-contain`}
+      className={`${currentImageClass} object-contain`}
     />
   ) : (
     <div className="text-sm text-gray-400">No image available</div>
