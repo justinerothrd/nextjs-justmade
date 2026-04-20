@@ -119,7 +119,7 @@ export default function ProductPage() {
               </div>
             )}
 
-            <div className="flex flex-1 items-center justify-center rounded-[24px] border border-[#F0ECE6] bg-white p-4 sm:p-6">
+            <div className="flex aspect-square w-full items-center justify-center rounded-[24px] border border-[#F0ECE6] bg-white p-4 sm:p-6">
   {currentImage ? (
     <img
       src={currentImage}
