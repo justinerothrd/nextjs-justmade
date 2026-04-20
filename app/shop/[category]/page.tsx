@@ -155,17 +155,19 @@ export default async function CategoryPage({
 </div>
                 </div>
 
-                <div className="pt-2 text-center">
-                  <h3 className="mt-3 text-center text-[14px] font-medium text-[#2F3A4A] sm:mt-4 sm:text-[15px] md:text-[16px]">
-                    {style.title}
-                  </h3>
+                <div className="mt-3 text-center">
+  <h3 className="text-[15px] font-medium tracking-wide text-[#2F3A4A] sm:text-[16px]">
+    {style.title}
+  </h3>
 
-                  {style.slug in products && (
-                    <p className="mt-1 text-[13px] text-[#6B7280] sm:text-[14px]">
-                      {products[style.slug as ProductSlug].price}
-                    </p>
-                  )}
-                </div>
+  <div className="mx-auto mt-3 h-[1px] w-6 bg-[#D8D8D8]"></div>
+
+  {style.slug in products && (
+    <p className="mt-2 text-[13px] text-[#6B7280] sm:text-[14px]">
+      {products[style.slug as ProductSlug].price}
+    </p>
+  )}
+</div>
               </a>
             ))}
           </div>
