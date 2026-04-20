@@ -83,7 +83,6 @@ const categoryStyles = {
   ],
 } as const;
 
-type CategorySlug = keyof typeof categoryMeta;
 type ProductSlug = keyof typeof products;
 
 export default async function CategoryPage({
