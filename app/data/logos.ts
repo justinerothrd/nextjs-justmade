@@ -8,8 +8,8 @@ export type Logo = {
 export const logos: Logo[] = [
   {
     slug: "tyler-hill",
-    name: "Tyler Hill",
-    image: "/logos/placeholder.png",
+    name: "Tyler Hill Varsity",
+    image: "/logos/THCvarsityarch.png",
     category: "Camp",
   },
   {
