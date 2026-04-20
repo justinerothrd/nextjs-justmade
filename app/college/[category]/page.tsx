@@ -1,4 +1,4 @@
-import { products } from "@/lib/college-products";
+import { products } from "@/lib/products";
 
 const categoryMeta = {
   sweatshirts: {
