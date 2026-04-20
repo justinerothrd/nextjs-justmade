@@ -137,12 +137,12 @@ export default async function CategoryPage({
                 href={style.href}
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
-               <div className="flex h-[200px] items-center justify-center p-3 sm:h-[240px] sm:p-4">
- <img
-  src={style.image}
-  alt={style.title}
-  className={`${style.imageClassName ?? "max-h-[88%] max-w-[88%]"} object-contain transition duration-500 ease-out group-hover:scale-[1.02]`}
-/>
+               <div className="flex h-[260px] sm:h-[320px] items-center justify-center p-3 sm:p-4">
+  <img
+    src={style.image}
+    alt={style.title}
+    className="max-h-[92%] max-w-[92%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+  />
 </div>
 
                 <div className="mt-3 text-center">
