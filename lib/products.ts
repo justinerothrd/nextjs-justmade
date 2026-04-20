@@ -44,7 +44,7 @@ export const products = {
     name: "Custom Tee",
     price: "$35",
     description: "A classic custom tee designed for camp, travel, and summer memories.",
-    images: ["/THbeartee.png", "/tee-preview.png", "/Tee.jpeg", "/timberlaketee.jpg"],
+    images: ["/THbeartee.png", "/hotel westmont.png", "/Tee.jpeg", "/timberlaketee.jpg"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
   },
