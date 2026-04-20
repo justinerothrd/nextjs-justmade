@@ -41,7 +41,7 @@ const categoryStyles = {
       title: "Tank Tops",
       image: products["tank-top"].images[0],
       href: "/product/tank-top",
-      imageClassName: "max-h-[88%] max-w-[78%]",
+      imageClassName: "max-h-[88%] max-w-[88%]",
     },
     {
       slug: "custom-tee",
@@ -73,14 +73,14 @@ const categoryStyles = {
       title: "Pajama Shorts",
       image: products["sleepwear"].images[0],
       href: "/product/sleepwear",
-      imageClassName: "max-h-[78%] max-w-[78%]",
+      imageClassName: "max-h-[86%] max-w-[86%]",
     },
     {
       slug: "sleepwear-set",
       title: "Sleep Sets",
       image: products["sleepwear-set"].images[0],
       href: "/product/sleepwear-set",
-      imageClassName: "max-h-[82%] max-w-[62%]",
+      imageClassName: "max-h-[82%] max-w-[82%]",
     },
   ],
   accessories: [
