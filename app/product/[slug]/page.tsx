@@ -47,7 +47,6 @@ const productImageClassesByView: Record<string, string[]> = {
     "max-h-[92%] max-w-[92%]",
   ],
 };
-const productImageClasses: Record<string, string> = {
   hoodie: "max-h-[94%] max-w-[94%]",
   "quarter-zip": "max-h-[94%] max-w-[94%]",
   "tank-top": "max-h-[88%] max-w-[88%]",
