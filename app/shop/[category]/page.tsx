@@ -73,7 +73,7 @@ const categoryStyles = {
       title: "Pajama Shorts",
       image: products["sleepwear"].images[0],
       href: "/product/sleepwear",
-      imageClassName: "max-h-[72%] max-w-[72%]",
+      imageClassName: "max-h-[78%] max-w-[78%]",
     },
     {
       slug: "sleepwear-set",
