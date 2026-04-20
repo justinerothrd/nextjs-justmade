@@ -25,14 +25,12 @@ const categoryStyles = {
       title: "Hoodies",
       image: products["hoodie"].images[0],
       href: "/product/hoodie",
-      imageClassName: "max-h-[80%] max-w-[80%]",
     },
     {
       slug: "quarter-zip",
       title: "Quarter Zips",
       image: products["quarter-zip"].images[0],
       href: "/product/quarter-zip",
-      imageClassName: "max-h-[88%] max-w-[88%]",
     },
   ],
   tees: [
@@ -41,14 +39,12 @@ const categoryStyles = {
       title: "Tank Tops",
       image: products["tank-top"].images[0],
       href: "/product/tank-top",
-      imageClassName: "max-h-[88%] max-w-[78%]",
     },
     {
       slug: "custom-tee",
       title: "Tees",
       image: products["custom-tee"].images[0],
       href: "/product/custom-tee",
-      imageClassName: "max-h-[88%] max-w-[88%]",
     },
   ],
   bottoms: [
@@ -57,14 +53,12 @@ const categoryStyles = {
       title: "Shorts",
       image: products["custom-shorts"].images[0],
       href: "/product/custom-shorts",
-      imageClassName: "max-h-[84%] max-w-[84%]",
     },
     {
       slug: "sweatpants",
       title: "Sweatpants",
       image: products["sweatpants"].images[0],
       href: "/product/sweatpants",
-      imageClassName: "max-h-[86%] max-w-[86%]",
     },
   ],
   sleepwear: [
@@ -73,14 +67,12 @@ const categoryStyles = {
       title: "Pajama Shorts",
       image: products["sleepwear"].images[0],
       href: "/product/sleepwear",
-      imageClassName: "max-h-[72%] max-w-[72%]",
     },
     {
       slug: "sleepwear-set",
       title: "Sleep Sets",
       image: products["sleepwear-set"].images[0],
       href: "/product/sleepwear-set",
-      imageClassName: "max-h-[82%] max-w-[62%]",
     },
   ],
   accessories: [
@@ -89,17 +81,16 @@ const categoryStyles = {
       title: "Slides",
       image: products["accessories-slides"].images[0],
       href: "/product/accessories-slides",
-      imageClassName: "max-h-[84%] max-w-[84%]",
     },
     {
       slug: "accessories-socks",
       title: "Socks",
       image: products["accessories-socks"].images[0],
       href: "/product/accessories-socks",
-      imageClassName: "max-h-[82%] max-w-[70%]",
     },
   ],
 } as const;
+
 type CategorySlug = keyof typeof categoryMeta;
 type ProductSlug = keyof typeof products;
 
@@ -155,28 +146,28 @@ export default async function CategoryPage({
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                  <div className="flex h-[260px] sm:h-[320px] items-center justify-center p-3 sm:p-4">
-  <img
-    src={style.image}
-    alt={style.title}
-    className="max-h-[94%] max-w-[94%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
-  />
-</div>
+                  <div className="flex h-[200px] items-center justify-center p-4 sm:h-[240px] sm:p-5">
+                    <img
+                      src={style.image}
+                      alt={style.title}
+                      className="max-h-full max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
                 </div>
 
                 <div className="mt-3 text-center">
-  <h3 className="text-[15px] font-medium tracking-wide text-[#2F2F2F] sm:text-[16px]">
-    {style.title}
-  </h3>
+                  <h3 className="text-[15px] font-medium tracking-wide text-[#2F2F2F] sm:text-[16px]">
+                    {style.title}
+                  </h3>
 
-  <div className="mx-auto mt-3 h-[1px] w-6 bg-[#D8D8D8]"></div>
+                  <div className="mx-auto mt-3 h-[1px] w-6 bg-[#D8D8D8]"></div>
 
-  {style.slug in products && (
-    <p className="mt-2 text-[13px] text-[#6B7280] sm:text-[14px]">
-      {products[style.slug as ProductSlug].price}
-    </p>
-  )}
-</div>
+                  {style.slug in products && (
+                    <p className="mt-2 text-[13px] text-[#6B7280] sm:text-[14px]">
+                      {products[style.slug as ProductSlug].price}
+                    </p>
+                  )}
+                </div>
               </a>
             ))}
           </div>
