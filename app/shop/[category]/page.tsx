@@ -3,23 +3,18 @@ import { products } from "@/lib/products";
 const categoryMeta = {
   sweatshirts: {
     title: "Sweatshirts",
-    description: "Cozy personalized layers for camp nights and cool mornings.",
   },
   tees: {
     title: "Tees & Tanks",
-    description: "Easy everyday camp styles with a custom feel.",
   },
   bottoms: {
     title: "Bottoms",
-    description: "Custom shorts, sweatpants, and easy camp-ready staples.",
   },
   sleepwear: {
     title: "Sleep & Loungewear",
-    description: "Soft camp-ready pieces made for bedtime and bunk life.",
   },
   accessories: {
     title: "Accessories & Gifts",
-    description: "Thoughtful extras and gifts.",
   },
 } as const;
 
@@ -135,11 +130,6 @@ export default async function CategoryPage({
             <h1 className="text-[36px] font-light leading-[1.02] tracking-[-0.02em] text-[#2F2F2F] sm:text-[48px] md:text-[60px]">
               {meta.title}
             </h1>
-
-            <p className="mt-3 max-w-[520px] text-[15px] leading-[1.6] text-[#6B7280] sm:text-[17px] sm:leading-[1.7]">
-              {meta.description}
-            </p>
-
             <a
               href="/shop"
               className="mt-5 inline-block text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
