@@ -127,7 +127,7 @@ export default async function CategoryPage({
       <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 sm:mb-14">
-            <h1 className="text-[36px] font-light leading-[1.02] tracking-[-0.02em] text-[#2F2F2F] sm:text-[48px] md:text-[60px]">
+            <h1 className="text-[30px] font-light leading-[1.02] tracking-[-0.02em] text-[#2F2F2F] sm:text-[38px] md:text-[48px]">
               {meta.title}
             </h1>
             <a
