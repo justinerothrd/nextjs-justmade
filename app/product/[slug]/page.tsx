@@ -6,6 +6,18 @@ import { getProductBySlug } from "@/lib/products";
 import LogoPicker from "@/app/components/LogoPicker";
 import { logos } from "@/app/data/logos";
 
+const productImageClasses: Record<string, string> = {
+  hoodie: "max-h-[94%] max-w-[94%]",
+  "quarter-zip": "max-h-[94%] max-w-[94%]",
+  "tank-top": "max-h-[88%] max-w-[88%]",
+  "custom-tee": "max-h-[90%] max-w-[90%]",
+  "custom-shorts": "max-h-[90%] max-w-[90%]",
+  sweatpants: "max-h-[96%] max-w-[96%]",
+  sleepwear: "max-h-[100%] max-w-[100%]",
+  "sleepwear-set": "max-h-[96%] max-w-[96%]",
+  "accessories-slides": "max-h-[86%] max-w-[86%]",
+  "accessories-socks": "max-h-[92%] max-w-[92%]",
+};
 export default function ProductPage() {
   const params = useParams();
   const rawSlug = params?.slug;
@@ -124,7 +136,7 @@ export default function ProductPage() {
     <img
       src={currentImage}
       alt={product.name}
-      className="max-h-[94%] max-w-[94%] object-contain"
+      className={`${productImageClasses[slug] ?? "max-h-[94%] max-w-[94%]"} object-contain`}
     />
   ) : (
     <div className="text-sm text-gray-400">No image available</div>
