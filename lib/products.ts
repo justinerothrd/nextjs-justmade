@@ -80,7 +80,7 @@ export const products = {
     name: "Custom Sleep Set",
     price: "$65",
     description: "A personalized sleep set with a cozy feel that makes camp nights extra special.",
-    images: ["/THCsleepset.png"", "/WMsleepset.png"],
+    images: ["/THCsleepset.png", "/WMsleepset.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
   },
