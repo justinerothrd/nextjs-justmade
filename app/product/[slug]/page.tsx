@@ -5,7 +5,48 @@ import { useEffect, useMemo, useState } from "react";
 import { getProductBySlug } from "@/lib/products";
 import LogoPicker from "@/app/components/LogoPicker";
 import { logos } from "@/app/data/logos";
-
+const productImageClassesByView: Record<string, string[]> = {
+  hoodie: [
+    "max-h-[94%] max-w-[94%]",
+    "max-h-[88%] max-w-[88%]",
+    "max-h-[90%] max-w-[90%]",
+    "max-h-[92%] max-w-[92%]",
+  ],
+  "quarter-zip": [
+    "max-h-[94%] max-w-[94%]",
+    "max-h-[88%] max-w-[88%]",
+  ],
+  "tank-top": [
+    "max-h-[88%] max-w-[88%]",
+    "max-h-[88%] max-w-[88%]",
+    "max-h-[88%] max-w-[88%]",
+  ],
+  "custom-tee": [
+    "max-h-[88%] max-w-[88%]",
+    "max-h-[96%] max-w-[96%]",
+    "max-h-[88%] max-w-[88%]",
+    "max-h-[90%] max-w-[90%]",
+  ],
+  "custom-shorts": [
+    "max-h-[90%] max-w-[90%]",
+  ],
+  sweatpants: [
+    "max-h-[96%] max-w-[96%]",
+  ],
+  sleepwear: [
+    "max-h-[100%] max-w-[100%]",
+  ],
+  "sleepwear-set": [
+    "max-h-[96%] max-w-[96%]",
+    "max-h-[96%] max-w-[96%]",
+  ],
+  "accessories-slides": [
+    "max-h-[86%] max-w-[86%]",
+  ],
+  "accessories-socks": [
+    "max-h-[92%] max-w-[92%]",
+  ],
+};
 const productImageClasses: Record<string, string> = {
   hoodie: "max-h-[94%] max-w-[94%]",
   "quarter-zip": "max-h-[94%] max-w-[94%]",
@@ -63,7 +104,10 @@ export default function ProductPage() {
 
   const currentImage =
     product.images?.[selectedImage] ?? product.images?.[0] ?? "";
-
+const currentImageClass =
+  productImageClassesByView[slug]?.[selectedImage] ??
+  productImageClassesByView[slug]?.[0] ??
+  "max-h-[94%] max-w-[94%]";
   function handleAddToCart() {
     if (!product || !slug) return;
 
