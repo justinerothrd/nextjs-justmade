@@ -1,4 +1,4 @@
-import { products } from "@/lib/products";
+import { collegeProducts } from "@/lib/college-products";
 
 const categoryMeta = {
   sweatshirts: {
@@ -18,92 +18,18 @@ const categoryMeta = {
   },
 } as const;
 
-const categoryStyles = {
-  sweatshirts: [
-    {
-      slug: "hoodie",
-      title: "Hoodies",
-      image: products["hoodie"].images[0],
-      href: "/product/hoodie",
-      imageClassName: "max-h-[80%] max-w-[80%]",
-    },
-    {
-      slug: "quarter-zip",
-      title: "Quarter Zips",
-      image: products["quarter-zip"].images[0],
-      href: "/product/quarter-zip",
-      imageClassName: "max-h-[88%] max-w-[88%]",
-    },
-  ],
-  tees: [
-    {
-      slug: "tank-top",
-      title: "Tank Tops",
-      image: products["tank-top"].images[0],
-      href: "/product/tank-top",
-      imageClassName: "max-h-[88%] max-w-[78%]",
-    },
-    {
-      slug: "custom-tee",
-      title: "Tees",
-      image: products["custom-tee"].images[0],
-      href: "/product/custom-tee",
-      imageClassName: "max-h-[88%] max-w-[88%]",
-    },
-  ],
-  bottoms: [
-    {
-      slug: "custom-shorts",
-      title: "Shorts",
-      image: products["custom-shorts"].images[0],
-      href: "/product/custom-shorts",
-      imageClassName: "max-h-[84%] max-w-[84%]",
-    },
-    {
-      slug: "sweatpants",
-      title: "Sweatpants",
-      image: products["sweatpants"].images[0],
-      href: "/product/sweatpants",
-      imageClassName: "max-h-[86%] max-w-[86%]",
-    },
-  ],
-  sleepwear: [
-    {
-      slug: "sleepwear",
-      title: "Pajama Shorts",
-      image: products["sleepwear"].images[0],
-      href: "/product/sleepwear",
-      imageClassName: "max-h-[72%] max-w-[72%]",
-    },
-    {
-      slug: "sleepwear-set",
-      title: "Sleep Sets",
-      image: products["sleepwear-set"].images[0],
-      href: "/product/sleepwear-set",
-      imageClassName: "max-h-[82%] max-w-[62%]",
-    },
-  ],
-  accessories: [
-    {
-      slug: "accessories-slides",
-      title: "Slides",
-      image: products["accessories-slides"].images[0],
-      href: "/product/accessories-slides",
-      imageClassName: "max-h-[84%] max-w-[84%]",
-    },
-    {
-      slug: "accessories-socks",
-      title: "Socks",
-      image: products["accessories-socks"].images[0],
-      href: "/product/accessories-socks",
-      imageClassName: "max-h-[82%] max-w-[70%]",
-    },
-  ],
+const categoryProductSlugs = {
+  sweatshirts: ["college-crewneck", "college-hoodie"],
+  tees: ["college-tee", "college-tank"],
+  bottoms: ["college-shorts"],
+  sleepwear: ["college-sleepwear", "college-sleepwear-set"],
+  accessories: ["college-slides", "college-socks"],
 } as const;
-type CategorySlug = keyof typeof categoryMeta;
-type ProductSlug = keyof typeof products;
 
-export default async function CategoryPage({
+type CategorySlug = keyof typeof categoryMeta;
+type ProductSlug = keyof typeof collegeProducts;
+
+export default async function CollegeCategoryPage({
   params,
 }: {
   params: Promise<{ category: string }>;
@@ -111,19 +37,19 @@ export default async function CategoryPage({
   const { category: categorySlug } = await params;
 
   const meta = categoryMeta[categorySlug as CategorySlug];
-  const styles = categoryStyles[categorySlug as keyof typeof categoryStyles];
+  const slugs = categoryProductSlugs[categorySlug as CategorySlug];
 
-  if (!meta || !styles) {
+  if (!meta || !slugs) {
     return (
       <main className="min-h-screen bg-white text-[#2F3A4A]">
         <div className="flex min-h-screen items-center justify-center px-6">
           <div className="text-center">
             <h1 className="text-3xl font-light">Category not found</h1>
             <a
-              href="/shop"
+              href="/college"
               className="mt-6 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]"
             >
-              Back to Shop
+              Back to College
             </a>
           </div>
         </div>
@@ -131,52 +57,57 @@ export default async function CategoryPage({
     );
   }
 
+  const categoryProducts = slugs.map((slug) => ({
+    slug,
+    ...collegeProducts[slug as ProductSlug],
+  }));
+
   return (
     <main className="bg-white text-[#4B4B4B]">
       <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 sm:mb-14">
-            <h1 className="text-[30px] font-light leading-[1.02] tracking-[-0.02em] text-[#2F2F2F] sm:text-[38px] md:text-[48px]">
+            <h1 className="text-[36px] font-light leading-[1.02] tracking-[-0.02em] text-[#2F2F2F] sm:text-[48px] md:text-[60px]">
               {meta.title}
             </h1>
+
+            <p className="mt-3 max-w-[520px] text-[15px] leading-[1.6] text-[#6B7280] sm:text-[17px] sm:leading-[1.7]">
+            </p>
+
             <a
-              href="/shop"
+              href="/college"
               className="mt-5 inline-block text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
             >
               Back to All Categories
             </a>
           </div>
 
-          <div className="mt-4 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-            {styles.map((style) => (
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+            {categoryProducts.map((product) => (
               <a
-                key={style.slug}
-                href={style.href}
+                key={product.slug}
+                href={`/college/product/${product.slug}`}
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                  <div className="flex h-[260px] sm:h-[320px] items-center justify-center p-3 sm:p-4">
-  <img
-    src={style.image}
-    alt={style.title}
-    className="max-h-[94%] max-w-[94%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
-  />
-</div>
+                  <div className="flex h-[220px] items-center justify-center p-5 sm:h-[280px] sm:p-7">
+                    <img
+                      src={product.images[0]}
+                      alt={product.name}
+                      className="max-h-full max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
                 </div>
 
-                <div className="mt-3 text-center">
-  <h3 className="text-[15px] font-medium tracking-wide text-[#2F2F2F] sm:text-[16px]">
-    {style.title}
-  </h3>
+                <div className="pt-2 text-center">
+                  <h3 className="mt-3 text-center text-[14px] font-medium text-[#2F3A4A] sm:mt-4 sm:text-[15px] md:text-[16px]">
+                    {product.name}
+                  </h3>
 
-  <div className="mx-auto mt-3 h-[1px] w-6 bg-[#D8D8D8]"></div>
-
-  {style.slug in products && (
-    <p className="mt-2 text-[13px] text-[#6B7280] sm:text-[14px]">
-      {products[style.slug as ProductSlug].price}
-    </p>
-  )}
-</div>
+                  <p className="mt-1 text-[13px] text-[#6B7280] sm:text-[14px]">
+                    {product.price}
+                  </p>
+                </div>
               </a>
             ))}
           </div>
