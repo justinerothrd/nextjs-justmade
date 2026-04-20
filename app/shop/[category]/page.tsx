@@ -138,7 +138,7 @@ export default async function CategoryPage({
             </a>
           </div>
 
-          <div className="mt-4 grid grid-cols-2 gap-4 ...
+          <div className="mt-4 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
             {styles.map((style) => (
               <a
                 key={style.slug}
@@ -156,7 +156,7 @@ export default async function CategoryPage({
                 </div>
 
                 <div className="mt-3 text-center">
-  <h3 className="text-[15px] font-medium tracking-wide text-[#2F3A4A] sm:text-[16px]">
+  <h3 className="text-[15px] font-medium tracking-wide text-[#2F2F2F] sm:text-[16px]">
     {style.title}
   </h3>
 
