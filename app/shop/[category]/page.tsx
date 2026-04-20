@@ -159,7 +159,7 @@ export default async function CategoryPage({
   <img
     src={style.image}
     alt={style.title}
-    className="max-h-[92%] max-w-[92%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+    className="max-h-[94%] max-w-[94%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
   />
 </div>
                 </div>
