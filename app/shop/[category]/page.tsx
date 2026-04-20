@@ -155,7 +155,7 @@ export default async function CategoryPage({
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                  <div className="flex h-[200px] items-center justify-center p-3 sm:h-[240px] sm:p-4">
+                  <div className="flex h-[260px] sm:h-[320px] items-center justify-center p-4 sm:p-5">
   <img
   src={style.image}
   alt={style.title}
