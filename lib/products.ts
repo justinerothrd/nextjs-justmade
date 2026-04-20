@@ -34,7 +34,7 @@ export const products = {
   "tank-top": {
     name: "Custom Tank Top",
     price: "$40",
-    description: "A lightweight custom tank perfect for hot camp days and summer activities.",
+    description: "A lightweight custom tank perfect for hot summer days.",
     images: ["/WM81tank.png", "/Tank.jpeg", "/tank with script.png", "/tank-preview.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
