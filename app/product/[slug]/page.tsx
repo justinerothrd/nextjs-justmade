@@ -61,7 +61,7 @@ export default function ProductPage() {
     slug === "custom-shorts" ? "max-h-[420px]" : "",
     slug === "sweatpants" ? "max-h-[520px]" : "",
     slug === "sleepwear" ? "max-h-[460px]" : "",
-    slug === "sleepwear-set" ? "max-h-[520px]" : "",
+    slug === "sleepwear-set" ? "max-h-[680px]" : "",
     slug === "accessories-slides" ? "max-h-[420px]" : "",
     slug === "accessories-socks" ? "max-h-[360px]" : "",
   ]
@@ -77,7 +77,7 @@ export default function ProductPage() {
     slug === "custom-shorts" ? "h-[420px]" : "",
     slug === "sweatpants" ? "h-[520px]" : "",
     slug === "sleepwear" ? "h-[460px]" : "",
-    slug === "sleepwear-set" ? "h-[520px]" : "",
+    slug === "sleepwear-set" ? "h-[680px]" : "",
     slug === "accessories-slides" ? "h-[420px]" : "",
     slug === "accessories-socks" ? "h-[360px]" : "",
   ]
