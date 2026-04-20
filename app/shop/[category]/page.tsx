@@ -1,23 +1,5 @@
 import { products } from "@/lib/products";
 
-const categoryMeta = {
-  sweatshirts: {
-    title: "Sweatshirts",
-  },
-  tees: {
-    title: "Tees & Tanks",
-  },
-  bottoms: {
-    title: "Bottoms",
-  },
-  sleepwear: {
-    title: "Sleep & Loungewear",
-  },
-  accessories: {
-    title: "Accessories & Gifts",
-  },
-} as const;
-
 const categoryStyles = {
   sweatshirts: [
     {
@@ -25,12 +7,14 @@ const categoryStyles = {
       title: "Hoodies",
       image: products["hoodie"].images[0],
       href: "/product/hoodie",
+      imageClassName: "max-h-[80%] max-w-[80%]",
     },
     {
       slug: "quarter-zip",
       title: "Quarter Zips",
       image: products["quarter-zip"].images[0],
       href: "/product/quarter-zip",
+      imageClassName: "max-h-[88%] max-w-[88%]",
     },
   ],
   tees: [
@@ -39,12 +23,14 @@ const categoryStyles = {
       title: "Tank Tops",
       image: products["tank-top"].images[0],
       href: "/product/tank-top",
+      imageClassName: "max-h-[88%] max-w-[78%]",
     },
     {
       slug: "custom-tee",
       title: "Tees",
       image: products["custom-tee"].images[0],
       href: "/product/custom-tee",
+      imageClassName: "max-h-[88%] max-w-[88%]",
     },
   ],
   bottoms: [
@@ -53,12 +39,14 @@ const categoryStyles = {
       title: "Shorts",
       image: products["custom-shorts"].images[0],
       href: "/product/custom-shorts",
+      imageClassName: "max-h-[84%] max-w-[84%]",
     },
     {
       slug: "sweatpants",
       title: "Sweatpants",
       image: products["sweatpants"].images[0],
       href: "/product/sweatpants",
+      imageClassName: "max-h-[86%] max-w-[86%]",
     },
   ],
   sleepwear: [
@@ -67,12 +55,14 @@ const categoryStyles = {
       title: "Pajama Shorts",
       image: products["sleepwear"].images[0],
       href: "/product/sleepwear",
+      imageClassName: "max-h-[72%] max-w-[72%]",
     },
     {
       slug: "sleepwear-set",
       title: "Sleep Sets",
       image: products["sleepwear-set"].images[0],
       href: "/product/sleepwear-set",
+      imageClassName: "max-h-[82%] max-w-[62%]",
     },
   ],
   accessories: [
@@ -81,12 +71,14 @@ const categoryStyles = {
       title: "Slides",
       image: products["accessories-slides"].images[0],
       href: "/product/accessories-slides",
+      imageClassName: "max-h-[84%] max-w-[84%]",
     },
     {
       slug: "accessories-socks",
       title: "Socks",
       image: products["accessories-socks"].images[0],
       href: "/product/accessories-socks",
+      imageClassName: "max-h-[82%] max-w-[70%]",
     },
   ],
 } as const;
@@ -146,13 +138,12 @@ export default async function CategoryPage({
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
                <div className="flex h-[200px] items-center justify-center p-3 sm:h-[240px] sm:p-4">
-  <img
-    src={style.image}
-    alt={style.title}
-    className="max-h-[92%] max-w-[92%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
-  />
+ <img
+  src={style.image}
+  alt={style.title}
+  className={`${style.imageClassName ?? "max-h-[88%] max-w-[88%]"} object-contain transition duration-500 ease-out group-hover:scale-[1.02]`}
+/>
 </div>
-                </div>
 
                 <div className="mt-3 text-center">
                   <h3 className="text-[15px] font-medium tracking-wide text-[#2F2F2F] sm:text-[16px]">
