@@ -88,13 +88,13 @@ export default async function CollegeCategoryPage({
                 className="group block"
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                  <div className="flex h-[260px] items-center justify-center p-3 sm:h-[320px] sm:p-4">
-                    <img
-                      src={product.images[0]}
-                      alt={product.name}
-                      className="max-h-[94%] max-w-[94%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
-                    />
-                  </div>
+                  <div className="flex h-[260px] items-center justify-center p-4 sm:h-[320px]">
+  <img
+    src={product?.images?.[0] || category.image}
+    alt={product?.name || category.title}
+    className="h-[90%] w-[90%] object-contain transition duration-500 ease-out group-hover:scale-[1.03]"
+  />
+</div>
                 </div>
 
                 <div className="mt-3 text-center">
