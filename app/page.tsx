@@ -75,13 +75,13 @@ export default function HomePage() {
                 className="group block"
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#ECE8E2] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                 <div className="flex h-[260px] items-center justify-center p-4 sm:h-[320px]">
-  <img
-    src={product.images[0]}
-    alt={product.name}
-    className="h-[90%] w-[90%] object-contain transition duration-500 ease-out group-hover:scale-[1.03]"
-  />
-</div>
+                  <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
+                    <img
+                      src={category.image}
+                      alt={category.title}
+                      className="max-h-full max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
                 </div>
 
                 <div className="pt-3 text-center">
