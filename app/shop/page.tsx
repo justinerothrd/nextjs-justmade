@@ -27,7 +27,7 @@ export default function ShopPage() {
       <img
         src={category.image}
         alt={category.title}
-        className="max-h-full max-w-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.08]"
+        className="h-full w-full object-contain transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08]"
       />
     </div>
   </div>
