@@ -150,44 +150,35 @@ export default async function CategoryPage({
 
           <div className="mt-4 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
             {styles.map((style) => (
-              <div key={style.slug} className="group block">
-                <div className="relative overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                  <a href={style.href} className="block">
-                    <div className="flex h-[260px] items-center justify-center p-3 sm:h-[320px] sm:p-4">
-                      <img
-                        src={style.image}
-                        alt={style.title}
-                        className={`${style.imageClassName} object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
-                      />
-                    </div>
-                  </a>
-
-                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover:bg-black/8">
-                    <a
-                      href={style.href}
-                      className="pointer-events-auto rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2F3A4A] opacity-0 shadow-sm transition duration-300 group-hover:opacity-100"
-                    >
-                      Quick View
-                    </a>
+              <a
+                key={style.slug}
+                href={style.href}
+                className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
+              >
+                <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
+                  <div className="flex h-[260px] items-center justify-center p-3 sm:h-[320px] sm:p-4">
+                    <img
+                      src={style.image}
+                      alt={style.title}
+                      className={`${style.imageClassName} object-contain transition duration-500 ease-out group-hover:scale-[1.02]`}
+                    />
                   </div>
                 </div>
 
-                <a href={style.href} className="block">
-                  <div className="mt-3 text-center">
-                    <h3 className="text-[15px] font-medium tracking-wide text-[#2F2F2F] sm:text-[16px]">
-                      {style.title}
-                    </h3>
+                <div className="mt-3 text-center">
+                  <h3 className="text-[15px] font-medium tracking-wide text-[#2F2F2F] sm:text-[16px]">
+                    {style.title}
+                  </h3>
 
-                    <div className="mx-auto mt-3 h-[1px] w-6 bg-[#D8D8D8]"></div>
+                  <div className="mx-auto mt-3 h-[1px] w-6 bg-[#D8D8D8]"></div>
 
-                    {style.slug in products && (
-                      <p className="mt-2 text-[13px] text-[#6B7280] sm:text-[14px]">
-                        {products[style.slug as ProductSlug].price}
-                      </p>
-                    )}
-                  </div>
-                </a>
-              </div>
+                  {style.slug in products && (
+                    <p className="mt-2 text-[13px] text-[#6B7280] sm:text-[14px]">
+                      {products[style.slug as ProductSlug].price}
+                    </p>
+                  )}
+                </div>
+              </a>
             ))}
           </div>
         </div>
