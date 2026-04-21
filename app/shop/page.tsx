@@ -45,7 +45,7 @@ export default function ShopPage() {
                       type="button"
                       onClick={(e) => {
                         e.preventDefault();
-                        setQuickCategory({
+                        setPreviewCategory({
                           slug: category.slug,
                           title: category.title,
                           image: category.image,
@@ -53,7 +53,7 @@ export default function ShopPage() {
                       }}
                       className="pointer-events-auto rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2F3A4A] opacity-0 shadow-sm transition duration-300 group-hover:opacity-100"
                     >
-                      Quick 
+                      Preview 
                     </button>
                   </div>
                 </div>
@@ -69,7 +69,7 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {quickCategory && (
+      {PreviewCategory && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
           onClick={() => setQuickCategory(null)}
