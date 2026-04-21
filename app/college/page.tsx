@@ -78,7 +78,7 @@ export default function CollegePage() {
                           image: category.image,
                         });
                       }}
-                      className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 backdrop-blur-[2px]"
+                      className="pointer-events-auto rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2F3A4A] opacity-0 scale-95 shadow-sm transition duration-300 group-hover:opacity-100 group-hover:scale-100"
                     >
                       Preview
                     </button>
