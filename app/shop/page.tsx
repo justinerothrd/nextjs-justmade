@@ -54,7 +54,7 @@ export default function ShopPage() {
                           image: category.image,
                         });
                       }}
-                      className="pointer-events-auto rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2F3A4A] opacity-0 scale-95 shadow-sm transition duration-300 group-hover:opacity-100 group-hover:scale-100"
+                      className="pointer-events-auto rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2F3A4A] opacity-0 shadow-sm transition duration-300 group-hover:opacity-100"
                     >
                       Preview
                     </button>
@@ -82,7 +82,7 @@ export default function ShopPage() {
           onClick={() => setPreviewCategory(null)}
         >
           <div
-            className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5
+            className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_20px_60px_rgba(0,0,0,0.18)]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* HEADER */}
@@ -111,7 +111,7 @@ export default function ShopPage() {
             {/* BUTTON */}
             <a
               href={`/shop/${previewCategory.slug}`}
-              className="mt-5 inline-flex w-full items-center justify-center rounded-full border border-[#C9D3DD] bg-white px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] text-[#5F7A94] transition hover:bg-[#F7FAFC]"
+              className="mt-5 inline-flex w-full items-center justify-center rounded-full border border-[#C9D3DD] bg-white px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-[#5F7A94] transition hover:bg-[#F7FAFC]"
             >
               View Collection
             </a>
