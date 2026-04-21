@@ -84,36 +84,6 @@ export default function CollegeProductPage() {
     setTimeout(() => setAdded(false), 2000);
   }
 
-  const mainImageClass = [
-    "h-auto w-full object-contain transition duration-500",
-    slug === "college-crewneck" ? "max-h-[760px] scale-[1.06]" : "",
-    slug === "college-hoodie" ? "max-h-[760px] scale-[1.06]" : "",
-    slug === "college-tee" ? "max-h-[520px]" : "",
-    slug === "college-tank" ? "max-h-[420px]" : "",
-    slug === "college-shorts" ? "max-h-[420px]" : "",
-    slug === "college-sleepwear" ? "max-h-[460px]" : "",
-    slug === "college-sleepwear-set" ? "max-h-[520px]" : "",
-    slug === "college-slides" ? "max-h-[420px]" : "",
-    slug === "college-socks" ? "max-h-[360px]" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  const imageBoxClass = [
-    "flex items-center justify-center overflow-hidden rounded-[32px] border border-[#ECE7E1] bg-white px-6 py-6 shadow-[0_12px_32px_rgba(0,0,0,0.035)] sm:px-8 sm:py-8",
-    slug === "college-crewneck" ? "h-[620px]" : "",
-    slug === "college-hoodie" ? "h-[620px]" : "",
-    slug === "college-tee" ? "h-[520px]" : "",
-    slug === "college-tank" ? "h-[440px]" : "",
-    slug === "college-shorts" ? "h-[420px]" : "",
-    slug === "college-sleepwear" ? "h-[460px]" : "",
-    slug === "college-sleepwear-set" ? "h-[520px]" : "",
-    slug === "college-slides" ? "h-[420px]" : "",
-    slug === "college-socks" ? "h-[360px]" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-8 text-[#4B4B4B] sm:px-6 sm:py-12">
       <div className="mx-auto max-w-7xl">
