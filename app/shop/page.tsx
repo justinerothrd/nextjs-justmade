@@ -4,7 +4,7 @@ import { useState } from "react";
 import { categories } from "@/lib/categories";
 
 export default function ShopPage() {
-  const [quickViewCategory, setQuickViewCategory] = useState<null | {
+  const [PreviewCategory, setPreviewCategory] = useState<null | {
     slug: string;
     title: string;
     image: string;
