@@ -45,7 +45,7 @@ export default function ShopPage() {
                       type="button"
                       onClick={(e) => {
                         e.preventDefault();
-                        setQuickViewCategory({
+                        setQuickCategory({
                           slug: category.slug,
                           title: category.title,
                           image: category.image,
@@ -53,7 +53,7 @@ export default function ShopPage() {
                       }}
                       className="pointer-events-auto rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2F3A4A] opacity-0 shadow-sm transition duration-300 group-hover:opacity-100"
                     >
-                      Quick View
+                      Quick 
                     </button>
                   </div>
                 </div>
@@ -69,10 +69,10 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {quickViewCategory && (
+      {quickCategory && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
-          onClick={() => setQuickViewCategory(null)}
+          onClick={() => setQuickCategory(null)}
         >
           <div
             className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_20px_60px_rgba(0,0,0,0.18)]"
@@ -80,12 +80,12 @@ export default function ShopPage() {
           >
             <div className="flex items-start justify-between gap-4">
               <h3 className="text-[22px] font-light text-[#2F2F2F]">
-                {quickViewCategory.title}
+                {PreviewCategory.title}
               </h3>
 
               <button
                 type="button"
-                onClick={() => setQuickViewCategory(null)}
+                onClick={() => setPreviewCategory(null)}
                 className="text-sm text-[#6B7280] transition hover:text-[#2F2F2F]"
               >
                 Close
@@ -94,17 +94,17 @@ export default function ShopPage() {
 
             <div className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-white p-4">
               <img
-                src={quickViewCategory.image}
-                alt={quickViewCategory.title}
+                src={PreviewCategory.image}
+                alt={PreviewCategory.title}
                 className="max-h-[94%] max-w-[94%] object-contain"
               />
             </div>
 
             <a
-              href={`/shop/${quickViewCategory.slug}`}
+              href={`/shop/${PreviewCategory.slug}`}
               className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] py-3 text-sm font-medium text-white transition hover:bg-[#536C84]"
             >
-              View Category
+              VIEW
             </a>
           </div>
         </div>
