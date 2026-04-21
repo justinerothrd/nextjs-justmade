@@ -18,26 +18,26 @@ export default function ShopPage() {
           <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
             {categories.map((category) => (
               <a
-                key={category.slug}
-                href={`/shop/${category.slug}`}
-                className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
-              >
-                <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                  <div className="flex h-[240px] items-center justify-center p-3 sm:h-[280px] sm:p-4">
-  <img
-  src={category.image}
-  alt={category.title}
-  className="max-h-full max-w-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.06]"
-/>
-</div>
-                </div>
+  key={category.slug}
+  href={`/shop/${category.slug}`}
+  className="group block transition-transform duration-300 ease-out hover:-translate-y-1"
+>
+  <div className="overflow-hidden rounded-[22px] border border-[#ECE8E2] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
+    <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
+      <img
+        src={category.image}
+        alt={category.title}
+        className="max-h-full max-w-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.12]"
+      />
+    </div>
+  </div>
 
-                <div className="pt-2 text-center">
-                  <h3 className="mt-3 text-center text-[14px] font-medium text-[#2F3A4A] sm:mt-4 sm:text-[15px] md:text-[16px]">
-                    {category.title}
-                  </h3>
-                </div>
-              </a>
+  <div className="pt-3 text-center">
+    <h3 className="text-[15px] font-medium tracking-[0.01em] text-[#2F2F2F] sm:text-[17px]">
+      {category.title}
+    </h3>
+  </div>
+</a>
             ))}
           </div>
         </div>
