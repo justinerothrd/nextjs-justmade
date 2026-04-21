@@ -51,11 +51,11 @@ export default function CollegePage() {
                 className="group block transition duration-300 ease-out hover:-translate-y-[2px]"
               >
                 <div className="overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                  <div className="flex h-[220px] items-center justify-center p-5 sm:h-[280px] sm:p-7">
+                  <div className="flex h-[260px] items-center justify-center p-3 sm:h-[320px] sm:p-4">
                     <img
                       src={category.image}
                       alt={category.title}
-                      className="max-h-full max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+                      className="max-h-[94%] max-w-[94%] object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
                     />
                   </div>
                 </div>
