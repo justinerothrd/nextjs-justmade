@@ -78,7 +78,7 @@ export default function ShopPage() {
       {/* MODAL */}
       {previewCategory && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 backdrop-blur-[2px]"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
           onClick={() => setPreviewCategory(null)}
         >
           <div
