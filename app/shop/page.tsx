@@ -104,7 +104,7 @@ export default function ShopPage() {
               href={`/shop/${PreviewCategory.slug}`}
               className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] py-3 text-sm font-medium text-white transition hover:bg-[#536C84]"
             >
-              VIEW
+              SHOP
             </a>
           </div>
         </div>
