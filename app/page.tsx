@@ -70,26 +70,32 @@ export default function HomePage() {
           <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
             {categories.map((category) => (
               <a
-                key={category.slug}
-                href={`/shop/${category.slug}`}
-                className="group block"
-              >
-                <div className="overflow-hidden rounded-[22px] border border-[#ECE8E2] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-                  <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
-                    <img
-                      src={category.image}
-                      alt={category.title}
-                      className="max-h-full max-w-full object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-                    />
-                  </div>
-                </div>
+  key={category.slug}
+  href={`/shop/${category.slug}`}
+  className="group block"
+>
+  <div className="relative overflow-hidden rounded-[22px] border border-[#ECE8E2] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
+    <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
+      <img
+        src={category.image}
+        alt={category.title}
+        className="max-h-full max-w-full object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+      />
+    </div>
 
-                <div className="pt-3 text-center">
-                  <h3 className="text-[15px] font-medium tracking-[0.01em] text-[#2F2F2F] sm:text-[17px]">
-                    {category.title}
-                  </h3>
-                </div>
-              </a>
+    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover:bg-black/8">
+      <span className="pointer-events-auto rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2F3A4A] opacity-0 shadow-sm transition duration-300 group-hover:opacity-100">
+        Preview
+      </span>
+    </div>
+  </div>
+
+  <div className="pt-3 text-center">
+    <h3 className="text-[15px] font-medium tracking-[0.01em] text-[#2F2F2F] sm:text-[17px]">
+      {category.title}
+    </h3>
+  </div>
+</a>
             ))}
           </div>
         </div>
