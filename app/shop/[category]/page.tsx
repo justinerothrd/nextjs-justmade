@@ -60,7 +60,7 @@ const categoryStyles = {
       imageClassName: "max-h-[94%] max-w-[94%]",
     },
     {
-      slug: "sweatpants",
+      slug: " custom-sweatpants",
       title: "Sweatpants",
       image: products["sweatpants"].images[0],
       href: "/product/sweatpants",
