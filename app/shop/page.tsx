@@ -72,7 +72,7 @@ export default function ShopPage() {
       {PreviewCategory && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
-          onClick={() => setQuickCategory(null)}
+          onClick={() => setPreviewCategory(null)}
         >
           <div
             className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_20px_60px_rgba(0,0,0,0.18)]"
