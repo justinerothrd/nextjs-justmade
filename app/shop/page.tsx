@@ -1,6 +1,15 @@
+"use client";
+
+import { useState } from "react";
 import { categories } from "@/lib/categories";
 
 export default function ShopPage() {
+  const [quickViewCategory, setQuickViewCategory] = useState<null | {
+    slug: string;
+    title: string;
+    image: string;
+  }>(null);
+
   return (
     <main className="bg-white text-[#4B4B4B]">
       <section className="px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16">
