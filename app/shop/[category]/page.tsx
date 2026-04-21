@@ -167,7 +167,7 @@ export default async function CategoryPage({
                       href={style.href}
                       className="pointer-events-auto rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2F3A4A] opacity-0 shadow-sm transition duration-300 group-hover:opacity-100"
                     >
-                      Quick View
+                      View
                     </a>
                   </div>
                 </div>
