@@ -26,8 +26,11 @@ export default function ShopPage() {
 
           <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
             {categories.map((category) => (
-              <div key={category.slug} className="group block">
+              <div key={category.slug} className="group">
+                {/* CARD */}
                 <div className="relative overflow-hidden rounded-[22px] border border-[#ECE8E2] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
+
+                  {/* CLICKABLE IMAGE */}
                   <a href={`/shop/${category.slug}`} className="block">
                     <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
                       <img
@@ -38,6 +41,7 @@ export default function ShopPage() {
                     </div>
                   </a>
 
+                  {/* PREVIEW OVERLAY */}
                   <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover:bg-black/8">
                     <button
                       type="button"
@@ -57,6 +61,7 @@ export default function ShopPage() {
                   </div>
                 </div>
 
+                {/* TITLE */}
                 <a href={`/shop/${category.slug}`} className="block">
                   <div className="pt-3 text-center">
                     <h3 className="text-[15px] font-medium tracking-[0.01em] text-[#2F2F2F] sm:text-[17px]">
@@ -70,6 +75,7 @@ export default function ShopPage() {
         </div>
       </section>
 
+      {/* MODAL */}
       {previewCategory && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
@@ -79,20 +85,21 @@ export default function ShopPage() {
             className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_20px_60px_rgba(0,0,0,0.18)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between gap-4">
+            {/* HEADER */}
+            <div className="flex items-start justify-between">
               <h3 className="text-[22px] font-light text-[#2F2F2F]">
                 {previewCategory.title}
               </h3>
 
               <button
-                type="button"
                 onClick={() => setPreviewCategory(null)}
-                className="text-[12px] uppercase tracking-[0.12em] text-[#8A93A0] transition hover:text-[#2F2F2F]"
+                className="text-[12px] uppercase tracking-[0.12em] text-[#8A93A0] hover:text-[#2F2F2F]"
               >
                 Close
               </button>
             </div>
 
+            {/* IMAGE */}
             <div className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-white p-4">
               <img
                 src={previewCategory.image}
@@ -101,6 +108,7 @@ export default function ShopPage() {
               />
             </div>
 
+            {/* BUTTON */}
             <a
               href={`/shop/${previewCategory.slug}`}
               className="mt-5 inline-flex w-full items-center justify-center rounded-full border border-[#C9D3DD] bg-white px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-[#5F7A94] transition hover:bg-[#F7FAFC]"
