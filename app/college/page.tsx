@@ -104,7 +104,7 @@ export default function CollegePage() {
           onClick={() => setPreviewCategory(null)}
         >
           <div
-            className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_20px_60px_rgba(0,0,0,0.18)]"
+            className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between">
@@ -120,7 +120,7 @@ export default function CollegePage() {
               </button>
             </div>
 
-            <div className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-white p-4">
+            className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-[#FCFCFB] p-4"
               <img
                 src={previewCategory.image}
                 alt={previewCategory.title}
