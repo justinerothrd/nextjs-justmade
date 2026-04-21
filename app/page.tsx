@@ -79,7 +79,7 @@ export default function HomePage() {
                     <img
                       src={category.image}
                       alt={category.title}
-                      className="max-h-full max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+                      className="max-h-full max-w-full object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
                     />
                   </div>
                 </div>
