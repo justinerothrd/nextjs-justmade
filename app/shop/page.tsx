@@ -100,7 +100,7 @@ export default function ShopPage() {
             </div>
 
             {/* IMAGE */}
-            <div className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-white p-4">
+            className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-[#FCFCFB] p-4"
               <img
                 src={previewCategory.image}
                 alt={previewCategory.title}
