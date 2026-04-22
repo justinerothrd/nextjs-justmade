@@ -144,7 +144,7 @@ export default function HomePage() {
               </button>
             </div>
 
-            className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-[#FCFCFB] p-4"
+           <div className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-[#FCFCFB] p-4">
               <img
                 src={previewCategory.image}
                 alt={previewCategory.title}
