@@ -124,7 +124,7 @@ export default function CollegePage() {
           onClick={() => setPreviewCategory(null)}
         >
           <div
-            className="w-full max-w-3xl rounded-[30px] bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5 sm:p-7"
+            className="w-full max-w-3xl rounded-[30px] bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5 sm:p-7 animate-[fadeIn_.25s_ease-out]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between">
