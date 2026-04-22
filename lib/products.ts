@@ -13,7 +13,7 @@ export const products = {
     price: "$70",
     description: "A cozy custom hoodie for chilly camp nights and cool mornings.",
     images: [
-      "/hoodie.jpeg",
+      "/thchoodie.png",
       "/skims hoodie front.png",
       "/skims hoodie back.png",
       "/hoodie.center-preview.png",
@@ -71,7 +71,7 @@ export const products = {
     name: "Camp Pajama Shorts",
     price: "$32",
     description: "Soft camp-ready pajama shorts made for bunk life, bedtime, and easy summer comfort.",
-    images: ["/THCsleepset.png", "/WMsleepset.png"],
+    images: ["/timberlake-sleepshorts.png", "/THCsleeppants.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
   },
