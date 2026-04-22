@@ -82,12 +82,12 @@ export default function ShopPage() {
           onClick={() => setPreviewCategory(null)}
         >
           <div
-  className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5"
+  className="w-full max-w-md rounded-[28px] bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5"
   onClick={(e) => e.stopPropagation()}
 >
             {/* HEADER */}
             <div className="flex items-start justify-between">
-              <h3 className="text-[22px] font-light text-[#2F2F2F]">
+              <h3 className="text-[22px] font-light tracking-[0.01em] text-[#2F2F2F]">
                 {previewCategory.title}
               </h3>
 
