@@ -97,7 +97,7 @@ export default function ShopPage() {
           onClick={() => setPreviewCategory(null)}
         >
           <div
-            className="w-full max-w-3xl rounded-[28px] bg-white p-5 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5 sm:p-6"
+            className="w-full max-w-3xl rounded-[30px] bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5 sm:p-7"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between">
@@ -105,7 +105,7 @@ export default function ShopPage() {
                 <h3 className="text-[22px] font-light tracking-[0.01em] text-[#2F2F2F]">
                   {previewCategory.title}
                 </h3>
-                <p className="mt-1 text-[13px] uppercase tracking-[0.12em] text-[#8A93A0]">
+                <p className="mt-1 text-[12px] uppercase tracking-[0.14em] text-[#8A93A0]">
                   Featured styles
                 </p>
               </div>
@@ -118,17 +118,11 @@ export default function ShopPage() {
               </button>
             </div>
 
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
               {previewItems?.map((item) => (
-                <div
-                  key={item.slug}
-                  className="rounded-[22px] border border-[#ECE8E2] bg-[#F7F7F5] p-4"
-                >
-                  <a
-                    href={`/product/${item.slug}`}
-                    className="block"
-                  >
-                    <div className="flex h-[220px] items-center justify-center">
+                <div key={item.slug} className="text-center">
+                  <a href={`/product/${item.slug}`} className="block">
+                    <div className="flex h-[240px] items-center justify-center rounded-[22px] bg-[#F7F7F5] p-5">
                       <img
                         src={item.images[0]}
                         alt={item.name}
@@ -137,8 +131,8 @@ export default function ShopPage() {
                     </div>
                   </a>
 
-                  <div className="mt-3 text-center">
-                    <h4 className="text-[15px] font-medium text-[#2F2F2F]">
+                  <div className="mt-4">
+                    <h4 className="text-[16px] font-medium text-[#2F2F2F]">
                       {item.name}
                     </h4>
                     <p className="mt-1 text-[14px] text-[#6B7280]">
@@ -148,7 +142,7 @@ export default function ShopPage() {
 
                   <a
                     href={`/product/${item.slug}`}
-                    className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-[#C9D3DD] bg-white px-4 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-[#5F7A94] transition hover:bg-[#F7FAFC]"
+                    className="mt-3 inline-flex items-center justify-center rounded-full border border-[#D8E0E8] bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
                   >
                     View Product
                   </a>
@@ -158,7 +152,7 @@ export default function ShopPage() {
 
             <a
               href={`/shop/${previewCategory.slug}`}
-              className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#4e677f]"
+              className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#4e677f]"
             >
               View Collection
             </a>
