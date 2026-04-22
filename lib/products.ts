@@ -13,7 +13,7 @@ export const products = {
     price: "$70",
     description: "A cozy custom hoodie for chilly camp nights and cool mornings.",
     images: [
-      "/thchoodie.png",
+      "/THChoodie.png",
       "/skims hoodie front.png",
       "/skims hoodie back.png",
       "/hoodie.center-preview.png",
