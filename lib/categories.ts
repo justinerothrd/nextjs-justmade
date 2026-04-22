@@ -2,7 +2,7 @@ export const categories = [
   {
     slug: "sweatshirts",
     title: "Sweatshirts",
-    image: "/THChoodie.png",
+    image: "/skims hoodie front.png",
   },
   {
     slug: "tees",
