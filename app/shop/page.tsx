@@ -111,7 +111,7 @@ export default function ShopPage() {
             {/* BUTTON */}
             <a
               href={`/shop/${previewCategory.slug}`}
-              className="mt-5 inline-flex w-full items-center justify-center rounded-full border border-[#C9D3DD] bg-white px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-[#5F7A94] transition hover:bg-[#F7FAFC]"
+              className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#4e677f]"
             >
               View Collection
             </a>
