@@ -56,6 +56,8 @@ export default function CollegePage() {
             {categories.map((category) => (
               <div key={category.slug} className="group">
                 <div className="relative overflow-hidden rounded-[22px] border border-[#F0ECE6] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
+                  
+                  {/* Click image = go to page */}
                   <a href={`/college/${category.slug}`} className="block">
                     <div className="flex h-[260px] items-center justify-center p-3 sm:h-[320px] sm:p-4">
                       <img
@@ -66,6 +68,7 @@ export default function CollegePage() {
                     </div>
                   </a>
 
+                  {/* Preview overlay */}
                   <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover:bg-black/8">
                     <button
                       type="button"
@@ -85,9 +88,10 @@ export default function CollegePage() {
                   </div>
                 </div>
 
+                {/* Title click */}
                 <a href={`/college/${category.slug}`} className="block">
                   <div className="pt-2 text-center">
-                    <h3 className="mt-3 text-center text-[14px] font-medium text-[#2F3A4A] sm:mt-4 sm:text-[15px] md:text-[16px]">
+                    <h3 className="mt-3 text-[14px] font-medium text-[#2F3A4A] sm:mt-4 sm:text-[15px] md:text-[16px]">
                       {category.title}
                     </h3>
                   </div>
@@ -98,15 +102,17 @@ export default function CollegePage() {
         </div>
       </section>
 
+      {/* MODAL */}
       {previewCategory && (
         <div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
-  onClick={() => setPreviewCategory(null)}
->
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
+          onClick={() => setPreviewCategory(null)}
+        >
           <div
-  className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5"
-  onClick={(e) => e.stopPropagation()}
->
+            className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
             <div className="flex items-start justify-between">
               <h3 className="text-[22px] font-light tracking-[0.01em] text-[#2F2F2F]">
                 {previewCategory.title}
@@ -120,6 +126,7 @@ export default function CollegePage() {
               </button>
             </div>
 
+            {/* Image */}
             <div className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-[#F7F7F5] p-4">
               <img
                 src={previewCategory.image}
@@ -128,12 +135,13 @@ export default function CollegePage() {
               />
             </div>
 
-           <a
-  href={`/college/${previewCategory.slug}`}
-  className="mt-5 inline-flex w-full items-center justify-center rounded-full border border-[#C9D3DD] bg-white px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-[#5F7A94] transition hover:bg-[#F7FAFC] relative z-10"
->
-  View Collection
-</a>
+            {/* CTA (MATCHES CAMP NOW) */}
+            <a
+              href={`/college/${previewCategory.slug}`}
+              className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#4e677f] relative z-10"
+            >
+              View Collection
+            </a>
           </div>
         </div>
       )}
