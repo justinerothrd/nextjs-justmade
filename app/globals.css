@@ -1,4 +1,14 @@
-@font-face {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}@font-face {
   font-family: "Glacial";
   src: url("/GlacialIndifference-Regular.otf") format("opentype");
   font-weight: 400;
