@@ -4,7 +4,7 @@ export const collegeProducts = {
     price: "$70",
     description:
       "A classic custom college crewneck designed for campus, camp, and everyday wear.",
-    images: ["/tulane-crewneck.png"],
+    images: ["/tulane-crewneck.png", "/tulane-crewneck2.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
@@ -13,7 +13,7 @@ export const collegeProducts = {
     price: "$75",
     description:
       "A cozy custom college hoodie for cool nights, travel, and everyday style.",
-    images: ["/tulane-hoodie.jpeg"],
+    images: ["/ohiohoodie.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
