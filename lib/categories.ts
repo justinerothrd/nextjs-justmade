@@ -22,6 +22,6 @@ export const categories = [
   {
     slug: "accessories",
     title: "Accessories & Gifts",
-    image: "/accessories.jpg",
+    image: "/THCslides.png",
   },
 ] as const;
