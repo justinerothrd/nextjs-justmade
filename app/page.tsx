@@ -2,6 +2,18 @@
 
 import { useState } from "react";
 import { categories } from "@/lib/categories";
+import { products } from "@/lib/products";
+
+const previewProductsByCategory = {
+  sweatshirts: ["hoodie", "quarter-zip"],
+  tees: ["tank-top", "custom-tee"],
+  bottoms: ["custom-shorts", "sweatpants"],
+  sleepwear: ["sleepwear", "sleepwear-set"],
+  accessories: ["accessories-slides", "accessories-socks"],
+} as const;
+
+type CategorySlug = keyof typeof previewProductsByCategory;
+type ProductSlug = keyof typeof products;
 
 export default function HomePage() {
   const [previewCategory, setPreviewCategory] = useState<null | {
@@ -9,6 +21,15 @@ export default function HomePage() {
     title: string;
     image: string;
   }>(null);
+
+  const previewItems =
+    previewCategory &&
+    previewProductsByCategory[
+      previewCategory.slug as CategorySlug
+    ]?.map((slug) => ({
+      slug,
+      ...products[slug as ProductSlug],
+    }));
 
   return (
     <main className="bg-white text-[#4B4B4B]">
@@ -81,7 +102,7 @@ export default function HomePage() {
               <div key={category.slug} className="group">
                 <div className="relative overflow-hidden rounded-[22px] border border-[#ECE8E2] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
                   <a href={`/shop/${category.slug}`} className="block">
-                    <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
+                    <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-3">
                       <img
                         src={category.image}
                         alt={category.title}
@@ -128,13 +149,18 @@ export default function HomePage() {
           onClick={() => setPreviewCategory(null)}
         >
           <div
-  className="w-full max-w-md rounded-[28px] bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5"
-  onClick={(e) => e.stopPropagation()}
->
+            className="w-full max-w-3xl rounded-[30px] bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5 sm:p-7"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-start justify-between">
-              <h3 className="text-[22px] font-light tracking-[0.01em] text-[#2F2F2F]">
-                {previewCategory.title}
-              </h3>
+              <div>
+                <h3 className="text-[22px] font-light tracking-[0.01em] text-[#2F2F2F]">
+                  {previewCategory.title}
+                </h3>
+                <p className="mt-1 text-[12px] uppercase tracking-[0.14em] text-[#8A93A0]">
+                  Featured styles
+                </p>
+              </div>
 
               <button
                 onClick={() => setPreviewCategory(null)}
@@ -144,17 +170,41 @@ export default function HomePage() {
               </button>
             </div>
 
-           <div className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-[#F7F7F5] p-4">
-              <img
-                src={previewCategory.image}
-                alt={previewCategory.title}
-                className="max-h-[94%] max-w-[94%] object-contain"
-              />
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {previewItems?.map((item) => (
+                <div key={item.slug} className="text-center">
+                  <a href={`/product/${item.slug}`} className="block">
+                    <div className="flex h-[240px] items-center justify-center rounded-[22px] bg-[#F7F7F5] p-3">
+                      <img
+                        src={item.images[0]}
+                        alt={item.name}
+                        className="max-h-full max-w-full object-contain scale-[1.08]"
+                      />
+                    </div>
+                  </a>
+
+                  <div className="mt-4">
+                    <h4 className="text-[16px] font-medium text-[#2F2F2F]">
+                      {item.name}
+                    </h4>
+                    <p className="mt-1 text-[14px] text-[#6B7280]">
+                      {item.price}
+                    </p>
+                  </div>
+
+                  <a
+                    href={`/product/${item.slug}`}
+                    className="mt-3 inline-flex items-center justify-center rounded-full border border-[#D8E0E8] bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
+                  >
+                    View Product
+                  </a>
+                </div>
+              ))}
             </div>
 
             <a
               href={`/shop/${previewCategory.slug}`}
-              className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#4e677f]"
+              className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#4e677f]"
             >
               View Collection
             </a>
