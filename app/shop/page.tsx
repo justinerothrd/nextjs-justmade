@@ -126,7 +126,7 @@ export default function ShopPage() {
                       <img
                         src={item.images[0]}
                         alt={item.name}
-                        className="max-h-[94%] max-w-[94%] object-contain"
+                        className="max-h-full max-w-full object-contain scale-[1.08]"
                       />
                     </div>
                   </a>
