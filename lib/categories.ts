@@ -1,29 +1,27 @@
-import { products } from "@/lib/products";
-
 export const categories = [
   {
     slug: "sweatshirts",
     title: "Sweatshirts",
-    image: products["hoodie"].images[0],
+    image: "/THChoodie.png",
   },
   {
     slug: "tees",
     title: "Tees & Tanks",
-    image: products["custom-tee"].images[0],
+    image: "/WM81tank.png",
   },
   {
     slug: "bottoms",
     title: "Bottoms",
-    image: products["custom-shorts"].images[0],
+    image: "/PCsweatpants.jpg",
   },
   {
     slug: "sleepwear",
     title: "Sleep & Loungewear",
-    image: products["sleepwear"].images[0],
+    image: "/WMsleepset.png",
   },
   {
     slug: "accessories",
     title: "Accessories & Gifts",
-    image: products["accessories-slides"].images[0],
+    image: "/accessories.jpg",
   },
-];
+] as const;
