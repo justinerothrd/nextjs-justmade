@@ -89,7 +89,7 @@ export const products = {
     name: "Bunk Gift Slides",
     price: "$60",
     description: "A fun personalized camp gift that feels special, practical, and easy to wear.",
-    images: ["/THCslides.png", "/accessories.jpg"],
+    images: ["/THCslides.png", "/customsocks.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
   },
