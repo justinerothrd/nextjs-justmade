@@ -100,11 +100,11 @@ export default function CollegePage() {
 
       {previewCategory && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
-          onClick={() => setPreviewCategory(null)}
-        >
+  className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
+  onClick={() => setPreviewCategory(null)}
+>
           <div
-  className="w-full max-w-md rounded-[28px] bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5"
+  className="w-full max-w-md rounded-[28px] bg-white p-5 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5"
   onClick={(e) => e.stopPropagation()}
 >
             <div className="flex items-start justify-between">
@@ -128,11 +128,12 @@ export default function CollegePage() {
               />
             </div>
 
-            <a
-              className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#4e677f]"
-            >
-              View Collection
-            </a>
+           <a
+  href={`/college/${previewCategory.slug}`}
+  className="mt-5 inline-flex w-full items-center justify-center rounded-full border border-[#C9D3DD] bg-white px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-[#5F7A94] transition hover:bg-[#F7FAFC] relative z-10"
+>
+  View Collection
+</a>
           </div>
         </div>
       )}
