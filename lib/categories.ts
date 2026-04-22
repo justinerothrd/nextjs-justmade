@@ -2,7 +2,7 @@ export const categories = [
   {
     slug: "sweatshirts",
     title: "Sweatshirts",
-    image: "/hoodie.jpeg",
+    image: "/THChoodie.png",
   },
   {
     slug: "tees",
@@ -17,7 +17,7 @@ export const categories = [
   {
     slug: "sleepwear",
     title: "Sleep & Loungewear",
-    image: "/sleepwear.jpg",
+    image: "/WMsleepset.png",
   },
   {
     slug: "accessories",
