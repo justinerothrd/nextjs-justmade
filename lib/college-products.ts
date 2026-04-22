@@ -4,7 +4,7 @@ export const collegeProducts = {
     price: "$70",
     description:
       "A classic custom college crewneck designed for campus, camp, and everyday wear.",
-    images: ["/tulane-crewneck.jpeg"],
+    images: ["/tulane-crewneck.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
