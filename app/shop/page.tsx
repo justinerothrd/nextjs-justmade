@@ -2,6 +2,18 @@
 
 import { useState } from "react";
 import { categories } from "@/lib/categories";
+import { products } from "@/lib/products";
+
+const previewProductsByCategory = {
+  sweatshirts: ["hoodie", "quarter-zip"],
+  tees: ["tank-top", "custom-tee"],
+  bottoms: ["custom-shorts", "sweatpants"],
+  sleepwear: ["sleepwear", "sleepwear-set"],
+  accessories: ["accessories-slides", "accessories-socks"],
+} as const;
+
+type CategorySlug = keyof typeof previewProductsByCategory;
+type ProductSlug = keyof typeof products;
 
 export default function ShopPage() {
   const [previewCategory, setPreviewCategory] = useState<null | {
@@ -9,6 +21,15 @@ export default function ShopPage() {
     title: string;
     image: string;
   }>(null);
+
+  const previewItems =
+    previewCategory &&
+    previewProductsByCategory[
+      previewCategory.slug as CategorySlug
+    ]?.map((slug) => ({
+      slug,
+      ...products[slug as ProductSlug],
+    }));
 
   return (
     <main className="bg-white text-[#4B4B4B]">
@@ -27,10 +48,7 @@ export default function ShopPage() {
           <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
             {categories.map((category) => (
               <div key={category.slug} className="group">
-                {/* CARD */}
                 <div className="relative overflow-hidden rounded-[22px] border border-[#ECE8E2] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
-
-                  {/* CLICKABLE IMAGE */}
                   <a href={`/shop/${category.slug}`} className="block">
                     <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
                       <img
@@ -41,7 +59,6 @@ export default function ShopPage() {
                     </div>
                   </a>
 
-                  {/* PREVIEW OVERLAY */}
                   <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover:bg-black/8">
                     <button
                       type="button"
@@ -54,14 +71,13 @@ export default function ShopPage() {
                           image: category.image,
                         });
                       }}
-                      className="pointer-events-auto rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2F3A4A] opacity-0 shadow-sm transition duration-300 group-hover:opacity-100"
+                      className="pointer-events-auto rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2F3A4A] opacity-0 scale-95 shadow-sm transition duration-300 group-hover:opacity-100 group-hover:scale-100"
                     >
                       Preview
                     </button>
                   </div>
                 </div>
 
-                {/* TITLE */}
                 <a href={`/shop/${category.slug}`} className="block">
                   <div className="pt-3 text-center">
                     <h3 className="text-[15px] font-medium tracking-[0.01em] text-[#2F2F2F] sm:text-[17px]">
@@ -75,21 +91,24 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {/* MODAL */}
       {previewCategory && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
           onClick={() => setPreviewCategory(null)}
         >
           <div
-  className="w-full max-w-md rounded-[28px] bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5"
-  onClick={(e) => e.stopPropagation()}
->
-            {/* HEADER */}
+            className="w-full max-w-3xl rounded-[28px] bg-white p-5 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5 sm:p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-start justify-between">
-              <h3 className="text-[22px] font-light tracking-[0.01em] text-[#2F2F2F]">
-                {previewCategory.title}
-              </h3>
+              <div>
+                <h3 className="text-[22px] font-light tracking-[0.01em] text-[#2F2F2F]">
+                  {previewCategory.title}
+                </h3>
+                <p className="mt-1 text-[13px] uppercase tracking-[0.12em] text-[#8A93A0]">
+                  Featured styles
+                </p>
+              </div>
 
               <button
                 onClick={() => setPreviewCategory(null)}
@@ -99,16 +118,44 @@ export default function ShopPage() {
               </button>
             </div>
 
-            {/* IMAGE */}
-            <div className="mt-4 flex h-[320px] items-center justify-center rounded-[22px] border border-[#ECE8E2] bg-[#F7F7F5] p-4">
-              <img
-                src={previewCategory.image}
-                alt={previewCategory.title}
-                className="max-h-[94%] max-w-[94%] object-contain"
-              />
+            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {previewItems?.map((item) => (
+                <div
+                  key={item.slug}
+                  className="rounded-[22px] border border-[#ECE8E2] bg-[#F7F7F5] p-4"
+                >
+                  <a
+                    href={`/product/${item.slug}`}
+                    className="block"
+                  >
+                    <div className="flex h-[220px] items-center justify-center">
+                      <img
+                        src={item.images[0]}
+                        alt={item.name}
+                        className="max-h-[94%] max-w-[94%] object-contain"
+                      />
+                    </div>
+                  </a>
+
+                  <div className="mt-3 text-center">
+                    <h4 className="text-[15px] font-medium text-[#2F2F2F]">
+                      {item.name}
+                    </h4>
+                    <p className="mt-1 text-[14px] text-[#6B7280]">
+                      {item.price}
+                    </p>
+                  </div>
+
+                  <a
+                    href={`/product/${item.slug}`}
+                    className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-[#C9D3DD] bg-white px-4 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-[#5F7A94] transition hover:bg-[#F7FAFC]"
+                  >
+                    View Product
+                  </a>
+                </div>
+              ))}
             </div>
 
-            {/* BUTTON */}
             <a
               href={`/shop/${previewCategory.slug}`}
               className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#4e677f]"
