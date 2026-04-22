@@ -47,7 +47,7 @@ export const collegeProducts = {
     name: "College Pajama Shorts",
     price: "$32",
     description: "Soft college pajama shorts made for easy comfort.",
-    images: ["/tulane.sleepshorts.jpg"],
+    images: ["/tulane-sleepshorts.png"],
     colors: ["Light Blue", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
