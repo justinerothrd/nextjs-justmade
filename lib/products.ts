@@ -98,7 +98,7 @@ export const products = {
     name: "Fuzzy Socks",
     price: "$22",
     description: "Soft fuzzy socks that make a perfect bunk gift or cozy camp extra.",
-    images: ["/customsocks.jpg", "/college.fuzzysocks.jpeg"],
+    images: ["/customsocks.png", "/college.fuzzysocks.jpeg"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
   },
