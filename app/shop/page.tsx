@@ -50,7 +50,7 @@ export default function ShopPage() {
               <div key={category.slug} className="group">
                 <div className="relative overflow-hidden rounded-[22px] border border-[#ECE8E2] bg-white transition duration-300 ease-out group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] sm:rounded-[26px]">
                   <a href={`/shop/${category.slug}`} className="block">
-                    <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
+                    <div className="flex h-[220px] items-center justify-center p-4 sm:h-[280px] sm:p-3">
                       <img
                         src={category.image}
                         alt={category.title}
