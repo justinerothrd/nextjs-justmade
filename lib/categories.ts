@@ -1,27 +1,29 @@
+import { products } from "@/lib/products";
+
 export const categories = [
   {
     slug: "sweatshirts",
     title: "Sweatshirts",
-    image: "/THChoodie.png",
+    image: products["hoodie"].images[0],
   },
   {
     slug: "tees",
     title: "Tees & Tanks",
-    image: "/WM81tank.png",
+    image: products["custom-tee"].images[0],
   },
   {
     slug: "bottoms",
     title: "Bottoms",
-    image: "/PCsweatpants.jpg",
+    image: products["custom-shorts"].images[0],
   },
   {
     slug: "sleepwear",
     title: "Sleep & Loungewear",
-    image: "/WMsleepset.png",
+    image: products["sleepwear"].images[0],
   },
   {
     slug: "accessories",
     title: "Accessories & Gifts",
-    image: "/accessories.jpg",
+    image: products["accessories-slides"].images[0],
   },
-] as const;
+];
