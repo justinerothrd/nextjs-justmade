@@ -71,7 +71,7 @@ export const products = {
     name: "Camp Pajama Shorts",
     price: "$32",
     description: "Soft camp-ready pajama shorts made for bunk life, bedtime, and easy summer comfort.",
-    images: ["/timberlake-sleepshorts.png", "/THCsleeppants.png"],
+    images: ["/timberlake-sleepshorts.png", "/thcsleeppants.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
   },
