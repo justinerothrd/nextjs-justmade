@@ -13,7 +13,7 @@ export const collegeProducts = {
     price: "$70",
     description:
       "A classic custom college crewneck designed for campus, camp, and everyday wear.",
-    images: ["/tulanecrewneck-green.png", "pennstate-crewneck.png", "/tulane-crewneck2.png", "ohiocrewneck-grey.png", "ohiocrewneck-red.png"],
+    images: ["/tulanecrewneck-green.png", "/pennstate-crewneck.png", "/tulane-crewneck2.png", "/ohiocrewneck-grey.png", "/ohiocrewneck-red.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
@@ -22,7 +22,7 @@ export const collegeProducts = {
     price: "$75",
     description:
       "A cozy custom college hoodie for cool nights, travel, and everyday style.",
-    images: ["/Ohiohoodie.png", "UCLA-hoodie.png", UNCornowhere-hoodie.png"],
+    images: ["/Ohiohoodie.png", "/UCLA-hoodie.png", "/UNCornowhere-hoodie.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
@@ -31,7 +31,7 @@ export const collegeProducts = {
     price: "$40",
     description:
       "A lightweight custom college tee perfect for warm weather and easy everyday wear.",
-    images: ["/college.tee.jpg", "TUgrey-tshirt.png", "UNCblue-tshirt.png"],
+    images: ["/college.tee.jpg", "/TUgrey-tshirt.png", "/UNCblue-tshirt.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
@@ -39,7 +39,7 @@ export const collegeProducts = {
     name: "Custom College Tank Top",
     price: "$40",
     description: "A custom college tank top with an easy summer feel.",
-    images: ["/tulane-tank.jpeg", "marylandcrop-tank.png", "ohiocrop-tank.png"],
+    images: ["/tulane-tank.jpeg", "/marylandcrop-tank.png", "/ohiocrop-tank.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
@@ -48,7 +48,7 @@ export const collegeProducts = {
   price: "$48",
   description:
     "Comfortable custom sweatpants designed for everyday wear and relaxed campus style.",
-  images: ["/ucla-sweatpants.png", "unc-sweatpants.png", "udel-sweatpants.png", "udelgrey-sweatpants.png", "tulane.sweatpants.png"],
+  images: ["/ucla-sweatpants.png", "/unc-sweatpants.png", "/udel-sweatpants.png", "/udelgrey-sweatpants.png", "/tulane.sweatpants.png"],
   colors: ["Heather Gray", "Navy", "Green", "Red"],
   sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
@@ -57,7 +57,7 @@ export const collegeProducts = {
   price: "$36",
   description:
     "Comfortable custom shorts made for campus, camp, and relaxed everyday style.",
-  images: ["/texas.shorts.png", "collegeshorts.png", "ucla-shorts.png"],
+  images: ["/texas.shorts.png", "/collegeshorts.png", "/ucla-shorts.png"],
   colors: ["Heather Gray", "Navy", "Green", "Red"],
   sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
 },
@@ -65,7 +65,7 @@ export const collegeProducts = {
     name: "College Pajama Shorts",
     price: "$32",
     description: "Soft college pajama shorts made for easy comfort.",
-    images: ["/tulane-sleepshorts.png, "unc-pjpants.png"],
+    images: ["/tulane-sleepshorts.png", "/unc-pjpants.png"], 
     colors: ["Light Blue", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
@@ -74,7 +74,7 @@ export const collegeProducts = {
     price: "$65",
     description:
       "A personalized sleep set with a cozy feel and college-inspired look.",
-    images: ["/college.sleepwearset.jpg", "unc-sleepset.png"],
+    images: ["/college.sleepwearset.jpg", "/unc-sleepset.png"],
     colors: ["Light Blue", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
