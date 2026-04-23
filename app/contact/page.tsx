@@ -3,12 +3,12 @@ export default function ContactPage() {
     <main className="bg-[#F7F7F5] min-h-screen px-6 py-16 text-[#4B4B4B]">
       <div className="mx-auto max-w-4xl">
         <p className="text-sm uppercase tracking-[0.2em] text-[#6F879E]">
-          Get in touch
-        </h1>
+          Contact
+        </p>
 
         <p className="mt-6 max-w-2xl text-lg leading-8 text-[#6F879E]">
-          Contact us for questions on sizing or colors, custom order ideas, group requests, or help
-          choosing the right item!
+          Reach out with questions, custom order ideas, group requests, or help
+          choosing the right item.
         </p>
 
         <div className="mt-10 rounded-3xl border border-[#E3E3E0] bg-white p-8">
