@@ -97,12 +97,12 @@ export default function ShopPage() {
           onClick={() => setPreviewCategory(null)}
         >
           <div
-            className="w-full max-w-3xl rounded-[30px] bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5 sm:p-7 animate-[fadeIn_.25s_ease-out]"
+            className="w-full max-w-3xl rounded-[30px] bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.20)] ring-1 ring-black/5 sm:p-7"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="text-[22px] font-light tracking-[0.01em] text-[#2F2F2F]">
+                <h3 className="text-[22px] font-light text-[#2F2F2F]">
                   {previewCategory.title}
                 </h3>
                 <p className="mt-1 text-[12px] uppercase tracking-[0.14em] text-[#8A93A0]">
@@ -112,27 +112,30 @@ export default function ShopPage() {
 
               <button
                 onClick={() => setPreviewCategory(null)}
-                className="text-[12px] uppercase tracking-[0.12em] text-[#8A93A0] hover:text-[#2F2F2F]"
+                className="text-[12px] uppercase tracking-[0.12em] text-[#8A93A0]"
               >
                 Close
               </button>
             </div>
 
-            <div className="mt-6 grid grid-cols-1 items-center gap-6 sm:grid-cols-[1.2fr_0.8fr]">
+            {/* 🔥 UPDATED LAYOUT */}
+            <div className="mt-6 grid grid-cols-1 items-center gap-4 sm:grid-cols-[1.24fr_0.76fr]">
+              
+              {/* HERO PRODUCT */}
               {previewItems?.[0] && (
-                <div>
-                  <a href={`/product/${previewItems[0].slug}`} className="block">
-                    <div className="flex h-[320px] items-center justify-center">
+                <div className="group">
+                  <a href={`/product/${previewItems[0].slug}`}>
+                    <div className="flex h-[320px] items-center justify-center -translate-x-2">
                       <img
                         src={previewItems[0].images[0]}
                         alt={previewItems[0].name}
-                        className="max-h-full max-w-full object-contain scale-[1.15] drop-shadow-[0_8px_20px_rgba(0,0,0,0.12)]"
+                        className="max-h-full max-w-full object-contain scale-[1.15] drop-shadow-[0_8px_20px_rgba(0,0,0,0.12)] transition duration-500 group-hover:scale-[1.18]"
                       />
                     </div>
                   </a>
 
                   <div className="mt-4 text-left">
-                    <h4 className="text-[17px] font-normal tracking-[0.01em] text-[#2F2F2F]">
+                    <h4 className="text-[17px] text-[#2F2F2F]">
                       {previewItems[0].name}
                     </h4>
                     <p className="mt-1 text-[14px] text-[#6B7280]">
@@ -142,27 +145,28 @@ export default function ShopPage() {
 
                   <a
                     href={`/product/${previewItems[0].slug}`}
-                    className="mt-3 inline-block text-[11px] uppercase tracking-[0.18em] text-[#6B7C8F] transition hover:text-[#2F3A4A]"
+                    className="mt-3 inline-block text-[11px] uppercase tracking-[0.18em] text-[#6B7C8F]"
                   >
                     View
                   </a>
                 </div>
               )}
 
+              {/* SECONDARY PRODUCT */}
               {previewItems?.[1] && (
-                <div className="flex flex-col items-center">
-                  <a href={`/product/${previewItems[1].slug}`} className="block">
-                    <div className="flex h-[200px] items-center justify-center opacity-90">
+                <div className="group flex flex-col items-center -translate-x-3">
+                  <a href={`/product/${previewItems[1].slug}`}>
+                    <div className="flex h-[200px] items-center justify-center">
                       <img
                         src={previewItems[1].images[0]}
                         alt={previewItems[1].name}
-                        className="max-h-full max-w-full object-contain scale-[1.05] drop-shadow-[0_8px_20px_rgba(0,0,0,0.10)]"
+                        className="max-h-[95%] max-w-[95%] object-contain translate-x-2 scale-[1.08] opacity-90 transition duration-500 group-hover:scale-[1.11] group-hover:opacity-100"
                       />
                     </div>
                   </a>
 
                   <div className="mt-3 text-center">
-                    <h4 className="text-[15px] font-normal tracking-[0.01em] text-[#2F2F2F]">
+                    <h4 className="text-[15px] text-[#2F2F2F]">
                       {previewItems[1].name}
                     </h4>
                     <p className="mt-1 text-[13px] text-[#6B7280]">
@@ -172,7 +176,7 @@ export default function ShopPage() {
 
                   <a
                     href={`/product/${previewItems[1].slug}`}
-                    className="mt-2 inline-block text-[11px] uppercase tracking-[0.18em] text-[#6B7C8F] transition hover:text-[#2F3A4A]"
+                    className="mt-2 inline-block text-[11px] uppercase tracking-[0.18em] text-[#6B7C8F]"
                   >
                     View
                   </a>
@@ -182,7 +186,7 @@ export default function ShopPage() {
 
             <a
               href={`/shop/${previewCategory.slug}`}
-              className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94]/95 px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#5F7A94]"
+              className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94]/95 px-5 py-2.5 text-[12px] uppercase tracking-[0.12em] text-white transition hover:bg-[#5F7A94]"
             >
               View Collection
             </a>
