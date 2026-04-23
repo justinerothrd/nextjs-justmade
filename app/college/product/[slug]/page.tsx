@@ -119,13 +119,13 @@ export default function CollegeProductPage() {
               </div>
             )}
 
-            <div className="flex aspect-square w-full items-center justify-center rounded-[24px] border border-[#F0ECE6] bg-white p-4 sm:p-6">
-              {currentImage ? (
-                <img
-                  src={currentImage}
-                  alt={product.name}
-                  className="max-h-[94%] max-w-[94%] object-contain"
-                />
+           <div className="group flex aspect-square w-full items-center justify-center overflow-hidden rounded-[24px] border border-[#F0ECE6] bg-white p-4 sm:p-6">
+  {currentImage ? (
+    <img
+      src={currentImage}
+      alt={product.name}
+      className="max-h-[94%] max-w-[94%] cursor-zoom-in object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+    />
               ) : (
                 <div className="text-sm text-gray-400">No image available</div>
               )}
