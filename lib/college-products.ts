@@ -43,14 +43,15 @@ export const collegeProducts = {
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
-  "college-shorts": {
-    name: "Custom College Bottoms",
-    price: "$36",
-    description:
-      "Comfortable custom bottoms made for campus, camp, and relaxed everyday style.",
-    images: ["/shorts-preview.png", "/ucla-sweatpants.png"],
-    colors: ["Heather Gray", "Navy", "Green", "Red"],
-    sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+ "college-sweatpants": {
+  name: "Custom College Sweatpants",
+  price: "$48",
+  description:
+    "Comfortable custom sweatpants designed for everyday wear and relaxed campus style.",
+  images: ["/ucla-sweatpants.png"], // or whatever your file is
+  colors: ["Heather Gray", "Navy", "Green", "Red"],
+  sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+},
   },
   "college-sleepwear": {
     name: "College Pajama Shorts",
