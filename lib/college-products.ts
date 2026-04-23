@@ -53,11 +53,20 @@ export const collegeProducts = {
   sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
   "college-shorts": {
-  name: "Custom College Sleep Bottoms",
+  name: "Custom College Sweatshorts",
   price: "$36",
   description:
-    "Comfortable custom bottoms made for campus, camp, and relaxed everyday style.",
-  images: ["/texas-shorts.png", "/collegeshorts.png", "/ucla-shorts.png"],
+    "Comfortable custom sweatshorts made for campus, camp, and relaxed everyday style.",
+  images: ["/texas-shorts.png", "/ucla-shorts.png"],
+  colors: ["Heather Gray", "Navy", "Green", "Red"],
+  sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+  },
+  "college-shorts": {
+  name: "Custom College Sweatshorts",
+  price: "$36",
+  description:
+    "Comfortable custom bikeshorts made for campus, camp, and relaxed everyday style.",
+  images: ["/collegeshorts.png"],
   colors: ["Heather Gray", "Navy", "Green", "Red"],
   sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
 },
