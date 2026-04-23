@@ -194,7 +194,7 @@ export default function CollegePage() {
                       <img
                         src={previewItems[1].image}
                         alt={previewItems[1].name}
-                        className="max-h-[88%] max-w-[88%] object-contain translate-x-2 opacity-90 transition duration-500 ease-out"
+                        className="max-h-[95%] max-w-[95%] object-contain translate-x-2 scale-[1.08] opacity-95 transition duration-500 ease-out"
                       />
                     </div>
                   </a>
