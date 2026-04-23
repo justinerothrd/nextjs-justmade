@@ -7,8 +7,7 @@ export default function ContactPage() {
         </p>
 
         <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4B4B4B]">
-          Reach out with questions, custom order ideas, group requests, or help
-          choosing the right item.
+         Questions on sizing, styles, or custom and group orders? Reach out—we’ll help you find the perfect pieces! 
         </p>
 
         <div className="mt-10 rounded-3xl border border-[#E3E3E0] bg-white p-8">
