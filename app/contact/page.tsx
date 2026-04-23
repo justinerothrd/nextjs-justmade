@@ -6,7 +6,7 @@ export default function ContactPage() {
           Contact
         </p>
 
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-[#6F879E]">
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4B4B4B]">
           Reach out with questions, custom order ideas, group requests, or help
           choosing the right item.
         </p>
