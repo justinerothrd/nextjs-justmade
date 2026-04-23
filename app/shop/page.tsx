@@ -126,7 +126,7 @@ export default function ShopPage() {
                       <img
                         src={item.images[0]}
                         alt={item.name}
-                        className="max-h-full max-w-full object-contain scale-[1.08]"
+                        className="max-h-full max-w-full object-contain scale-[1.08] drop-shadow-[0_8px_20px_rgba(0,0,0,0.12)]"
                       />
                     </div>
                   </a>
@@ -142,7 +142,7 @@ export default function ShopPage() {
 
                   <a
                     href={`/product/${item.slug}`}
-                    className="mt-3 inline-flex items-center justify-center rounded-full border border-[#D8E0E8] bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
+                    className="mt-3 text-[11px] font-medium uppercase tracking-[0.14em] text-[#6B7C8F] transition hover:text-[#2F3A4A]"
                   >
                     View Product
                   </a>
