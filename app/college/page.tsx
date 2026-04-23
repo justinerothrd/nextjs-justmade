@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { categories } from "@/lib/categories";
 import { collegeProducts } from "@/lib/college-products";
 
 const categories = [
