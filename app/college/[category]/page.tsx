@@ -22,7 +22,7 @@ const categoryMeta = {
 const categoryProductSlugs = {
   sweatshirts: ["college-crewneck", "college-hoodie"],
   tees: ["college-tee", "college-tank"],
-  bottoms: ["college-shorts", "college-sweatpants"],
+  bottoms: ["college-sweatshorts", "college-bikeshorts", "college-sweatpants"],
   sleepwear: ["college-sleepwear", "college-sleepwear-set"],
   accessories: ["college-slides", "college-socks"],
 } as const;
