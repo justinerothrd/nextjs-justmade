@@ -7,46 +7,16 @@ import LogoPicker from "@/app/components/LogoPicker";
 import { logos } from "@/app/data/logos";
 
 const productImageClassesByView: Record<string, string[]> = {
-  hoodie: [
-    "max-h-[94%] max-w-[94%]",
-    "max-h-[88%] max-w-[88%]",
-    "max-h-[90%] max-w-[90%]",
-    "max-h-[92%] max-w-[92%]",
-  ],
-  "quarter-zip": [
-    "max-h-[94%] max-w-[94%]",
-    "max-h-[88%] max-w-[88%]",
-  ],
-  "tank-top": [
-    "max-h-[88%] max-w-[88%]",
-    "max-h-[88%] max-w-[88%]",
-    "max-h-[88%] max-w-[88%]",
-  ],
-  "custom-tee": [
-    "max-h-[88%] max-w-[88%]",
-    "max-h-[96%] max-w-[96%]",
-    "max-h-[88%] max-w-[88%]",
-    "max-h-[90%] max-w-[90%]",
-  ],
-  "custom-shorts": [
-    "max-h-[90%] max-w-[90%]",
-  ],
-  sweatpants: [
-    "max-h-[96%] max-w-[96%]",
-  ],
-  sleepwear: [
-    "max-h-[100%] max-w-[100%]",
-  ],
-  "sleepwear-set": [
-    "max-h-[96%] max-w-[96%]",
-    "max-h-[96%] max-w-[96%]",
-  ],
-  "accessories-slides": [
-    "max-h-[86%] max-w-[86%]",
-  ],
-  "accessories-socks": [
-    "max-h-[92%] max-w-[92%]",
-  ],
+  hoodie: ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]", "max-h-[90%] max-w-[90%]", "max-h-[92%] max-w-[92%]"],
+  "quarter-zip": ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]"],
+  "tank-top": ["max-h-[88%] max-w-[88%]", "max-h-[88%] max-w-[88%]", "max-h-[88%] max-w-[88%]"],
+  "custom-tee": ["max-h-[88%] max-w-[88%]", "max-h-[96%] max-w-[96%]", "max-h-[88%] max-w-[88%]", "max-h-[90%] max-w-[90%]"],
+  "custom-shorts": ["max-h-[90%] max-w-[90%]"],
+  sweatpants: ["max-h-[96%] max-w-[96%]"],
+  sleepwear: ["max-h-[100%] max-w-[100%]"],
+  "sleepwear-set": ["max-h-[96%] max-w-[96%]", "max-h-[96%] max-w-[96%]"],
+  "accessories-slides": ["max-h-[86%] max-w-[86%]"],
+  "accessories-socks": ["max-h-[92%] max-w-[92%]"],
 };
 
 export default function ProductPage() {
@@ -99,6 +69,7 @@ export default function ProductPage() {
     productImageClassesByView[slug]?.[selectedImage] ??
     productImageClassesByView[slug]?.[0] ??
     "max-h-[94%] max-w-[94%]";
+
   function handleAddToCart() {
     if (!product || !slug) return;
 
@@ -166,17 +137,17 @@ export default function ProductPage() {
               </div>
             )}
 
-            <div className="flex aspect-square w-full items-center justify-center rounded-[24px] border border-[#F0ECE6] bg-white p-4 sm:p-6">
-  {currentImage ? (
-    <img
-      src={currentImage}
-      alt={product.name}
-      className={`${currentImageClass} object-contain`}
-    />
-  ) : (
-    <div className="text-sm text-gray-400">No image available</div>
-  )}
-</div>
+            <div className="group flex aspect-square w-full items-center justify-center overflow-hidden rounded-[24px] border border-[#F0ECE6] bg-white p-4 sm:p-6">
+              {currentImage ? (
+                <img
+                  src={currentImage}
+                  alt={product.name}
+                  className={`${currentImageClass} cursor-zoom-in object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
+                />
+              ) : (
+                <div className="text-sm text-gray-400">No image available</div>
+              )}
+            </div>
           </div>
 
           <div className="flex flex-col">
