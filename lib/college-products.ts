@@ -22,7 +22,7 @@ export const collegeProducts = {
     price: "$75",
     description:
       "A cozy custom college hoodie for cool nights, travel, and everyday style.",
-    images: ["/Ohiohoodie.png", "/UCLA-hoodie.png", "/UNCornowhere-hoodie.png"],
+    images: ["/Ohiohoodie.png", "/ucla-hoodie.png", "/uncornowhere-hoodie.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
