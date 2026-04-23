@@ -34,7 +34,7 @@ const categories = [
 const categoryProducts: Record<string, string[]> = {
   sweatshirts: ["college-crewneck", "college-hoodie"],
   tees: ["college-tee", "college-tank"],
-  bottoms: ["college-shorts", "ucla-sweatpants"], // ✅ NEW
+  bottoms: ["college-shorts", "ucla-sweatpants"], 
   sleepwear: ["college-sleepwear", "college-sleep-set"],
   accessories: ["college-slides", "college-socks"],
 };
