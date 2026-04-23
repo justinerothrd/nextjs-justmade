@@ -39,7 +39,7 @@ type CategorySlug = (typeof categories)[number]["slug"];
 const previewProductsByCategory: Record<CategorySlug, CollegeProductSlug[]> = {
   sweatshirts: ["college-crewneck", "college-hoodie"],
   tees: ["college-tank", "college-tee"],
-  bottoms: ["college-sweatpants", "college-shorts"],
+  bottoms: ["college-sweatpants", "college-sweatshorts"],
   sleepwear: ["college-sleepwear", "college-sleepwear-set"],
   accessories: ["college-slides", "college-socks"],
 };
