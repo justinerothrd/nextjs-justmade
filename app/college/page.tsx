@@ -149,7 +149,7 @@ export default function CollegePage() {
               {previewItems?.map((item) => (
                 <div key={item.slug} className="text-center">
                   <a href={`/college/product/${item.slug}`} className="block">
-                    <div className="flex h-[240px] items-center justify-center rounded-[22px] bg-[#F7F7F5] p-3">
+                    className="flex h-[240px] items-center justify-center rounded-[22px] bg-[#F7F7F5] p-3 transition duration-300 hover:scale-[1.02]"
                       <img
                         src={item.images[0]}
                         alt={item.name}
