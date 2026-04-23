@@ -123,8 +123,8 @@ export default function CollegePage() {
         </div>
       </section>
 
-      {previewItems?.[0] && (
-  <div className="group">
+      {previewCategory && (
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
           onClick={() => setPreviewCategory(null)}
         >
@@ -152,7 +152,7 @@ export default function CollegePage() {
 
             <div className="mt-6 grid grid-cols-1 items-center gap-4 sm:grid-cols-[1.24fr_0.76fr]">
               {previewItems?.[0] && (
-                <div>
+                <div className="group">
                   <a
                     href={`/college/product/${previewItems[0].slug}`}
                     className="block"
@@ -190,7 +190,7 @@ export default function CollegePage() {
                     href={`/college/product/${previewItems[1].slug}`}
                     className="block"
                   >
-                    <div className="flex h-[200px] items-center justify-center opacity-90">
+                    <div className="flex h-[200px] items-center justify-center">
                       <img
                         src={previewItems[1].image}
                         alt={previewItems[1].name}
