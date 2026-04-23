@@ -126,7 +126,7 @@ export default function ShopPage() {
                       <img
                         src={item.images[0]}
                         alt={item.name}
-                        className="max-h-full max-w-full object-contain scale-[1.08]"
+                        className="max-h-full max-w-full object-contain scale-[1.08] drop-shadow-[0_8px_20px_rgba(0,0,0,0.12)]"
                       />
                     </div>
                   </a>
