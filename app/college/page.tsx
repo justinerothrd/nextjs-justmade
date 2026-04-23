@@ -169,7 +169,7 @@ export default function CollegePage() {
 
                   <a
                     href={`/college/product/${item.slug}`}
-                    className="mt-3 inline-flex items-center justify-center rounded-full border border-[#D8E0E8] bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
+                    cclassName="mt-3 text-[11px] font-medium uppercase tracking-[0.14em] text-[#6B7C8F] transition hover:text-[#2F3A4A]"
                   >
                     View Product
                   </a>
