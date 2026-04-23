@@ -20,7 +20,7 @@ const categories = [
   {
     slug: "bottoms",
     title: "Bottoms",
-    image: collegeProducts["college-shorts"].images[0],
+    image: collegeProducts["college-sweatpants"].images[0],
   },
   {
     slug: "sleepwear",
@@ -52,8 +52,8 @@ const previewProductsByCategory: Record<CategorySlug, PreviewItemConfig[]> = {
     { slug: "college-tee" },
   ],
   bottoms: [
-  { slug: "college-shorts" },
-  { slug: "college-sweatpants" },
+    { slug: "college-sweatpants" },
+    { slug: "college-shorts" },  
 ],
   sleepwear: [
     { slug: "college-sleepwear" },
