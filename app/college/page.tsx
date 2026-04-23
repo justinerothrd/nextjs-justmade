@@ -149,7 +149,7 @@ export default function CollegePage() {
               {previewItems?.map((item) => (
                 <div key={item.slug} className="text-center">
                   <a href={`/college/product/${item.slug}`} className="block">
-                  <div className="flex h-[240px] items-center justify-center rounded-[22px] bg-[#F7F7F5] p-3 transition duration-300 hover:scale-[1.02]"
+                    <div className="flex h-[240px] items-center justify-center rounded-[22px] bg-[#F7F7F5] p-3">
                       <img
                         src={item.images[0]}
                         alt={item.name}
@@ -179,7 +179,7 @@ export default function CollegePage() {
 
             <a
               href={`/college/${previewCategory.slug}`}
-              className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94]/95 hover:bg-[#5F7A94] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#4e677f]"
+              className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#5F7A94] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition hover:bg-[#4e677f]"
             >
               View Collection
             </a>
