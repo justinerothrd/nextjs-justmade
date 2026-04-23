@@ -185,7 +185,7 @@ export default function CollegePage() {
               )}
 
               {previewItems?.[1] && (
-                <div className="flex flex-col items-center">
+                <div className="group flex flex-col items-center">
                   <a
                     href={`/college/product/${previewItems[1].slug}`}
                     className="block"
