@@ -51,7 +51,6 @@ export const collegeProducts = {
   images: ["/ucla-sweatpants.png"],
   colors: ["Heather Gray", "Navy", "Green", "Red"],
   sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
-},
   },
   "college-sleepwear": {
     name: "College Pajama Shorts",
