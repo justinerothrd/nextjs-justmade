@@ -1,3 +1,12 @@
+export type Product = {
+  name: string;
+  price: string;
+  description: string;
+  images: string[];
+  colors: string[];
+  sizes: string[];
+};
+
 export const collegeProducts = {
   "college-crewneck": {
     name: "Custom College Crewneck",
@@ -35,11 +44,11 @@ export const collegeProducts = {
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
   "college-shorts": {
-    name: "Custom College Shorts",
+    name: "Custom College Bottoms",
     price: "$36",
     description:
-      "Comfortable custom shorts made for campus, camp, and relaxed everyday style.",
-    images: ["/shorts-preview.png"],
+      "Comfortable custom bottoms made for campus, camp, and relaxed everyday style.",
+    images: ["/shorts-preview.png", "/ucla-sweatpants.png"]],
     colors: ["Heather Gray", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
