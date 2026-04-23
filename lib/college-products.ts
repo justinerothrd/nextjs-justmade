@@ -61,7 +61,7 @@ export const collegeProducts = {
   colors: ["Heather Gray", "Navy", "Green", "Red"],
   sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
-  "college-shorts": {
+  "college-bikeshorts": {
   name: "Custom College Sweatshorts",
   price: "$36",
   description:
