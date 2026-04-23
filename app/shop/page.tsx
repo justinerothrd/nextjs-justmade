@@ -117,24 +117,22 @@ export default function ShopPage() {
                 Close
               </button>
             </div>
-{/* PRODUCTS — ELEVATED LAYOUT */}
-<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-[1.2fr_0.8fr] items-center">
 
-  {/* HERO PRODUCT */}
+            <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-[1.15fr_0.85fr]">
   {previewItems?.[0] && (
-    <div>
+    <div className="text-center">
       <a href={`/product/${previewItems[0].slug}`} className="block">
-        <div className="flex h-[320px] items-center justify-center">
+        <div className="flex h-[300px] items-center justify-center rounded-[24px] bg-[#F7F7F5]/80 p-4 transition duration-300 hover:scale-[1.02]">
           <img
             src={previewItems[0].images[0]}
             alt={previewItems[0].name}
-            className="max-h-full max-w-full object-contain scale-[1.15]"
+            className="max-h-full max-w-full object-contain scale-[1.1]"
           />
         </div>
       </a>
 
-      <div className="mt-4 text-left">
-        <h4 className="text-[18px] font-medium text-[#2F2F2F]">
+      <div className="mt-4">
+        <h4 className="text-[17px] font-medium text-[#2F2F2F]">
           {previewItems[0].name}
         </h4>
         <p className="mt-1 text-[14px] text-[#6B7280]">
@@ -144,18 +142,17 @@ export default function ShopPage() {
 
       <a
         href={`/product/${previewItems[0].slug}`}
-        className="mt-3 inline-flex items-center justify-center rounded-full border border-[#D8E0E8] bg-white px-5 py-2 text-[11px] font-medium uppercase tracking-[0.14em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
+        className="mt-3 inline-flex items-center justify-center rounded-full border border-[#D8E0E8] bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
       >
         View Product
       </a>
     </div>
   )}
 
-  {/* SECONDARY PRODUCT */}
   {previewItems?.[1] && (
-    <div className="flex flex-col items-center">
+    <div className="text-center">
       <a href={`/product/${previewItems[1].slug}`} className="block">
-        <div className="flex h-[200px] items-center justify-center opacity-90">
+        <div className="flex h-[220px] items-center justify-center rounded-[22px] bg-[#F7F7F5]/80 p-3 transition duration-300 hover:scale-[1.02]">
           <img
             src={previewItems[1].images[0]}
             alt={previewItems[1].name}
@@ -164,25 +161,24 @@ export default function ShopPage() {
         </div>
       </a>
 
-      <div className="mt-3 text-center">
+      <div className="mt-4">
         <h4 className="text-[15px] font-medium text-[#2F2F2F]">
           {previewItems[1].name}
         </h4>
-        <p className="mt-1 text-[13px] text-[#6B7280]">
+        <p className="mt-1 text-[14px] text-[#6B7280]">
           {previewItems[1].price}
         </p>
       </div>
 
       <a
         href={`/product/${previewItems[1].slug}`}
-        className="mt-2 inline-flex items-center justify-center rounded-full border border-[#E2E8F0] bg-white px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
+        className="mt-3 inline-flex items-center justify-center rounded-full border border-[#D8E0E8] bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
       >
-        View
+        View Product
       </a>
     </div>
   )}
 </div>
-    
 
             <a
               href={`/shop/${previewCategory.slug}`}
