@@ -123,8 +123,8 @@ export default function CollegePage() {
         </div>
       </section>
 
-      {previewCategory && (
-        <div
+      {previewItems?.[0] && (
+  <div className="group">
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
           onClick={() => setPreviewCategory(null)}
         >
@@ -150,18 +150,18 @@ export default function CollegePage() {
               </button>
             </div>
 
-            <div className="mt-6 grid grid-cols-1 items-center gap-6 sm:grid-cols-[1.2fr_0.8fr]">
+            <div className="mt-6 grid grid-cols-1 items-center gap-4 sm:grid-cols-[1.24fr_0.76fr]">
               {previewItems?.[0] && (
                 <div>
                   <a
                     href={`/college/product/${previewItems[0].slug}`}
                     className="block"
                   >
-                    <div className="flex h-[320px] items-center justify-center">
+                    <div className="flex h-[320px] items-center justify-center -translate-x-2">
                       <img
                         src={previewItems[0].image}
                         alt={previewItems[0].name}
-                        className="max-h-full max-w-full object-contain scale-[1.15] drop-shadow-[0_8px_20px_rgba(0,0,0,0.12)]"
+                        className="max-h-full max-w-full object-contain scale-[1.15] drop-shadow-[0_8px_20px_rgba(0,0,0,0.12)] transition duration-500 ease-out group-hover:scale-[1.18]"
                       />
                     </div>
                   </a>
@@ -185,7 +185,7 @@ export default function CollegePage() {
               )}
 
               {previewItems?.[1] && (
-                <div className="group flex flex-col items-center">
+                <div className="group flex flex-col items-center -translate-x-3">
                   <a
                     href={`/college/product/${previewItems[1].slug}`}
                     className="block"
@@ -194,7 +194,7 @@ export default function CollegePage() {
                       <img
                         src={previewItems[1].image}
                         alt={previewItems[1].name}
-                        className="max-h-[95%] max-w-[95%] object-contain translate-x-2 scale-[1.08] opacity-90 group-hover:opacity-100 transition duration-500 ease-out"
+                        className="max-h-[95%] max-w-[95%] object-contain translate-x-2 scale-[1.08] opacity-90 transition duration-500 ease-out group-hover:scale-[1.11] group-hover:opacity-100"
                       />
                     </div>
                   </a>
