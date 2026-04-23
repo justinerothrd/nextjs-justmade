@@ -62,10 +62,10 @@ export const collegeProducts = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
   "college-bikeshorts": {
-    name: "Custom College Biker Shorts",
+    name: "Custom College Bike Shorts",
     price: "$36",
     description:
-      "Comfortable custom biker shorts made for campus, camp, and relaxed everyday style.",
+      "Comfortable custom bike shorts made for campus, camp, and relaxed everyday style.",
     images: ["/collegeshorts.png"],
     colors: ["Heather Gray", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
