@@ -118,37 +118,67 @@ export default function ShopPage() {
               </button>
             </div>
 
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {previewItems?.map((item) => (
-                <div key={item.slug} className="text-center">
-                  <a href={`/product/${item.slug}`} className="block">
-                    <div className="flex h-[240px] items-center justify-center rounded-[22px] bg-[#F7F7F5] p-5">
-                      <img
-                        src={item.images[0]}
-                        alt={item.name}
-                        className="max-h-full max-w-full object-contain scale-[1.08] drop-shadow-[0_8px_20px_rgba(0,0,0,0.12)]"
-                      />
-                    </div>
-                  </a>
+            <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-[1.15fr_0.85fr]">
+  {previewItems?.[0] && (
+    <div className="text-center">
+      <a href={`/product/${previewItems[0].slug}`} className="block">
+        <div className="flex h-[300px] items-center justify-center rounded-[24px] bg-[#F7F7F5]/80 p-4 transition duration-300 hover:scale-[1.02]">
+          <img
+            src={previewItems[0].images[0]}
+            alt={previewItems[0].name}
+            className="max-h-full max-w-full object-contain scale-[1.1]"
+          />
+        </div>
+      </a>
 
-                  <div className="mt-4">
-                    <h4 className="text-[16px] font-medium text-[#2F2F2F]">
-                      {item.name}
-                    </h4>
-                    <p className="mt-1 text-[14px] text-[#6B7280]">
-                      {item.price}
-                    </p>
-                  </div>
+      <div className="mt-4">
+        <h4 className="text-[17px] font-medium text-[#2F2F2F]">
+          {previewItems[0].name}
+        </h4>
+        <p className="mt-1 text-[14px] text-[#6B7280]">
+          {previewItems[0].price}
+        </p>
+      </div>
 
-                  <a
-                    href={`/product/${item.slug}`}
-                    className="mt-3 text-[11px] font-medium uppercase tracking-[0.14em] text-[#6B7C8F] transition hover:text-[#2F3A4A]"
-                  >
-                    View Product
-                  </a>
-                </div>
-              ))}
-            </div>
+      <a
+        href={`/product/${previewItems[0].slug}`}
+        className="mt-3 inline-flex items-center justify-center rounded-full border border-[#D8E0E8] bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
+      >
+        View Product
+      </a>
+    </div>
+  )}
+
+  {previewItems?.[1] && (
+    <div className="text-center">
+      <a href={`/product/${previewItems[1].slug}`} className="block">
+        <div className="flex h-[220px] items-center justify-center rounded-[22px] bg-[#F7F7F5]/80 p-3 transition duration-300 hover:scale-[1.02]">
+          <img
+            src={previewItems[1].images[0]}
+            alt={previewItems[1].name}
+            className="max-h-full max-w-full object-contain scale-[1.05]"
+          />
+        </div>
+      </a>
+
+      <div className="mt-4">
+        <h4 className="text-[15px] font-medium text-[#2F2F2F]">
+          {previewItems[1].name}
+        </h4>
+        <p className="mt-1 text-[14px] text-[#6B7280]">
+          {previewItems[1].price}
+        </p>
+      </div>
+
+      <a
+        href={`/product/${previewItems[1].slug}`}
+        className="mt-3 inline-flex items-center justify-center rounded-full border border-[#D8E0E8] bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
+      >
+        View Product
+      </a>
+    </div>
+  )}
+</div>
 
             <a
               href={`/shop/${previewCategory.slug}`}
