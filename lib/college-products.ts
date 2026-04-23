@@ -48,7 +48,7 @@ export const collegeProducts = {
   price: "$48",
   description:
     "Comfortable custom sweatpants designed for everyday wear and relaxed campus style.",
-  images: ["/ucla-sweatpants.png"], // or whatever your file is
+  images: ["/ucla-sweatpants.png"], 
   colors: ["Heather Gray", "Navy", "Green", "Red"],
   sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
 },
