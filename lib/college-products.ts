@@ -13,7 +13,7 @@ export const collegeProducts = {
     price: "$70",
     description:
       "A classic custom college crewneck designed for campus, camp, and everyday wear.",
-    images: ["/tulanecrewneck-green.png", "/pennstate-crewneck.png", "/tulane-crewneck2.png", "/ohiocrewneck-grey.png", "/ohiocrewneck-red.png"],
+    images: ["/tulanecrewneck-green.png", "/pennstate-crewneck.png", "/ohiocrewneck-grey.png", "/ohiocrewneck-red.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
