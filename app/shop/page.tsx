@@ -132,7 +132,7 @@ export default function ShopPage() {
                   </a>
 
                   <div className="mt-4 text-left">
-                    <h4 className="text-[18px] font-medium text-[#2F2F2F]">
+                    <h4 className="text-[17px] font-normal tracking-[0.01em] text-[#2F2F2F]">
                       {previewItems[0].name}
                     </h4>
                     <p className="mt-1 text-[14px] text-[#6B7280]">
@@ -142,9 +142,9 @@ export default function ShopPage() {
 
                   <a
                     href={`/product/${previewItems[0].slug}`}
-                    className="mt-3 inline-flex items-center justify-center rounded-full border border-[#D8E0E8] bg-white px-5 py-2 text-[11px] font-medium uppercase tracking-[0.14em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
+                    className="mt-3 inline-block text-[11px] uppercase tracking-[0.18em] text-[#6B7C8F] transition hover:text-[#2F3A4A]"
                   >
-                    View Product
+                    View
                   </a>
                 </div>
               )}
@@ -162,7 +162,7 @@ export default function ShopPage() {
                   </a>
 
                   <div className="mt-3 text-center">
-                    <h4 className="text-[15px] font-medium text-[#2F2F2F]">
+                    <h4 className="text-[15px] font-normal tracking-[0.01em] text-[#2F2F2F]">
                       {previewItems[1].name}
                     </h4>
                     <p className="mt-1 text-[13px] text-[#6B7280]">
@@ -172,7 +172,7 @@ export default function ShopPage() {
 
                   <a
                     href={`/product/${previewItems[1].slug}`}
-                    className="mt-2 inline-flex items-center justify-center rounded-full border border-[#E2E8F0] bg-white px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[#6B7C8F] transition hover:bg-[#F7FAFC]"
+                    className="mt-2 inline-block text-[11px] uppercase tracking-[0.18em] text-[#6B7C8F] transition hover:text-[#2F3A4A]"
                   >
                     View
                   </a>
