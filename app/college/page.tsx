@@ -106,10 +106,15 @@ export default function CollegePage() {
                   <a href={`/college/${category.slug}`} className="block">
                     <div className="flex h-[260px] items-center justify-center p-3 sm:h-[320px] sm:p-4">
                       <img
-                        src={category.image}
-                        alt={category.title}
-                        className="max-h-[94%] max-w-[94%] object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-                      />
+  src={product.images[0]}
+  alt={product.name}
+  className={`object-contain transition duration-500 ease-out
+    ${index === 0 
+      ? "max-h-[100%] max-w-[100%]"   // front (sweatpants)
+      : "max-h-[88%] max-w-[88%] opacity-90" // back (shorts)
+    }
+  `}
+/>
                     </div>
                   </a>
 
