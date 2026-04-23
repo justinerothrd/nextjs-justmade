@@ -52,9 +52,9 @@ const previewProductsByCategory: Record<CategorySlug, PreviewItemConfig[]> = {
     { slug: "college-tee" },
   ],
   bottoms: [
-    { slug: "college-shorts", imageIndex: 0, titleOverride: "Custom College Bottoms" },
-    { slug: "college-shorts", imageIndex: 1, titleOverride: "UCLA Sweatpants" },
-  ],
+  { slug: "college-shorts" },
+  { slug: "college-sweatpants" },
+],
   sleepwear: [
     { slug: "college-sleepwear" },
     { slug: "college-sleepwear-set" },
