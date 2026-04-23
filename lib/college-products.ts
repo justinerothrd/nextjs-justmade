@@ -48,7 +48,7 @@ export const collegeProducts = {
   price: "$48",
   description:
     "Comfortable custom sweatpants designed for everyday wear and relaxed campus style.",
-  images: ["/ucla-sweatpants.png", "/unc-sweatpants.png", "/udel-sweatpants.png", "/udelgrey-sweatpants.png", "/tulane.sweatpants.png"],
+  images: ["/ucla-sweatpants.png", "/unc-sweatpants.png", "/udel-sweatpants.png", "/udelgrey-sweatpants.png", "/tulane-sweatpants.png"],
   colors: ["Heather Gray", "Navy", "Green", "Red"],
   sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
@@ -57,7 +57,7 @@ export const collegeProducts = {
   price: "$36",
   description:
     "Comfortable custom shorts made for campus, camp, and relaxed everyday style.",
-  images: ["/texas.shorts.png", "/collegeshorts.png", "/ucla-shorts.png"],
+  images: ["/texas-shorts.png", "/collegeshorts.png", "/ucla-shorts.png"],
   colors: ["Heather Gray", "Navy", "Green", "Red"],
   sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
 },
@@ -74,7 +74,7 @@ export const collegeProducts = {
     price: "$65",
     description:
       "A personalized sleep set with a cozy feel and college-inspired look.",
-    images: ["/college.sleepwearset.jpg", "/unc-sleepset.png"],
+    images: ["/ohiostate-sleepset.png", "/unc-sleepset.png"],
     colors: ["Light Blue", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
