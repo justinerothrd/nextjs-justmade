@@ -48,7 +48,7 @@ export const collegeProducts = {
     price: "$36",
     description:
       "Comfortable custom bottoms made for campus, camp, and relaxed everyday style.",
-    images: ["/shorts-preview.png", "/ucla-sweatpants.png"]],
+    images: ["/shorts-preview.png", "/ucla-sweatpants.png"],
     colors: ["Heather Gray", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
