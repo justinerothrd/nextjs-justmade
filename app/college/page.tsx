@@ -36,33 +36,12 @@ const categories = [
 
 type CategorySlug = (typeof categories)[number]["slug"];
 
-type PreviewItemConfig = {
-  slug: CollegeProductSlug;
-  imageIndex?: number;
-  titleOverride?: string;
-};
-
-const previewProductsByCategory: Record<CategorySlug, PreviewItemConfig[]> = {
-  sweatshirts: [
-    { slug: "college-crewneck" },
-    { slug: "college-hoodie" },
-  ],
-  tees: [
-    { slug: "college-tank" },
-    { slug: "college-tee" },
-  ],
-  bottoms: [
-    { slug: "college-sweatpants" },
-    { slug: "college-shorts" },  
-],
-  sleepwear: [
-    { slug: "college-sleepwear" },
-    { slug: "college-sleepwear-set" },
-  ],
-  accessories: [
-    { slug: "college-slides" },
-    { slug: "college-socks" },
-  ],
+const previewProductsByCategory: Record<CategorySlug, CollegeProductSlug[]> = {
+  sweatshirts: ["college-crewneck", "college-hoodie"],
+  tees: ["college-tank", "college-tee"],
+  bottoms: ["college-sweatpants", "college-shorts"],
+  sleepwear: ["college-sleepwear", "college-sleepwear-set"],
+  accessories: ["college-slides", "college-socks"],
 };
 
 export default function CollegePage() {
@@ -72,18 +51,17 @@ export default function CollegePage() {
     image: string;
   }>(null);
 
-  const previewItems =
-    previewCategory
-      ? previewProductsByCategory[previewCategory.slug].map((item) => {
-          const product = collegeProducts[item.slug];
-          return {
-            slug: item.slug,
-            name: item.titleOverride ?? product.name,
-            price: product.price,
-            image: product.images[item.imageIndex ?? 0] ?? product.images[0],
-          };
-        })
-      : [];
+  const previewItems = previewCategory
+    ? previewProductsByCategory[previewCategory.slug].map((slug) => {
+        const product = collegeProducts[slug];
+        return {
+          slug,
+          name: product.name,
+          price: product.price,
+          image: product.images[0],
+        };
+      })
+    : [];
 
   return (
     <main className="bg-white text-[#4B4B4B]">
@@ -106,15 +84,10 @@ export default function CollegePage() {
                   <a href={`/college/${category.slug}`} className="block">
                     <div className="flex h-[260px] items-center justify-center p-3 sm:h-[320px] sm:p-4">
                       <img
-  src={product.images[0]}
-  alt={product.name}
-  className={`object-contain transition duration-500 ease-out
-    ${index === 0 
-      ? "max-h-[100%] max-w-[100%]"   // front (sweatpants)
-      : "max-h-[88%] max-w-[88%] opacity-90" // back (shorts)
-    }
-  `}
-/>
+                        src={category.image}
+                        alt={category.title}
+                        className="max-h-[94%] max-w-[94%] object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                      />
                     </div>
                   </a>
 
@@ -178,9 +151,12 @@ export default function CollegePage() {
             </div>
 
             <div className="mt-6 grid grid-cols-1 items-center gap-6 sm:grid-cols-[1.2fr_0.8fr]">
-              {previewItems[0] && (
+              {previewItems?.[0] && (
                 <div>
-                  <a href={`/college/product/${previewItems[0].slug}`} className="block">
+                  <a
+                    href={`/college/product/${previewItems[0].slug}`}
+                    className="block"
+                  >
                     <div className="flex h-[320px] items-center justify-center">
                       <img
                         src={previewItems[0].image}
@@ -208,14 +184,17 @@ export default function CollegePage() {
                 </div>
               )}
 
-              {previewItems[1] && (
+              {previewItems?.[1] && (
                 <div className="flex flex-col items-center">
-                  <a href={`/college/product/${previewItems[1].slug}`} className="block">
+                  <a
+                    href={`/college/product/${previewItems[1].slug}`}
+                    className="block"
+                  >
                     <div className="flex h-[200px] items-center justify-center opacity-90">
                       <img
                         src={previewItems[1].image}
                         alt={previewItems[1].name}
-                        className="max-h-full max-w-full object-contain scale-[1.05] drop-shadow-[0_8px_20px_rgba(0,0,0,0.10)]"
+                        className="max-h-[88%] max-w-[88%] object-contain translate-x-2 opacity-90 transition duration-500 ease-out"
                       />
                     </div>
                   </a>
