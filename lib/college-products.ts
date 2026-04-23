@@ -43,38 +43,38 @@ export const collegeProducts = {
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
   },
- "college-sweatpants": {
-  name: "Custom College Sweatpants",
-  price: "$48",
-  description:
-    "Comfortable custom sweatpants designed for everyday wear and relaxed campus style.",
-  images: ["/ucla-sweatpants.png", "/unc-sweatpants.png", "/udel-sweatpants.png", "/udelgrey-sweatpants.png", "/tulane-sweatpants.png"],
-  colors: ["Heather Gray", "Navy", "Green", "Red"],
-  sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+  "college-sweatpants": {
+    name: "Custom College Sweatpants",
+    price: "$48",
+    description:
+      "Comfortable custom sweatpants designed for everyday wear and relaxed campus style.",
+    images: ["/ucla-sweatpants.png", "/unc-sweatpants.png", "/udel-sweatpants.png", "/udelgrey-sweatpants.png", "/tulane-sweatpants.png"],
+    colors: ["Heather Gray", "Navy", "Green", "Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
-  "college-shorts": {
-  name: "Custom College Sweatshorts",
-  price: "$36",
-  description:
-    "Comfortable custom sweatshorts made for campus, camp, and relaxed everyday style.",
-  images: ["/texas-shorts.png", "/ucla-shorts.png"],
-  colors: ["Heather Gray", "Navy", "Green", "Red"],
-  sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+  "college-sweatshorts": {
+    name: "Custom College Sweatshorts",
+    price: "$36",
+    description:
+      "Comfortable custom sweatshorts made for campus, camp, and relaxed everyday style.",
+    images: ["/texas-shorts.png", "/ucla-shorts.png"],
+    colors: ["Heather Gray", "Navy", "Green", "Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
   "college-bikeshorts": {
-  name: "Custom College Sweatshorts",
-  price: "$36",
-  description:
-    "Comfortable custom bikeshorts made for campus, camp, and relaxed everyday style.",
-  images: ["/collegeshorts.png"],
-  colors: ["Heather Gray", "Navy", "Green", "Red"],
-  sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
-},
+    name: "Custom College Biker Shorts",
+    price: "$36",
+    description:
+      "Comfortable custom biker shorts made for campus, camp, and relaxed everyday style.",
+    images: ["/collegeshorts.png"],
+    colors: ["Heather Gray", "Navy", "Green", "Red"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
+  },
   "college-sleepwear": {
     name: "College Pajama Bottoms",
     price: "$32",
     description: "Soft college pajama bottoms made for easy comfort.",
-    images: ["/tulane-sleepshorts.png", "/unc-pjpants.png"], 
+    images: ["/tulane-sleepshorts.png", "/unc-pjpants.png"],
     colors: ["Light Blue", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
   },
