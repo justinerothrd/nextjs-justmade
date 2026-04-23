@@ -14,9 +14,11 @@ export const products = {
     description: "A cozy custom hoodie for chilly camp nights and cool mornings.",
     images: [
       "/skims hoodie front.png",
+      "/timberlake-hoodie.png",
       "/THChoodie.png",
       "/skims hoodie back.png",
       "/hoodie.center-preview.png",
+      
     ],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
