@@ -247,7 +247,7 @@ export default function ProductPage() {
                     </p>
                   </div>
 
-                  <a
+                 <a
   href={`/designs?returnTo=${encodeURIComponent(window.location.pathname)}`}
   className="shrink-0 text-xs underline underline-offset-4 transition hover:text-[#6F879E]"
 >
