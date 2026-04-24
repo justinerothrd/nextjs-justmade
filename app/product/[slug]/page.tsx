@@ -68,11 +68,12 @@ export default function ProductPage() {
       setZoomOpen(false);
     }
   }, [product]);
+
   useEffect(() => {
-  if (customDetails.length > 3 && !selectedLogo) {
-    setSelectedLogo("custom-logo");
-  }
-}, [customDetails]);
+    if (customDetails.trim().length > 3 && !selectedLogo) {
+      setSelectedLogo("custom-logo");
+    }
+  }, [customDetails, selectedLogo]);
 
   if (!slug || !product) {
     return (
@@ -101,10 +102,10 @@ export default function ProductPage() {
   function handleAddToCart() {
     if (!product || !slug) return;
 
-    if (!selectedLogo && !customDetails) {
-  alert("Please select a design or add custom details");
-  return;
-}
+    if (!selectedLogo && !customDetails.trim()) {
+      alert("Please select a design or add custom details.");
+      return;
+    }
 
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
@@ -118,8 +119,10 @@ export default function ProductPage() {
       color,
       quantity,
       image: currentImage,
-      logoSlug: selectedLogo,
-      logoName: selectedLogoObject?.name || "",
+      logoSlug: selectedLogo || "custom-logo",
+      logoName:
+        selectedLogoObject?.name ||
+        (customDetails.trim() ? "Custom Logo" : ""),
       logoColor,
       placement,
     };
@@ -204,7 +207,7 @@ export default function ProductPage() {
                   Customization Details
                 </label>
                 <textarea
-                  placeholder="Camp name, initials, number, colors, or special requests."
+                  placeholder="Camp name, initials, number, logo request, colors, or special requests."
                   value={customDetails}
                   onChange={(e) => setCustomDetails(e.target.value)}
                   rows={3}
@@ -251,7 +254,7 @@ export default function ProductPage() {
                       Design
                     </p>
                     <p className="mt-1 text-sm text-[#8A8178]">
-                      Choose from available camp logos.
+                      Choose a logo or add a custom request above.
                     </p>
                   </div>
 
@@ -293,7 +296,8 @@ export default function ProductPage() {
                 </div>
 
                 <p className="mt-4 text-sm text-[#8A8178]">
-                  Don’t see your camp? Add it in the customization details above.
+                  Don’t see your camp or logo? Add it in the customization
+                  details above.
                 </p>
               </div>
 
