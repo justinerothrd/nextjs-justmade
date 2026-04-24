@@ -260,6 +260,9 @@ export default function ProductPage() {
   selectedLogo={selectedLogo}
   onSelectLogo={setSelectedLogo}
 />
+ <p className="mt-4 text-sm text-[#8A8178]">
+  Don’t see your camp? Add it above.
+</p>
               </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
