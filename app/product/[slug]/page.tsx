@@ -7,7 +7,12 @@ import LogoPicker from "@/app/components/LogoPicker";
 import { logos } from "@/app/data/logos";
 
 const productImageClassesByView: Record<string, string[]> = {
-  hoodie: ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]", "max-h-[90%] max-w-[90%]", "max-h-[92%] max-w-[92%]"],
+  hoodie: [
+    "max-h-[94%] max-w-[94%]",
+    "max-h-[88%] max-w-[88%]",
+    "max-h-[90%] max-w-[90%]",
+    "max-h-[92%] max-w-[92%]",
+  ],
   "quarter-zip": ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]"],
   "tank-top": ["max-h-[88%] max-w-[88%]", "max-h-[88%] max-w-[88%]", "max-h-[88%] max-w-[88%]"],
   "custom-tee": ["max-h-[88%] max-w-[88%]", "max-h-[96%] max-w-[96%]", "max-h-[88%] max-w-[88%]", "max-h-[90%] max-w-[90%]"],
@@ -33,12 +38,14 @@ export default function ProductPage() {
   const [added, setAdded] = useState(false);
   const [size, setSize] = useState("Youth M");
   const [color, setColor] = useState("Heather Gray");
+  const [zoomOpen, setZoomOpen] = useState(false);
 
   useEffect(() => {
     if (product) {
       setSelectedImage(0);
       setSize(product.sizes?.[1] ?? product.sizes?.[0] ?? "Youth M");
       setColor(product.colors?.[0] ?? "Heather Gray");
+      setZoomOpen(false);
     }
   }, [product]);
 
@@ -139,11 +146,17 @@ export default function ProductPage() {
 
             <div className="group flex aspect-square w-full items-center justify-center overflow-hidden rounded-[24px] border border-[#F0ECE6] bg-white p-4 sm:p-6">
               {currentImage ? (
-                <img
-                  src={currentImage}
-                  alt={product.name}
-                  className={`${currentImageClass} cursor-zoom-in object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
-                />
+                <button
+                  type="button"
+                  onClick={() => setZoomOpen(true)}
+                  className="flex h-full w-full cursor-zoom-in items-center justify-center"
+                >
+                  <img
+                    src={currentImage}
+                    alt={product.name}
+                    className={`${currentImageClass} object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
+                  />
+                </button>
               ) : (
                 <div className="text-sm text-gray-400">No image available</div>
               )}
@@ -276,6 +289,28 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
+
+      {zoomOpen && currentImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
+          onClick={() => setZoomOpen(false)}
+        >
+          <button
+            type="button"
+            onClick={() => setZoomOpen(false)}
+            className="absolute right-6 top-6 text-[12px] uppercase tracking-[0.18em] text-white"
+          >
+            Close
+          </button>
+
+          <img
+            src={currentImage}
+            alt={product.name}
+            className="max-h-[90vh] max-w-[90vw] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </main>
   );
 }
