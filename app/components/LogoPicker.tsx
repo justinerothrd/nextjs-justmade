@@ -18,22 +18,31 @@ export default function LogoPicker({
   const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
   const [selectedGroup, setSelectedGroup] = useState<string>("All");
   const [previewLogo, setPreviewLogo] = useState<Logo | null>(null);
+
+  const pickerCategory = logos[0]?.category;
+
+  const groupLabel =
+    pickerCategory === "College"
+      ? "Select School"
+      : pickerCategory === "Team"
+      ? "Select Team"
+      : pickerCategory === "Custom"
+      ? "Select Type"
+      : "Select Camp";
+
   const groups = useMemo(() => {
-  const unique = Array.from(new Set(logos.map((l) => l.group)));
-  return ["All", ...unique];
-}, [logos]);
+    const unique = Array.from(new Set(logos.map((logo) => logo.group)));
+    return ["All", ...unique];
+  }, [logos]);
 
   const filtered = useMemo(() => {
-  return logos.filter((logo) => {
-    const matchStyle =
-      activeStyle === "All" || logo.style === activeStyle;
+    return logos.filter((logo) => {
+      const matchStyle = activeStyle === "All" || logo.style === activeStyle;
+      const matchGroup = selectedGroup === "All" || logo.group === selectedGroup;
 
-    const matchGroup =
-      selectedGroup === "All" || logo.group === selectedGroup;
-
-    return matchStyle && matchGroup;
-  });
-}, [logos, activeStyle, selectedGroup]);
+      return matchStyle && matchGroup;
+    });
+  }, [logos, activeStyle, selectedGroup]);
 
   const previewIndex = previewLogo
     ? filtered.findIndex((logo) => logo.slug === previewLogo.slug)
@@ -55,20 +64,21 @@ export default function LogoPicker({
     <>
       <div className="mt-6">
         <div className="mb-4">
-  <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-    Select Camp
-  </label>
+          <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+            {groupLabel}
+          </label>
 
-  <select
-    value={selectedGroup}
-    onChange={(e) => setSelectedGroup(e.target.value)}
-    className="mt-2 w-full rounded-full border border-[#D8D3CD] px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-  >
-    {groups.map((group) => (
-      <option key={group}>{group}</option>
-    ))}
-  </select>
-</div>
+          <select
+            value={selectedGroup}
+            onChange={(e) => setSelectedGroup(e.target.value)}
+            className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+          >
+            {groups.map((group) => (
+              <option key={group}>{group}</option>
+            ))}
+          </select>
+        </div>
+
         <div className="mb-4 flex flex-wrap gap-2">
           {styles.map((style) => {
             const active = style === activeStyle;
