@@ -178,13 +178,9 @@ export default function ProductPage() {
           </div>
 
           <div className="flex flex-col">
-            <p className="mb-3 text-[11px] uppercase tracking-[0.22em] text-[#8A8178]">
-              Custom Camp Piece
-            </p>
-
-            <h1 className="text-[30px] font-light leading-tight text-[#2F2F2F] sm:text-[36px]">
-              {product.name}
-            </h1>
+  <h1 className="text-[30px] font-light leading-tight text-[#2F2F2F] sm:text-[36px]">
+    {product.name}
+  </h1>
 
             <p className="mt-2 text-[18px] text-[#5F7A94]">{product.price}</p>
 
