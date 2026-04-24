@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import type { Logo } from "@/app/data/logos";
 
-const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon"] as const;
+const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon", "Custom"] as const;
 
 type LogoPickerProps = {
   logos: Logo[];
@@ -147,7 +147,11 @@ export default function LogoPicker({
 
                     <div className="mt-3 flex items-start justify-between gap-2">
                       <div>
-                        <p className="text-sm text-[#2F2F2F]">{logo.name}</p>
+                       <p className="text-sm text-[#2F2F2F]">
+  {logo.slug === "custom-logo"
+    ? "Custom Logo — Add in details"
+    : logo.name}
+</p>
                         <p className="mt-0.5 text-xs text-[#8A8178]">
                           {logo.style}
                         </p>
