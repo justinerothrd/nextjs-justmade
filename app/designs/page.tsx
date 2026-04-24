@@ -39,11 +39,11 @@ function DesignsPageContent() {
           </div>
 
           <a
-            href={returnTo}
-            className="shrink-0 text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
-          >
-            Back to Product
-          </a>
+  href={returnTo || "/shop"}
+  className="text-sm underline underline-offset-4"
+>
+  Back
+</a>
         </div>
 
         <section className="mb-14">
