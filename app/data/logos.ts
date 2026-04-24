@@ -13,7 +13,7 @@ export const logos: Logo[] = [
   {
     slug: "tyler-hill-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/placeholder.png",
+    image: "/logos/THCvarsityarch.png",
     category: "Camp",
     group: "Tyler Hill",
     style: "Varsity",
@@ -23,7 +23,7 @@ export const logos: Logo[] = [
   {
     slug: "pontiac-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/placeholder.png",
+    image: "/logos/THCvarsityarch.png",
     category: "Camp",
     group: "Pontiac",
     style: "Varsity",
@@ -33,7 +33,7 @@ export const logos: Logo[] = [
   {
     slug: "westmont-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/placeholder.png",
+    image: "/logos/THCvarsityarch.png",
     category: "Camp",
     group: "Westmont",
     style: "Varsity",
@@ -43,7 +43,7 @@ export const logos: Logo[] = [
   {
     slug: "canadensis-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/placeholder.png",
+    image: "/logos/THCvarsityarch.png",
     category: "Camp",
     group: "Canadensis",
     style: "Varsity",
@@ -53,7 +53,7 @@ export const logos: Logo[] = [
   {
     slug: "camp-laurel-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/placeholder.png",
+    image: "/logos/THCvarsityarch.png",
     category: "Camp",
     group: "Camp Laurel",
     style: "Varsity",
@@ -63,7 +63,7 @@ export const logos: Logo[] = [
   {
     slug: "chenawanda-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/placeholder.png",
+    image: "/logos/THCvarsityarch.png",
     category: "Camp",
     group: "Chenawanda",
     style: "Varsity",
@@ -73,7 +73,7 @@ export const logos: Logo[] = [
   {
     slug: "timberlake-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/placeholder.png",
+    image: "/logos/THCvarsityarch.png",
     category: "Camp",
     group: "Timberlake",
     style: "Varsity",
