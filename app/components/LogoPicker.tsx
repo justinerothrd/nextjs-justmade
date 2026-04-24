@@ -1,222 +1,87 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import type { Logo } from "../data/logos";
 
-type LogoPickerProps = {
-  logos: Logo[];
-  selectedLogo: string;
-  onSelectLogo: (slug: string) => void;
-};
-
-const filters = ["All", "Camp", "College", "Team", "Custom"] as const;
+const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon"] as const;
 
 export default function LogoPicker({
   logos,
   selectedLogo,
   onSelectLogo,
-}: LogoPickerProps) {
-  const [activeFilter, setActiveFilter] =
-    useState<(typeof filters)[number]>("All");
-  const [previewLogo, setPreviewLogo] = useState<Logo | null>(null);
+}: {
+  logos: Logo[];
+  selectedLogo: string;
+  onSelectLogo: (slug: string) => void;
+}) {
+  const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
 
-  const filteredLogos = useMemo(() => {
-    if (activeFilter === "All") return logos;
-    return logos.filter((logo) => logo.category === activeFilter);
-  }, [logos, activeFilter]);
-
-  const previewIndex = previewLogo
-    ? filteredLogos.findIndex((logo) => logo.slug === previewLogo.slug)
-    : -1;
-
-  function goToPrevious() {
-    if (!previewLogo || filteredLogos.length === 0) return;
-    const nextIndex =
-      previewIndex <= 0 ? filteredLogos.length - 1 : previewIndex - 1;
-    setPreviewLogo(filteredLogos[nextIndex]);
-  }
-
-  function goToNext() {
-    if (!previewLogo || filteredLogos.length === 0) return;
-    const nextIndex =
-      previewIndex >= filteredLogos.length - 1 ? 0 : previewIndex + 1;
-    setPreviewLogo(filteredLogos[nextIndex]);
-  }
+  const filtered = useMemo(() => {
+    if (activeStyle === "All") return logos;
+    return logos.filter((l) => l.style === activeStyle);
+  }, [logos, activeStyle]);
 
   return (
-    <>
-      <div className="mt-8">
-        <h3 className="mb-3 text-lg font-semibold">Choose Your Design</h3>
+    <div className="mt-6">
+      {/* STYLE FILTER */}
+      <div className="mb-4 flex flex-wrap gap-2">
+        {styles.map((style) => {
+          const active = style === activeStyle;
 
-        <div className="mb-4 flex flex-wrap gap-2">
-          {filters.map((filter) => {
-            const active = filter === activeFilter;
-
-            return (
-              <button
-                key={filter}
-                type="button"
-                onClick={() => setActiveFilter(filter)}
-                className={`rounded-full border px-4 py-2 text-sm transition ${
-                  active
-                    ? "border-black bg-black text-white"
-                    : "border-gray-300 bg-white text-black hover:border-black"
-                }`}
-              >
-                {filter}
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-          {filteredLogos.map((logo) => {
-            const isSelected = selectedLogo === logo.slug;
-
-            return (
-              <div
-                key={logo.slug}
-                className={`rounded-2xl border p-3 transition ${
-                  isSelected ? "border-black ring-1 ring-black" : "border-gray-200"
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => onSelectLogo(logo.slug)}
-                  className="block w-full text-left"
-                >
-                  <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gray-50">
-                    <Image
-                      src={logo.image}
-                      alt={logo.name}
-                      fill
-                      className="object-contain p-3"
-                    />
-                  </div>
-
-                  <div className="mt-3 flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium">{logo.name}</p>
-                      <p className="text-xs text-gray-500">{logo.category}</p>
-                    </div>
-
-                    {isSelected && (
-                      <span className="rounded-full bg-[#6F879E] px-2 py-1 text-[10px] text-white">
-                        Selected
-                      </span>
-                    )}
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setPreviewLogo(logo)}
-                  className="mt-2 text-xs text-[#6F879E] underline underline-offset-4"
-                >
-                  Preview larger
-                </button>
-              </div>
-            );
-          })}
-        </div>
-
-        <p className="mt-3 text-sm text-gray-500">
-          Don&apos;t see your design? Add it in the customization details box above.
-        </p>
+          return (
+            <button
+              key={style}
+              onClick={() => setActiveStyle(style)}
+              className={`rounded-full px-4 py-2 text-sm transition ${
+                active
+                  ? "bg-black text-white"
+                  : "border border-gray-300 bg-white hover:border-black"
+              }`}
+            >
+              {style}
+            </button>
+          );
+        })}
       </div>
 
-      {previewLogo && (
-        <>
-          <button
-            type="button"
-            aria-label="Close preview"
-            onClick={() => setPreviewLogo(null)}
-            className="fixed inset-0 z-40 bg-black/40"
-          />
+      {/* LOGOS */}
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+        {filtered.map((logo) => {
+          const isSelected = selectedLogo === logo.slug;
 
-          <div className="fixed inset-0 z-50 overflow-y-auto p-4">
-            <div className="flex min-h-full items-center justify-center">
-              <div className="my-6 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-[28px] bg-white shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
-                <div className="flex items-start justify-between gap-4 border-b border-[#ECE7E1] px-5 py-4 sm:px-6">
-                  <div>
-                    <h4 className="text-xl font-medium text-[#2F3A4A]">
-                      {previewLogo.name}
-                    </h4>
-                    <p className="mt-1 text-sm text-gray-500">
-                      {previewLogo.category}
-                    </p>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => setPreviewLogo(null)}
-                    className="shrink-0 text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
-                  >
-                    Close
-                  </button>
-                </div>
-
-                <div className="flex-1 overflow-y-auto px-5 py-4 sm:px-6">
-                  <div className="relative mx-auto flex aspect-square max-h-[55vh] w-full max-w-[700px] items-center justify-center overflow-hidden rounded-2xl bg-[#F7F7F5]">
-                    <Image
-                      src={previewLogo.image}
-                      alt={previewLogo.name}
-                      fill
-                      className="object-contain p-6"
-                    />
-                  </div>
-
-                  <div className="mt-4 flex items-center justify-between gap-3">
-                    <button
-                      type="button"
-                      onClick={goToPrevious}
-                      className="rounded-full border border-[#D8D3CD] px-5 py-2 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
-                    >
-                      ← Previous
-                    </button>
-
-                    <p className="text-xs text-gray-500">
-                      {previewIndex + 1} of {filteredLogos.length}
-                    </p>
-
-                    <button
-                      type="button"
-                      onClick={goToNext}
-                      className="rounded-full border border-[#D8D3CD] px-5 py-2 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
-                    >
-                      Next →
-                    </button>
-                  </div>
-                </div>
-
-                <div className="border-t border-[#ECE7E1] px-5 py-4 sm:px-6">
-                  <div className="flex flex-wrap gap-3">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        onSelectLogo(previewLogo.slug);
-                        setPreviewLogo(null);
-                      }}
-                      className="rounded-full bg-[#6F879E] px-6 py-3 text-sm text-white transition hover:opacity-95"
-                    >
-                      Select This Design
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setPreviewLogo(null)}
-                      className="rounded-full border border-[#D8D3CD] px-6 py-3 text-sm text-[#2F3A4A] transition hover:bg-[#F7F7F5]"
-                    >
-                      Keep Browsing
-                    </button>
-                  </div>
-                </div>
+          return (
+            <button
+              key={logo.slug}
+              onClick={() => onSelectLogo(logo.slug)}
+              className={`rounded-2xl border p-4 transition ${
+                isSelected
+                  ? "border-[#6F879E] ring-1 ring-[#6F879E]"
+                  : "border-gray-200 hover:border-[#CFC9C2]"
+              }`}
+            >
+              <div className="relative aspect-square w-full bg-[#F7F7F5] rounded-xl">
+                <Image
+                  src={logo.image}
+                  alt={logo.name}
+                  fill
+                  className="object-contain p-4"
+                />
               </div>
-            </div>
-          </div>
-        </>
-      )}
-    </>
+
+              <p className="mt-3 text-sm text-[#2F2F2F]">
+                {logo.name}
+              </p>
+
+              {isSelected && (
+                <p className="text-xs text-[#6F879E] mt-1">
+                  Selected
+                </p>
+              )}
+            </button>
+          );
+        })}
+      </div>
+    </div>
   );
 }
