@@ -1,3 +1,12 @@
+export type Logo = {
+  slug: string;
+  name: string;
+  image: string;
+  category: "Camp" | "College" | "Team" | "Custom";
+  group: string;
+  style: "Varsity" | "Minimal" | "Script" | "Classic" | "Icon";
+};
+
 export const logos: Logo[] = [
 
   // TYLER HILL
