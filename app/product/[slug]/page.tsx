@@ -248,11 +248,11 @@ export default function ProductPage() {
                   </div>
 
                   <a
-                    href="/designs"
-                    className="shrink-0 text-xs underline underline-offset-4 transition hover:text-[#6F879E]"
-                  >
-                    View all
-                  </a>
+  href={`/designs?returnTo=${encodeURIComponent(window.location.pathname)}`}
+  className="shrink-0 text-xs underline underline-offset-4 transition hover:text-[#6F879E]"
+>
+  View all
+</a>
                 </div>
 
                 <LogoPicker
