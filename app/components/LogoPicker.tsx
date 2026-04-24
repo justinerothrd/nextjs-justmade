@@ -21,11 +21,9 @@ export default function LogoPicker({
 }: LogoPickerProps) {
   const [activeStyle, setActiveStyle] =
     useState<(typeof styles)[number]>("All");
-
   const [selectedGroup, setSelectedGroup] = useState<string>(
     defaultGroup || "All"
   );
-
   const [previewLogo, setPreviewLogo] = useState<Logo | null>(null);
 
   const pickerCategory = logos[0]?.category;
@@ -47,9 +45,7 @@ export default function LogoPicker({
   const filtered = useMemo(() => {
     return logos.filter((logo) => {
       const matchStyle = activeStyle === "All" || logo.style === activeStyle;
-      const matchGroup =
-        selectedGroup === "All" || logo.group === selectedGroup;
-
+      const matchGroup = selectedGroup === "All" || logo.group === selectedGroup;
       return matchStyle && matchGroup;
     });
   }, [logos, activeStyle, selectedGroup]);
@@ -60,19 +56,13 @@ export default function LogoPicker({
 
   function goToPrevious() {
     if (!previewLogo || filtered.length === 0) return;
-
-    const nextIndex =
-      previewIndex <= 0 ? filtered.length - 1 : previewIndex - 1;
-
+    const nextIndex = previewIndex <= 0 ? filtered.length - 1 : previewIndex - 1;
     setPreviewLogo(filtered[nextIndex]);
   }
 
   function goToNext() {
     if (!previewLogo || filtered.length === 0) return;
-
-    const nextIndex =
-      previewIndex >= filtered.length - 1 ? 0 : previewIndex + 1;
-
+    const nextIndex = previewIndex >= filtered.length - 1 ? 0 : previewIndex + 1;
     setPreviewLogo(filtered[nextIndex]);
   }
 
@@ -124,7 +114,9 @@ export default function LogoPicker({
         </div>
 
         {filtered.length === 0 ? (
-         
+          <p className="rounded-[18px] border border-[#ECE7E1] bg-[#FBFAF8] px-4 py-4 text-sm text-[#8A8178]">
+            No designs found for this selection.
+          </p>
         ) : (
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {filtered.map((logo) => {
@@ -183,7 +175,7 @@ export default function LogoPicker({
         )}
 
         <p className="mt-4 text-sm text-[#8A8178]">
-          Custom requests welcome — add details above.
+          Don’t see your camp? Add it in the customization details above.
         </p>
       </div>
 
