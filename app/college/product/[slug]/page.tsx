@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { getProductBySlug } from "@/lib/products";
+import { getCollegeProductBySlug } from "@/lib/college-products";
 import LogoPicker from "@/app/components/LogoPicker";
 import { logos } from "@/app/data/logos";
 
@@ -37,7 +37,7 @@ export default function ProductPage() {
   const params = useParams();
   const rawSlug = params?.slug;
   const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
-  const product = slug ? getProductBySlug(slug) : null;
+  const product = slug ? getCollegeProductBySlug(slug) : null;
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [customDetails, setCustomDetails] = useState("");
