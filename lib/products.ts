@@ -100,6 +100,10 @@ export const products: Record<string, Product> = {
   },
 };
 
+};
+
+export type ProductSlug = keyof typeof products;
+
 export function getProductBySlug(slug: string) {
   return products[slug as ProductSlug] ?? null;
 }
