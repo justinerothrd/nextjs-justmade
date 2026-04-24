@@ -10,13 +10,17 @@ export default function LogoPicker({
   logos,
   selectedLogo,
   onSelectLogo,
+  defaultGroup,
 }: {
   logos: Logo[];
   selectedLogo: string;
   onSelectLogo: (slug: string) => void;
+  defaultGroup?: string;
 }) {
   const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
-  const [selectedGroup, setSelectedGroup] = useState<string>("All");
+  const [selectedGroup, setSelectedGroup] = useState<string>(
+    defaultGroup || "All"
+  );
   const [previewLogo, setPreviewLogo] = useState<Logo | null>(null);
 
   const pickerCategory = logos[0]?.category;
@@ -38,7 +42,8 @@ export default function LogoPicker({
   const filtered = useMemo(() => {
     return logos.filter((logo) => {
       const matchStyle = activeStyle === "All" || logo.style === activeStyle;
-      const matchGroup = selectedGroup === "All" || logo.group === selectedGroup;
+      const matchGroup =
+        selectedGroup === "All" || logo.group === selectedGroup;
 
       return matchStyle && matchGroup;
     });
@@ -63,21 +68,28 @@ export default function LogoPicker({
   return (
     <>
       <div className="mt-6">
-        <div className="mb-4">
-          <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-            {groupLabel}
-          </label>
+        {defaultGroup ? (
+          <p className="mb-4 text-sm text-[#8A8178]">
+            Showing designs for{" "}
+            <span className="font-medium text-[#2F3A4A]">{defaultGroup}</span>
+          </p>
+        ) : (
+          <div className="mb-4">
+            <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+              {groupLabel}
+            </label>
 
-          <select
-            value={selectedGroup}
-            onChange={(e) => setSelectedGroup(e.target.value)}
-            className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-          >
-            {groups.map((group) => (
-              <option key={group}>{group}</option>
-            ))}
-          </select>
-        </div>
+            <select
+              value={selectedGroup}
+              onChange={(e) => setSelectedGroup(e.target.value)}
+              className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+            >
+              {groups.map((group) => (
+                <option key={group}>{group}</option>
+              ))}
+            </select>
+          </div>
+        )}
 
         <div className="mb-4 flex flex-wrap gap-2">
           {styles.map((style) => {
@@ -100,60 +112,67 @@ export default function LogoPicker({
           })}
         </div>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-          {filtered.map((logo) => {
-            const isSelected = selectedLogo === logo.slug;
+        {filtered.length === 0 ? (
+          <p className="rounded-[18px] border border-[#ECE7E1] bg-[#FBFAF8] px-4 py-4 text-sm text-[#8A8178]">
+            No designs found for this selection. Custom requests welcome — add
+            details above.
+          </p>
+        ) : (
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {filtered.map((logo) => {
+              const isSelected = selectedLogo === logo.slug;
 
-            return (
-              <div
-                key={logo.slug}
-                className={`rounded-[22px] border bg-white p-3 transition ${
-                  isSelected
-                    ? "border-[#6F879E] ring-1 ring-[#6F879E]"
-                    : "border-[#EEEAE4] hover:border-[#CFC9C2]"
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => onSelectLogo(logo.slug)}
-                  className="block w-full text-left"
+              return (
+                <div
+                  key={logo.slug}
+                  className={`rounded-[22px] border bg-white p-4 transition hover:-translate-y-0.5 ${
+                    isSelected
+                      ? "border-[#6F879E] ring-1 ring-[#6F879E]"
+                      : "border-[#EEEAE4] hover:border-[#CFC9C2]"
+                  }`}
                 >
-                  <div className="relative aspect-square w-full overflow-hidden rounded-[18px] bg-[#F7F7F5]">
-                    <Image
-                      src={logo.image}
-                      alt={logo.name}
-                      fill
-                      className="object-contain p-4"
-                    />
-                  </div>
-
-                  <div className="mt-3 flex items-start justify-between gap-2">
-                    <div>
-                      <p className="text-sm text-[#2F2F2F]">{logo.name}</p>
-                      <p className="mt-0.5 text-xs text-[#8A8178]">
-                        {logo.style}
-                      </p>
+                  <button
+                    type="button"
+                    onClick={() => onSelectLogo(logo.slug)}
+                    className="block w-full text-left"
+                  >
+                    <div className="relative aspect-square w-full overflow-hidden rounded-[18px] bg-white">
+                      <Image
+                        src={logo.image}
+                        alt={logo.name}
+                        fill
+                        className="object-contain p-6"
+                      />
                     </div>
 
-                    {isSelected && (
-                      <span className="rounded-full bg-[#6F879E] px-2 py-1 text-[10px] text-white">
-                        Selected
-                      </span>
-                    )}
-                  </div>
-                </button>
+                    <div className="mt-3 flex items-start justify-between gap-2">
+                      <div>
+                        <p className="text-sm text-[#2F2F2F]">{logo.name}</p>
+                        <p className="mt-0.5 text-xs text-[#8A8178]">
+                          {logo.style}
+                        </p>
+                      </div>
 
-                <button
-                  type="button"
-                  onClick={() => setPreviewLogo(logo)}
-                  className="mt-3 text-xs text-[#6F879E] underline underline-offset-4"
-                >
-                  View larger
-                </button>
-              </div>
-            );
-          })}
-        </div>
+                      {isSelected && (
+                        <span className="rounded-full bg-[#6F879E] px-2 py-1 text-[10px] text-white">
+                          Selected
+                        </span>
+                      )}
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setPreviewLogo(logo)}
+                    className="mt-3 text-xs text-[#6F879E] underline underline-offset-4"
+                  >
+                    View larger
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {previewLogo && (
@@ -188,7 +207,7 @@ export default function LogoPicker({
                 </div>
 
                 <div className="flex-1 overflow-y-auto px-5 py-4 sm:px-6">
-                  <div className="relative mx-auto flex aspect-square max-h-[55vh] w-full max-w-[700px] items-center justify-center overflow-hidden rounded-[24px] bg-[#F7F7F5]">
+                  <div className="relative mx-auto flex aspect-square max-h-[55vh] w-full max-w-[700px] items-center justify-center overflow-hidden rounded-[24px] bg-white">
                     <Image
                       src={previewLogo.image}
                       alt={previewLogo.name}
