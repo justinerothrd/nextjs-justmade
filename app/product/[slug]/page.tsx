@@ -68,6 +68,11 @@ export default function ProductPage() {
       setZoomOpen(false);
     }
   }, [product]);
+  useEffect(() => {
+  if (customDetails.length > 3 && !selectedLogo) {
+    setSelectedLogo("custom-logo");
+  }
+}, [customDetails]);
 
   if (!slug || !product) {
     return (
@@ -96,10 +101,10 @@ export default function ProductPage() {
   function handleAddToCart() {
     if (!product || !slug) return;
 
-    if (!selectedLogo) {
-      alert("Please select a design");
-      return;
-    }
+    if (!selectedLogo && !customDetails) {
+  alert("Please select a design or add custom details");
+  return;
+}
 
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
