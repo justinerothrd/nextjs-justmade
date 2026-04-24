@@ -124,10 +124,7 @@ export default function LogoPicker({
         </div>
 
         {filtered.length === 0 ? (
-          <p className="rounded-[18px] border border-[#ECE7E1] bg-[#FBFAF8] px-4 py-4 text-sm text-[#8A8178]">
-            No designs found for this selection. Custom requests welcome — add
-            details above.
-          </p>
+         
         ) : (
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {filtered.map((logo) => {
