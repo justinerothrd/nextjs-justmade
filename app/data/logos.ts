@@ -9,8 +9,7 @@ export const logos: Logo[] = [
   {
     slug: "tyler-hill",
     name: "Tyler Hill Varsity",
-    image: "/logos/THCvarsityarch.png", "/THChotel.png" 
-
+    image: "/logos/THCvarsityarch.png", 
     category: "Camp",
   },
   {
