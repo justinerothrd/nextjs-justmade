@@ -2,25 +2,30 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import type { Logo } from "../data/logos";
+import type { Logo } from "@/app/data/logos";
 
 const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon"] as const;
+
+type LogoPickerProps = {
+  logos: Logo[];
+  selectedLogo: string;
+  onSelectLogo: (slug: string) => void;
+  defaultGroup?: string;
+};
 
 export default function LogoPicker({
   logos,
   selectedLogo,
   onSelectLogo,
   defaultGroup,
-}: {
-  logos: Logo[];
-  selectedLogo: string;
-  onSelectLogo: (slug: string) => void;
-  defaultGroup?: string;
-}) {
-  const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
+}: LogoPickerProps) {
+  const [activeStyle, setActiveStyle] =
+    useState<(typeof styles)[number]>("All");
+
   const [selectedGroup, setSelectedGroup] = useState<string>(
     defaultGroup || "All"
   );
+
   const [previewLogo, setPreviewLogo] = useState<Logo | null>(null);
 
   const pickerCategory = logos[0]?.category;
@@ -29,10 +34,10 @@ export default function LogoPicker({
     pickerCategory === "College"
       ? "Select School"
       : pickerCategory === "Team"
-      ? "Select Team"
-      : pickerCategory === "Custom"
-      ? "Select Type"
-      : "Select Camp";
+        ? "Select Team"
+        : pickerCategory === "Custom"
+          ? "Select Type"
+          : "Select Camp";
 
   const groups = useMemo(() => {
     const unique = Array.from(new Set(logos.map((logo) => logo.group)));
@@ -55,13 +60,19 @@ export default function LogoPicker({
 
   function goToPrevious() {
     if (!previewLogo || filtered.length === 0) return;
-    const nextIndex = previewIndex <= 0 ? filtered.length - 1 : previewIndex - 1;
+
+    const nextIndex =
+      previewIndex <= 0 ? filtered.length - 1 : previewIndex - 1;
+
     setPreviewLogo(filtered[nextIndex]);
   }
 
   function goToNext() {
     if (!previewLogo || filtered.length === 0) return;
-    const nextIndex = previewIndex >= filtered.length - 1 ? 0 : previewIndex + 1;
+
+    const nextIndex =
+      previewIndex >= filtered.length - 1 ? 0 : previewIndex + 1;
+
     setPreviewLogo(filtered[nextIndex]);
   }
 
@@ -173,6 +184,10 @@ export default function LogoPicker({
             })}
           </div>
         )}
+
+        <p className="mt-4 text-sm text-[#8A8178]">
+          Custom requests welcome — add details above.
+        </p>
       </div>
 
       {previewLogo && (
