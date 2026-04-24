@@ -101,5 +101,5 @@ export const products: Record<string, Product> = {
 };
 
 export function getProductBySlug(slug: string) {
-  return products[slug] ?? null;
+  return products[slug as ProductSlug] ?? null;
 }
