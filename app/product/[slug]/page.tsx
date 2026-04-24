@@ -42,6 +42,7 @@ export default function ProductPage() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [customDetails, setCustomDetails] = useState("");
   const [selectedLogo, setSelectedLogo] = useState("");
+  const [logoColor, setLogoColor] = useState("Navy");
   const [placement, setPlacement] = useState("Left Chest");
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
@@ -49,9 +50,9 @@ export default function ProductPage() {
   const [color, setColor] = useState("Heather Gray");
   const [zoomOpen, setZoomOpen] = useState(false);
 
-  const campLogos = logos.filter(
-  (logo) => logo.category === "Camp"
-);
+  const campLogos = useMemo(() => {
+    return logos.filter((logo) => logo.category === "Camp");
+  }, []);
 
   const selectedLogoObject = useMemo(() => {
     return logos.find((logo) => logo.slug === selectedLogo);
@@ -63,6 +64,7 @@ export default function ProductPage() {
       setSize(product.sizes?.[1] ?? product.sizes?.[0] ?? "Youth M");
       setColor(product.colors?.[0] ?? "Heather Gray");
       setSelectedLogo("");
+      setLogoColor("Navy");
       setZoomOpen(false);
     }
   }, [product]);
@@ -113,6 +115,7 @@ export default function ProductPage() {
       image: currentImage,
       logoSlug: selectedLogo,
       logoName: selectedLogoObject?.name || "",
+      logoColor,
       placement,
     };
 
@@ -222,7 +225,7 @@ export default function ProductPage() {
 
                 <div>
                   <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-                    Color
+                    Clothing Color
                   </label>
                   <select
                     value={color}
@@ -247,22 +250,46 @@ export default function ProductPage() {
                     </p>
                   </div>
 
-                 <a
-  href={`/designs?returnTo=${encodeURIComponent(window.location.pathname)}`}
-  className="shrink-0 text-xs underline underline-offset-4 transition hover:text-[#6F879E]"
->
-  View all
-</a>
+                  <a
+                    href={`/designs?returnTo=${encodeURIComponent(
+                      window.location.pathname
+                    )}`}
+                    className="shrink-0 text-xs underline underline-offset-4 transition hover:text-[#6F879E]"
+                  >
+                    View all
+                  </a>
                 </div>
 
                 <LogoPicker
-  logos={campLogos}
-  selectedLogo={selectedLogo}
-  onSelectLogo={setSelectedLogo}
-/>
- <p className="mt-4 text-sm text-[#8A8178]">
-  Don’t see your camp? Add it in the customization details above.
-</p>
+                  logos={campLogos}
+                  selectedLogo={selectedLogo}
+                  onSelectLogo={setSelectedLogo}
+                />
+
+                <div className="mt-6">
+                  <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+                    Logo Color
+                  </label>
+
+                  <select
+                    value={logoColor}
+                    onChange={(e) => setLogoColor(e.target.value)}
+                    className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+                  >
+                    <option>Navy</option>
+                    <option>White</option>
+                    <option>Light Blue</option>
+                    <option>Pink</option>
+                    <option>Green</option>
+                    <option>Red</option>
+                    <option>Black</option>
+                    <option>Custom / Add in details</option>
+                  </select>
+                </div>
+
+                <p className="mt-4 text-sm text-[#8A8178]">
+                  Don’t see your camp? Add it in the customization details above.
+                </p>
               </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
