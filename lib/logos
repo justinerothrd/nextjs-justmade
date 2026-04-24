@@ -1,0 +1,33 @@
+export type Logo = {
+  slug: string;
+  name: string;
+  image: string;
+  category: "Camp" | "College" | "Team" | "Custom";
+};
+
+export const logos: Logo[] = [
+  {
+    slug: "tyler-hill-varsity",
+    name: "Tyler Hill Varsity",
+    image: "/logos/THCvarsityarch.png",
+    category: "Camp",
+  },
+  {
+    slug: "michigan",
+    name: "Michigan",
+    image: "/logos/michigan.png",
+    category: "College",
+  },
+  {
+    slug: "wisconsin",
+    name: "Wisconsin",
+    image: "/logos/wisconsin.png",
+    category: "College",
+  },
+  {
+    slug: "texas",
+    name: "Texas",
+    image: "/logos/texas.png",
+    category: "College",
+  },
+];
