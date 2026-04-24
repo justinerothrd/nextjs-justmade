@@ -260,11 +260,10 @@ export default function ProductPage() {
                 </div>
 
                 <LogoPicker
-                  logos={campLogos}
-                  selectedLogo={selectedLogo}
-                  onSelectLogo={setSelectedLogo}
-                />
-              </div>
+  logos={collegeLogos}
+  selectedLogo={selectedLogo}
+  onSelectLogo={setSelectedLogo}
+/>
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
