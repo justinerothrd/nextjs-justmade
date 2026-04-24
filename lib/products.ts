@@ -5,6 +5,7 @@ export type Product = {
   images: string[];
   colors: string[];
   sizes: string[];
+  logoGroup?: string;
 };
 
 export const products = {
