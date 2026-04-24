@@ -49,9 +49,9 @@ export default function ProductPage() {
   const [color, setColor] = useState("Heather Gray");
   const [zoomOpen, setZoomOpen] = useState(false);
 
-  const campLogos = useMemo(() => {
-    return logos.filter((logo) => logo.category === "Camp");
-  }, []);
+  const campLogos = logos.filter(
+  (logo) => logo.category === "Camp"
+);
 
   const selectedLogoObject = useMemo(() => {
     return logos.find((logo) => logo.slug === selectedLogo);
@@ -256,10 +256,10 @@ export default function ProductPage() {
                 </div>
 
                 <LogoPicker
-                  logos={campLogos}
-                  selectedLogo={selectedLogo}
-                  onSelectLogo={setSelectedLogo}
-                />
+  logos={campLogos}
+  selectedLogo={selectedLogo}
+  onSelectLogo={setSelectedLogo}
+/>
               </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
