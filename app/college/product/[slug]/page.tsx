@@ -50,8 +50,8 @@ export default function ProductPage() {
   const [zoomOpen, setZoomOpen] = useState(false);
 
   const collegeLogos = useMemo(() => {
-  return logos.filter((logo) => logo.category === "College");
-}, []);
+    return logos.filter((logo) => logo.category === "College");
+  }, []);
 
   const selectedLogoObject = useMemo(() => {
     return logos.find((logo) => logo.slug === selectedLogo);
@@ -178,9 +178,9 @@ export default function ProductPage() {
           </div>
 
           <div className="flex flex-col">
-  <h1 className="text-[30px] font-light leading-tight text-[#2F2F2F] sm:text-[36px]">
-    {product.name}
-  </h1>
+            <h1 className="text-[30px] font-light leading-tight text-[#2F2F2F] sm:text-[36px]">
+              {product.name}
+            </h1>
 
             <p className="mt-2 text-[18px] text-[#5F7A94]">{product.price}</p>
 
@@ -196,7 +196,7 @@ export default function ProductPage() {
                   Customization Details
                 </label>
                 <textarea
-                  placeholder="Camp name, initials, number, colors, or special requests."
+                  placeholder="School name, mascot, player name, number, special request, etc."
                   value={customDetails}
                   onChange={(e) => setCustomDetails(e.target.value)}
                   rows={3}
@@ -243,7 +243,7 @@ export default function ProductPage() {
                       Design
                     </p>
                     <p className="mt-1 text-sm text-[#8A8178]">
-                      Choose from available camp logos.
+                      Choose from available college logos.
                     </p>
                   </div>
 
@@ -256,10 +256,11 @@ export default function ProductPage() {
                 </div>
 
                 <LogoPicker
-  logos={collegeLogos}
-  selectedLogo={selectedLogo}
-  onSelectLogo={setSelectedLogo}
-/>
+                  logos={collegeLogos}
+                  selectedLogo={selectedLogo}
+                  onSelectLogo={setSelectedLogo}
+                />
+              </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
@@ -310,7 +311,7 @@ export default function ProductPage() {
                     View Cart
                   </a>
                   <a
-                    href="/shop"
+                    href="/college"
                     className="underline underline-offset-4 transition hover:text-[#6F879E]"
                   >
                     Continue Shopping
