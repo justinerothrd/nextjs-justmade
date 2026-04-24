@@ -38,10 +38,10 @@ export default function ProductPage() {
   const rawSlug = params?.slug;
   const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
   const product = slug ? getProductBySlug(slug) : null;
-
   const [selectedImage, setSelectedImage] = useState(0);
   const [customDetails, setCustomDetails] = useState("");
   const [selectedLogo, setSelectedLogo] = useState("");
+  const [logoColor, setLogoColor] = useState("Navy");
   const [placement, setPlacement] = useState("Left Chest");
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
@@ -259,6 +259,26 @@ export default function ProductPage() {
   logos={campLogos}
   selectedLogo={selectedLogo}
   onSelectLogo={setSelectedLogo}
+                  <div className="mt-6">
+  <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+    Logo Color
+  </label>
+
+  <select
+    value={logoColor}
+    onChange={(e) => setLogoColor(e.target.value)}
+    className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+  >
+    <option>Navy</option>
+    <option>White</option>
+    <option>Light Blue</option>
+    <option>Pink</option>
+    <option>Green</option>
+    <option>Red</option>
+    <option>Black</option>
+    <option>Custom / Add in details</option>
+  </select>
+</div>
 />
  <p className="mt-4 text-sm text-[#8A8178]">
   Don’t see your camp? Add it in the customization details above.
