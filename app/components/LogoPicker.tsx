@@ -88,7 +88,7 @@ export default function LogoPicker({
             <span className="font-medium text-[#2F3A4A]">{defaultGroup}</span>
           </p>
         ) : (
-          <div className="mb-5">
+          <div className="mb-6 pb-5 border-b border-[#ECE7E1]">
             <p className="mb-2 text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
               {groupLabel}
             </p>
