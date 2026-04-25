@@ -34,8 +34,6 @@ export default function LogoPicker({
     defaultGroup || "All"
   );
 
-  const [previewLogo, setPreviewLogo] = useState<Logo | null>(null);
-
   const pickerCategory = logos[0]?.category;
 
   const groupLabel =
@@ -56,7 +54,6 @@ export default function LogoPicker({
     ];
   }, [logos]);
 
-  // ✅ FIXED FILTER + ORDER
   const filtered = useMemo(() => {
     return logos
       .filter((logo) => {
@@ -79,7 +76,6 @@ export default function LogoPicker({
 
   return (
     <div className="mt-6">
-      {/* CAMP SELECTOR */}
       {!defaultGroup && (
         <div className="mb-6 pb-5 border-b border-[#ECE7E1]">
           <p className="mb-2 text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
@@ -93,6 +89,7 @@ export default function LogoPicker({
               return (
                 <button
                   key={group}
+                  type="button"
                   onClick={() => setSelectedGroup(group)}
                   className={`rounded-full px-4 py-2 text-sm transition ${
                     active
@@ -108,7 +105,15 @@ export default function LogoPicker({
         </div>
       )}
 
-      {/* STYLE FILTER */}
+      <div className="mb-4">
+        <p className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+          Design
+        </p>
+        <p className="mt-1 text-sm text-[#8A8178]">
+          Choose a logo or add a custom request above.
+        </p>
+      </div>
+
       <div className="mb-4 flex flex-wrap gap-2">
         {styles.map((style) => {
           const active = style === activeStyle;
@@ -116,6 +121,7 @@ export default function LogoPicker({
           return (
             <button
               key={style}
+              type="button"
               onClick={() => setActiveStyle(style)}
               className={`rounded-full px-4 py-2 text-sm transition ${
                 active
@@ -129,7 +135,6 @@ export default function LogoPicker({
         })}
       </div>
 
-      {/* LOGOS GRID */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {filtered.map((logo) => {
           const isSelected = selectedLogo === logo.slug;
@@ -144,6 +149,7 @@ export default function LogoPicker({
               }`}
             >
               <button
+                type="button"
                 onClick={() => onSelectLogo(logo.slug)}
                 className="w-full text-left"
               >
@@ -170,7 +176,6 @@ export default function LogoPicker({
         })}
       </div>
 
-      {/* HELP TEXT */}
       <p className="mt-4 text-sm text-[#8A8178]">
         Don’t see your camp? Add it in the customization details above.
       </p>
