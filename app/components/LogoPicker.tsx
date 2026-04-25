@@ -75,9 +75,9 @@ export default function LogoPicker({
   }, [logos, activeStyle, selectedGroup]);
 
   return (
-    <div className="mt-6">
+    <div className="mt-2">
       {!defaultGroup && (
-        <div className="mb-6 pb-5 border-b border-[#ECE7E1]">
+        <div className="mb-6 border-b border-[#ECE7E1] pb-5">
           <p className="mb-2 text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
             {groupLabel}
           </p>
@@ -105,13 +105,24 @@ export default function LogoPicker({
         </div>
       )}
 
-      <div className="mb-4">
-        <p className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-          CHOOSE LOGO
-        </p>
-        <p className="mt-1 text-sm text-[#8A8178]">
-          Choose your logo or add a custom request. 
-        </p>
+      <div className="mb-4 flex items-start justify-between gap-3">
+        <div>
+          <p className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+            Choose Logo
+          </p>
+          <p className="mt-1 text-sm text-[#8A8178]">
+            Choose your logo or add a custom request.
+          </p>
+        </div>
+
+        <a
+          href={`/designs?returnTo=${encodeURIComponent(
+            window.location.pathname
+          )}`}
+          className="shrink-0 text-xs underline underline-offset-4 transition hover:text-[#6F879E]"
+        >
+          View all
+        </a>
       </div>
 
       <div className="mb-4 flex flex-wrap gap-2">
@@ -135,14 +146,14 @@ export default function LogoPicker({
         })}
       </div>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-3 gap-3">
         {filtered.map((logo) => {
           const isSelected = selectedLogo === logo.slug;
 
           return (
             <div
               key={logo.slug}
-              className={`rounded-[22px] border bg-white p-4 transition ${
+              className={`rounded-[18px] border bg-white p-3 transition ${
                 isSelected
                   ? "border-[#6F879E] ring-1 ring-[#6F879E]"
                   : "border-[#EEEAE4] hover:border-[#CFC9C2]"
@@ -153,22 +164,26 @@ export default function LogoPicker({
                 onClick={() => onSelectLogo(logo.slug)}
                 className="w-full text-left"
               >
-                <div className="relative aspect-square w-full overflow-hidden rounded-[18px] bg-white">
+                <div className="relative aspect-square w-full overflow-hidden rounded-[14px] bg-white">
                   <Image
                     src={logo.image}
                     alt={logo.name}
                     fill
-                    className="object-contain p-6 transition-transform duration-500 hover:scale-[1.03]"
+                    className="object-contain p-4 transition-transform duration-500 hover:scale-[1.03]"
                   />
                 </div>
 
-                <div className="mt-3">
-                  <p className="text-sm text-[#2F2F2F]">
+                <div className="mt-2">
+                  <p className="text-[13px] leading-4 text-[#2F2F2F]">
                     {logo.slug === "custom-logo"
-                      ? "Custom Logo — Add in details"
+                      ? "Custom Logo"
                       : logo.name}
                   </p>
-                  <p className="text-xs text-[#8A8178]">{logo.style}</p>
+                  <p className="mt-0.5 text-[11px] text-[#8A8178]">
+                    {logo.slug === "custom-logo"
+                      ? "Add in details"
+                      : logo.style}
+                  </p>
                 </div>
               </button>
             </div>
