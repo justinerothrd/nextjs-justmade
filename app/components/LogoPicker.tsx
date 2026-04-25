@@ -76,9 +76,10 @@ export default function LogoPicker({
 
   return (
     <div className="mt-2">
+      {/* CAMP SELECT */}
       {!defaultGroup && (
         <div className="mb-6 border-b border-[#ECE7E1] pb-5">
-          <p className="mb-2 text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+          <p className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
             {groupLabel}
           </p>
 
@@ -91,10 +92,10 @@ export default function LogoPicker({
                   key={group}
                   type="button"
                   onClick={() => setSelectedGroup(group)}
-                  className={`rounded-full px-4 py-2 text-sm transition ${
+                  className={`rounded-full px-3.5 py-1.5 text-[13px] transition ${
                     active
                       ? "bg-[#2F3A4A] text-white"
-                      : "border border-[#D8D3CD] bg-white text-[#2F3A4A] hover:border-[#6F879E]"
+                      : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
                   }`}
                 >
                   {group}
@@ -105,27 +106,24 @@ export default function LogoPicker({
         </div>
       )}
 
-      <div className="mb-4 flex items-start justify-between gap-3">
-        <div>
-          <p className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-            Choose Logo
-          </p>
-          <p className="mt-1 text-sm text-[#8A8178]">
-            Choose your logo or add a custom request.
-          </p>
-        </div>
+      {/* HEADER */}
+      <div className="mb-3 flex items-center justify-between">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
+          Choose Logo
+        </p>
 
         <a
           href={`/designs?returnTo=${encodeURIComponent(
             window.location.pathname
           )}`}
-          className="shrink-0 text-xs underline underline-offset-4 transition hover:text-[#6F879E]"
+          className="text-[11px] underline underline-offset-4 text-[#8A8178] hover:text-[#6F879E]"
         >
           View all
         </a>
       </div>
 
-      <div className="mb-4 flex flex-wrap gap-2">
+      {/* STYLE FILTERS */}
+      <div className="mb-5 flex flex-wrap gap-2">
         {styles.map((style) => {
           const active = style === activeStyle;
 
@@ -134,65 +132,57 @@ export default function LogoPicker({
               key={style}
               type="button"
               onClick={() => setActiveStyle(style)}
-              className={`rounded-full px-4 py-2 text-sm transition ${
+              className={`rounded-full px-3 py-1.5 text-[12px] transition ${
                 active
                   ? "bg-[#6F879E] text-white"
-                  : "border border-[#D8D3CD] bg-white text-[#2F3A4A] hover:border-[#6F879E]"
+                  : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
               }`}
             >
-              {style === "All" ? "All Designs" : style}
+              {style === "All" ? "All" : style}
             </button>
           );
         })}
       </div>
 
-      <div className="grid grid-cols-3 gap-3">
+      {/* LOGO GRID */}
+      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
         {filtered.map((logo) => {
           const isSelected = selectedLogo === logo.slug;
 
           return (
-            <div
+            <button
               key={logo.slug}
-              className={`rounded-[18px] border bg-white p-3 transition ${
+              onClick={() => onSelectLogo(logo.slug)}
+              className={`group rounded-[14px] border bg-white p-2 transition ${
                 isSelected
-                  ? "border-[#6F879E] ring-1 ring-[#6F879E]"
-                  : "border-[#EEEAE4] hover:border-[#CFC9C2]"
+                  ? "border-[#6F879E]"
+                  : "border-[#F0ECE6] hover:border-[#D9D4CE]"
               }`}
             >
-              <button
-                type="button"
-                onClick={() => onSelectLogo(logo.slug)}
-                className="w-full text-left"
-              >
-                <div className="relative aspect-square w-full overflow-hidden rounded-[14px] bg-white">
-                  <Image
-                    src={logo.image}
-                    alt={logo.name}
-                    fill
-                    className="object-contain p-4 transition-transform duration-500 hover:scale-[1.03]"
-                  />
-                </div>
+              <div className="relative aspect-square w-full">
+                <Image
+                  src={logo.image}
+                  alt={logo.name}
+                  fill
+                  className="object-contain p-3 transition-transform duration-500 group-hover:scale-[1.04]"
+                />
+              </div>
 
-                <div className="mt-2">
-                  <p className="text-[13px] leading-4 text-[#2F2F2F]">
-                    {logo.slug === "custom-logo"
-                      ? "Custom Logo"
-                      : logo.name}
-                  </p>
-                  <p className="mt-0.5 text-[11px] text-[#8A8178]">
-                    {logo.slug === "custom-logo"
-                      ? "Add in details"
-                      : logo.style}
-                  </p>
-                </div>
-              </button>
-            </div>
+              <div className="mt-1 text-center">
+                <p className="text-[12px] text-[#2F2F2F] leading-tight">
+                  {logo.slug === "custom-logo"
+                    ? "Custom"
+                    : logo.name}
+                </p>
+              </div>
+            </button>
           );
         })}
       </div>
 
-      <p className="mt-4 text-sm text-[#8A8178]">
-        Don’t see your camp or logo? Add it in the customization details below.
+      {/* FOOTNOTE */}
+      <p className="mt-4 text-[12px] text-[#8A8178]">
+        Don’t see your camp? Add it below.
       </p>
     </div>
   );
