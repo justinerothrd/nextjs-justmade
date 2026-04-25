@@ -148,51 +148,50 @@ export default function LogoPicker({
         </div>
 
         {/* LOGO GRID */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {filtered.map((logo) => {
             const isSelected = selectedLogo === logo.slug;
 
             return (
-              <div key={logo.slug} className="relative group">
-                <button
-                  onClick={() => onSelectLogo(logo.slug)}
-                  className={`w-full rounded-[14px] border bg-white p-2 transition ${
-                    isSelected
-                      ? "border-[#6F879E]"
-                      : "border-[#F0ECE6] hover:border-[#D9D4CE]"
-                  }`}
-                >
-                  <div className="relative aspect-square w-full">
-                    <Image
-                      src={logo.image}
-                      alt={logo.name}
-                      fill
-                      className="object-contain p-3 transition-transform duration-500 group-hover:scale-[1.04]"
-                    />
-                  </div>
+              <div
+                key={logo.slug}
+                onClick={() => onSelectLogo(logo.slug)}
+                className={`group cursor-pointer rounded-[20px] border p-3 transition-all duration-300 ${
+                  isSelected
+                    ? "border-[#6F879E] bg-[#F6F8FA]"
+                    : "border-[#EAE7E2] hover:border-[#D6D1CB]"
+                }`}
+              >
+                {/* IMAGE */}
+                <div className="flex h-[70px] items-center justify-center">
+                  <Image
+                    src={logo.image}
+                    alt={logo.name}
+                    width={120}
+                    height={80}
+                    className="object-contain transition-transform duration-500 group-hover:scale-[1.06]"
+                  />
+                </div>
 
-                  <div className="mt-1 text-center">
-                    <p className="text-[12px] text-[#2F2F2F] leading-tight">
-                      {logo.slug === "custom-logo"
-                        ? "Custom"
-                        : logo.name}
-                    </p>
-                  </div>
-                </button>
+                {/* TEXT + ENLARGE */}
+                <div className="mt-2 text-center">
+                  <p className="text-[12px] text-[#2F2F2F] leading-tight">
+                    {logo.slug === "custom-logo"
+                      ? "Custom Logo — Add in details"
+                      : logo.name}
+                  </p>
 
-                {/* VIEW OVERLAY */}
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setPreviewLogo(logo);
-                  }}
-                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
-                >
-                  <span className="bg-white/90 text-[#2F2F2F] text-[11px] px-3 py-1.5 rounded-full shadow-sm">
-                    View
-                  </span>
-                </button>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setPreviewLogo(logo);
+                    }}
+                    className="mt-1 text-[11px] text-[#8A8178] underline underline-offset-4 hover:text-[#6F879E]"
+                  >
+                    Enlarge
+                  </button>
+                </div>
               </div>
             );
           })}
@@ -206,22 +205,26 @@ export default function LogoPicker({
       {/* MODAL */}
       {previewLogo && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 px-4"
           onClick={() => setPreviewLogo(null)}
         >
           <button
-            className="absolute top-6 right-6 text-white text-xs uppercase tracking-[0.2em]"
+            className="absolute right-6 top-6 text-xs uppercase tracking-[0.2em] text-white"
             onClick={() => setPreviewLogo(null)}
           >
             Close
           </button>
 
-          <img
-            src={previewLogo.image}
-            alt={previewLogo.name}
-            className="max-h-[85vh] max-w-[85vw] object-contain"
+          <div
+            className="flex h-[520px] w-[520px] max-w-[90vw] max-h-[75vh] items-center justify-center rounded-[28px] bg-white p-10 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            <img
+              src={previewLogo.image}
+              alt={previewLogo.name}
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
         </div>
       )}
     </>
