@@ -107,10 +107,10 @@ export default function LogoPicker({
 
       <div className="mb-4">
         <p className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-          Design
+          CHOOSE LOGO
         </p>
         <p className="mt-1 text-sm text-[#8A8178]">
-          Choose a logo or add a custom request above.
+          Choose your logo or add a custom request. 
         </p>
       </div>
 
