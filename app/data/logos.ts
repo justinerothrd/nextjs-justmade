@@ -51,9 +51,9 @@ export const logos: Logo[] = [
   style: "Icon",
 },
 {
-  slug: "thc-varsity-arch-date",
-  name: "Varsity Arch with Date",
-  image: "/logos/THC-varsityarch-date.png",
+  slug: "thc-bear",
+  name: "THC Bear",
+  image: "/THC-bear.png",
   category: "Camp",
   group: "Tyler Hill",
   style: "Varsity",
