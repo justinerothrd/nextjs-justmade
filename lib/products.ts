@@ -39,7 +39,7 @@ export const products = {
     name: "Custom Tank Top",
     price: "$40",
     description: "A lightweight custom tank perfect for hot summer days.",
-    images: ["/timberlake-tank.png", "/WM81tank.png", "/Tank.jpeg", "/tank with script.png", "/tank-preview.png"],
+    images: ["/timberlake-tank.png", "/WM81tank.png", "/THC-tankgrey.png", "/tank with script.png", "/tank-preview.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
