@@ -23,6 +23,7 @@ export default function CartPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
     "idle"
   );
+  const [submittedOrderNumber, setSubmittedOrderNumber] = useState("");
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -62,7 +63,7 @@ export default function CartPage() {
           `   Quantity: ${item.quantity}`,
           `   Size: ${item.size}`,
           `   Color: ${item.color}`,
-          `   Customization Details: ${item.campName || "N/A"}`,
+          `   Customization Details: ${item.campName || item.college || "N/A"}`,
           `   Design: ${item.logoName || "N/A"}`,
           `   Placement: ${item.placement || "N/A"}`,
           `   Line Total: $${(
@@ -116,8 +117,10 @@ export default function CartPage() {
       });
 
       if (res.ok) {
+        setSubmittedOrderNumber(orderNumber);
         setStatus("success");
         localStorage.removeItem("cart");
+        setCart([]);
         window.dispatchEvent(new Event("cartUpdated"));
       } else {
         setStatus("error");
@@ -130,27 +133,36 @@ export default function CartPage() {
   if (status === "success") {
     return (
       <main className="min-h-screen bg-[#F7F7F5] px-4 py-20 text-[#4B4B4B]">
-        <div className="mx-auto max-w-lg text-center">
-          <div className="mb-6 text-5xl">🎉</div>
-
-          <h1 className="text-3xl font-light text-[#3F3F3F]">
-            Order Submitted
-          </h1>
-
-          <p className="mt-4 text-base leading-7 text-gray-600">
-            Thanks for your order! We&apos;re reviewing your selections and will
-            reach out shortly at <span className="font-medium">{email}</span> with
-            confirmation and payment instructions.
+        <div className="mx-auto max-w-lg rounded-[32px] border border-[#EAE6E1] bg-white px-6 py-12 text-center shadow-[0_4px_18px_rgba(0,0,0,0.04)] sm:px-10">
+          <p className="text-xs uppercase tracking-[0.25em] text-[#9A9A9A]">
+            Just Made Custom
           </p>
 
-          <p className="mt-3 text-sm text-gray-500">
-            Each order is carefully reviewed — we&apos;ll follow up shortly with
-            confirmation and payment details.
+          <div className="mt-6 text-5xl">🎉</div>
+
+          <h1 className="mt-6 text-3xl font-light text-[#2F2F2F]">
+            Order Received
+          </h1>
+
+          {submittedOrderNumber && (
+            <p className="mt-3 text-xs tracking-[0.14em] text-gray-400">
+              ORDER #{submittedOrderNumber}
+            </p>
+          )}
+
+          <p className="mt-5 text-base leading-7 text-gray-600">
+            Your custom order has been submitted successfully.
+          </p>
+
+          <p className="mt-2 text-sm leading-6 text-gray-500">
+            A confirmation will be sent to{" "}
+            <span className="font-medium text-[#3F3F3F]">{email}</span> shortly
+            with next steps and payment instructions.
           </p>
 
           <a
             href="/shop"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#5F7A94] px-8 py-3.5 text-[15px] font-medium tracking-[0.08em] text-white transition-all duration-200 hover:bg-[#536C84]"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#5F7A94] px-8 py-3.5 text-[14px] font-medium uppercase tracking-[0.12em] text-white transition-all duration-300 hover:-translate-y-[1px] hover:bg-[#536C84] hover:shadow-md"
           >
             Continue Shopping
           </a>
@@ -161,27 +173,36 @@ export default function CartPage() {
 
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-16">
-      <div className="mx-auto max-w-3xl">
-        <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-[36px] font-light tracking-[0.01em] text-[#3F3F3F]">
-            Your Cart
+      <div className="mx-auto max-w-4xl">
+        <div className="mb-10 text-center">
+          <p className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A]">
+            Just Made Custom
+          </p>
+
+          <h1 className="mt-2 text-[34px] font-light tracking-[-0.01em] text-[#2F2F2F] sm:text-[42px]">
+            Review Your Order
           </h1>
+
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray-500">
+            Each piece is made custom — please review your selections below
+            before submitting your order request.
+          </p>
 
           <a
             href="/shop"
-            className="text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
+            className="mt-4 inline-block text-xs tracking-wide underline underline-offset-4 transition hover:text-[#6F879E]"
           >
             Continue Shopping
           </a>
         </div>
 
         {cart.length === 0 ? (
-          <div className="py-20 text-center">
+          <div className="rounded-[32px] border border-[#EAE6E1] bg-white px-6 py-20 text-center shadow-[0_4px_18px_rgba(0,0,0,0.04)]">
             <p className="text-gray-500">Your cart is empty.</p>
 
             <a
               href="/shop"
-              className="mt-4 inline-block text-sm underline underline-offset-4 hover:text-[#6F879E]"
+              className="mt-5 inline-flex items-center justify-center rounded-full bg-[#5F7A94] px-7 py-3 text-[13px] font-medium uppercase tracking-[0.12em] text-white transition-all duration-300 hover:-translate-y-[1px] hover:bg-[#536C84] hover:shadow-md"
             >
               Start Shopping
             </a>
@@ -192,19 +213,19 @@ export default function CartPage() {
               {cart.map((item) => (
                 <div
                   key={item.id}
-                  className="rounded-[28px] border border-[#EAE6E1] bg-white p-5 sm:p-6"
+                  className="rounded-[28px] border border-[#EAE6E1] bg-white p-6 shadow-[0_2px_10px_rgba(0,0,0,0.03)] sm:p-7"
                 >
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 sm:gap-5">
                     <a
                       href={getItemHref(item)}
-                      className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#F7F7F5] transition hover:opacity-90 sm:h-28 sm:w-28"
+                      className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#F7F7F5] transition hover:opacity-90 sm:h-32 sm:w-32"
                       aria-label={`View ${item.product}`}
                     >
                       {item.image ? (
                         <img
                           src={item.image}
                           alt={item.product}
-                          className="h-full w-full object-contain p-2 transition duration-300 hover:scale-[1.03]"
+                          className="h-full w-full object-contain p-2 transition duration-300 hover:scale-[1.04]"
                         />
                       ) : (
                         <div className="text-center text-xs text-gray-400">
@@ -217,39 +238,55 @@ export default function CartPage() {
                       <div className="flex items-start justify-between gap-4">
                         <a
                           href={getItemHref(item)}
-                          className="text-[15px] font-medium tracking-[0.01em] text-[#3F3F3F] transition hover:text-[#6F879E]"
+                          className="text-[16px] font-medium tracking-[0.005em] text-[#2F2F2F] transition hover:text-[#6F879E]"
                         >
                           {item.product}
                         </a>
 
-                        <p className="shrink-0 font-medium text-[#5F7A94]">
+                        <p className="shrink-0 text-[15px] font-medium text-[#5F7A94]">
                           {item.price}
                         </p>
                       </div>
 
-                      <div className="mt-3 space-y-2 text-sm">
+                      <div className="mt-4 grid gap-2 text-sm leading-5 text-[#4B4B4B] sm:grid-cols-2">
                         <p>
-                          <span className="text-gray-500">
-                            Customization Details:
-                          </span>{" "}
-                          {item.campName || "N/A"}
+                          <span className="text-gray-500">Size:</span>{" "}
+                          {item.size}
                         </p>
+
                         <p>
-                          <span className="text-gray-500">Size:</span> {item.size}
+                          <span className="text-gray-500">Color:</span>{" "}
+                          {item.color}
                         </p>
-                        <p>
-                          <span className="text-gray-500">Color:</span> {item.color}
-                        </p>
+
                         <p>
                           <span className="text-gray-500">Quantity:</span>{" "}
                           {item.quantity}
                         </p>
+
+                        <p>
+                          <span className="text-gray-500">Line Total:</span>{" "}
+                          $
+                          {(
+                            parseFloat(item.price.replace("$", "")) *
+                            item.quantity
+                          ).toFixed(2)}
+                        </p>
+
+                        <p className="sm:col-span-2">
+                          <span className="text-gray-500">
+                            Customization Details:
+                          </span>{" "}
+                          {item.campName || item.college || "N/A"}
+                        </p>
+
                         {item.logoName && (
                           <p>
                             <span className="text-gray-500">Design:</span>{" "}
                             {item.logoName}
                           </p>
                         )}
+
                         {item.placement && (
                           <p>
                             <span className="text-gray-500">Placement:</span>{" "}
@@ -261,7 +298,7 @@ export default function CartPage() {
                       <button
                         type="button"
                         onClick={() => removeItem(item.id)}
-                        className="mt-4 text-xs text-gray-400 underline underline-offset-4 transition hover:text-[#9CA3AF]"
+                        className="mt-5 text-xs text-gray-400 underline underline-offset-4 transition hover:text-[#8A8A8A]"
                       >
                         Remove
                       </button>
@@ -271,35 +308,45 @@ export default function CartPage() {
               ))}
             </div>
 
-            <div className="mt-6 flex items-center justify-between rounded-[28px] border border-[#EFECE8] bg-white px-6 py-5 text-base font-medium">
-              <span>Total</span>
-              <span className="text-lg text-[#5F7A94]">
-                ${getTotal().toFixed(2)}
-              </span>
+            <div className="mt-8 rounded-[28px] border border-[#EAE6E1] bg-white px-6 py-6 shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-500">Order Total</span>
+                <span className="text-xl font-medium text-[#2F2F2F]">
+                  ${getTotal().toFixed(2)}
+                </span>
+              </div>
+
+              <p className="mt-3 text-xs text-gray-400">
+                Final pricing and payment details will be confirmed after review.
+              </p>
             </div>
 
-            <div className="mt-8">
-              <label className="text-sm font-medium text-[#3F3F3F]">
-                Your Email
+            <div className="mt-8 rounded-[28px] border border-[#EAE6E1] bg-white p-6 shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
+              <label className="text-sm font-medium text-[#2F2F2F]">
+                Contact Email
               </label>
+
+              <p className="mt-1 text-xs leading-5 text-gray-500">
+                We’ll send your order confirmation and payment instructions here.
+              </p>
 
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="mt-2 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#5F7A94]"
+                className="mt-4 w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#5F7A94]"
               />
             </div>
 
-            <p className="mt-6 text-sm text-gray-600">
-              Each order is carefully reviewed — we&apos;ll follow up shortly with
-              confirmation and payment details.
+            <p className="mt-6 text-center text-sm leading-6 text-gray-600">
+              After submitting, we’ll review your order and email you with
+              confirmation and payment instructions.
             </p>
 
             {status === "error" && (
-              <p className="mt-3 text-sm text-red-500">
+              <p className="mt-4 text-center text-sm text-red-500">
                 Something went wrong. Please try again.
               </p>
             )}
@@ -307,7 +354,7 @@ export default function CartPage() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="mt-8 w-full rounded-full bg-[#5F7A94] px-7 py-3.5 text-[15px] font-medium tracking-[0.08em] text-white transition-all duration-200 hover:bg-[#536C84] hover:-translate-y-[1px] hover:opacity-95"
+              className="mt-8 w-full rounded-full bg-[#5F7A94] px-7 py-4 text-[15px] font-medium uppercase tracking-[0.12em] text-white transition-all duration-300 hover:-translate-y-[1px] hover:bg-[#536C84] hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "sending" ? "Submitting..." : "Submit Order Request"}
             </button>
