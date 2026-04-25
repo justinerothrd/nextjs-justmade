@@ -86,7 +86,7 @@ export const logos: Logo[] = [
   {
     slug: "pontiac-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/pontiac-varsitypng",
+    image: "/logos/pontiac-varsity.png",
     category: "Camp",
     group: "Pontiac",
     style: "Varsity",
@@ -102,7 +102,7 @@ export const logos: Logo[] = [
  {
     slug: "pontiac-bubble",
     name: "Bubble",
-    image: "/logos/pontiac-bubble.png",
+    image: "/logos/Pontiac-bubble.png",
     category: "Camp",
     group: "Pontiac",
     style: "Minimal",
