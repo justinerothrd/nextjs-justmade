@@ -29,13 +29,10 @@ function DesignsPageContent() {
             <h1 className="text-3xl font-light text-[#2F3A4A] sm:text-4xl">
               Design Library
             </h1>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-gray-600">
-              Browse our signature design styles. Select your camp or school on
-              the product page to see available custom options.
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-gray-600">
+              Browse our designs. Custom requests welcome!
             </p>
-            <p className="mt-2 text-sm text-[#8A8178]">
-              Custom requests welcome — add details on the product page.
-            </p>
+          
           </div>
 
           <a
