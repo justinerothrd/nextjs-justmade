@@ -7,24 +7,10 @@ import LogoPicker from "@/app/components/LogoPicker";
 import { logos } from "@/app/data/logos";
 
 const productImageClassesByView: Record<string, string[]> = {
-  hoodie: [
-    "max-h-[94%] max-w-[94%]",
-    "max-h-[88%] max-w-[88%]",
-    "max-h-[90%] max-w-[90%]",
-    "max-h-[92%] max-w-[92%]",
-  ],
+  hoodie: ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]", "max-h-[90%] max-w-[90%]", "max-h-[92%] max-w-[92%]"],
   "quarter-zip": ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]"],
-  "tank-top": [
-    "max-h-[88%] max-w-[88%]",
-    "max-h-[88%] max-w-[88%]",
-    "max-h-[88%] max-w-[88%]",
-  ],
-  "custom-tee": [
-    "max-h-[88%] max-w-[88%]",
-    "max-h-[96%] max-w-[96%]",
-    "max-h-[88%] max-w-[88%]",
-    "max-h-[90%] max-w-[90%]",
-  ],
+  "tank-top": ["max-h-[88%] max-w-[88%]", "max-h-[88%] max-w-[88%]", "max-h-[88%] max-w-[88%]"],
+  "custom-tee": ["max-h-[88%] max-w-[88%]", "max-h-[96%] max-w-[96%]", "max-h-[88%] max-w-[88%]", "max-h-[90%] max-w-[90%]"],
   "custom-shorts": ["max-h-[90%] max-w-[90%]"],
   sweatpants: ["max-h-[96%] max-w-[96%]"],
   sleepwear: ["max-h-[100%] max-w-[100%]"],
@@ -50,13 +36,15 @@ export default function ProductPage() {
   const [color, setColor] = useState("Heather Gray");
   const [zoomOpen, setZoomOpen] = useState(false);
 
-  const campLogos = useMemo(() => {
-    return logos.filter((logo) => logo.category === "Camp");
-  }, []);
+  const campLogos = useMemo(
+    () => logos.filter((logo) => logo.category === "Camp"),
+    []
+  );
 
-  const selectedLogoObject = useMemo(() => {
-    return logos.find((logo) => logo.slug === selectedLogo);
-  }, [selectedLogo]);
+  const selectedLogoObject = useMemo(
+    () => logos.find((logo) => logo.slug === selectedLogo),
+    [selectedLogo]
+  );
 
   useEffect(() => {
     if (product) {
@@ -91,9 +79,7 @@ export default function ProductPage() {
     );
   }
 
-  const currentImage =
-    product.images?.[selectedImage] ?? product.images?.[0] ?? "";
-
+  const currentImage = product.images?.[selectedImage] ?? product.images?.[0] ?? "";
   const currentImageClass =
     productImageClassesByView[slug]?.[selectedImage] ??
     productImageClassesByView[slug]?.[0] ??
@@ -120,9 +106,7 @@ export default function ProductPage() {
       quantity,
       image: currentImage,
       logoSlug: selectedLogo || "custom-logo",
-      logoName:
-        selectedLogoObject?.name ||
-        (customDetails.trim() ? "Custom Logo" : ""),
+      logoName: selectedLogoObject?.name || (customDetails.trim() ? "Custom Logo" : ""),
       logoColor,
       placement,
     };
@@ -202,19 +186,6 @@ export default function ProductPage() {
             )}
 
             <div className="mt-7 space-y-6">
-              <div className="rounded-[24px] border border-[#EEEAE4] bg-[#FBFAF8] p-5">
-                <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-                  Customization Details
-                </label>
-                <textarea
-                  placeholder="Camp name, initials, number, logo request, colors, or special requests."
-                  value={customDetails}
-                  onChange={(e) => setCustomDetails(e.target.value)}
-                  rows={3}
-                  className="mt-3 w-full resize-none rounded-[18px] border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition placeholder:text-[#A8A29E] focus:border-[#6F879E]"
-                />
-              </div>
-
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
@@ -248,12 +219,18 @@ export default function ProductPage() {
               </div>
 
               <div className="rounded-[24px] border border-[#EEEAE4] bg-white p-5">
-                <div className="mb-1 flex items-center justify-between gap-3">
-          
+                <div className="mb-4 flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+                      Design
+                    </p>
+                    <p className="mt-1 text-sm text-[#8A8178]">
+                      Choose a logo.
+                    </p>
+                  </div>
+
                   <a
-                    href={`/designs?returnTo=${encodeURIComponent(
-                      window.location.pathname
-                    )}`}
+                    href={`/designs?returnTo=${encodeURIComponent(window.location.pathname)}`}
                     className="shrink-0 text-xs underline underline-offset-4 transition hover:text-[#6F879E]"
                   >
                     View all
@@ -265,6 +242,20 @@ export default function ProductPage() {
                   selectedLogo={selectedLogo}
                   onSelectLogo={setSelectedLogo}
                 />
+
+                <div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
+                  <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
+                    Custom Details (optional)
+                  </label>
+
+                  <textarea
+                    placeholder="Add camp, initials, custom logo request, or special notes"
+                    value={customDetails}
+                    onChange={(e) => setCustomDetails(e.target.value)}
+                    rows={2}
+                    className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none transition placeholder:text-[#A8A29E] focus:border-[#6F879E]"
+                  />
+                </div>
 
                 <div className="mt-6">
                   <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
@@ -288,8 +279,7 @@ export default function ProductPage() {
                 </div>
 
                 <p className="mt-4 text-sm text-[#8A8178]">
-                  Don’t see your camp or logo? Add it in the customization
-                  details above.
+                  Don’t see your camp or logo? Add it in the custom details box.
                 </p>
               </div>
 
@@ -318,9 +308,7 @@ export default function ProductPage() {
                     type="number"
                     min="1"
                     value={quantity}
-                    onChange={(e) =>
-                      setQuantity(Math.max(1, Number(e.target.value)))
-                    }
+                    onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
                     className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
                   />
                 </div>
@@ -335,16 +323,10 @@ export default function ProductPage() {
 
               {added && (
                 <div className="flex gap-5 text-sm">
-                  <a
-                    href="/cart"
-                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
-                  >
+                  <a href="/cart" className="underline underline-offset-4 transition hover:text-[#6F879E]">
                     View Cart
                   </a>
-                  <a
-                    href="/shop"
-                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
-                  >
+                  <a href="/shop" className="underline underline-offset-4 transition hover:text-[#6F879E]">
                     Continue Shopping
                   </a>
                 </div>
