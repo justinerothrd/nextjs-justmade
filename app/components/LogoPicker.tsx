@@ -141,10 +141,13 @@ export default function LogoPicker({
                 }`}
               >
                 <button
-                  type="button"
-                  onClick={() => setPreviewLogo(logo)}
-                  className="group flex h-[78px] w-full cursor-zoom-in items-center justify-center"
-                >
+  type="button"
+  onClick={() => {
+    onSelectLogo(logo.slug);
+    setPreviewLogo(logo);
+  }}
+  className="group flex h-[78px] w-full cursor-zoom-in items-center justify-center"
+>
                   <Image
                     src={logo.image}
                     alt={logo.name}
