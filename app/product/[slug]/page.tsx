@@ -249,15 +249,7 @@ export default function ProductPage() {
 
               <div className="rounded-[24px] border border-[#EEEAE4] bg-white p-5">
                 <div className="mb-1 flex items-center justify-between gap-3">
-                  <div>
-                    <p className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-                      Design
-                    </p>
-                    <p className="mt-1 text-sm text-[#8A8178]">
-                      Choose a logo or add a custom request above.
-                    </p>
-                  </div>
-
+          
                   <a
                     href={`/designs?returnTo=${encodeURIComponent(
                       window.location.pathname
