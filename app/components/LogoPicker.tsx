@@ -21,9 +21,11 @@ export default function LogoPicker({
 }: LogoPickerProps) {
   const [activeStyle, setActiveStyle] =
     useState<(typeof styles)[number]>("All");
+
   const [selectedGroup, setSelectedGroup] = useState<string>(
     defaultGroup || "All"
   );
+
   const [previewLogo, setPreviewLogo] = useState<Logo | null>(null);
 
   const pickerCategory = logos[0]?.category;
@@ -37,17 +39,20 @@ export default function LogoPicker({
           ? "Select Type"
           : "Select Camp";
 
-  const groups = [
-  "All",
-  ...Array.from(new Set(logos.map((l) => l.group))).filter(
-    (g) => g !== "All"
-  ),
-];
+  const groups = useMemo(() => {
+    return [
+      "All",
+      ...Array.from(new Set(logos.map((logo) => logo.group))).filter(
+        (group) => group !== "All"
+      ),
+    ];
+  }, [logos]);
 
   const filtered = useMemo(() => {
     return logos.filter((logo) => {
       const matchStyle = activeStyle === "All" || logo.style === activeStyle;
       const matchGroup = selectedGroup === "All" || logo.group === selectedGroup;
+
       return matchStyle && matchGroup;
     });
   }, [logos, activeStyle, selectedGroup]);
@@ -58,13 +63,19 @@ export default function LogoPicker({
 
   function goToPrevious() {
     if (!previewLogo || filtered.length === 0) return;
-    const nextIndex = previewIndex <= 0 ? filtered.length - 1 : previewIndex - 1;
+
+    const nextIndex =
+      previewIndex <= 0 ? filtered.length - 1 : previewIndex - 1;
+
     setPreviewLogo(filtered[nextIndex]);
   }
 
   function goToNext() {
     if (!previewLogo || filtered.length === 0) return;
-    const nextIndex = previewIndex >= filtered.length - 1 ? 0 : previewIndex + 1;
+
+    const nextIndex =
+      previewIndex >= filtered.length - 1 ? 0 : previewIndex + 1;
+
     setPreviewLogo(filtered[nextIndex]);
   }
 
@@ -77,20 +88,31 @@ export default function LogoPicker({
             <span className="font-medium text-[#2F3A4A]">{defaultGroup}</span>
           </p>
         ) : (
-          <div className="mb-4">
-            <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+          <div className="mb-5">
+            <p className="mb-2 text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
               {groupLabel}
-            </label>
+            </p>
 
-            <select
-              value={selectedGroup}
-              onChange={(e) => setSelectedGroup(e.target.value)}
-              className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-            >
-              {groups.map((group) => (
-                <option key={group}>{group}</option>
-              ))}
-            </select>
+            <div className="flex flex-wrap gap-2">
+              {groups.map((group) => {
+                const active = selectedGroup === group;
+
+                return (
+                  <button
+                    key={group}
+                    type="button"
+                    onClick={() => setSelectedGroup(group)}
+                    className={`rounded-full px-4 py-2 text-sm transition ${
+                      active
+                        ? "bg-[#2F3A4A] text-white"
+                        : "border border-[#D8D3CD] bg-white text-[#2F3A4A] hover:border-[#6F879E]"
+                    }`}
+                  >
+                    {group}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         )}
 
@@ -105,7 +127,7 @@ export default function LogoPicker({
                 onClick={() => setActiveStyle(style)}
                 className={`rounded-full px-4 py-2 text-sm transition ${
                   active
-                    ? "bg-[#2F3A4A] text-white"
+                    ? "bg-[#6F879E] text-white"
                     : "border border-[#D8D3CD] bg-white text-[#2F3A4A] hover:border-[#6F879E]"
                 }`}
               >
@@ -143,17 +165,17 @@ export default function LogoPicker({
                         src={logo.image}
                         alt={logo.name}
                         fill
-                        className="object-contain p-6"
+                        className="object-contain p-6 transition-transform duration-500 hover:scale-[1.03]"
                       />
                     </div>
 
                     <div className="mt-3 flex items-start justify-between gap-2">
                       <div>
-                       <p className="text-sm text-[#2F2F2F]">
-  {logo.slug === "custom-logo"
-    ? "Custom Logo — Add in details"
-    : logo.name}
-</p>
+                        <p className="text-sm text-[#2F2F2F]">
+                          {logo.slug === "custom-logo"
+                            ? "Custom Logo — Add in details"
+                            : logo.name}
+                        </p>
                         <p className="mt-0.5 text-xs text-[#8A8178]">
                           {logo.style}
                         </p>
