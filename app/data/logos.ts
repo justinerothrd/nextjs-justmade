@@ -12,80 +12,78 @@ export const logos: Logo[] = [
     slug: "custom-logo",
     name: "Custom Logo",
     image: "",
-    style: "Custom",
-    group: "All",
     category: "Custom",
+    group: "All",
+    style: "Custom",
   },
 
-];
-
   // CAMP — TYLER HILL
-{
-  slug: "thc-country-club",
-  name: "Country Club",
-  image: "/logos/THC-countryclub.png",
-  category: "Camp",
-  group: "Tyler Hill",
-  style: "Classic",
-},
-{
-  slug: "thc-essentials",
-  name: "Essentials",
-  image: "/logos/THC-essentials.png",
-  category: "Camp",
-  group: "Tyler Hill",
-  style: "Minimal",
-},
-{
-  slug: "thc-script",
-  name: "Script",
-  image: "/logos/THC-script.png",
-  category: "Camp",
-  group: "Tyler Hill",
-  style: "Script",
-},
-{
-  slug: "thc-sporty-bear",
-  name: "Sporty Bear",
-  image: "/logos/THC-sportybear.png",
-  category: "Camp",
-  group: "Tyler Hill",
-  style: "Icon",
-},
-{
-  slug: "thc-bear",
-  name: "THC Bear",
-  image: "/THC-bear.png",
-  category: "Camp",
-  group: "Tyler Hill",
-  style: "Varsity",
-},
-{
-  slug: "thc-varsity-arch",
-  name: "Varsity Arch",
-  image: "/logos/THC-varsityarch.png",
-  category: "Camp",
-  group: "Tyler Hill",
-  style: "Varsity",
-},
-{
-  slug: "thc-hotel",
-  name: "Hotel",
-  image: "/logos/thc-hotel.png",
-  category: "Camp",
-  group: "Tyler Hill",
-  style: "Classic",
-},
-{
-  slug: "thc-running-club",
-  name: "Running Club",
-  image: "/logos/thc-runningclub.png",
-  category: "Camp",
-  group: "Tyler Hill",
-  style: "Classic",
-},
+  {
+    slug: "thc-country-club",
+    name: "Country Club",
+    image: "/logos/THC-countryclub.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Classic",
+  },
+  {
+    slug: "thc-essentials",
+    name: "Essentials",
+    image: "/logos/THC-essentials.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Minimal",
+  },
+  {
+    slug: "thc-script",
+    name: "Script",
+    image: "/logos/THC-script.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Script",
+  },
+  {
+    slug: "thc-sporty-bear",
+    name: "Sporty Bear",
+    image: "/logos/THC-sportybear.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Icon",
+  },
+  {
+    slug: "thc-bear",
+    name: "THC Bear",
+    image: "/logos/THC-bear.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Varsity",
+  },
+  {
+    slug: "thc-varsity-arch",
+    name: "Varsity Arch",
+    image: "/logos/THC-varsityarch.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Varsity",
+  },
+  {
+    slug: "thc-hotel",
+    name: "Hotel",
+    image: "/logos/thc-hotel.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Classic",
+  },
+  {
+    slug: "thc-running-club",
+    name: "Running Club",
+    image: "/logos/thc-runningclub.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Classic",
+  },
 
-  // PONTIAC
+  // CAMP — PONTIAC
   {
     slug: "pontiac-varsity-arch",
     name: "Varsity Arch",
@@ -94,15 +92,15 @@ export const logos: Logo[] = [
     group: "Pontiac",
     style: "Varsity",
   },
- {
-    slug: "pontiac-varsity-arch",
-    name: "Varsity Arch",
+  {
+    slug: "pontiac-varsity-date",
+    name: "Varsity with Date",
     image: "/logos/pontiac-varsitydate.png",
     category: "Camp",
     group: "Pontiac",
     style: "Varsity",
   },
- {
+  {
     slug: "pontiac-bubble",
     name: "Bubble",
     image: "/logos/Pontiac-bubble.png",
@@ -110,7 +108,7 @@ export const logos: Logo[] = [
     group: "Pontiac",
     style: "Minimal",
   },
- {
+  {
     slug: "pontiac-script",
     name: "Script",
     image: "/logos/pontiac-script.png",
@@ -119,51 +117,51 @@ export const logos: Logo[] = [
     style: "Script",
   },
 
-  // WESTMONT
+  // CAMP — WESTMONT
   {
     slug: "westmont-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/THCvarsityarch.png",
+    image: "/logos/THC-varsityarch.png",
     category: "Camp",
     group: "Westmont",
     style: "Varsity",
   },
 
-  // CANADENSIS
+  // CAMP — CANADENSIS
   {
     slug: "canadensis-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/THCvarsityarch.png",
+    image: "/logos/THC-varsityarch.png",
     category: "Camp",
     group: "Canadensis",
     style: "Varsity",
   },
 
-  // CAMP LAUREL
+  // CAMP — CAMP LAUREL
   {
     slug: "camp-laurel-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/THCvarsityarch.png",
+    image: "/logos/THC-varsityarch.png",
     category: "Camp",
     group: "Camp Laurel",
     style: "Varsity",
   },
 
-  // CHENAWANDA
+  // CAMP — CHENAWANDA
   {
     slug: "chenawanda-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/THCvarsityarch.png",
+    image: "/logos/THC-varsityarch.png",
     category: "Camp",
     group: "Chenawanda",
     style: "Varsity",
   },
 
-  // TIMBERLAKE
+  // CAMP — TIMBERLAKE
   {
     slug: "timberlake-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/THCvarsityarch.png",
+    image: "/logos/THC-varsityarch.png",
     category: "Camp",
     group: "Timberlake",
     style: "Varsity",
