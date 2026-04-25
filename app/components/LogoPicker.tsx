@@ -49,12 +49,13 @@ export default function LogoPicker({
   }, [logos]);
 
   const filtered = useMemo(() => {
-  return logos
-    .filter((logo) => {
-      const matchStyle = activeStyle === "All" || logo.style === activeStyle;
-      const matchGroup =
-        selectedGroup === "All" ||
-        logo.group === selectedGroup ||
+  return logos.filter((logo) => {
+    const matchStyle = activeStyle === "All" || logo.style === activeStyle;
+    const matchGroup = selectedGroup === "All" || logo.group === selectedGroup;
+
+    return matchStyle && matchGroup;
+  });
+}, [logos, activeStyle, selectedGroup]);|
         logo.slug === "custom-logo";
 
       return matchStyle && matchGroup;
