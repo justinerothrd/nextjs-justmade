@@ -4,7 +4,15 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import type { Logo } from "@/app/data/logos";
 
-const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon", "Custom"] as const;
+const styles = [
+  "All",
+  "Varsity",
+  "Minimal",
+  "Script",
+  "Classic",
+  "Icon",
+  "Custom",
+] as const;
 
 type LogoPickerProps = {
   logos: Logo[];
@@ -19,8 +27,13 @@ export default function LogoPicker({
   onSelectLogo,
   defaultGroup,
 }: LogoPickerProps) {
-  const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
-  const [selectedGroup, setSelectedGroup] = useState<string>(defaultGroup || "All");
+  const [activeStyle, setActiveStyle] =
+    useState<(typeof styles)[number]>("All");
+
+  const [selectedGroup, setSelectedGroup] = useState<string>(
+    defaultGroup || "All"
+  );
+
   const [previewLogo, setPreviewLogo] = useState<Logo | null>(null);
 
   const pickerCategory = logos[0]?.category;
@@ -37,7 +50,7 @@ export default function LogoPicker({
   const groups = useMemo(() => {
     return [
       "All",
-      ...Array.from(new Set(logos.map((logo) => logo.group))).filter(
+      ...Array.from(new Set(logos.map((item) => item.group))).filter(
         (group) => group !== "All"
       ),
     ];
@@ -45,12 +58,14 @@ export default function LogoPicker({
 
   const filtered = useMemo(() => {
     return logos
-      .filter((logo) => {
-        const matchStyle = activeStyle === "All" || logo.style === activeStyle;
+      .filter((item) => {
+        const matchStyle =
+          activeStyle === "All" || item.style === activeStyle;
+
         const matchGroup =
           selectedGroup === "All" ||
-          logo.group === selectedGroup ||
-          logo.slug === "custom-logo";
+          item.group === selectedGroup ||
+          item.slug === "custom-logo";
 
         return matchStyle && matchGroup;
       })
@@ -99,7 +114,9 @@ export default function LogoPicker({
           </p>
 
           <a
-            href={`/designs?returnTo=${encodeURIComponent(window.location.pathname)}`}
+            href={`/designs?returnTo=${encodeURIComponent(
+              window.location.pathname
+            )}`}
             className="text-[11px] underline underline-offset-4 text-[#8A8178] hover:text-[#6F879E]"
           >
             View all
@@ -128,12 +145,13 @@ export default function LogoPicker({
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {filtered.map((logo) => {
-            const isSelected = selectedLogo === logo.slug;
+          {filtered.map((item) => {
+            const isSelected = selectedLogo === item.slug;
+            const isCustom = item.slug === "custom-logo";
 
             return (
               <div
-                key={logo.slug}
+                key={item.slug}
                 className={`rounded-[20px] border p-3 transition-all duration-300 ${
                   isSelected
                     ? "border-[#6F879E] bg-[#F6F8FA]"
@@ -141,33 +159,39 @@ export default function LogoPicker({
                 }`}
               >
                 <button
-  type="button"
-  onClick={() => {
-    onSelectLogo(logo.slug);
-    setPreviewLogo(logo);
-  }}
-  className="group flex h-[78px] w-full cursor-zoom-in items-center justify-center"
->
-                  <Image
-                    src={logo.image}
-                    alt={logo.name}
-                    width={130}
-                    height={90}
-                    className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.08]"
-                  />
+                  type="button"
+                  onClick={() => {
+                    onSelectLogo(item.slug);
+                    if (!isCustom) setPreviewLogo(item);
+                  }}
+                  className="group flex h-[78px] w-full cursor-zoom-in items-center justify-center"
+                >
+                  {isCustom ? (
+                    <div className="flex h-full w-full flex-col items-center justify-center text-[#8A8178]">
+                      <span className="text-[22px] leading-none">+</span>
+                      <span className="mt-1 text-[11px]">Add your own</span>
+                    </div>
+                  ) : (
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      width={130}
+                      height={90}
+                      className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.08]"
+                    />
+                  )}
                 </button>
 
                 <button
                   type="button"
-                  onClick={() => onSelectLogo(logo.slug)}
+                  onClick={() => onSelectLogo(item.slug)}
                   className="mt-2 block w-full text-center"
                 >
                   <p className="text-[12px] leading-tight text-[#2F2F2F]">
-                    {logo.slug === "custom-logo"
-                      ? "Custom Logo"
-                      : logo.name}
+                    {isCustom ? "Custom Logo" : item.name}
                   </p>
-                  {logo.slug === "custom-logo" && (
+
+                  {isCustom && (
                     <p className="mt-0.5 text-[11px] text-[#8A8178]">
                       Add in details
                     </p>
@@ -184,38 +208,30 @@ export default function LogoPicker({
       </div>
 
       {previewLogo && (
-  <div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 px-4"
-    onClick={() => setPreviewLogo(null)}
-  >
-    <div
-      className="relative flex h-[520px] w-[520px] max-w-[90vw] max-h-[75vh] items-center justify-center rounded-[28px] bg-white p-10 shadow-2xl"
-      onClick={(e) => e.stopPropagation()}
-    >
-      {/* CLOSE BUTTON (moved inside) */}
-      <button
-        className="absolute top-4 right-4 text-[11px] uppercase tracking-[0.2em] text-[#8A8178] hover:text-[#2F2F2F]"
-        onClick={() => setPreviewLogo(null)}
-      >
-        Close
-      </button>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 px-4"
+          onClick={() => setPreviewLogo(null)}
+        >
+          <div
+            className="relative flex h-[520px] max-h-[75vh] w-[520px] max-w-[90vw] items-center justify-center rounded-[28px] bg-white p-10 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="absolute right-4 top-4 text-[11px] uppercase tracking-[0.2em] text-[#8A8178] hover:text-[#2F2F2F]"
+              onClick={() => setPreviewLogo(null)}
+            >
+              Close
+            </button>
 
-      {logo.slug === "custom-logo" ? (
-  <div className="flex h-full w-full items-center justify-center text-[11px] text-[#8A8178]">
-    Add your own
-  </div>
-) : (
-  <Image
-    src={logo.image}
-    alt={logo.name}
-    width={130}
-    height={90}
-    className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.06]"
-  />
-)}
-    </div>
-  </div>
-)}
+            <img
+              src={previewLogo.image}
+              alt={previewLogo.name}
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }
