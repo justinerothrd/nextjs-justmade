@@ -1,21 +1,21 @@
 export type Logo = {
-  {
-  slug: "custom-logo",
-  name: "Custom Logo",
-  image: "/logos/THCvarsityarch.png", 
-  category: "Camp",
-  group: "All",
-  style: "Custom",
-},
   slug: string;
   name: string;
   image: string;
   category: "Camp" | "College" | "Team" | "Custom";
   group: string;
-  style: "Varsity" | "Minimal" | "Script" | "Classic" | "Icon";
+  style: "Varsity" | "Minimal" | "Script" | "Classic" | "Icon" | "Custom";
 };
 
 export const logos: Logo[] = [
+  {
+    slug: "custom-logo",
+    name: "Custom Logo",
+    image: "/logos/THC-varsityarch.png",
+    category: "Camp",
+    group: "All",
+    style: "Custom",
+  },
 
   // CAMP — TYLER HILL
 {
