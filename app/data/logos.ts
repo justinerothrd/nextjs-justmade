@@ -8,13 +8,16 @@ export type Logo = {
 };
 
 export const logos: Logo[] = [
-  slug: "custom-logo",
-  name: "Custom Logo",
-  image: "", // no image
-  style: "Custom",
-  group: "All",
-  category: "Custom",
-}
+  {
+    slug: "custom-logo",
+    name: "Custom Logo",
+    image: "",
+    style: "Custom",
+    group: "All",
+    category: "Custom",
+  },
+
+];
 
   // CAMP — TYLER HILL
 {
