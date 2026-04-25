@@ -37,10 +37,12 @@ export default function LogoPicker({
           ? "Select Type"
           : "Select Camp";
 
-  const groups = useMemo(() => {
-    const unique = Array.from(new Set(logos.map((logo) => logo.group)));
-    return ["All", ...unique];
-  }, [logos]);
+  const groups = [
+  "All",
+  ...Array.from(new Set(logos.map((l) => l.group))).filter(
+    (g) => g !== "All"
+  ),
+];
 
   const filtered = useMemo(() => {
     return logos.filter((logo) => {
