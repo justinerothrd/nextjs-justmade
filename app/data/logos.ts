@@ -8,7 +8,6 @@ export type Logo = {
 };
 
 export const logos: Logo[] = [
-  {
   slug: "custom-logo",
   name: "Custom Logo",
   image: "", // no image
