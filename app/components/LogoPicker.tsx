@@ -66,7 +66,6 @@ const filtered = useMemo(() => {
 }, [logos, activeStyle, selectedGroup]);
 
       return matchStyle && matchGroup;
-    })
     .sort((a, b) => {
       if (a.slug === "custom-logo") return 1;
       if (b.slug === "custom-logo") return -1;
