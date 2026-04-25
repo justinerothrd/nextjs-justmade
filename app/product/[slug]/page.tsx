@@ -221,46 +221,48 @@ export default function ProductPage() {
               <div className="rounded-[24px] border border-[#EEEAE4] bg-white p-5">
                 
 
-                <LogoPicker
-                  logos={campLogos}
-                  selectedLogo={selectedLogo}
-                  onSelectLogo={setSelectedLogo}
-                />
+               <LogoPicker
+  logos={campLogos}
+  selectedLogo={selectedLogo}
+  onSelectLogo={setSelectedLogo}
+/>
 
-                <div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
-                  <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
-                    Custom Details (optional)
-                  </label>
+{/* LOGO COLOR — MOVE UP HERE */}
+<div className="mt-5">
+  <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+    Logo Color
+  </label>
 
-                  <textarea
-                    placeholder="Add camp, initials, custom logo request, or special notes"
-                    value={customDetails}
-                    onChange={(e) => setCustomDetails(e.target.value)}
-                    rows={2}
-                    className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none transition placeholder:text-[#A8A29E] focus:border-[#6F879E]"
-                  />
-                </div>
+  <select
+    value={logoColor}
+    onChange={(e) => setLogoColor(e.target.value)}
+    className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+  >
+    <option>Navy</option>
+    <option>White</option>
+    <option>Light Blue</option>
+    <option>Pink</option>
+    <option>Green</option>
+    <option>Red</option>
+    <option>Black</option>
+    <option>Custom / Add in details</option>
+  </select>
+</div>
 
-                <div className="mt-6">
-                  <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-                    Logo Color
-                  </label>
+{/* CUSTOMIZATION BOX — NOW BELOW */}
+<div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
+  <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
+    Custom Details (optional)
+  </label>
 
-                  <select
-                    value={logoColor}
-                    onChange={(e) => setLogoColor(e.target.value)}
-                    className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-                  >
-                    <option>Navy</option>
-                    <option>White</option>
-                    <option>Light Blue</option>
-                    <option>Pink</option>
-                    <option>Green</option>
-                    <option>Red</option>
-                    <option>Black</option>
-                    <option>Custom / Add in details</option>
-                  </select>
-                </div>
+  <textarea
+    placeholder="Add camp, initials, custom logo request, or special notes"
+    value={customDetails}
+    onChange={(e) => setCustomDetails(e.target.value)}
+    rows={2}
+    className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none transition placeholder:text-[#A8A29E] focus:border-[#6F879E]"
+  />
+</div>
 
                 <p className="mt-4 text-sm text-[#8A8178]">
                   Don’t see your camp or logo? Add it in the custom details box.
