@@ -219,23 +219,7 @@ export default function ProductPage() {
               </div>
 
               <div className="rounded-[24px] border border-[#EEEAE4] bg-white p-5">
-                <div className="mb-4 flex items-start justify-between gap-3">
-                  <div>
-                    <p className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-                      Design
-                    </p>
-                    <p className="mt-1 text-sm text-[#8A8178]">
-                      Choose a logo.
-                    </p>
-                  </div>
-
-                  <a
-                    href={`/designs?returnTo=${encodeURIComponent(window.location.pathname)}`}
-                    className="shrink-0 text-xs underline underline-offset-4 transition hover:text-[#6F879E]"
-                  >
-                    View all
-                  </a>
-                </div>
+                
 
                 <LogoPicker
                   logos={campLogos}
