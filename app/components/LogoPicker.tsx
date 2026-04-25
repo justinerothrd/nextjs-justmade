@@ -200,11 +200,19 @@ export default function LogoPicker({
         Close
       </button>
 
-      <img
-        src={previewLogo.image}
-        alt={previewLogo.name}
-        className="max-h-full max-w-full object-contain"
-      />
+      {logo.slug === "custom-logo" ? (
+  <div className="flex h-full w-full items-center justify-center text-[11px] text-[#8A8178]">
+    Add your own
+  </div>
+) : (
+  <Image
+    src={logo.image}
+    alt={logo.name}
+    width={130}
+    height={90}
+    className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.06]"
+  />
+)}
     </div>
   </div>
 )}
