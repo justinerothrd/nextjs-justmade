@@ -184,34 +184,30 @@ export default function LogoPicker({
       </div>
 
       {previewLogo && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 px-4"
-          onClick={() => setPreviewLogo(null)}
-        >
-          <button
-            type="button"
-            className="absolute right-6 top-6 text-xs uppercase tracking-[0.2em] text-white"
-            onClick={() => setPreviewLogo(null)}
-          >
-            Close
-          </button>
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 px-4"
+    onClick={() => setPreviewLogo(null)}
+  >
+    <div
+      className="relative flex h-[520px] w-[520px] max-w-[90vw] max-h-[75vh] items-center justify-center rounded-[28px] bg-white p-10 shadow-2xl"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* CLOSE BUTTON (moved inside) */}
+      <button
+        className="absolute top-4 right-4 text-[11px] uppercase tracking-[0.2em] text-[#8A8178] hover:text-[#2F2F2F]"
+        onClick={() => setPreviewLogo(null)}
+      >
+        Close
+      </button>
 
-          <button
-            type="button"
-            className="flex h-[520px] w-[520px] max-h-[75vh] max-w-[90vw] cursor-zoom-out items-center justify-center rounded-[28px] bg-white p-10 shadow-2xl"
-            onClick={(e) => {
-              e.stopPropagation();
-              setPreviewLogo(null);
-            }}
-          >
-            <img
-              src={previewLogo.image}
-              alt={previewLogo.name}
-              className="max-h-full max-w-full object-contain"
-            />
-          </button>
-        </div>
-      )}
+      <img
+        src={previewLogo.image}
+        alt={previewLogo.name}
+        className="max-h-full max-w-full object-contain"
+      />
+    </div>
+  </div>
+)}
     </>
   );
 }
