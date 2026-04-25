@@ -2,7 +2,7 @@ export type Logo = {
   {
   slug: "custom-logo",
   name: "Custom Logo",
-  image: "/logos/THCvarsityarch.png", // temporary placeholder
+  image: "/logos/THCvarsityarch.png", 
   category: "Camp",
   group: "All",
   style: "Custom",
