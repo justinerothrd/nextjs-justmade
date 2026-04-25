@@ -9,13 +9,13 @@ export type Logo = {
 
 export const logos: Logo[] = [
   {
-    slug: "custom-logo",
-    name: "Custom Logo",
-    image: "/logos/THC-varsityarch.png",
-    category: "Camp",
-    group: "All",
-    style: "Custom",
-  },
+  slug: "custom-logo",
+  name: "Custom Logo",
+  image: "", // no image
+  style: "Custom",
+  group: "All",
+  category: "Custom",
+}
 
   // CAMP — TYLER HILL
 {
