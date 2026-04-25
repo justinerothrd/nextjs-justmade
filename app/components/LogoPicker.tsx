@@ -192,7 +192,7 @@ export default function LogoPicker({
       </div>
 
       <p className="mt-4 text-sm text-[#8A8178]">
-        Don’t see your camp? Add it in the customization details above.
+        Don’t see your camp or logo? Add it in the customization details below.
       </p>
     </div>
   );
