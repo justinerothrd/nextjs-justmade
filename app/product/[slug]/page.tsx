@@ -6,6 +6,15 @@ import { getProductBySlug } from "@/lib/products";
 import LogoPicker from "@/app/components/LogoPicker";
 import { logos } from "@/app/data/logos";
 
+const logoColorMap: Record<string, string> = {
+  Navy: "#1F2A44",
+  White: "#FFFFFF",
+  "Light Blue": "#9DB7D4",
+  Pink: "#F4A7B9",
+  Green: "#3F6F4F",
+  Red: "#B23A3A",
+  Black: "#111111",
+};
 const productImageClassesByView: Record<string, string[]> = {
   hoodie: ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]", "max-h-[90%] max-w-[90%]", "max-h-[92%] max-w-[92%]"],
   "quarter-zip": ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]"],
@@ -248,7 +257,40 @@ export default function ProductPage() {
     <option>Custom / Add in details</option>
   </select>
 </div>
+{selectedLogoObject && selectedLogoObject.slug !== "custom-logo" && (
+  <div className="mt-4 rounded-[18px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
+    <p className="mb-3 text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
+      Logo Preview
+    </p>
 
+    <div className="flex items-center gap-4">
+      <div
+        className="h-20 w-20 bg-center bg-contain bg-no-repeat"
+        style={{
+          backgroundColor:
+            logoColorMap[logoColor] || "#1F2A44",
+          WebkitMaskImage: `url(${selectedLogoObject.image})`,
+          maskImage: `url(${selectedLogoObject.image})`,
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+          WebkitMaskPosition: "center",
+          maskPosition: "center",
+          WebkitMaskSize: "contain",
+          maskSize: "contain",
+        }}
+      />
+
+      <div>
+        <p className="text-sm text-[#2F2F2F]">
+          {selectedLogoObject.name}
+        </p>
+        <p className="text-xs text-[#8A8178]">
+          Logo color: {logoColor}
+        </p>
+      </div>
+    </div>
+  </div>
+)}
 {/* CUSTOMIZATION BOX — NOW BELOW */}
 <div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
   <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
