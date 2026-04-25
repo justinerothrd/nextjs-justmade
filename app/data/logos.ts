@@ -87,10 +87,34 @@ export const logos: Logo[] = [
   {
     slug: "pontiac-varsity-arch",
     name: "Varsity Arch",
-    image: "/logos/THCvarsityarch.png",
+    image: "/logos/pontiac-varsitypng",
     category: "Camp",
     group: "Pontiac",
     style: "Varsity",
+  },
+ {
+    slug: "pontiac-varsity-arch",
+    name: "Varsity Arch",
+    image: "/logos/pontiac-varsitydate.png",
+    category: "Camp",
+    group: "Pontiac",
+    style: "Varsity",
+  },
+ {
+    slug: "pontiac-bubble",
+    name: "Bubble",
+    image: "/logos/pontiac-bubble.png",
+    category: "Camp",
+    group: "Pontiac",
+    style: "Minimal",
+  },
+ {
+    slug: "pontiac-script",
+    name: "Script",
+    image: "/logos/pontiac-script.png",
+    category: "Camp",
+    group: "Pontiac",
+    style: "Script",
   },
 
   // WESTMONT
