@@ -144,7 +144,7 @@ export default function LogoPicker({
           })}
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {filtered.map((item) => {
             const isSelected = selectedLogo === item.slug;
             const isCustom = item.slug === "custom-logo";
@@ -164,7 +164,7 @@ export default function LogoPicker({
                     onSelectLogo(item.slug);
                     if (!isCustom) setPreviewLogo(item);
                   }}
-                  className="group flex h-[78px] w-full cursor-zoom-in items-center justify-center"
+                  className="group flex h-[70px] w-full cursor-zoom-in items-center justify-center"
                 >
                   {isCustom ? (
                     <div className="flex h-full w-full flex-col items-center justify-center text-[#8A8178]">
