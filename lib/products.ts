@@ -9,7 +9,7 @@ export type Product = {
   blankImages?: Record<string, string>; // ✅ NEW
 };
 
-export const products = {
+export const products: Record<string, Product> = {
   hoodie: {
     name: "Custom Hoodie",
     price: "$70",
