@@ -15,7 +15,6 @@ const logoColorMap: Record<string, string> = {
   Red: "#B23A3A",
   Black: "#111111",
 };
-
 const productImageClassesByView: Record<string, string[]> = {
   hoodie: ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]", "max-h-[90%] max-w-[90%]", "max-h-[92%] max-w-[92%]"],
   "quarter-zip": ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]"],
@@ -27,20 +26,6 @@ const productImageClassesByView: Record<string, string[]> = {
   "sleepwear-set": ["max-h-[96%] max-w-[96%]", "max-h-[96%] max-w-[96%]"],
   "accessories-slides": ["max-h-[86%] max-w-[86%]"],
   "accessories-socks": ["max-h-[92%] max-w-[92%]"],
-};
-
-const overlayPositionBySlug: Record<string, string> = {
-  hoodie: "top-[31%] left-1/2 -translate-x-1/2",
-  "quarter-zip": "top-[30%] left-1/2 -translate-x-1/2",
-  "tank-top": "top-[28%] left-1/2 -translate-x-1/2",
-  "custom-tee": "top-[30%] left-1/2 -translate-x-1/2",
-};
-
-const overlaySizeBySlug: Record<string, string> = {
-  hoodie: "h-[22%] w-[30%]",
-  "quarter-zip": "h-[20%] w-[28%]",
-  "tank-top": "h-[18%] w-[30%]",
-  "custom-tee": "h-[20%] w-[32%]",
 };
 
 export default function ProductPage() {
@@ -103,28 +88,14 @@ export default function ProductPage() {
     );
   }
 
-  const safeSlug = slug;
-
-  const currentImage =
-    product.images?.[selectedImage] ?? product.images?.[0] ?? "";
-
-  const hasLogoOverlay = Boolean(
-    selectedLogoObject &&
-      selectedLogoObject.slug !== "custom-logo" &&
-      product.blankImages?.[color]
-  );
-
-  const overlayImage = hasLogoOverlay
-    ? product.blankImages?.[color] || currentImage
-    : currentImage;
-
+  const currentImage = product.images?.[selectedImage] ?? product.images?.[0] ?? "";
   const currentImageClass =
-    productImageClassesByView[safeSlug]?.[selectedImage] ??
-    productImageClassesByView[safeSlug]?.[0] ??
+    productImageClassesByView[slug]?.[selectedImage] ??
+    productImageClassesByView[slug]?.[0] ??
     "max-h-[94%] max-w-[94%]";
 
   function handleAddToCart() {
-    if (!product || !safeSlug) return;
+    if (!product || !slug) return;
 
     if (!selectedLogo && !customDetails.trim()) {
       alert("Please select a design or add custom details.");
@@ -135,18 +106,16 @@ export default function ProductPage() {
 
     const newItem = {
       id: Date.now(),
-      slug: safeSlug,
+      slug,
       product: product.name,
       price: product.price,
       campName: customDetails,
       size,
       color,
       quantity,
-      image: overlayImage,
+      image: currentImage,
       logoSlug: selectedLogo || "custom-logo",
-      logoName:
-        selectedLogoObject?.name ||
-        (customDetails.trim() ? "Custom Logo" : ""),
+      logoName: selectedLogoObject?.name || (customDetails.trim() ? "Custom Logo" : ""),
       logoColor,
       placement,
     };
@@ -158,41 +127,6 @@ export default function ProductPage() {
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   }
-
-  function LogoOverlay() {
-  if (!hasLogoOverlay || !selectedLogoObject) return null;
-
-  const position = {
-    hoodie: { top: "34%", left: "50%", width: "26%", height: "18%" },
-    "quarter-zip": { top: "31%", left: "50%", width: "24%", height: "16%" },
-    "tank-top": { top: "27%", left: "50%", width: "28%", height: "17%" },
-    "custom-tee": { top: "31%", left: "50%", width: "30%", height: "18%" },
-  }[safeSlug] || { top: "30%", left: "50%", width: "28%", height: "18%" };
-
-  return (
-    <div className="pointer-events-none absolute inset-0">
-      <div
-        style={{
-          position: "absolute",
-          top: position.top,
-          left: position.left,
-          width: position.width,
-          height: position.height,
-          transform: "translateX(-50%)",
-          backgroundColor: logoColorMap[logoColor] || "#1F2A44",
-          WebkitMaskImage: `url(${selectedLogoObject.image})`,
-          maskImage: `url(${selectedLogoObject.image})`,
-          WebkitMaskRepeat: "no-repeat",
-          maskRepeat: "no-repeat",
-          WebkitMaskPosition: "center",
-          maskPosition: "center",
-          WebkitMaskSize: "contain",
-          maskSize: "contain",
-        }}
-      />
-    </div>
-  );
-}
 
   return (
     <main className="min-h-screen bg-white px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-14">
@@ -229,19 +163,17 @@ export default function ProductPage() {
             )}
 
             <div className="group flex aspect-square w-full items-center justify-center overflow-hidden rounded-[28px] border border-[#F0ECE6] bg-[#FBFAF8] p-4 sm:p-6">
-              {overlayImage ? (
+              {currentImage ? (
                 <button
                   type="button"
                   onClick={() => setZoomOpen(true)}
-                  className="relative flex h-full w-full cursor-zoom-in items-center justify-center"
+                  className="flex h-full w-full cursor-zoom-in items-center justify-center"
                 >
                   <img
-                    src={overlayImage}
+                    src={currentImage}
                     alt={product.name}
                     className={`${currentImageClass} object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
                   />
-
-                  <LogoOverlay />
                 </button>
               ) : (
                 <div className="text-sm text-gray-400">No image available</div>
@@ -296,46 +228,83 @@ export default function ProductPage() {
               </div>
 
               <div className="rounded-[24px] border border-[#EEEAE4] bg-white p-5">
-                <LogoPicker
-                  logos={campLogos}
-                  selectedLogo={selectedLogo}
-                  onSelectLogo={setSelectedLogo}
-                />
+                
 
-                <div className="mt-5">
-                  <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-                    Logo Color
-                  </label>
+               <LogoPicker
+  logos={campLogos}
+  selectedLogo={selectedLogo}
+  onSelectLogo={setSelectedLogo}
+/>
 
-                  <select
-                    value={logoColor}
-                    onChange={(e) => setLogoColor(e.target.value)}
-                    className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-                  >
-                    <option>Navy</option>
-                    <option>White</option>
-                    <option>Light Blue</option>
-                    <option>Pink</option>
-                    <option>Green</option>
-                    <option>Red</option>
-                    <option>Black</option>
-                    <option>Custom / Add in details</option>
-                  </select>
-                </div>
+{/* LOGO COLOR — MOVE UP HERE */}
+<div className="mt-5">
+  <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+    Logo Color
+  </label>
 
-                <div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
-                  <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
-                    Custom Details (optional)
-                  </label>
+  <select
+    value={logoColor}
+    onChange={(e) => setLogoColor(e.target.value)}
+    className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+  >
+    <option>Navy</option>
+    <option>White</option>
+    <option>Light Blue</option>
+    <option>Pink</option>
+    <option>Green</option>
+    <option>Red</option>
+    <option>Black</option>
+    <option>Custom / Add in details</option>
+  </select>
+</div>
+{selectedLogoObject && selectedLogoObject.slug !== "custom-logo" && (
+  <div className="mt-4 rounded-[18px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
+    <p className="mb-3 text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
+      Logo Preview
+    </p>
 
-                  <textarea
-                    placeholder="Add camp, initials, custom logo request, or special notes"
-                    value={customDetails}
-                    onChange={(e) => setCustomDetails(e.target.value)}
-                    rows={2}
-                    className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none transition placeholder:text-[#A8A29E] focus:border-[#6F879E]"
-                  />
-                </div>
+    <div className="flex items-center gap-4">
+      <div
+        className="h-20 w-20 bg-center bg-contain bg-no-repeat"
+        style={{
+          backgroundColor:
+            logoColorMap[logoColor] || "#1F2A44",
+          WebkitMaskImage: `url(${selectedLogoObject.image})`,
+          maskImage: `url(${selectedLogoObject.image})`,
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+          WebkitMaskPosition: "center",
+          maskPosition: "center",
+          WebkitMaskSize: "contain",
+          maskSize: "contain",
+        }}
+      />
+
+      <div>
+        <p className="text-sm text-[#2F2F2F]">
+          {selectedLogoObject.name}
+        </p>
+        <p className="text-xs text-[#8A8178]">
+          Logo color: {logoColor}
+        </p>
+      </div>
+    </div>
+  </div>
+)}
+{/* CUSTOMIZATION BOX — NOW BELOW */}
+<div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
+  <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
+    Custom Details (optional)
+  </label>
+
+  <textarea
+    placeholder="Add camp, initials, custom logo request, or special notes"
+    value={customDetails}
+    onChange={(e) => setCustomDetails(e.target.value)}
+    rows={2}
+    className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none transition placeholder:text-[#A8A29E] focus:border-[#6F879E]"
+  />
+</div>
 
                 <p className="mt-4 text-sm text-[#8A8178]">
                   Don’t see your camp or logo? Add it in the custom details box.
@@ -367,9 +336,7 @@ export default function ProductPage() {
                     type="number"
                     min="1"
                     value={quantity}
-                    onChange={(e) =>
-                      setQuantity(Math.max(1, Number(e.target.value)))
-                    }
+                    onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
                     className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
                   />
                 </div>
@@ -384,16 +351,10 @@ export default function ProductPage() {
 
               {added && (
                 <div className="flex gap-5 text-sm">
-                  <a
-                    href="/cart"
-                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
-                  >
+                  <a href="/cart" className="underline underline-offset-4 transition hover:text-[#6F879E]">
                     View Cart
                   </a>
-                  <a
-                    href="/shop"
-                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
-                  >
+                  <a href="/shop" className="underline underline-offset-4 transition hover:text-[#6F879E]">
                     Continue Shopping
                   </a>
                 </div>
@@ -403,7 +364,7 @@ export default function ProductPage() {
         </div>
       </div>
 
-      {zoomOpen && overlayImage && (
+      {zoomOpen && currentImage && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
           onClick={() => setZoomOpen(false)}
@@ -416,40 +377,12 @@ export default function ProductPage() {
             Close
           </button>
 
-          <div
-            className="relative flex h-[90vh] w-[90vw] items-center justify-center"
+          <img
+            src={currentImage}
+            alt={product.name}
+            className="max-h-[90vh] max-w-[90vw] object-contain"
             onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={overlayImage}
-              alt={product.name}
-              className="max-h-[90vh] max-w-[90vw] object-contain"
-            />
-
-            {hasLogoOverlay && selectedLogoObject && (
-              <div
-                className={`pointer-events-none absolute ${
-                  overlayPositionBySlug[safeSlug] ||
-                  "top-[30%] left-1/2 -translate-x-1/2"
-                }`}
-              >
-                <div
-                  className={overlaySizeBySlug[safeSlug] || "h-[20%] w-[30%]"}
-                  style={{
-                    backgroundColor: logoColorMap[logoColor] || "#1F2A44",
-                    WebkitMaskImage: `url(${selectedLogoObject.image})`,
-                    maskImage: `url(${selectedLogoObject.image})`,
-                    WebkitMaskRepeat: "no-repeat",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskPosition: "center",
-                    maskPosition: "center",
-                    WebkitMaskSize: "contain",
-                    maskSize: "contain",
-                  }}
-                />
-              </div>
-            )}
-          </div>
+          />
         </div>
       )}
     </main>
