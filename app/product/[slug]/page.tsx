@@ -29,6 +29,20 @@ const productImageClassesByView: Record<string, string[]> = {
   "accessories-socks": ["max-h-[92%] max-w-[92%]"],
 };
 
+const overlayPositionBySlug: Record<string, string> = {
+  hoodie: "top-[31%] left-1/2 -translate-x-1/2",
+  "quarter-zip": "top-[30%] left-1/2 -translate-x-1/2",
+  "tank-top": "top-[28%] left-1/2 -translate-x-1/2",
+  "custom-tee": "top-[30%] left-1/2 -translate-x-1/2",
+};
+
+const overlaySizeBySlug: Record<string, string> = {
+  hoodie: "h-[22%] w-[30%]",
+  "quarter-zip": "h-[20%] w-[28%]",
+  "tank-top": "h-[18%] w-[30%]",
+  "custom-tee": "h-[20%] w-[32%]",
+};
+
 export default function ProductPage() {
   const params = useParams();
   const rawSlug = params?.slug;
@@ -92,21 +106,20 @@ export default function ProductPage() {
   const currentImage =
     product.images?.[selectedImage] ?? product.images?.[0] ?? "";
 
-  const showLogoOverlay = Boolean(hasLogoOverlay);
+  const hasLogoOverlay = Boolean(
+    selectedLogoObject &&
+      selectedLogoObject.slug !== "custom-logo" &&
+      product.blankImages?.[color]
+  );
 
-const overlayImage = hasLogoOverlay
-  ? product.blankImages?.[color]
-  : currentImage;
+  const overlayImage = hasLogoOverlay
+    ? product.blankImages?.[color] || currentImage
+    : currentImage;
 
   const currentImageClass =
     productImageClassesByView[slug]?.[selectedImage] ??
     productImageClassesByView[slug]?.[0] ??
     "max-h-[94%] max-w-[94%]";
-
-  const showLogoOverlay =
-    selectedLogoObject &&
-    selectedLogoObject.slug !== "custom-logo" &&
-    product.blankImages?.[color];
 
   function handleAddToCart() {
     if (!product || !slug) return;
@@ -143,50 +156,16 @@ const overlayImage = hasLogoOverlay
   }
 
   function LogoOverlay() {
-  if (!showLogoOverlay || !selectedLogoObject) return null;
-
-  const overlayPositionBySlug: Record<string, string> = {
-    hoodie: "top-[31%] left-1/2 -translate-x-1/2",
-    "quarter-zip": "top-[30%] left-1/2 -translate-x-1/2",
-    "tank-top": "top-[28%] left-1/2 -translate-x-1/2",
-    "custom-tee": "top-[30%] left-1/2 -translate-x-1/2",
-  };
-
-  const overlaySizeBySlug: Record<string, string> = {
-    hoodie: "h-[22%] w-[30%]",
-    "quarter-zip": "h-[20%] w-[28%]",
-    "tank-top": "h-[18%] w-[30%]",
-    "custom-tee": "h-[20%] w-[32%]",
-  };
-
-  return (
-    <div
-      className={`pointer-events-none absolute ${
-        overlayPositionBySlug[slug] || "top-[30%] left-1/2 -translate-x-1/2"
-      }`}
-    >
-      <div
-        className={overlaySizeBySlug[slug] || "h-[20%] w-[30%]"}
-        style={{
-          backgroundColor: logoColorMap[logoColor] || "#1F2A44",
-          WebkitMaskImage: `url(${selectedLogoObject.image})`,
-          maskImage: `url(${selectedLogoObject.image})`,
-          WebkitMaskRepeat: "no-repeat",
-          maskRepeat: "no-repeat",
-          WebkitMaskPosition: "center",
-          maskPosition: "center",
-          WebkitMaskSize: "contain",
-          maskSize: "contain",
-        }}
-      />
-    </div>
-  );
-}
+    if (!hasLogoOverlay || !selectedLogoObject) return null;
 
     return (
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+      <div
+        className={`pointer-events-none absolute ${
+          overlayPositionBySlug[slug] || "top-[30%] left-1/2 -translate-x-1/2"
+        }`}
+      >
         <div
-          className="h-[38%] w-[38%]"
+          className={overlaySizeBySlug[slug] || "h-[20%] w-[30%]"}
           style={{
             backgroundColor: logoColorMap[logoColor] || "#1F2A44",
             WebkitMaskImage: `url(${selectedLogoObject.image})`,
@@ -332,40 +311,6 @@ const overlayImage = hasLogoOverlay
                   </select>
                 </div>
 
-                {selectedLogoObject && selectedLogoObject.slug !== "custom-logo" && (
-                  <div className="mt-4 rounded-[18px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
-                    <p className="mb-3 text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
-                      Logo Preview
-                    </p>
-
-                    <div className="flex items-center gap-4">
-                      <div
-                        className="h-20 w-20 bg-center bg-contain bg-no-repeat"
-                        style={{
-                          backgroundColor: logoColorMap[logoColor] || "#1F2A44",
-                          WebkitMaskImage: `url(${selectedLogoObject.image})`,
-                          maskImage: `url(${selectedLogoObject.image})`,
-                          WebkitMaskRepeat: "no-repeat",
-                          maskRepeat: "no-repeat",
-                          WebkitMaskPosition: "center",
-                          maskPosition: "center",
-                          WebkitMaskSize: "contain",
-                          maskSize: "contain",
-                        }}
-                      />
-
-                      <div>
-                        <p className="text-sm text-[#2F2F2F]">
-                          {selectedLogoObject.name}
-                        </p>
-                        <p className="text-xs text-[#8A8178]">
-                          Logo color: {logoColor}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
                 <div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
                   <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
                     Custom Details (optional)
@@ -461,10 +406,14 @@ const overlayImage = hasLogoOverlay
               className="max-h-[90vh] max-w-[90vw] object-contain"
             />
 
-            {showLogoOverlay && selectedLogoObject && (
-              <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            {hasLogoOverlay && selectedLogoObject && (
+              <div
+                className={`pointer-events-none absolute ${
+                  overlayPositionBySlug[slug] || "top-[30%] left-1/2 -translate-x-1/2"
+                }`}
+              >
                 <div
-                  className="h-[38%] w-[38%]"
+                  className={overlaySizeBySlug[slug] || "h-[20%] w-[30%]"}
                   style={{
                     backgroundColor: logoColorMap[logoColor] || "#1F2A44",
                     WebkitMaskImage: `url(${selectedLogoObject.image})`,
