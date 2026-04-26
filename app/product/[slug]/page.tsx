@@ -103,6 +103,8 @@ export default function ProductPage() {
     );
   }
 
+  const safeSlug = slug;
+
   const currentImage =
     product.images?.[selectedImage] ?? product.images?.[0] ?? "";
 
@@ -117,12 +119,12 @@ export default function ProductPage() {
     : currentImage;
 
   const currentImageClass =
-    productImageClassesByView[slug]?.[selectedImage] ??
-    productImageClassesByView[slug]?.[0] ??
+    productImageClassesByView[safeSlug]?.[selectedImage] ??
+    productImageClassesByView[safeSlug]?.[0] ??
     "max-h-[94%] max-w-[94%]";
 
   function handleAddToCart() {
-    if (!product || !slug) return;
+    if (!product || !safeSlug) return;
 
     if (!selectedLogo && !customDetails.trim()) {
       alert("Please select a design or add custom details.");
@@ -133,7 +135,7 @@ export default function ProductPage() {
 
     const newItem = {
       id: Date.now(),
-      slug,
+      slug: safeSlug,
       product: product.name,
       price: product.price,
       campName: customDetails,
@@ -142,7 +144,9 @@ export default function ProductPage() {
       quantity,
       image: overlayImage,
       logoSlug: selectedLogo || "custom-logo",
-      logoName: selectedLogoObject?.name || (customDetails.trim() ? "Custom Logo" : ""),
+      logoName:
+        selectedLogoObject?.name ||
+        (customDetails.trim() ? "Custom Logo" : ""),
       logoColor,
       placement,
     };
@@ -161,11 +165,12 @@ export default function ProductPage() {
     return (
       <div
         className={`pointer-events-none absolute ${
-          overlayPositionBySlug[slug] || "top-[30%] left-1/2 -translate-x-1/2"
+          overlayPositionBySlug[safeSlug] ||
+          "top-[30%] left-1/2 -translate-x-1/2"
         }`}
       >
         <div
-          className={overlaySizeBySlug[slug] || "h-[20%] w-[30%]"}
+          className={overlaySizeBySlug[safeSlug] || "h-[20%] w-[30%]"}
           style={{
             backgroundColor: logoColorMap[logoColor] || "#1F2A44",
             WebkitMaskImage: `url(${selectedLogoObject.image})`,
@@ -355,7 +360,9 @@ export default function ProductPage() {
                     type="number"
                     min="1"
                     value={quantity}
-                    onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
+                    onChange={(e) =>
+                      setQuantity(Math.max(1, Number(e.target.value)))
+                    }
                     className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
                   />
                 </div>
@@ -370,10 +377,16 @@ export default function ProductPage() {
 
               {added && (
                 <div className="flex gap-5 text-sm">
-                  <a href="/cart" className="underline underline-offset-4 transition hover:text-[#6F879E]">
+                  <a
+                    href="/cart"
+                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
+                  >
                     View Cart
                   </a>
-                  <a href="/shop" className="underline underline-offset-4 transition hover:text-[#6F879E]">
+                  <a
+                    href="/shop"
+                    className="underline underline-offset-4 transition hover:text-[#6F879E]"
+                  >
                     Continue Shopping
                   </a>
                 </div>
@@ -409,11 +422,12 @@ export default function ProductPage() {
             {hasLogoOverlay && selectedLogoObject && (
               <div
                 className={`pointer-events-none absolute ${
-                  overlayPositionBySlug[slug] || "top-[30%] left-1/2 -translate-x-1/2"
+                  overlayPositionBySlug[safeSlug] ||
+                  "top-[30%] left-1/2 -translate-x-1/2"
                 }`}
               >
                 <div
-                  className={overlaySizeBySlug[slug] || "h-[20%] w-[30%]"}
+                  className={overlaySizeBySlug[safeSlug] || "h-[20%] w-[30%]"}
                   style={{
                     backgroundColor: logoColorMap[logoColor] || "#1F2A44",
                     WebkitMaskImage: `url(${selectedLogoObject.image})`,
