@@ -140,9 +140,17 @@ export const logos: Logo[] = [
     style: "Icon",
   },
   {
-    slug: "pontiac-sporty-circle",
-    name: "Sporty Circle",
+    slug: "pontiac-sport-mascot",
+    name: "Sport Mascot",
     image: "/logos/pontiac-sporty-circle.png",
+    category: "Camp",
+    group: "Pontiac",
+    style: "Varsity",
+  },
+  {
+    slug: "pontiac-mascot",
+    name: "Pontiac Mascot",
+    image: "/logos/pontiac-mascot.png",
     category: "Camp",
     group: "Pontiac",
     style: "Varsity",
@@ -156,7 +164,6 @@ export const logos: Logo[] = [
     style: "Script",
   },
   
-   
   
 
   // CAMP — WESTMONT
