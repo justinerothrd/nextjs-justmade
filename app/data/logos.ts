@@ -150,7 +150,7 @@ export const logos: Logo[] = [
   {
     slug: "pontiac-mascot",
     name: "Pontiac Mascot",
-    image: "/logos/pontiac-mascot.png",
+    image: "/logos/pontiac-sport-mascot.png",
     category: "Camp",
     group: "Pontiac",
     style: "Varsity",
