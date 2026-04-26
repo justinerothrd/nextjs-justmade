@@ -154,7 +154,7 @@ export default function LogoPicker({
                 key={item.slug}
                 className={`rounded-[20px] border p-3 transition-all duration-300 ${
                   isSelected
-                    ? "border-[#6F879E] bg-[#F6F8FA]"
+  ? "border-[#6F879E] bg-[#F6F8FA] shadow-[0_0_0_1px_#6F879E]"
                     : "border-[#EAE7E2] bg-white hover:border-[#D6D1CB]"
                 }`}
               >
