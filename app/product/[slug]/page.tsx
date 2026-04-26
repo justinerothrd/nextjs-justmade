@@ -15,6 +15,7 @@ const logoColorMap: Record<string, string> = {
   Red: "#B23A3A",
   Black: "#111111",
 };
+
 const productImageClassesByView: Record<string, string[]> = {
   hoodie: ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]", "max-h-[90%] max-w-[90%]", "max-h-[92%] max-w-[92%]"],
   "quarter-zip": ["max-h-[94%] max-w-[94%]", "max-h-[88%] max-w-[88%]"],
@@ -88,11 +89,21 @@ export default function ProductPage() {
     );
   }
 
-  const currentImage = product.images?.[selectedImage] ?? product.images?.[0] ?? "";
+  const currentImage =
+    product.images?.[selectedImage] ?? product.images?.[0] ?? "";
+
+  const overlayImage =
+    product.blankImages?.[color] || currentImage;
+
   const currentImageClass =
     productImageClassesByView[slug]?.[selectedImage] ??
     productImageClassesByView[slug]?.[0] ??
     "max-h-[94%] max-w-[94%]";
+
+  const showLogoOverlay =
+    selectedLogoObject &&
+    selectedLogoObject.slug !== "custom-logo" &&
+    product.blankImages?.[color];
 
   function handleAddToCart() {
     if (!product || !slug) return;
@@ -113,7 +124,7 @@ export default function ProductPage() {
       size,
       color,
       quantity,
-      image: currentImage,
+      image: overlayImage,
       logoSlug: selectedLogo || "custom-logo",
       logoName: selectedLogoObject?.name || (customDetails.trim() ? "Custom Logo" : ""),
       logoColor,
@@ -126,6 +137,29 @@ export default function ProductPage() {
 
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
+  }
+
+  function LogoOverlay() {
+    if (!showLogoOverlay || !selectedLogoObject) return null;
+
+    return (
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div
+          className="h-[38%] w-[38%]"
+          style={{
+            backgroundColor: logoColorMap[logoColor] || "#1F2A44",
+            WebkitMaskImage: `url(${selectedLogoObject.image})`,
+            maskImage: `url(${selectedLogoObject.image})`,
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+            WebkitMaskPosition: "center",
+            maskPosition: "center",
+            WebkitMaskSize: "contain",
+            maskSize: "contain",
+          }}
+        />
+      </div>
+    );
   }
 
   return (
@@ -163,17 +197,19 @@ export default function ProductPage() {
             )}
 
             <div className="group flex aspect-square w-full items-center justify-center overflow-hidden rounded-[28px] border border-[#F0ECE6] bg-[#FBFAF8] p-4 sm:p-6">
-              {currentImage ? (
+              {overlayImage ? (
                 <button
                   type="button"
                   onClick={() => setZoomOpen(true)}
-                  className="flex h-full w-full cursor-zoom-in items-center justify-center"
+                  className="relative flex h-full w-full cursor-zoom-in items-center justify-center"
                 >
                   <img
-                    src={currentImage}
+                    src={overlayImage}
                     alt={product.name}
                     className={`${currentImageClass} object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
                   />
+
+                  <LogoOverlay />
                 </button>
               ) : (
                 <div className="text-sm text-gray-400">No image available</div>
@@ -228,83 +264,80 @@ export default function ProductPage() {
               </div>
 
               <div className="rounded-[24px] border border-[#EEEAE4] bg-white p-5">
-                
+                <LogoPicker
+                  logos={campLogos}
+                  selectedLogo={selectedLogo}
+                  onSelectLogo={setSelectedLogo}
+                />
 
-               <LogoPicker
-  logos={campLogos}
-  selectedLogo={selectedLogo}
-  onSelectLogo={setSelectedLogo}
-/>
+                <div className="mt-5">
+                  <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+                    Logo Color
+                  </label>
 
-{/* LOGO COLOR — MOVE UP HERE */}
-<div className="mt-5">
-  <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-    Logo Color
-  </label>
+                  <select
+                    value={logoColor}
+                    onChange={(e) => setLogoColor(e.target.value)}
+                    className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+                  >
+                    <option>Navy</option>
+                    <option>White</option>
+                    <option>Light Blue</option>
+                    <option>Pink</option>
+                    <option>Green</option>
+                    <option>Red</option>
+                    <option>Black</option>
+                    <option>Custom / Add in details</option>
+                  </select>
+                </div>
 
-  <select
-    value={logoColor}
-    onChange={(e) => setLogoColor(e.target.value)}
-    className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
-  >
-    <option>Navy</option>
-    <option>White</option>
-    <option>Light Blue</option>
-    <option>Pink</option>
-    <option>Green</option>
-    <option>Red</option>
-    <option>Black</option>
-    <option>Custom / Add in details</option>
-  </select>
-</div>
-{selectedLogoObject && selectedLogoObject.slug !== "custom-logo" && (
-  <div className="mt-4 rounded-[18px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
-    <p className="mb-3 text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
-      Logo Preview
-    </p>
+                {selectedLogoObject && selectedLogoObject.slug !== "custom-logo" && (
+                  <div className="mt-4 rounded-[18px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
+                    <p className="mb-3 text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
+                      Logo Preview
+                    </p>
 
-    <div className="flex items-center gap-4">
-      <div
-        className="h-20 w-20 bg-center bg-contain bg-no-repeat"
-        style={{
-          backgroundColor:
-            logoColorMap[logoColor] || "#1F2A44",
-          WebkitMaskImage: `url(${selectedLogoObject.image})`,
-          maskImage: `url(${selectedLogoObject.image})`,
-          WebkitMaskRepeat: "no-repeat",
-          maskRepeat: "no-repeat",
-          WebkitMaskPosition: "center",
-          maskPosition: "center",
-          WebkitMaskSize: "contain",
-          maskSize: "contain",
-        }}
-      />
+                    <div className="flex items-center gap-4">
+                      <div
+                        className="h-20 w-20 bg-center bg-contain bg-no-repeat"
+                        style={{
+                          backgroundColor: logoColorMap[logoColor] || "#1F2A44",
+                          WebkitMaskImage: `url(${selectedLogoObject.image})`,
+                          maskImage: `url(${selectedLogoObject.image})`,
+                          WebkitMaskRepeat: "no-repeat",
+                          maskRepeat: "no-repeat",
+                          WebkitMaskPosition: "center",
+                          maskPosition: "center",
+                          WebkitMaskSize: "contain",
+                          maskSize: "contain",
+                        }}
+                      />
 
-      <div>
-        <p className="text-sm text-[#2F2F2F]">
-          {selectedLogoObject.name}
-        </p>
-        <p className="text-xs text-[#8A8178]">
-          Logo color: {logoColor}
-        </p>
-      </div>
-    </div>
-  </div>
-)}
-{/* CUSTOMIZATION BOX — NOW BELOW */}
-<div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
-  <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
-    Custom Details (optional)
-  </label>
+                      <div>
+                        <p className="text-sm text-[#2F2F2F]">
+                          {selectedLogoObject.name}
+                        </p>
+                        <p className="text-xs text-[#8A8178]">
+                          Logo color: {logoColor}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
-  <textarea
-    placeholder="Add camp, initials, custom logo request, or special notes"
-    value={customDetails}
-    onChange={(e) => setCustomDetails(e.target.value)}
-    rows={2}
-    className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none transition placeholder:text-[#A8A29E] focus:border-[#6F879E]"
-  />
-</div>
+                <div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
+                  <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
+                    Custom Details (optional)
+                  </label>
+
+                  <textarea
+                    placeholder="Add camp, initials, custom logo request, or special notes"
+                    value={customDetails}
+                    onChange={(e) => setCustomDetails(e.target.value)}
+                    rows={2}
+                    className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none transition placeholder:text-[#A8A29E] focus:border-[#6F879E]"
+                  />
+                </div>
 
                 <p className="mt-4 text-sm text-[#8A8178]">
                   Don’t see your camp or logo? Add it in the custom details box.
@@ -364,7 +397,7 @@ export default function ProductPage() {
         </div>
       </div>
 
-      {zoomOpen && currentImage && (
+      {zoomOpen && overlayImage && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
           onClick={() => setZoomOpen(false)}
@@ -377,12 +410,35 @@ export default function ProductPage() {
             Close
           </button>
 
-          <img
-            src={currentImage}
-            alt={product.name}
-            className="max-h-[90vh] max-w-[90vw] object-contain"
+          <div
+            className="relative flex h-[90vh] w-[90vw] items-center justify-center"
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            <img
+              src={overlayImage}
+              alt={product.name}
+              className="max-h-[90vh] max-w-[90vw] object-contain"
+            />
+
+            {showLogoOverlay && selectedLogoObject && (
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                <div
+                  className="h-[38%] w-[38%]"
+                  style={{
+                    backgroundColor: logoColorMap[logoColor] || "#1F2A44",
+                    WebkitMaskImage: `url(${selectedLogoObject.image})`,
+                    maskImage: `url(${selectedLogoObject.image})`,
+                    WebkitMaskRepeat: "no-repeat",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskPosition: "center",
+                    maskPosition: "center",
+                    WebkitMaskSize: "contain",
+                    maskSize: "contain",
+                  }}
+                />
+              </div>
+            )}
+          </div>
         </div>
       )}
     </main>
