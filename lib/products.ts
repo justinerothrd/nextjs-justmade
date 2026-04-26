@@ -6,6 +6,7 @@ export type Product = {
   colors: string[];
   sizes: string[];
   logoGroup?: string;
+  blankImages?: Record<string, string>; // ✅ NEW
 };
 
 export const products = {
@@ -23,6 +24,9 @@ export const products = {
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
+    blankImages: {
+      "Heather Gray": "/hoodie-grey.png",
+    },
   },
 
   "quarter-zip": {
@@ -33,26 +37,48 @@ export const products = {
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
+    blankImages: {
+      "Heather Gray": "/quarterzip-grey.png",
+    },
   },
 
   "tank-top": {
     name: "Custom Tank Top",
     price: "$40",
     description: "A lightweight custom tank perfect for hot summer days.",
-    images: ["/timberlake-tank.png", "/WM81tank.png", "/THC-tankgrey.png", "/tank with script.png", "/tank-preview.png"],
+    images: [
+      "/timberlake-tank.png",
+      "/WM81tank.png",
+      "/THC-tankgrey.png",
+      "/tank with script.png",
+      "/tank-preview.png",
+    ],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
+    blankImages: {
+      White: "/tank-white.png",
+      "Heather Gray": "/tank-grey.png",
+      Navy: "/tank-navy.png",
+    },
   },
 
   "custom-tee": {
     name: "Custom Tee",
     price: "$35",
     description: "A classic custom tee designed for camp, travel, and summer memories.",
-    images: ["/THbeartee.png", "/hotel westmont.png", "/THCsuperpufftee.png", "/timberlaketee.jpg"],
+    images: [
+      "/THbeartee.png",
+      "/hotel westmont.png",
+      "/THCsuperpufftee.png",
+      "/timberlaketee.jpg",
+    ],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
+    blankImages: {
+      White: "/white-tee.png",
+    },
   },
 
   sweatpants: {
