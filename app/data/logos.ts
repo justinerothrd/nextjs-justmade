@@ -105,7 +105,7 @@ export const logos: Logo[] = [
     image: "/logos/pontiac-running-club.png",
     category: "Camp",
     group: "Pontiac",
-    style: "Classic",
+    style: "Icon",
   },
   {
     slug: "camp-pontiac",
@@ -113,7 +113,7 @@ export const logos: Logo[] = [
     image: "/logos/camp.pontiac.png",
     category: "Camp",
     group: "Pontiac",
-    style: "Varsity",
+    style: "Minimal",
   },
   {
     slug: "pontiac-varsity-solid",
@@ -137,7 +137,7 @@ export const logos: Logo[] = [
     image: "/logos/pontiac-runner22.png",
     category: "Camp",
     group: "Pontiac",
-    style: "Classic",
+    style: "Icon",
   },
   {
     slug: "pontiac-sporty-circle",
@@ -145,7 +145,7 @@ export const logos: Logo[] = [
     image: "/logos/pontiac-sporty-circle.png",
     category: "Camp",
     group: "Pontiac",
-    style: "Classic",
+    style: "Varsity",
   },
   {
     slug: "pontiac-script",
