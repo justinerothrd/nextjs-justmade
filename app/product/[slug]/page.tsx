@@ -160,32 +160,39 @@ export default function ProductPage() {
   }
 
   function LogoOverlay() {
-    if (!hasLogoOverlay || !selectedLogoObject) return null;
+  if (!hasLogoOverlay || !selectedLogoObject) return null;
 
-    return (
+  const position = {
+    hoodie: { top: "34%", left: "50%", width: "26%", height: "18%" },
+    "quarter-zip": { top: "31%", left: "50%", width: "24%", height: "16%" },
+    "tank-top": { top: "27%", left: "50%", width: "28%", height: "17%" },
+    "custom-tee": { top: "31%", left: "50%", width: "30%", height: "18%" },
+  }[safeSlug] || { top: "30%", left: "50%", width: "28%", height: "18%" };
+
+  return (
+    <div className="pointer-events-none absolute inset-0">
       <div
-        className={`pointer-events-none absolute ${
-          overlayPositionBySlug[safeSlug] ||
-          "top-[30%] left-1/2 -translate-x-1/2"
-        }`}
-      >
-        <div
-          className={overlaySizeBySlug[safeSlug] || "h-[20%] w-[30%]"}
-          style={{
-            backgroundColor: logoColorMap[logoColor] || "#1F2A44",
-            WebkitMaskImage: `url(${selectedLogoObject.image})`,
-            maskImage: `url(${selectedLogoObject.image})`,
-            WebkitMaskRepeat: "no-repeat",
-            maskRepeat: "no-repeat",
-            WebkitMaskPosition: "center",
-            maskPosition: "center",
-            WebkitMaskSize: "contain",
-            maskSize: "contain",
-          }}
-        />
-      </div>
-    );
-  }
+        style={{
+          position: "absolute",
+          top: position.top,
+          left: position.left,
+          width: position.width,
+          height: position.height,
+          transform: "translateX(-50%)",
+          backgroundColor: logoColorMap[logoColor] || "#1F2A44",
+          WebkitMaskImage: `url(${selectedLogoObject.image})`,
+          maskImage: `url(${selectedLogoObject.image})`,
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+          WebkitMaskPosition: "center",
+          maskPosition: "center",
+          WebkitMaskSize: "contain",
+          maskSize: "contain",
+        }}
+      />
+    </div>
+  );
+}
 
   return (
     <main className="min-h-screen bg-white px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-14">
