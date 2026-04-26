@@ -53,7 +53,7 @@ export const logos: Logo[] = [
   {
     slug: "thc-bear",
     name: "THC Bear",
-    image: "/logos/public/THC-bear.png",
+    image: "/logos/THC-bear.png",
     category: "Camp",
     group: "Tyler Hill",
     style: "Varsity",
