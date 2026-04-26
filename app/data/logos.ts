@@ -100,6 +100,22 @@ export const logos: Logo[] = [
     style: "Varsity",
   },
   {
+    slug: "pontiac-running-club",
+    name: "Running Club",
+    image: "/logos/pontiac-running-club.png",
+    category: "Camp",
+    group: "Pontiac",
+    style: "Classic",
+  },
+  {
+    slug: "camp-pontiac",
+    name: "Camp Pontiac",
+    image: "/logos/camp.pontiac.png",
+    category: "Camp",
+    group: "Pontiac",
+    style: "Varsity",
+  },
+  {
     slug: "pontiac-varsity-solid",
     name: "Varsity Solid",
     image: "/logos/pontiac-varisty-solid.png",
