@@ -92,8 +92,11 @@ export default function ProductPage() {
   const currentImage =
     product.images?.[selectedImage] ?? product.images?.[0] ?? "";
 
-  const overlayImage =
-    product.blankImages?.[color] || currentImage;
+  const showLogoOverlay = Boolean(hasLogoOverlay);
+
+const overlayImage = hasLogoOverlay
+  ? product.blankImages?.[color]
+  : currentImage;
 
   const currentImageClass =
     productImageClassesByView[slug]?.[selectedImage] ??
@@ -140,7 +143,45 @@ export default function ProductPage() {
   }
 
   function LogoOverlay() {
-    if (!showLogoOverlay || !selectedLogoObject) return null;
+  if (!showLogoOverlay || !selectedLogoObject) return null;
+
+  const overlayPositionBySlug: Record<string, string> = {
+    hoodie: "top-[31%] left-1/2 -translate-x-1/2",
+    "quarter-zip": "top-[30%] left-1/2 -translate-x-1/2",
+    "tank-top": "top-[28%] left-1/2 -translate-x-1/2",
+    "custom-tee": "top-[30%] left-1/2 -translate-x-1/2",
+  };
+
+  const overlaySizeBySlug: Record<string, string> = {
+    hoodie: "h-[22%] w-[30%]",
+    "quarter-zip": "h-[20%] w-[28%]",
+    "tank-top": "h-[18%] w-[30%]",
+    "custom-tee": "h-[20%] w-[32%]",
+  };
+
+  return (
+    <div
+      className={`pointer-events-none absolute ${
+        overlayPositionBySlug[slug] || "top-[30%] left-1/2 -translate-x-1/2"
+      }`}
+    >
+      <div
+        className={overlaySizeBySlug[slug] || "h-[20%] w-[30%]"}
+        style={{
+          backgroundColor: logoColorMap[logoColor] || "#1F2A44",
+          WebkitMaskImage: `url(${selectedLogoObject.image})`,
+          maskImage: `url(${selectedLogoObject.image})`,
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+          WebkitMaskPosition: "center",
+          maskPosition: "center",
+          WebkitMaskSize: "contain",
+          maskSize: "contain",
+        }}
+      />
+    </div>
+  );
+}
 
     return (
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
