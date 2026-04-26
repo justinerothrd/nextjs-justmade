@@ -82,7 +82,6 @@ export const logos: Logo[] = [
     group: "Tyler Hill",
     style: "Classic",
   },
-
   // CAMP — PONTIAC
   {
     slug: "pontiac-varsity-arch",
@@ -100,9 +99,9 @@ export const logos: Logo[] = [
     group: "Pontiac",
     style: "Varsity",
   },
-  },
-  slug: "pontiac-varsity-solid",
-    name: "Varsity solid",
+  {
+    slug: "pontiac-varsity-solid",
+    name: "Varsity Solid",
     image: "/logos/pontiac-varsity-solid.png",
     category: "Camp",
     group: "Pontiac",
@@ -116,16 +115,16 @@ export const logos: Logo[] = [
     group: "Pontiac",
     style: "Minimal",
   },
-  },
-  slug: "pontiac-runner-22",
-    name: "Runner '22",
+  {
+    slug: "pontiac-runner-22",
+    name: "Runner ’22",
     image: "/logos/pontiac-runner22.png",
     category: "Camp",
     group: "Pontiac",
     style: "Classic",
   },
-  },
-  slug: "pontiac-sporty-circle",
+  {
+    slug: "pontiac-sporty-circle",
     name: "Sporty Circle",
     image: "/logos/pontiac-sporty-circle.png",
     category: "Camp",
@@ -140,6 +139,9 @@ export const logos: Logo[] = [
     group: "Pontiac",
     style: "Script",
   },
+  
+   
+  
 
   // CAMP — WESTMONT
   {
