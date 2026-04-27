@@ -4,48 +4,25 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import type { Logo } from "@/app/data/logos";
 
-const styles = [
-  "All",
-  "Varsity",
-  "Minimal",
-  "Script",
-  "Classic",
-  "Icon",
-  "Custom",
-] as const;
+const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon", "Custom"] as const;
 
 type LogoPickerProps = {
   logos: Logo[];
   selectedLogo: string;
   onSelectLogo: (slug: string) => void;
   defaultGroup?: string;
-
-  // Optional so this will NOT break pages that don't pass these yet
   productType?: string;
   selectedColor?: string;
 };
-
-function cleanColorName(color?: string) {
-  return (color || "")
-    .toLowerCase()
-    .replace(/\s+/g, "")
-    .replace(/[^a-z0-9-]/g, "");
-}
 
 export default function LogoPicker({
   logos,
   selectedLogo,
   onSelectLogo,
   defaultGroup,
-  productType,
-  selectedColor,
 }: LogoPickerProps) {
-  const [activeStyle, setActiveStyle] =
-    useState<(typeof styles)[number]>("All");
-
-  const [selectedGroup, setSelectedGroup] = useState<string>(
-    defaultGroup || "All"
-  );
+  const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
+  const [selectedGroup, setSelectedGroup] = useState(defaultGroup || "All");
 
   const pickerCategory = logos[0]?.category;
 
@@ -54,9 +31,7 @@ export default function LogoPicker({
       ? "Select School"
       : pickerCategory === "Team"
       ? "Select Team"
-      : pickerCategory === "Custom"
-      ? "Select Type"
-      : "Select College";
+      : "Select Camp";
 
   const groups = useMemo(() => {
     return [
@@ -70,9 +45,7 @@ export default function LogoPicker({
   const filtered = useMemo(() => {
     return logos
       .filter((item) => {
-        const matchStyle =
-          activeStyle === "All" || item.style === activeStyle;
-
+        const matchStyle = activeStyle === "All" || item.style === activeStyle;
         const matchGroup =
           selectedGroup === "All" ||
           item.group === selectedGroup ||
@@ -87,34 +60,8 @@ export default function LogoPicker({
       });
   }, [logos, activeStyle, selectedGroup]);
 
-  const selectedLogoItem = logos.find((logo) => logo.slug === selectedLogo);
-
-  const blankImage =
-    productType && selectedColor
-      ? `/blanks/${productType}-${cleanColorName(selectedColor)}.png`
-      : null;
-
   return (
     <div className="mt-2">
-
-              {selectedLogoItem && selectedLogoItem.slug !== "custom-logo" && (
-                <Image
-                  src={selectedLogoItem.image}
-                  alt={selectedLogoItem.name}
-                  width={115}
-                  height={115}
-                  className="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 object-contain"
-                />
-              )}
-            </div>
-          </div>
-
-          <p className="mt-4 text-center text-[12px] text-[#8A8178]">
-            Final placement and sizing will be confirmed before production.
-          </p>
-        </div>
-      )}
-
       {!defaultGroup && (
         <div className="mb-6 border-b border-[#ECE7E1] pb-5">
           <p className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
