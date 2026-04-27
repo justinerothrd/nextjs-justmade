@@ -142,31 +142,32 @@ export default function ProductPage() {
     currentImage;
 
   function handleAddToCart() {
-    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+  if (!product || !slug) return;
 
-    const newItem = {
-      id: Date.now(),
-      slug,
-      product: product.name,
-      price: product.price,
-      size,
-      color,
-      quantity,
-      image: currentImage,
-      logoSlug: selectedLogo,
-      logoName: selectedLogoObject?.name || "",
-      logoColor,
-      placement,
-      customDetails,
-    };
+  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-    localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
-    window.dispatchEvent(new Event("cartUpdated"));
-    window.dispatchEvent(new Event("openMiniCart"));
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
-  }
+  const newItem = {
+    id: Date.now(),
+    slug,
+    product: product.name,
+    price: product.price,
+    size,
+    color,
+    quantity,
+    image: currentImage,
+    logoSlug: selectedLogo,
+    logoName: selectedLogoObject?.name || "",
+    logoColor,
+    placement,
+    customDetails,
+  };
 
+  localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
+  window.dispatchEvent(new Event("cartUpdated"));
+  window.dispatchEvent(new Event("openMiniCart"));
+  setAdded(true);
+  setTimeout(() => setAdded(false), 2000);
+}
   return (
     <main className="min-h-screen bg-white px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-14">
       <div className="mx-auto max-w-6xl">
