@@ -23,6 +23,7 @@ export default function LogoPicker({
 }: LogoPickerProps) {
   const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
   const [selectedGroup, setSelectedGroup] = useState(defaultGroup || "All");
+  const [zoomLogo, setZoomLogo] = useState<Logo | null>(null);
 
   const pickerCategory = logos[0]?.category;
 
@@ -157,7 +158,11 @@ export default function LogoPicker({
                     alt={item.name}
                     width={130}
                     height={90}
-                    className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.08]"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setZoomLogo(item);
+                    }}
+                    className="max-h-full max-w-full cursor-zoom-in object-contain transition-transform duration-500 group-hover:scale-[1.08]"
                   />
                 )}
               </button>
@@ -185,6 +190,34 @@ export default function LogoPicker({
       <p className="mt-4 text-[12px] text-[#8A8178]">
         Don’t see your camp? Add it below.
       </p>
+
+      {zoomLogo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+          onClick={() => setZoomLogo(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setZoomLogo(null)}
+            className="absolute right-6 top-6 text-[12px] uppercase tracking-[0.18em] text-white"
+          >
+            Close
+          </button>
+
+          <div
+            className="flex h-[520px] w-[520px] max-w-[90vw] items-center justify-center rounded-[28px] bg-white p-10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={zoomLogo.image}
+              alt={zoomLogo.name}
+              width={420}
+              height={420}
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
