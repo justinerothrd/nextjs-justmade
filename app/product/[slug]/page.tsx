@@ -16,16 +16,16 @@ const logoColorMap: Record<string, string> = {
   Black: "#111111",
 };
 
-const productImageClassesByView: Record<string, string[]> = {
-  hoodie: ["max-h-[94%] max-w-[94%]"],
-  "quarter-zip": ["max-h-[94%] max-w-[94%]"],
-  "tank-top": ["max-h-[88%] max-w-[88%]"],
-  "custom-tee": ["max-h-[88%] max-w-[88%]"],
-  "custom-shorts": ["max-h-[90%] max-w-[90%]"],
-  sleepwear: ["max-h-[100%] max-w-[100%]"],
-  "sleepwear-set": ["max-h-[96%] max-w-[96%]"],
-  "accessories-slides": ["max-h-[86%] max-w-[86%]"],
-  "accessories-socks": ["max-h-[92%] max-w-[92%]"],
+const colorFileMap: Record<string, string> = {
+  White: "white",
+  "Heather Gray": "grey",
+  Gray: "grey",
+  Grey: "grey",
+  Navy: "navy",
+  Black: "black",
+  Green: "green",
+  "Light Blue": "lightblue",
+  Red: "red",
 };
 
 export default function ProductPage() {
@@ -54,6 +54,67 @@ export default function ProductPage() {
     [selectedLogo]
   );
 
+  const productTypeMap: Record<string, string> = {
+    hoodie: "hoodie",
+    "quarter-zip": "quarterzip",
+    "tank-top": "tank",
+    "custom-tee": "tee",
+    "custom-shorts": "bikeshort",
+    sweatpants: "sweatpants",
+    sleepwear: "pajama",
+    "sleepwear-set": "pajama",
+    "accessories-slides": "slides",
+    "accessories-socks": "socks",
+  };
+
+  const placementOptionsBySlug: Record<string, string[]> = {
+    hoodie: ["Left Chest", "Full Front", "Back", "Sleeve"],
+    "quarter-zip": ["Left Chest", "Full Front", "Back", "Sleeve"],
+    "tank-top": ["Full Front", "Left Chest", "Back"],
+    "custom-tee": ["Full Front", "Left Chest", "Back", "Sleeve"],
+    sweatpants: ["Left Leg", "Right Leg", "Hip", "Pocket Area"],
+    "custom-shorts": ["Left Leg", "Right Leg", "Hip"],
+    sleepwear: ["Left Leg", "Right Leg", "Hip"],
+    "sleepwear-set": ["Top Front", "Shorts Leg", "Top + Shorts"],
+    "accessories-slides": ["Top of Slides", "Side of Slides"],
+    "accessories-socks": ["Outer Ankle", "Top of Sock"],
+  };
+
+  const safeSlug = slug || "";
+  const productType = productTypeMap[safeSlug] || "";
+  const placementOptions =
+    placementOptionsBySlug[safeSlug] || ["Full Front", "Left Chest", "Back"];
+
+  const currentImage = product?.images?.[selectedImage] ?? "";
+
+  const inferredBlankImage =
+    productType && colorFileMap[color]
+      ? `/blanks/${productType}-${colorFileMap[color]}.png`
+      : "";
+
+  const previewImage =
+    product?.blankImages?.[color] || inferredBlankImage || currentImage;
+
+  const placementStyles: Record<string, string> = {
+    "Full Front":
+      "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34%]",
+    "Left Chest":
+      "top-[38%] left-[43%] -translate-x-1/2 -translate-y-1/2 w-[13%]",
+    Back: "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34%]",
+    Sleeve: "top-[45%] left-[72%] -translate-x-1/2 -translate-y-1/2 w-[10%]",
+    "Left Leg": "top-[62%] left-[42%] -translate-x-1/2 w-[16%]",
+    "Right Leg": "top-[62%] left-[58%] -translate-x-1/2 w-[16%]",
+    Hip: "top-[48%] left-[43%] -translate-x-1/2 w-[14%]",
+    "Pocket Area": "top-[48%] left-[43%] -translate-x-1/2 w-[14%]",
+    "Top Front": "top-[34%] left-1/2 -translate-x-1/2 w-[24%]",
+    "Shorts Leg": "top-[68%] left-[58%] -translate-x-1/2 w-[16%]",
+    "Top + Shorts": "top-[34%] left-1/2 -translate-x-1/2 w-[24%]",
+    "Top of Slides": "top-[42%] left-1/2 -translate-x-1/2 w-[22%]",
+    "Side of Slides": "top-[50%] left-[62%] -translate-x-1/2 w-[18%]",
+    "Outer Ankle": "top-[70%] left-[55%] -translate-x-1/2 w-[14%]",
+    "Top of Sock": "top-[25%] left-1/2 -translate-x-1/2 w-[14%]",
+  };
+
   useEffect(() => {
     if (product) {
       setSelectedImage(0);
@@ -64,68 +125,15 @@ export default function ProductPage() {
     }
   }, [product]);
 
-  if (!slug || !product) {
-    return <div>Product not found</div>;
-  }
-
-  const currentImage = product.images?.[selectedImage] ?? "";
-
-  // 🔥 PRODUCT TYPE MAP (YOU ALREADY HAD)
-  const productTypeMap: Record<string, string> = {
-    hoodie: "hoodie",
-    "quarter-zip": "quarterzip",
-    "tank-top": "tank",
-    "custom-tee": "tee",
-    "custom-shorts": "bikeshort",
-    sleepwear: "pajama",
-    "sleepwear-set": "pajama",
-    "accessories-slides": "slides",
-    "accessories-socks": "socks",
-  };
-  const placementStyles: Record<string, string> = {
-  "Full Front": "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45%]",
-  "Left Chest": "top-[32%] left-[38%] -translate-x-1/2 -translate-y-1/2 w-[18%]",
-  "Back": "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45%]",
-  "Sleeve": "top-[45%] left-[75%] -translate-x-1/2 -translate-y-1/2 w-[12%]",
-
-  "Left Leg": "top-[60%] left-[40%] w-[20%]",
-  "Right Leg": "top-[60%] left-[60%] w-[20%]",
-  "Hip": "top-[55%] left-[50%] w-[18%]",
-
-  "Top Front": "top-[30%] left-[50%] w-[30%]",
-  "Shorts Leg": "top-[65%] left-[50%] w-[20%]",
-
-  "Top of Slides": "top-[40%] left-[50%] w-[25%]",
-  "Side of Slides": "top-[50%] left-[65%] w-[20%]",
-
-  "Outer Ankle": "top-[75%] left-[50%] w-[15%]",
-  "Top of Sock": "top-[20%] left-[50%] w-[15%]",
-};
-
-  // ✅ NEW: PLACEMENT OPTIONS
-  const placementOptionsBySlug: Record<string, string[]> = {
-    hoodie: ["Left Chest", "Full Front", "Back", "Sleeve"],
-    "quarter-zip": ["Left Chest", "Full Front", "Back", "Sleeve"],
-    "tank-top": ["Full Front", "Left Chest", "Back"],
-    "custom-tee": ["Full Front", "Left Chest", "Back", "Sleeve"],
-
-    sweatpants: ["Left Leg", "Right Leg", "Hip", "Pocket Area"],
-    "custom-shorts": ["Left Leg", "Right Leg", "Hip"],
-    sleepwear: ["Left Leg", "Right Leg", "Hip"],
-    "sleepwear-set": ["Top Front", "Shorts Leg", "Top + Shorts"],
-    "accessories-slides": ["Top of Slides", "Side of Slides"],
-    "accessories-socks": ["Outer Ankle", "Top of Sock"],
-  };
-
-  const placementOptions =
-    placementOptionsBySlug[slug] || ["Full Front", "Left Chest", "Back"];
-
-  // ✅ set default placement when product changes
   useEffect(() => {
     if (placementOptions.length > 0) {
       setPlacement(placementOptions[0]);
     }
-  }, [slug]);
+  }, [safeSlug]);
+
+  if (!slug || !product) {
+    return <div>Product not found</div>;
+  }
 
   function handleAddToCart() {
     if (!product || !slug) return;
@@ -156,72 +164,135 @@ export default function ProductPage() {
 
   return (
     <main className="min-h-screen bg-white px-4 py-10">
-      <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-10">
-
-        {/* IMAGE */}
+      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
         <div className="flex justify-center">
-          <img
-            src={currentImage}
-            className="max-h-[400px] object-contain"
-          />
+          <img src={currentImage} className="max-h-[500px] object-contain" />
         </div>
 
-        {/* INFO */}
         <div>
           <h1 className="text-2xl">{product.name}</h1>
           <p className="text-lg">{product.price}</p>
 
-          {/* SIZE */}
-          <select value={size} onChange={(e) => setSize(e.target.value)}>
-            {product.sizes.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </select>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <select value={size} onChange={(e) => setSize(e.target.value)}>
+              {product.sizes.map((s) => (
+                <option key={s}>{s}</option>
+              ))}
+            </select>
 
-          {/* COLOR */}
-          <select value={color} onChange={(e) => setColor(e.target.value)}>
-            {product.colors.map((c) => (
-              <option key={c}>{c}</option>
-            ))}
-          </select>
+            <select value={color} onChange={(e) => setColor(e.target.value)}>
+              {product.colors.map((c) => (
+                <option key={c}>{c}</option>
+              ))}
+            </select>
 
-          {/* ✅ NEW: PLACEMENT DROPDOWN */}
-          <select
-            value={placement}
-            onChange={(e) => setPlacement(e.target.value)}
+            <select
+              value={placement}
+              onChange={(e) => setPlacement(e.target.value)}
+            >
+              {placementOptions.map((option) => (
+                <option key={option}>{option}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mt-5 rounded-[28px] border border-[#EEEAE4] bg-[#FBFAF8] p-6 text-center">
+            <p className="mb-4 text-[11px] uppercase tracking-[0.25em] text-[#8A8178]">
+              Preview
+            </p>
+
+            <div className="relative mx-auto flex h-[260px] max-w-[360px] items-center justify-center">
+              <img
+                src={previewImage}
+                alt={`${product.name} preview`}
+                className="max-h-full max-w-full object-contain"
+              />
+
+              {selectedLogoObject &&
+                selectedLogoObject.slug !== "custom-logo" && (
+                  <div
+                    className={`absolute ${
+                      placementStyles[placement] ||
+                      "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30%]"
+                    }`}
+                    style={{
+                      backgroundColor: logoColorMap[logoColor] || "#1F2A44",
+                      WebkitMaskImage: `url(${selectedLogoObject.image})`,
+                      maskImage: `url(${selectedLogoObject.image})`,
+                      WebkitMaskRepeat: "no-repeat",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskPosition: "center",
+                      maskPosition: "center",
+                      WebkitMaskSize: "contain",
+                      maskSize: "contain",
+                      aspectRatio: "1 / 1",
+                    }}
+                  />
+                )}
+            </div>
+
+            <p className="mt-4 text-xs text-[#8A8178]">
+              Final placement and sizing will be confirmed before production.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <LogoPicker
+              logos={campLogos}
+              selectedLogo={selectedLogo}
+              onSelectLogo={setSelectedLogo}
+              productType={productType}
+              selectedColor={color}
+            />
+          </div>
+
+          <div className="mt-5">
+            <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+              Logo Color
+            </label>
+            <select
+              value={logoColor}
+              onChange={(e) => setLogoColor(e.target.value)}
+              className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+            >
+              {Object.keys(logoColorMap).map((c) => (
+                <option key={c}>{c}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
+            <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
+              Custom Details (optional)
+            </label>
+            <textarea
+              value={customDetails}
+              onChange={(e) => setCustomDetails(e.target.value)}
+              rows={2}
+              placeholder="Add camp, initials, custom logo request, or special notes"
+              className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none transition placeholder:text-[#A8A29E] focus:border-[#6F879E]"
+            />
+          </div>
+
+          <div className="mt-5">
+            <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+              Quantity
+            </label>
+            <input
+              type="number"
+              min="1"
+              value={quantity}
+              onChange={(e) =>
+                setQuantity(Math.max(1, Number(e.target.value)))
+              }
+              className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+            />
+          </div>
+
+          <button
+            onClick={handleAddToCart}
+            className="mt-5 w-full rounded-full bg-[#5F7A94] py-3.5 text-sm font-medium text-white transition hover:bg-[#536C84]"
           >
-            {placementOptions.map((option) => (
-              <option key={option}>{option}</option>
-            ))}
-          </select>
-
-          {/* LOGO PICKER */}
-          <LogoPicker
-            logos={campLogos}
-            selectedLogo={selectedLogo}
-            onSelectLogo={setSelectedLogo}
-            productType={productTypeMap[slug]}
-            selectedColor={color}
-          />
-
-          {/* LOGO COLOR */}
-          <select
-            value={logoColor}
-            onChange={(e) => setLogoColor(e.target.value)}
-          >
-            {Object.keys(logoColorMap).map((c) => (
-              <option key={c}>{c}</option>
-            ))}
-          </select>
-
-          {/* CUSTOM */}
-          <textarea
-            value={customDetails}
-            onChange={(e) => setCustomDetails(e.target.value)}
-          />
-
-          {/* ADD */}
-          <button onClick={handleAddToCart}>
             {added ? "Added ✓" : "Add to Cart"}
           </button>
         </div>
