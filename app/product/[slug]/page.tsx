@@ -84,23 +84,24 @@ export default function ProductPage() {
   };
 
   function handleAddToCart() {
-    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+  if (!product || !slug) return;
 
-    const newItem = {
-      id: Date.now(),
-      slug,
-      product: product.name,
-      price: product.price,
-      size,
-      color,
-      quantity,
-      image: currentImage,
-      logoSlug: selectedLogo,
-      logoColor,
-      placement,
-      customDetails,
-    };
+  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
+  const newItem = {
+    id: Date.now(),
+    slug,
+    product: product.name,
+    price: product.price,
+    size,
+    color,
+    quantity,
+    image: currentImage,
+    logoSlug: selectedLogo,
+    logoColor,
+    placement,
+    customDetails,
+  };
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
     window.dispatchEvent(new Event("cartUpdated"));
     window.dispatchEvent(new Event("openMiniCart"));
