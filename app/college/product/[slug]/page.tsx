@@ -106,7 +106,7 @@ export default function ProductPage() {
       slug,
       product: product.name,
       price: product.price,
-      campName: customDetails,
+      collegeName: customDetails,
       size,
       color,
       quantity,
