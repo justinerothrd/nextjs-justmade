@@ -12,7 +12,7 @@ export type Product = {
 export const products: Record<string, Product> = {
   hoodie: {
     name: "Custom Hoodie",
-    price: "$70",
+    price: "$60",
     description: "A cozy custom hoodie for chilly camp nights and cool mornings.",
     images: [
       "/skims hoodie front.png",
@@ -31,7 +31,7 @@ export const products: Record<string, Product> = {
 
   "quarter-zip": {
     name: "Custom 1/4 Zip",
-    price: "$65",
+    price: "$60",
     description: "A polished quarter zip that layers easily for camp, travel, and everyday wear.",
     images: ["/THCquarterzipgrey.png", "/THCquarterzipnavy.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
@@ -65,7 +65,7 @@ export const products: Record<string, Product> = {
 
   "custom-tee": {
     name: "Custom Tee",
-    price: "$35",
+    price: "$38",
     description: "A classic custom tee designed for camp, travel, and summer memories.",
     images: [
       "/THbeartee.png",
