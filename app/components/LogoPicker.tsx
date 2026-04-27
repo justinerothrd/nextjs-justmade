@@ -56,7 +56,7 @@ export default function LogoPicker({
       ? "Select Team"
       : pickerCategory === "Custom"
       ? "Select Type"
-      : "Select Camp";
+      : "Select College";
 
   const groups = useMemo(() => {
     return [
