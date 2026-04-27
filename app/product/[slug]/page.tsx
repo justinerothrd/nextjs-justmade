@@ -16,7 +16,7 @@ const logoColorMap: Record<string, string> = {
   Black: "#111111",
 };
 
-const placementOptionsBySlug: Record<string, string[]> = {
+const placementOptionsBySlug[safeSlug]?: Record<string, string[]> = {
   hoodie: ["Left Chest", "Full Front", "Back", "Sleeve"],
   "quarter-zip": ["Left Chest", "Full Front", "Back", "Sleeve"],
   "tank-top": ["Full Front", "Left Chest", "Back"],
@@ -29,7 +29,7 @@ const placementOptionsBySlug: Record<string, string[]> = {
   "accessories-socks": ["Outer Ankle"],
 };
 
-const previewImageBySlugAndColor[safeSlug]: Record<string, Record<string, string>> = {
+const previewImageBySlugAndColor[safeSlug]?: Record<string, Record<string, string>> = {
   hoodie: {
     "Heather Gray": "/blanks/hoodie-grey.png",
     Navy: "/blanks/hoodie-navy.png",
@@ -107,7 +107,7 @@ export default function ProductPage() {
   useEffect(() => {
     if (!product || !slug) return;
 
-    const options = placementOptionsBySlug[slug] || ["Full Front"];
+    const options = placementOptionsBySlug[safeSlug]? || ["Full Front"];
 
     setSelectedImage(0);
     setSize(product.sizes?.[0]);
