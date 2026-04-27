@@ -94,44 +94,7 @@ export default function LogoPicker({
       ? `/blanks/${productType}-${cleanColorName(selectedColor)}.png`
       : null;
 
-  return (
-    <div className="mt-2">
-      {/* LIVE PRODUCT + LOGO PREVIEW */}
-      {(blankImage || selectedLogoItem) && (
-        <div className="mb-8 rounded-[28px] border border-[#ECE7E1] bg-[#FAF8F5] p-5">
-          <p className="mb-4 text-center text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
-            Preview
-          </p>
-
-          <div className="flex justify-center">
-            <div className="relative h-[260px] w-[260px]">
-              {blankImage && (
-                <Image
-                  src={blankImage}
-                  alt="Product preview"
-                  fill
-                  className="object-contain"
-                />
-              )}
-
-              {selectedLogoItem && selectedLogoItem.slug !== "custom-logo" && (
-                <Image
-                  src={selectedLogoItem.image}
-                  alt={selectedLogoItem.name}
-                  width={115}
-                  height={115}
-                  className="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 object-contain"
-                />
-              )}
-            </div>
-          </div>
-
-          <p className="mt-4 text-center text-[12px] text-[#8A8178]">
-            Final placement and sizing will be confirmed before production.
-          </p>
-        </div>
-      )}
-
+    
       {!defaultGroup && (
         <div className="mb-6 border-b border-[#ECE7E1] pb-5">
           <p className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
