@@ -38,7 +38,7 @@ export default function ProductPage() {
   const [customDetails, setCustomDetails] = useState("");
   const [selectedLogo, setSelectedLogo] = useState("");
   const [logoColor, setLogoColor] = useState("Navy");
-  const [placement, setPlacement] = useState("Left Chest");
+  const [placement, setPlacement] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [size, setSize] = useState("Youth M");
@@ -70,7 +70,7 @@ export default function ProductPage() {
 
   const currentImage = product.images?.[selectedImage] ?? "";
 
-  // 🔥 THIS IS THE KEY ADD
+  // 🔥 PRODUCT TYPE MAP (YOU ALREADY HAD)
   const productTypeMap: Record<string, string> = {
     hoodie: "hoodie",
     "quarter-zip": "quarterzip",
@@ -83,25 +83,51 @@ export default function ProductPage() {
     "accessories-socks": "socks",
   };
 
-  function handleAddToCart() {
-  if (!product || !slug) return;
+  // ✅ NEW: PLACEMENT OPTIONS
+  const placementOptionsBySlug: Record<string, string[]> = {
+    hoodie: ["Left Chest", "Full Front", "Back", "Sleeve"],
+    "quarter-zip": ["Left Chest", "Full Front", "Back", "Sleeve"],
+    "tank-top": ["Full Front", "Left Chest", "Back"],
+    "custom-tee": ["Full Front", "Left Chest", "Back", "Sleeve"],
 
-  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
-
-  const newItem = {
-    id: Date.now(),
-    slug,
-    product: product.name,
-    price: product.price,
-    size,
-    color,
-    quantity,
-    image: currentImage,
-    logoSlug: selectedLogo,
-    logoColor,
-    placement,
-    customDetails,
+    sweatpants: ["Left Leg", "Right Leg", "Hip", "Pocket Area"],
+    "custom-shorts": ["Left Leg", "Right Leg", "Hip"],
+    sleepwear: ["Left Leg", "Right Leg", "Hip"],
+    "sleepwear-set": ["Top Front", "Shorts Leg", "Top + Shorts"],
+    "accessories-slides": ["Top of Slides", "Side of Slides"],
+    "accessories-socks": ["Outer Ankle", "Top of Sock"],
   };
+
+  const placementOptions =
+    placementOptionsBySlug[slug] || ["Full Front", "Left Chest", "Back"];
+
+  // ✅ set default placement when product changes
+  useEffect(() => {
+    if (placementOptions.length > 0) {
+      setPlacement(placementOptions[0]);
+    }
+  }, [slug]);
+
+  function handleAddToCart() {
+    if (!product || !slug) return;
+
+    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    const newItem = {
+      id: Date.now(),
+      slug,
+      product: product.name,
+      price: product.price,
+      size,
+      color,
+      quantity,
+      image: currentImage,
+      logoSlug: selectedLogo,
+      logoColor,
+      placement,
+      customDetails,
+    };
+
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
     window.dispatchEvent(new Event("cartUpdated"));
     window.dispatchEvent(new Event("openMiniCart"));
@@ -140,7 +166,17 @@ export default function ProductPage() {
             ))}
           </select>
 
-          {/* 🔥 LOGO PICKER (NOW CONNECTED) */}
+          {/* ✅ NEW: PLACEMENT DROPDOWN */}
+          <select
+            value={placement}
+            onChange={(e) => setPlacement(e.target.value)}
+          >
+            {placementOptions.map((option) => (
+              <option key={option}>{option}</option>
+            ))}
+          </select>
+
+          {/* LOGO PICKER */}
           <LogoPicker
             logos={campLogos}
             selectedLogo={selectedLogo}
