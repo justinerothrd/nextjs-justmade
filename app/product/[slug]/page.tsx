@@ -29,7 +29,7 @@ const placementOptionsBySlug: Record<string, string[]> = {
   "accessories-socks": ["Outer Ankle"],
 };
 
-const previewImageBySlugAndColor: Record<string, Record<string, string>> = {
+const previewImageBySlugAndColor[safeSlug]: Record<string, Record<string, string>> = {
   hoodie: {
     "Heather Gray": "/blanks/hoodie-grey.png",
     Navy: "/blanks/hoodie-navy.png",
@@ -120,7 +120,7 @@ export default function ProductPage() {
   const currentImage = product.images[selectedImage];
 
   const previewImage =
-    previewImageBySlugAndColor[slug]?.[color] ||
+    previewImageBySlugAndColor[safeSlug]?.[color] ||
     currentImage;
 
   return (
