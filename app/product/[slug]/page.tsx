@@ -82,6 +82,25 @@ export default function ProductPage() {
     "accessories-slides": "slides",
     "accessories-socks": "socks",
   };
+  const placementStyles: Record<string, string> = {
+  "Full Front": "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45%]",
+  "Left Chest": "top-[32%] left-[38%] -translate-x-1/2 -translate-y-1/2 w-[18%]",
+  "Back": "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45%]",
+  "Sleeve": "top-[45%] left-[75%] -translate-x-1/2 -translate-y-1/2 w-[12%]",
+
+  "Left Leg": "top-[60%] left-[40%] w-[20%]",
+  "Right Leg": "top-[60%] left-[60%] w-[20%]",
+  "Hip": "top-[55%] left-[50%] w-[18%]",
+
+  "Top Front": "top-[30%] left-[50%] w-[30%]",
+  "Shorts Leg": "top-[65%] left-[50%] w-[20%]",
+
+  "Top of Slides": "top-[40%] left-[50%] w-[25%]",
+  "Side of Slides": "top-[50%] left-[65%] w-[20%]",
+
+  "Outer Ankle": "top-[75%] left-[50%] w-[15%]",
+  "Top of Sock": "top-[20%] left-[50%] w-[15%]",
+};
 
   // ✅ NEW: PLACEMENT OPTIONS
   const placementOptionsBySlug: Record<string, string[]> = {
