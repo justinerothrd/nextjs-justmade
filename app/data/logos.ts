@@ -11,7 +11,7 @@ export const logos: Logo[] = [
   {
     slug: "custom-logo",
     name: "Custom Logo",
-    image: "",
+    image: "JMcustom-logo.png",
     category: "Custom",
     group: "All",
     style: "Custom",
