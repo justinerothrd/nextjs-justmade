@@ -117,18 +117,22 @@ export default function CartPage() {
       });
 
       if (res.ok) {
-        setSubmittedOrderNumber(orderNumber);
-        setStatus("success");
-        localStorage.removeItem("cart");
-        setCart([]);
-        window.dispatchEvent(new Event("cartUpdated"));
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-  }
+  await fetch("/api/send-order-confirmation", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email,
+      orderNumber,
+      total: `$${getTotal().toFixed(2)}`,
+    }),
+  });
+
+  setSubmittedOrderNumber(orderNumber);
+  setStatus("success");
+  localStorage.removeItem("cart");
+  setCart([]);
+  window.dispatchEvent(new Event("cartUpdated"));
+}
 
   if (status === "success") {
     return (
