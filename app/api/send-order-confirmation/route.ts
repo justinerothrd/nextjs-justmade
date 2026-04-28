@@ -69,7 +69,16 @@ export async function POST(req: Request) {
       <div style="margin:0;padding:0;background:#F7F7F5;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#2F2F2F;">
         <div style="max-width:620px;margin:0 auto;padding:40px 20px;">
           <div style="background:#ffffff;border-radius:28px;border:1px solid #EAE6E1;padding:36px;">
+
             <div style="text-align:center;">
+              <div style="margin-bottom:26px;">
+                <img
+                  src="https://justmadecustom.com/logo.png"
+                  alt="Just Made Custom"
+                  style="height:34px;max-width:180px;object-fit:contain;"
+                />
+              </div>
+
               <div style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#8A8A8A;">
                 Just Made Custom
               </div>
@@ -102,12 +111,12 @@ export async function POST(req: Request) {
             </div>
 
             <div style="margin-top:28px;background:#F7F7F5;border-radius:18px;padding:18px;">
-              <p style="margin:0;font-size:14px;line-height:1.7;color:#555;">
+              <p style="margin:0;font-size:18px;line-height:1.7;color:#555;">
                 We’ll follow up shortly with confirmation, final pricing, and payment instructions.
               </p>
             </div>
 
-            <p style="margin:30px 0 0;text-align:center;font-size:12px;color:#9A9A9A;">
+            <p style="margin:30px 0 0;text-align:center;font-size:16px;color:#9A9A9A;">
               justmadecustom.com
             </p>
           </div>
