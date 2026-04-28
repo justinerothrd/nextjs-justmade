@@ -98,10 +98,12 @@ Please review this order and follow up with confirmation and payment instruction
     setStatus("sending");
 
     const orderNumber = `JM-${Date.now().toString().slice(-6)}`;
-    const submittedAt = new Date().toLocaleString("en-US", {
-      dateStyle: "long",
-      timeStyle: "short",
-    });
+
+const submittedAt = new Date().toLocaleString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
 
     try {
       const res = await fetch("/api/send-order-confirmation", {
