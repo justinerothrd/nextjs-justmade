@@ -220,4 +220,4 @@ export default function LogoPicker({
       />
     </div>
   </div>
-)}
+}
