@@ -254,14 +254,6 @@ export const logos: Logo[] = [
     group: "Wesmont",
     style: "Classic",
   },
-  {
-    slug: "wm-running-club",
-    name: "Running Club",
-    image: "/logos/WM-runningclub.png",
-    category: "Camp",
-    group: "Wesmont",
-    style: "Classic",
-  },
 
   // CAMP — CANADENSIS
   {
