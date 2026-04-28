@@ -189,9 +189,30 @@ export default function LogoPicker({
         })}
       </div>
 
-      <p className="mt-4 text-[12px] text-[#8A8178]">
-        Don’t see your camp? Add it below.
-      </p>
+      {/* CUSTOM LOGO INPUT */}
+<div className="mt-6 rounded-[24px] border border-[#ECE7E1] bg-[#FAF8F5] p-5">
+  <p className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
+    Custom Logo Details
+  </p>
+
+  <p className="mb-3 text-[13px] text-[#6B6762]">
+    Don’t see your camp? Enter details below and we’ll create it for you.
+  </p>
+
+  <textarea
+    placeholder="Camp name, colors, mascot, special requests..."
+    className="w-full rounded-[14px] border border-[#E5E1DB] bg-white px-4 py-3 text-[14px] text-[#2F2F2F] placeholder:text-[#B0AAA3] focus:border-[#6F879E] focus:outline-none"
+    rows={3}
+  />
+
+  <button
+    type="button"
+    onClick={() => onSelectLogo("custom-logo")}
+    className="mt-3 w-full rounded-full bg-[#2F3A4A] py-2 text-[13px] text-white transition hover:bg-[#1F2933]"
+  >
+    Use Custom Design
+  </button>
+</div>
 
       {zoomLogo && (
         <div
