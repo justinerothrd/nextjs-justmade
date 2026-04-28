@@ -37,9 +37,8 @@ function DesignsPageContent() {
               Design Library
             </h1>
 
-            <p className="mt-5 max-w-xl text-sm leading-7 text-[#6B6762]">
-              Browse camp, college, and custom-inspired artwork. If you do not
-              see what you need, add your request in the customization details.
+            <p className="mt-10 max-w-xl text-sm leading-10 text-[#6B6762]">
+              Browse camp all our camp and college artwork. All logos can be made for any camp or college! Add your request in the customization details.
             </p>
           </div>
 
