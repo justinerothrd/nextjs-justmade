@@ -15,32 +15,14 @@ type OrderItem = {
 
 function getImageUrl(image?: string) {
   if (!image) return "";
-
   if (image.startsWith("http")) return image;
-
   return `https://justmadecustom.com${image}`;
 }
 
 export async function POST(req: Request) {
   try {
-    const apiKey = process.env.RESEND_API_KEY;
-
-    if (!apiKey) {
-      return Response.json(
-        { error: "Missing RESEND_API_KEY" },
-        { status: 500 }
-      );
-    }
-
-    const resend = new Resend(apiKey);
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { email, orderNumber, submittedAt, total, cart } = await req.json();
-
-    if (!email || !orderNumber) {
-      return Response.json(
-        { error: "Missing email or order number" },
-        { status: 400 }
-      );
-    }
 
     const itemsHtml = (cart || [])
       .map((item: OrderItem) => {
@@ -52,55 +34,42 @@ export async function POST(req: Request) {
         return `
           <tr>
             <td style="padding:18px 0;border-bottom:1px solid #EEEAE5;">
-              <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+              <table width="100%" style="border-collapse:collapse;">
                 <tr>
+
                   ${
                     imageUrl
                       ? `
-                    <td width="92" style="vertical-align:top;padding-right:16px;">
-                      <img
-                        src="${imageUrl}"
-                        alt="${item.product}"
-                        width="82"
-                        style="display:block;width:82px;height:82px;object-fit:contain;border-radius:16px;background:#F7F7F5;padding:8px;border:1px solid #EEEAE5;"
-                      />
-                    </td>
+                  <td width="90" style="padding-right:14px;">
+                    <img
+                      src="${imageUrl}"
+                      alt="${item.product}"
+                      width="80"
+                      style="display:block;width:80px;height:80px;object-fit:contain;border-radius:14px;background:#F7F7F5;padding:6px;"
+                    />
+                  </td>
                   `
                       : ""
                   }
 
                   <td style="vertical-align:top;">
-                    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-                      <tr>
-                        <td style="font-size:15px;font-weight:600;color:#2F2F2F;line-height:1.35;padding-bottom:6px;">
-                          ${item.product}
-                        </td>
+                    <div style="font-size:15px;font-weight:600;color:#2F2F2F;">
+                      ${item.product}
+                    </div>
 
-                        <td style="font-size:15px;font-weight:600;color:#2F2F2F;text-align:right;vertical-align:top;white-space:nowrap;padding-left:10px;">
-                          $${lineTotal.toFixed(2)}
-                        </td>
-                      </tr>
-                    </table>
-
-                    <div style="font-size:13px;line-height:1.75;color:#6F6F6F;">
-                      <span style="color:#A0A0A0;">Size:</span> ${item.size}<br/>
-                      <span style="color:#A0A0A0;">Color:</span> ${item.color}<br/>
-                      <span style="color:#A0A0A0;">Quantity:</span> ${item.quantity}<br/>
-                      <span style="color:#A0A0A0;">Customization:</span> ${
-                        item.campName || item.college || "N/A"
-                      }<br/>
-                      ${
-                        item.logoName
-                          ? `<span style="color:#A0A0A0;">Design:</span> ${item.logoName}<br/>`
-                          : ""
-                      }
-                      ${
-                        item.placement
-                          ? `<span style="color:#A0A0A0;">Placement:</span> ${item.placement}<br/>`
-                          : ""
-                      }
+                    <div style="margin-top:6px;font-size:13px;color:#6F6F6F;line-height:1.7;">
+                      Size: ${item.size}<br/>
+                      Color: ${item.color}<br/>
+                      Quantity: ${item.quantity}<br/>
+                      ${item.logoName ? `Design: ${item.logoName}<br/>` : ""}
+                      ${item.placement ? `Placement: ${item.placement}<br/>` : ""}
                     </div>
                   </td>
+
+                  <td style="text-align:right;font-size:15px;font-weight:600;">
+                    $${lineTotal.toFixed(2)}
+                  </td>
+
                 </tr>
               </table>
             </td>
@@ -110,131 +79,112 @@ export async function POST(req: Request) {
       .join("");
 
     const html = `
-      <div style="margin:0;padding:0;background:#FBFBFA;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#2F2F2F;">
-        <div style="max-width:560px;margin:0 auto;padding:24px 14px;">
+      <div style="background:#FBFBFA;padding:24px 14px;font-family:Arial;">
+        <div style="max-width:560px;margin:0 auto;">
 
-          <div style="background:#ffffff;border:1px solid #EAE6E1;border-radius:22px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,0.035);">
+          <div style="background:white;border-radius:20px;padding:28px 22px;">
 
-            <div style="padding:34px 24px 28px;">
-
-              <div style="text-align:center;">
-                <div style="font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:#2F2F2F;font-weight:600;">
-                  Just Made Custom
-                </div>
-
-                <div style="margin:26px auto 18px;width:58px;height:58px;border:3px solid #6F879E;border-radius:50%;line-height:54px;text-align:center;color:#6F879E;font-size:30px;">
-                  ✓
-                </div>
-
-                <h1 style="margin:0;font-size:28px;line-height:1.18;font-weight:400;color:#2F2F2F;">
-                  We received your order!
-                </h1>
-
-                <p style="margin:14px auto 0;max-width:390px;font-size:15px;line-height:1.7;color:#555;">
-                  Thanks for your custom order request. We’ll review your details and follow up shortly with confirmation and payment instructions.
-                </p>
-              </div>
-
-              <div style="margin-top:28px;background:#F7F7F5;border-radius:18px;padding:18px 20px;">
-                <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-                  <tr>
-                    <td style="font-size:11px;color:#8F8F8F;text-transform:uppercase;letter-spacing:0.18em;padding-bottom:7px;">
-                      Order Number
-                    </td>
-                    <td style="font-size:11px;color:#8F8F8F;text-transform:uppercase;letter-spacing:0.18em;text-align:right;padding-bottom:7px;">
-                      Order Date
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-size:16px;font-weight:500;color:#2F2F2F;vertical-align:top;">
-                      ${orderNumber}
-                    </td>
-                    <td style="font-size:14px;font-weight:500;color:#2F2F2F;text-align:right;vertical-align:top;line-height:1.4;">
-                      ${submittedAt || "Submitted today"}
-                    </td>
-                  </tr>
-                </table>
-              </div>
-
-              <div style="margin-top:28px;">
-                <div style="font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#8F8F8F;margin-bottom:4px;">
-                  Order Summary
-                </div>
-
-                <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-                  ${itemsHtml}
-                </table>
-              </div>
-
-              <div style="margin-top:22px;text-align:right;">
-                <div style="font-size:14px;color:#777;">Estimated Order Total</div>
-                <div style="margin-top:4px;font-size:34px;font-weight:400;color:#2F2F2F;">
-                  ${total}
-                </div>
-              </div>
-
-              <div style="margin-top:26px;background:#F7F7F5;border-radius:18px;padding:18px;text-align:center;">
-                <p style="margin:0;font-size:14px;line-height:1.7;color:#5F5F5F;">
-                  Each piece is made custom. We’ll confirm your details before payment is finalized.
-                </p>
-              </div>
-
-              <div style="margin-top:28px;text-align:center;">
-                <div style="margin:0 auto 14px;width:44px;height:44px;border-radius:50%;background:#EEF3F7;line-height:44px;text-align:center;color:#5F7A94;font-size:22px;">
-                  ✉
-                </div>
-
-                <h2 style="margin:0;font-size:22px;font-weight:400;color:#2F2F2F;">
-                  What happens next?
-                </h2>
-
-                <p style="margin:12px auto 0;max-width:390px;font-size:14px;line-height:1.7;color:#666;">
-                  We’ll review your order and follow up with final pricing, payment details, and next steps.
-                </p>
-
-                <p style="margin:12px auto 0;max-width:390px;font-size:14px;line-height:1.7;color:#666;">
-                  If you have any questions, just reply to this email.
-                </p>
-
-                <a
-                  href="https://justmadecustom.com"
-                  style="display:inline-block;margin-top:20px;background:#5F7A94;color:#ffffff;text-decoration:none;border-radius:999px;padding:12px 20px;font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;"
-                >
-                  Visit Just Made
-                </a>
-              </div>
-
-              <div style="margin-top:32px;padding-top:20px;border-top:1px solid #EEE;text-align:center;">
-                <p style="margin:0;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#2F2F2F;font-weight:600;">
-                  Just Made Custom
-                </p>
-
-                <p style="margin:8px 0 0;font-size:12px;line-height:1.6;color:#999;">
-                  Custom apparel made for camp, college, and everyday wear.
-                </p>
-
-                <p style="margin:18px 0 0;font-size:11px;line-height:1.6;color:#B5B5B5;">
-                  This email was sent because you placed an order request with Just Made Custom.<br/>
-                  © 2026 Just Made Custom. All rights reserved.
-                </p>
-              </div>
-
+            <!-- LOGO -->
+            <div style="text-align:center;margin-bottom:14px;">
+              <img 
+                src="https://justmadecustom.com/logo.png" 
+                alt="Just Made Custom"
+                style="max-width:160px;height:auto;"
+              />
             </div>
+
+            <!-- CHECK -->
+            <div style="text-align:center;margin:18px 0;">
+              <div style="width:52px;height:52px;border:2px solid #6F879E;border-radius:50%;line-height:48px;margin:0 auto;color:#6F879E;font-size:26px;">
+                ✓
+              </div>
+            </div>
+
+            <!-- HEADER -->
+            <h1 style="text-align:center;font-weight:400;font-size:26px;margin:0;">
+              We received your order!
+            </h1>
+
+            <p style="text-align:center;margin:12px auto 0;max-width:380px;font-size:14px;color:#555;">
+              We’re reviewing your custom selections and will follow up shortly with confirmation and payment instructions.
+            </p>
+
+            <!-- ORDER INFO -->
+            <div style="margin-top:26px;background:#F7F7F5;border-radius:16px;padding:16px;">
+              <table width="100%">
+                <tr>
+                  <td style="font-size:12px;color:#888;">Order #</td>
+                  <td style="font-size:12px;color:#888;text-align:right;">Date</td>
+                </tr>
+                <tr>
+                  <td style="font-size:15px;font-weight:600;">
+                    ${orderNumber}
+                  </td>
+                  <td style="font-size:14px;text-align:right;">
+                    ${submittedAt}
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- ITEMS -->
+            <div style="margin-top:26px;">
+              <div style="font-size:11px;letter-spacing:0.2em;color:#888;margin-bottom:6px;">
+                ORDER SUMMARY
+              </div>
+
+              <table width="100%">
+                ${itemsHtml}
+              </table>
+            </div>
+
+            <!-- TOTAL -->
+            <div style="text-align:right;margin-top:18px;">
+              <div style="font-size:13px;color:#777;">Estimated Total</div>
+              <div style="font-size:30px;margin-top:4px;">
+                ${total}
+              </div>
+            </div>
+
+            <!-- NOTE -->
+            <div style="margin-top:22px;background:#F7F7F5;border-radius:16px;padding:14px;text-align:center;font-size:13px;color:#555;">
+              Each piece is made custom. We’ll confirm details before payment.
+            </div>
+
+            <!-- NEXT STEPS -->
+            <div style="margin-top:28px;text-align:center;">
+              <h2 style="font-weight:400;font-size:20px;margin:0;">
+                What happens next?
+              </h2>
+
+              <p style="margin-top:10px;font-size:14px;color:#666;">
+                We’ll review your order and follow up with final pricing and next steps.
+              </p>
+
+              <a
+                href="https://justmadecustom.com"
+                style="display:inline-block;margin-top:16px;background:#5F7A94;color:white;padding:12px 18px;border-radius:999px;font-size:12px;text-decoration:none;"
+              >
+                Visit Just Made
+              </a>
+            </div>
+
+            <!-- CLEAN FOOTER -->
+            <div style="margin-top:28px;text-align:center;font-size:11px;color:#aaa;">
+              Questions? Just reply to this email.
+            </div>
+
           </div>
         </div>
       </div>
     `;
 
-    const { error } = await resend.emails.send({
+    await resend.emails.send({
       from: "Just Made Custom <orders@justmadecustom.com>",
       to: [email],
-      subject: `We received your Just Made order • ${orderNumber}`,
+      subject: `We received your order • ${orderNumber}`,
       html,
     });
-
-    if (error) {
-      return Response.json({ error }, { status: 500 });
-    }
 
     return Response.json({ success: true });
   } catch {
