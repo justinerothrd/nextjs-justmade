@@ -222,8 +222,19 @@ export default function CartPage() {
                           </p>
 
                           {item.logoName && (
-                            <p><span className="text-gray-500">Design:</span> {item.logoName}</p>
-                          )}
+  <p className="flex items-center gap-2">
+    <span className="text-gray-500">Design:</span>
+    <span>{item.logoName}</span>
+
+    {item.logoImage && (
+      <img
+        src={item.logoImage}
+        alt={item.logoName}
+        className="h-8 w-8 rounded-md bg-[#F7F7F5] object-contain p-1"
+      />
+    )}
+  </p>
+)}
 
                           {item.placement && (
                             <p><span className="text-gray-500">Placement:</span> {item.placement}</p>
