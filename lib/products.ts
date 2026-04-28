@@ -31,7 +31,7 @@ export const products: Record<string, Product> = {
 
   "quarter-zip": {
     name: "Custom 1/4 Zip",
-    price: "$60",
+    price: "$65",
     description: "A polished quarter zip that layers easily for camp, travel, and everyday wear.",
     images: ["/THCquarterzipgrey.png", "/THCquarterzipnavy.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
