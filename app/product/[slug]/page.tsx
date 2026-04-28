@@ -203,17 +203,33 @@ export default function ProductPage() {
               </select>
 
               {styleOptions.length > 0 && (
-                <select
-                  value={itemStyle}
-                  onChange={(e) => setItemStyle(e.target.value)}
-                  className="rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none"
-                >
-                  {styleOptions.map((option) => (
-                    <option key={option}>{option}</option>
-                  ))}
-                </select>
-              )}
-            </div>
+  <div className="mt-6">
+    <p className="mb-2 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
+      Style
+    </p>
+
+    <div className="flex flex-wrap gap-2">
+      {styleOptions.map((option) => {
+        const active = itemStyle === option;
+
+        return (
+          <button
+            key={option}
+            type="button"
+            onClick={() => setItemStyle(option)}
+            className={`rounded-full px-4 py-2 text-[13px] transition ${
+              active
+                ? "bg-[#2F3A4A] text-white"
+                : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
+            }`}
+          >
+            {option.replace(" Tank", "").replace(" Tee", "")}
+          </button>
+        );
+      })}
+    </div>
+  </div>
+)}
 
             <div className="mt-8 rounded-[24px] border border-[#EEEAE4] bg-white p-5">
               <LogoPicker
