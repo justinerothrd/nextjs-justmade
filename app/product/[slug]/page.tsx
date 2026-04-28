@@ -25,7 +25,38 @@ const styleOptionsBySlug: Record<string, string[]> = {
 };
 
 const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
+function getBlankImage(slug: string, color: string) {
+  const normalizedColor = color.toLowerCase();
 
+  const colorMap: Record<string, string> = {
+    "heather gray": "grey",
+    gray: "grey",
+    grey: "grey",
+    navy: "navy",
+    white: "white",
+    black: "black",
+    green: "green",
+    "light blue": "lightblue",
+    red: "red",
+    "royal blue": "royalblue",
+  };
+
+  const productMap: Record<string, string> = {
+    hoodie: "hoodie",
+    "quarter-zip": "quarterzip",
+    "tank-top": "tank",
+    "custom-tee": "tee",
+    "custom-shorts": "bikeshort",
+    sweatpants: "sweatpants",
+  };
+
+  const productFileName = productMap[slug];
+  const colorFileName = colorMap[normalizedColor];
+
+  if (!productFileName || !colorFileName) return "";
+
+  return `/blanks/${productFileName}-${colorFileName}.png`;
+}
 export default function ProductPage() {
   const params = useParams();
   const rawSlug = params?.slug;
@@ -94,7 +125,7 @@ export default function ProductPage() {
       color,
       style: itemStyle,
       quantity,
-      image: currentImage,
+      image: getBlankImage(safeSlug, color) || currentImage,
       logoSlug: selectedLogo,
       logoName: selectedLogoObject?.name || "",
       logoColor,
