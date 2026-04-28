@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     const { email, orderNumber, total } = await req.json();
 
     const { error } = await resend.emails.send({
-      from: "Just Made Custom <onboarding@resend.dev>",
+      from: "Just Made Custom <orders@justmadecustom.com>",
       to: [email],
       subject: `We received your order • ${orderNumber}`,
       html: `
