@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-<img src="https://justmadecustom.com/logo.png" />
+
 type OrderItem = {
   product: string;
   price: string;
@@ -69,7 +69,16 @@ export async function POST(req: Request) {
       <div style="margin:0;padding:0;background:#F7F7F5;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#2F2F2F;">
         <div style="max-width:620px;margin:0 auto;padding:40px 20px;">
           <div style="background:#ffffff;border-radius:28px;border:1px solid #EAE6E1;padding:36px;">
+
             <div style="text-align:center;">
+              <div style="margin-bottom:18px;">
+                <img
+                  src="https://justmadecustom.com/logo.png"
+                  alt="Just Made Custom"
+                  style="height:34px;max-width:180px;object-fit:contain;"
+                />
+              </div>
+
               <div style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#8A8A8A;">
                 Just Made Custom
               </div>
