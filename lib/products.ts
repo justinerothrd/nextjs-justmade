@@ -28,7 +28,22 @@ export const products: Record<string, Product> = {
       "Heather Gray": "/hoodie-grey.png",
     },
   },
-
+crewneck: {
+  name: "Custom Crewneck",
+  price: "$60",
+  description: "A classic custom crewneck designed for everyday camp wear and layering.",
+  images: [
+    "/crewneck-grey.png", // update to your real file names
+    "/crewneck-navy.png",
+    "/crewneck-white.png",
+  ],
+  colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+  sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
+  logoGroup: "Tyler Hill",
+  blankImages: {
+    "Heather Gray": "/crewneck-grey.png",
+  },
+},
   "quarter-zip": {
     name: "Custom 1/4 Zip",
     price: "$65",
