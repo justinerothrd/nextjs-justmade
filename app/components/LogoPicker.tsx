@@ -71,24 +71,24 @@ export default function LogoPicker({
           </p>
 
           <div className="flex flex-wrap gap-2">
-            {groups.map((group) => {
-              const active = selectedGroup === group;
+           {groups.map((group) => {
+  const active = selectedGroup === group;
 
-              return (
-                <button
-                  key={group}
-                  type="button"
-                  onClick={() => setSelectedGroup(group)}
-                  className={`rounded-full px-3.5 py-1.5 text-[13px] transition ${
-                    active
-                      ? "bg-[#2F3A4A] text-white"
-                      : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
-                  }`}
-                >
-                  {group}
-                </button>
-              );
-            })}
+  return (
+    <button
+      key={group}
+      type="button"
+      onClick={() => setSelectedGroup(group)}
+      className={`rounded-full px-3.5 py-1.5 text-[13px] transition ${
+        active
+          ? "bg-[#2F3A4A] text-white"
+          : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
+      }`}
+    >
+      {group}
+    </button>
+  );
+})}
           </div>
           <div className="mt-3 flex items-center gap-2">
   <button
