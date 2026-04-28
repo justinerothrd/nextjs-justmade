@@ -14,6 +14,7 @@ type CartItem = {
   quantity: number;
   image?: string;
   logoName?: string;
+  logoImage?: string;
   placement?: string;
 };
 
@@ -164,7 +165,19 @@ export default function MiniCart() {
                             <p>
                               {item.size} · {item.color} · Qty {item.quantity}
                             </p>
-                            {item.logoName && <p>Design: {item.logoName}</p>}
+                            {item.logoName && (
+  <p className="flex items-center gap-2">
+    <span>Design: {item.logoName}</span>
+
+    {item.logoImage && (
+      <img
+        src={item.logoImage}
+        alt={item.logoName}
+        className="h-7 w-7 rounded-md bg-[#F7F7F5] object-contain p-1"
+      />
+    )}
+  </p>
+)}
                             {item.placement && <p>Placement: {item.placement}</p>}
                           </div>
 
