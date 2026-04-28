@@ -195,32 +195,29 @@ export default function LogoPicker({
       </p>
 
       {zoomLogo && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
-          onClick={() => setZoomLogo(null)}
-        >
-          <button
-            type="button"
-            onClick={() => setZoomLogo(null)}
-            className="absolute right-6 top-6 text-[12px] uppercase tracking-[0.18em] text-white"
-          >
-            Close
-          </button>
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+    onClick={() => setZoomLogo(null)}
+  >
+    <div
+      className="relative flex h-[520px] w-[520px] max-w-[90vw] items-center justify-center rounded-[28px] bg-white p-10"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        type="button"
+        onClick={() => setZoomLogo(null)}
+        className="absolute right-5 top-5 text-[11px] uppercase tracking-[0.18em] text-[#8A8178] underline underline-offset-4 hover:text-[#2F3A4A]"
+      >
+        Close
+      </button>
 
-          <div
-            className="flex h-[520px] w-[520px] max-w-[90vw] items-center justify-center rounded-[28px] bg-white p-10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={zoomLogo.image}
-              alt={zoomLogo.name}
-              width={420}
-              height={420}
-              className="max-h-full max-w-full object-contain"
-            />
-          </div>
-        </div>
-      )}
+      <Image
+        src={zoomLogo.image}
+        alt={zoomLogo.name}
+        width={420}
+        height={420}
+        className="max-h-full max-w-full object-contain"
+      />
     </div>
-  );
-}
+  </div>
+)}
