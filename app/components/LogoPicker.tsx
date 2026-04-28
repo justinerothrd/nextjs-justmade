@@ -50,16 +50,7 @@ export default function LogoPicker({
         const matchGroup =
           selectedGroup === "All" ||
           item.group === selectedGroup ||
-          item.slug === "custom-logo";
-
-        return matchStyle && matchGroup;
-      })
-      .sort((a, b) => {
-        if (a.slug === "custom-logo") return 1;
-        if (b.slug === "custom-logo") return -1;
-        return 0;
-      });
-  }, [logos, activeStyle, selectedGroup]);
+      
 
   return (
     <div className="mt-2">
@@ -129,10 +120,9 @@ export default function LogoPicker({
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {filtered.map((item) => {
-          const isSelected = selectedLogo === item.slug;
-          const isCustom = item.slug === "custom-logo";
-
+  {filtered
+    .filter((item) => item.slug !== "custom-logo") 
+    
           return (
             <div
               key={item.slug}
