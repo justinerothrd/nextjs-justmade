@@ -117,21 +117,24 @@ export default function ProductPage() {
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const newItem = {
-      id: Date.now(),
-      slug: safeSlug,
-      product: product.name,
-      price: product.price,
-      size,
-      color,
-      style: itemStyle,
-      quantity,
-      image: getBlankImage(safeSlug, color) || currentImage,
-      logoSlug: selectedLogo,
-      logoName: selectedLogoObject?.name || "",
-      logoColor,
-      placement,
-      customDetails,
-    };
+  id: Date.now(),
+  slug: safeSlug,
+  product: product.name,
+  price: product.price,
+  size,
+  color,
+  style: itemStyle,
+  quantity,
+  image: getBlankImage(safeSlug, color) || currentImage,
+
+  logoSlug: selectedLogo,
+  logoName: selectedLogoObject?.name || "",
+  logoImage: selectedLogoObject?.image || "",   // 👈 ADD THIS LINE
+
+  logoColor,
+  placement,
+  customDetails,
+};
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
     window.dispatchEvent(new Event("cartUpdated"));
