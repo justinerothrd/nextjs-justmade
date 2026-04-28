@@ -14,6 +14,7 @@ type CartItem = {
   quantity: number;
   image?: string;
   logoName?: string;
+  logoImage?: string;
   placement?: string;
 };
 
