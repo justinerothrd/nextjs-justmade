@@ -117,18 +117,7 @@ const submittedAt = new Date().toLocaleString("en-US", {
     cart,
   }),
 });
-
-      if (res.ok) {
-        await fetch("/api/send-order-confirmation", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email,
-            orderNumber,
-            total: `$${getTotal().toFixed(2)}`,
-            cart,
-          }),
-        });
+;
 
         setSubmittedOrderNumber(orderNumber);
         setStatus("success");
