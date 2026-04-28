@@ -53,7 +53,10 @@ export default function ProductPage() {
     if (!product) return;
 
     const options = placementOptionsBySlug[safeSlug] || ["Full Front"];
-
+    const styleOptionsBySlug: Record<string, string[]> = {
+  "custom-tee": ["Classic Tee", "Cropped Tee", "V-Neck Tee"],
+  "tank-top": ["Classic Tank", "Ribbed Tank", "Scoop Neck Tank", "Malibu Sugar"],
+};
     setSelectedImage(0);
     setSize(product.sizes?.[0] || "Youth M");
     setColor(product.colors?.[0] || "Heather Gray");
