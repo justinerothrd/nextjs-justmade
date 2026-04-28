@@ -168,7 +168,7 @@ export const logos: Logo[] = [
   {
     slug: "wm-country-club",
     name: "Country Club",
-    image: "/logos/WM-country-club.png",
+    image: "/logos/WM-countryclub.png",
     category: "Camp",
     group: "Wesmont",
     style: "Classic",
@@ -192,7 +192,7 @@ export const logos: Logo[] = [
   {
     slug: "WM-sporty-logo",
     name: "Sporty Bear",
-    image: "/logos/WM-sporty-logo.png",
+    image: "/logos/WM-sport-logo.png",
     category: "Camp",
     group: "Wesmont",
     style: "Icon",
@@ -238,9 +238,9 @@ export const logos: Logo[] = [
     style: "Minimal",
   },
   {
-    slug: "WM-print",
+    slug: "CM-print",
     name: "Print",
-    image: "/logos/WM-print.png",
+    image: "/logos/CM-print.png",
     category: "Camp",
     group: "Wesmont",
     style: "Minimal",
