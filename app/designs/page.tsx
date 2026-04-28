@@ -44,12 +44,12 @@ function DesignsPageContent() {
           </div>
 
           <button
-            type="button"
-            onClick={() => router.push(returnTo)}
-            className="shrink-0 text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
-          >
-            Back to product
-          </button>
+  type="button"
+  onClick={() => router.push(returnTo)}
+  className="shrink-0 text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
+>
+  Back to product
+</button>
         </div>
 
         <section className="mb-16">
