@@ -104,18 +104,17 @@ Please review this order and follow up with confirmation and payment instruction
     });
 
     try {
-      const res = await fetch("https://formspree.io/f/mlgoglny", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          subject: `Just Made Order • ${orderNumber}`,
-          orderNumber,
-          submittedAt,
-          total: `$${getTotal().toFixed(2)}`,
-          message: formatOrderEmail(orderNumber, submittedAt),
-        }),
-      });
+      const res = await fetch("/api/send-order-confirmation", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    email,
+    orderNumber,
+    submittedAt,
+    total: `$${getTotal().toFixed(2)}`,
+    cart,
+  }),
+});
 
       if (res.ok) {
         await fetch("/api/send-order-confirmation", {
