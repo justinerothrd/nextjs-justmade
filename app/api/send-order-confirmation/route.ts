@@ -74,7 +74,7 @@ export async function POST(req: Request) {
                                     src="${logoImageUrl}"
                                     alt="${item.logoName}"
                                     width="38"
-                                    style="display:inline-block;width:38px;height:38px;object-fit:contain;vertical-align:middle;margin-left:8px;border-radius:8px;background:#F7F7F5;padding:4px;border:1px solid #EEEAE5;"
+                                    style="display:inline-block;width:38px;height:38px;object-fit:contain;vertical-align:middle;margin-left:8px;border-radius:8px;background:#F7F7F5;padding:4px;border:none;"
                                   />
                                 `
                                 : ""
