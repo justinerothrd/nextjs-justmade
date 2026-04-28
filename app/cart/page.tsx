@@ -11,7 +11,7 @@ type CartItem = {
   college?: string;
   size: string;
   color: string;
-  quantity: number;
+  quantity: number;div
   image?: string;
   logoName?: string;
   placement?: string;
@@ -151,12 +151,30 @@ We will follow up with confirmation and payment instructions.
       <h1 className="text-xl mb-4">Your Cart</h1>
 
       {cart.map((item) => (
-        <div key={item.id} className="mb-4 border p-4">
-          <p>{item.product}</p>
-          <p>{item.price}</p>
-          <button onClick={() => removeItem(item.id)}>Remove</button>
-        </div>
-      ))}
+  <div
+    key={item.id}
+    className="rounded-[28px] border border-[#EAE6E1] bg-white p-6 shadow-[0_2px_10px_rgba(0,0,0,0.03)]"
+  >
+    <div className="flex items-start justify-between">
+      <div>
+        <p className="text-[16px] font-medium text-[#2F2F2F]">
+          {item.product}
+        </p>
+
+        <p className="mt-1 text-sm text-gray-500">
+          {item.price}
+        </p>
+      </div>
+
+      <button
+        onClick={() => removeItem(item.id)}
+        className="text-xs text-gray-400 underline underline-offset-4 hover:text-[#8A8A8A]"
+      >
+        Remove
+      </button>
+    </div>
+  </div>
+))}
 
       <p className="mt-4">Total: ${getTotal().toFixed(2)}</p>
 
