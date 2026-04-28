@@ -2,13 +2,15 @@
 
 import Image from "next/image";
 import { Suspense, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { logos } from "@/app/data/logos";
 
 const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon"] as const;
 
 function DesignsPageContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+
   const returnTo = searchParams.get("returnTo") || "/shop";
 
   const [activeStyle, setActiveStyle] =
@@ -24,25 +26,29 @@ function DesignsPageContent() {
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-16">
       <div className="mx-auto max-w-6xl">
+
+        {/* HEADER */}
         <div className="mb-12 flex items-start justify-between gap-4">
           <div>
             <h1 className="text-3xl font-light text-[#2F3A4A] sm:text-4xl">
               Design Library
             </h1>
+
             <p className="mt-5 max-w-2xl text-sm leading-7 text-gray-600">
               Browse our designs. Custom requests welcome!
             </p>
-          
           </div>
 
-          <a
-  href={returnTo || "/shop"}
-  className="text-sm underline underline-offset-4"
->
-  Back
-</a>
+          {/* ✅ FIXED BACK BUTTON */}
+          <button
+            onClick={() => router.push(returnTo)}
+            className="text-sm underline underline-offset-4 hover:text-[#6F879E]"
+          >
+            Back
+          </button>
         </div>
 
+        {/* FEATURED */}
         <section className="mb-14">
           <h2 className="mb-5 text-lg font-medium text-[#2F3A4A]">
             Featured Designs
@@ -76,6 +82,7 @@ function DesignsPageContent() {
           </div>
         </section>
 
+        {/* FILTERS */}
         <section>
           <div className="mb-6 flex flex-wrap gap-2">
             {styles.map((style) => {
@@ -98,6 +105,7 @@ function DesignsPageContent() {
             })}
           </div>
 
+          {/* GRID */}
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
             {filteredLogos.map((logo) => (
               <div
