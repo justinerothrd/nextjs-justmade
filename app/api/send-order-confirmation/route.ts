@@ -75,7 +75,7 @@ export async function POST(req: Request) {
                 <img
                   src="https://justmadecustom.com/logo.png"
                   alt="Just Made Custom"
-                  style="height:34px;max-width:180px;object-fit:contain;"
+                  style="height:48px;max-width:220px;object-fit:contain;"
                 />
               </div>
 
