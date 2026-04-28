@@ -19,6 +19,11 @@ const placementOptionsBySlug: Record<string, string[]> = {
   "accessories-socks": ["Outer Ankle"],
 };
 
+const styleOptionsBySlug: Record<string, string[]> = {
+  "custom-tee": ["Classic Tee", "Cropped Tee", "V-Neck Tee"],
+  "tank-top": ["Classic Tank", "Ribbed Tank", "Scoop Neck Tank", "Malibu Sugar"],
+};
+
 const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
 
 export default function ProductPage() {
@@ -33,6 +38,7 @@ export default function ProductPage() {
   const [selectedLogo, setSelectedLogo] = useState("");
   const [logoColor, setLogoColor] = useState("Navy");
   const [placement, setPlacement] = useState("");
+  const [itemStyle, setItemStyle] = useState("");
   const [size, setSize] = useState("Youth M");
   const [color, setColor] = useState("Heather Gray");
   const [customDetails, setCustomDetails] = useState("");
@@ -52,15 +58,14 @@ export default function ProductPage() {
   useEffect(() => {
     if (!product) return;
 
-    const options = placementOptionsBySlug[safeSlug] || ["Full Front"];
-    const styleOptionsBySlug: Record<string, string[]> = {
-  "custom-tee": ["Classic Tee", "Cropped Tee", "V-Neck Tee"],
-  "tank-top": ["Classic Tank", "Ribbed Tank", "Scoop Neck Tank", "Malibu Sugar"],
-};
+    const placementOptions = placementOptionsBySlug[safeSlug] || ["Full Front"];
+    const styleOptions = styleOptionsBySlug[safeSlug] || [];
+
     setSelectedImage(0);
     setSize(product.sizes?.[0] || "Youth M");
     setColor(product.colors?.[0] || "Heather Gray");
-    setPlacement(options[0]);
+    setPlacement(placementOptions[0]);
+    setItemStyle(styleOptions[0] || "");
     setSelectedLogo("");
     setLogoColor("Navy");
   }, [product, safeSlug]);
@@ -72,6 +77,8 @@ export default function ProductPage() {
 
   const placementOptions =
     placementOptionsBySlug[safeSlug] || ["Full Front", "Left Chest", "Back"];
+
+  const styleOptions = styleOptionsBySlug[safeSlug] || [];
 
   function handleAddToCart() {
     if (!product || !safeSlug) return;
@@ -85,6 +92,7 @@ export default function ProductPage() {
       price: product.price,
       size,
       color,
+      style: itemStyle,
       quantity,
       image: currentImage,
       logoSlug: selectedLogo,
@@ -159,7 +167,11 @@ export default function ProductPage() {
               </p>
             )}
 
-            <div className="mt-7 grid gap-5 sm:grid-cols-3">
+            <div
+              className={`mt-7 grid gap-5 ${
+                styleOptions.length > 0 ? "sm:grid-cols-4" : "sm:grid-cols-3"
+              }`}
+            >
               <select
                 value={size}
                 onChange={(e) => setSize(e.target.value)}
@@ -189,6 +201,18 @@ export default function ProductPage() {
                   <option key={option}>{option}</option>
                 ))}
               </select>
+
+              {styleOptions.length > 0 && (
+                <select
+                  value={itemStyle}
+                  onChange={(e) => setItemStyle(e.target.value)}
+                  className="rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none"
+                >
+                  {styleOptions.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
+                </select>
+              )}
             </div>
 
             <div className="mt-8 rounded-[24px] border border-[#EEEAE4] bg-white p-5">
