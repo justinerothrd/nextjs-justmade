@@ -139,19 +139,19 @@ export default function LogoPicker({
               }`}
             >
               <button
-                type="button"
-                onClick={() => {
-                  onSelectLogo(item.slug);
-                  setZoomLogo(item);
-                }}
-                className="group flex h-[70px] w-full cursor-zoom-in items-center justify-center"
-              >
+  type="button"
+  onClick={() => {
+    onSelectLogo(item.slug);
+    setZoomLogo(item);
+  }}
+  className="group flex h-[70px] w-full cursor-pointer items-center justify-center"
+>
                 <Image
                   src={item.image}
                   alt={item.name}
                   width={130}
                   height={90}
-                  className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.08]"
+                  className="pointer-events-none max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.08]"
                 />
               </button>
 
