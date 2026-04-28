@@ -72,17 +72,19 @@ export default function LogoPicker({
 
           <div className="flex flex-wrap gap-2">
            {groups.map((group) => {
-  const active = selectedGroup === group;
+  const active = selectedGroup === group && group !== "All";
 
   return (
     <button
       key={group}
       type="button"
       onClick={() => setSelectedGroup(group)}
-      className={`rounded-full px-3.5 py-1.5 text-[13px] transition ${
+      className={`px-3.5 py-1.5 text-[13px] transition ${
         active
-          ? "bg-[#2F3A4A] text-white"
-          : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
+          ? "rounded-full bg-[#2F3A4A] text-white"
+          : group === "All"
+  ? "text-[#8A8178] underline underline-offset-4 hover:text-[#2F2F2F]"
+          : "rounded-full border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
       }`}
     >
       {group}
