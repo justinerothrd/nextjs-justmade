@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import type { Logo } from "@/app/data/logos";
+import { usePathname } from "next/navigation";
 
 const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon", "Custom"] as const;
 
@@ -24,6 +24,7 @@ export default function LogoPicker({
   const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
   const [selectedGroup, setSelectedGroup] = useState(defaultGroup || "All");
   const [zoomLogo, setZoomLogo] = useState<Logo | null>(null);
+  const pathname = usePathname();
 
   const pickerCategory = logos[0]?.category;
 
@@ -95,13 +96,11 @@ export default function LogoPicker({
         </p>
 
         <a
-          href={`/designs?returnTo=${encodeURIComponent(
-            typeof window !== "undefined" ? window.location.pathname : "/"
-          )}`}
-          className="text-[11px] text-[#8A8178] underline underline-offset-4 hover:text-[#6F879E]"
-        >
-          View all
-        </a>
+  href={`/designs?returnTo=${encodeURIComponent(pathname)}`}
+  className="text-[11px] text-[#8A8178] underline underline-offset-4 hover:text-[#6F879E]"
+>
+  View all
+</a>
       </div>
 
       <div className="mb-5 flex flex-wrap gap-2">
