@@ -23,7 +23,7 @@ export default function LogoPicker({
   defaultGroup,
 }: LogoPickerProps) {
   const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
-  const [selectedGroup, setSelectedGroup] = useState(defaultGroup || "All");
+  const [selectedGroup, setSelectedGroup] = useState(defaultGroup || "Tyler Hill");
   const [zoomLogo, setZoomLogo] = useState<Logo | null>(null);
   const pathname = usePathname();
   const [otherCamp, setOtherCamp] = useState("");
