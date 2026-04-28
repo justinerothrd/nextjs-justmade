@@ -129,7 +129,9 @@ export default function LogoPicker({
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {filtered.map((item) => {
+        {filtered
+  .filter((item) => item.slug !== "custom-logo")
+  .map((item) => {
           const isSelected = selectedLogo === item.slug;
           const isCustom = item.slug === "custom-logo";
 
