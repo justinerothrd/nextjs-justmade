@@ -20,9 +20,7 @@ type CartItem = {
 export default function CartPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [submittedOrderNumber, setSubmittedOrderNumber] = useState("");
 
   useEffect(() => {
@@ -39,11 +37,7 @@ export default function CartPage() {
 
   function getItemHref(item: CartItem) {
     if (!item.slug) return "/cart";
-
-    if (item.slug.startsWith("college-")) {
-      return `/college/product/${item.slug}`;
-    }
-
+    if (item.slug.startsWith("college-")) return `/college/product/${item.slug}`;
     return `/product/${item.slug}`;
   }
 
@@ -54,92 +48,44 @@ export default function CartPage() {
     }, 0);
   }
 
-  function formatOrderEmail(orderNumber: string, submittedAt: string) {
-    const itemLines = cart
-      .map((item, index) => {
-        const lineTotal =
-          parseFloat(item.price.replace("$", "")) * item.quantity;
-
-        return [
-          `${index + 1}. ${item.product}`,
-          `Price: ${item.price}`,
-          `Quantity: ${item.quantity}`,
-          `Size: ${item.size}`,
-          `Color: ${item.color}`,
-          `Customization: ${item.campName || item.college || "N/A"}`,
-          `Design: ${item.logoName || "N/A"}`,
-          `Placement: ${item.placement || "N/A"}`,
-          `Line Total: $${lineTotal.toFixed(2)}`,
-        ].join("\n");
-      })
-      .join("\n\n");
-
-    return `
-JUST MADE CUSTOM — ORDER REQUEST
-
-Order Number: ${orderNumber}
-Submitted: ${submittedAt}
-Customer Email: ${email}
-
-ORDER SUMMARY
-------------------------------
-${itemLines}
-
-------------------------------
-Order Total: $${getTotal().toFixed(2)}
-
-NEXT STEP
-Please review this order and follow up with confirmation and payment instructions.
-`;
-  }
-
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("sending");
 
     const orderNumber = `JM-${Date.now().toString().slice(-6)}`;
 
-const submittedAt = new Date().toLocaleString("en-US", {
-  month: "long",
-  day: "numeric",
-  year: "numeric",
-});
+    const submittedAt = new Date().toLocaleString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
 
     try {
       const res = await fetch("/api/send-order-confirmation", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    email,
-    orderNumber,
-    submittedAt,
-    total: `$${getTotal().toFixed(2)}`,
-    cart,
-  }),
-});
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          orderNumber,
+          submittedAt,
+          total: `$${getTotal().toFixed(2)}`,
+          cart,
+        }),
+      });
 
       if (res.ok) {
-        const res = await fetch("/api/send-order-confirmation", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    email,
-    orderNumber,
-    submittedAt,
-    total: `$${getTotal().toFixed(2)}`,
-    cart,
-  }),
-});
-
-if (res.ok) {
-  setSubmittedOrderNumber(orderNumber);
-  setStatus("success");
-  localStorage.removeItem("cart");
-  setCart([]);
-  window.dispatchEvent(new Event("cartUpdated"));
-} else {
-  setStatus("error");
-}
+        setSubmittedOrderNumber(orderNumber);
+        setStatus("success");
+        localStorage.removeItem("cart");
+        setCart([]);
+        window.dispatchEvent(new Event("cartUpdated"));
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
 
   if (status === "success") {
     return (
@@ -264,45 +210,22 @@ if (res.ok) {
                         </div>
 
                         <div className="mt-4 grid gap-2 text-sm leading-5 text-[#4B4B4B] sm:grid-cols-2">
-                          <p>
-                            <span className="text-gray-500">Size:</span>{" "}
-                            {item.size}
-                          </p>
-
-                          <p>
-                            <span className="text-gray-500">Color:</span>{" "}
-                            {item.color}
-                          </p>
-
-                          <p>
-                            <span className="text-gray-500">Quantity:</span>{" "}
-                            {item.quantity}
-                          </p>
-
-                          <p>
-                            <span className="text-gray-500">Line Total:</span>{" "}
-                            ${lineTotal.toFixed(2)}
-                          </p>
+                          <p><span className="text-gray-500">Size:</span> {item.size}</p>
+                          <p><span className="text-gray-500">Color:</span> {item.color}</p>
+                          <p><span className="text-gray-500">Quantity:</span> {item.quantity}</p>
+                          <p><span className="text-gray-500">Line Total:</span> ${lineTotal.toFixed(2)}</p>
 
                           <p className="sm:col-span-2">
-                            <span className="text-gray-500">
-                              Customization Details:
-                            </span>{" "}
+                            <span className="text-gray-500">Customization Details:</span>{" "}
                             {item.campName || item.college || "N/A"}
                           </p>
 
                           {item.logoName && (
-                            <p>
-                              <span className="text-gray-500">Design:</span>{" "}
-                              {item.logoName}
-                            </p>
+                            <p><span className="text-gray-500">Design:</span> {item.logoName}</p>
                           )}
 
                           {item.placement && (
-                            <p>
-                              <span className="text-gray-500">Placement:</span>{" "}
-                              {item.placement}
-                            </p>
+                            <p><span className="text-gray-500">Placement:</span> {item.placement}</p>
                           )}
                         </div>
 
