@@ -161,9 +161,10 @@ export default function LogoPicker({
                     width={130}
                     height={90}
                     onClick={(e) => {
-                      e.stopPropagation();
-                      setZoomLogo(item);
-                    }}
+  e.stopPropagation();
+  onSelectLogo(item.slug);
+  setZoomLogo(item);
+}}
                     className="max-h-full max-w-full cursor-zoom-in object-contain transition-transform duration-500 group-hover:scale-[1.08]"
                   />
                 )}
