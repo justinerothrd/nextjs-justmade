@@ -117,7 +117,6 @@ const submittedAt = new Date().toLocaleString("en-US", {
     cart,
   }),
 });
-;
 
         setSubmittedOrderNumber(orderNumber);
         setStatus("success");
