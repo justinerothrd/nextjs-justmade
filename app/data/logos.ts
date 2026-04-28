@@ -82,6 +82,14 @@ export const logos: Logo[] = [
     style: "Classic",
   },
   {
+    slug: "th-tennis",
+    name: "Tennis",
+    image: "/logos/TH-tennis.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Icon",
+  },
+  {
     slug: "thc-print",
     name: "Print",
     image: "/logos/THC-print.png",
