@@ -20,8 +20,8 @@ const placementOptionsBySlug: Record<string, string[]> = {
 };
 
 const styleOptionsBySlug: Record<string, string[]> = {
-  "custom-tee": ["Classic Tee", "Cropped Tee", "V-Neck Tee"],
-  "tank-top": ["Classic Tank", "Ribbed Tank", "Scoop Neck Tank", "Malibu Sugar"],
+  "custom-tee": ["Classic", "Cropped", "V-Neck"],
+  "tank-top": ["Classic", "Ribbed", "Scoop Neck", "Malibu Sugar"],
 };
 
 const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
@@ -109,6 +109,9 @@ export default function ProductPage() {
     setTimeout(() => setAdded(false), 2000);
   }
 
+  const selectClass =
+    "w-full rounded-full border border-[#E5E1DB] bg-[#FAF9F7] px-4 py-3 text-sm outline-none transition hover:border-[#CFC9C2] focus:border-[#6F879E]";
+
   return (
     <main className="min-h-screen bg-white px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-14">
       <div className="mx-auto max-w-6xl">
@@ -149,7 +152,7 @@ export default function ProductPage() {
               <img
                 src={currentImage}
                 alt={product.name}
-                className="max-h-[94%] max-w-[94%] object-contain"
+                className="max-h-[94%] max-w-[94%] object-contain transition-transform duration-700 hover:scale-[1.02]"
               />
             </div>
           </div>
@@ -167,71 +170,83 @@ export default function ProductPage() {
               </p>
             )}
 
-            <div
-              className={`mt-7 grid gap-5 ${
-                styleOptions.length > 0 ? "sm:grid-cols-4" : "sm:grid-cols-3"
-              }`}
-            >
-              <select
-                value={size}
-                onChange={(e) => setSize(e.target.value)}
-                className="rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none"
-              >
-                {product.sizes.map((s) => (
-                  <option key={s}>{s}</option>
-                ))}
-              </select>
+            <div className="mt-7 grid gap-5 sm:grid-cols-3">
+              <div>
+                <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
+                  Size
+                </p>
+                <select
+                  value={size}
+                  onChange={(e) => setSize(e.target.value)}
+                  className={selectClass}
+                >
+                  {product.sizes.map((s) => (
+                    <option key={s}>{s}</option>
+                  ))}
+                </select>
+              </div>
 
-              <select
-                value={color}
-                onChange={(e) => setColor(e.target.value)}
-                className="rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none"
-              >
-                {product.colors.map((c) => (
-                  <option key={c}>{c}</option>
-                ))}
-              </select>
+              <div>
+                <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
+                  Color
+                </p>
+                <select
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  className={selectClass}
+                >
+                  {product.colors.map((c) => (
+                    <option key={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
 
-              <select
-                value={placement}
-                onChange={(e) => setPlacement(e.target.value)}
-                className="rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none"
-              >
-                {placementOptions.map((option) => (
-                  <option key={option}>{option}</option>
-                ))}
-              </select>
+              <div>
+                <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
+                  Placement
+                </p>
+                <select
+                  value={placement}
+                  onChange={(e) => setPlacement(e.target.value)}
+                  className={selectClass}
+                >
+                  {placementOptions.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
 
-              {styleOptions.length > 0 && (
-  <div className="mt-6">
-    <p className="mb-2 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
-      Style
-    </p>
+            {styleOptions.length > 0 && (
+              <div className="mt-6">
+                <p className="mb-2 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
+                  Style
+                </p>
 
-    <div className="flex flex-wrap gap-2">
-      {styleOptions.map((option) => {
-        const active = itemStyle === option;
+                <div className="flex flex-wrap gap-2">
+                  {styleOptions.map((option) => {
+                    const active = itemStyle === option;
 
-        return (
-          <button
-            key={option}
-            type="button"
-            onClick={() => setItemStyle(option)}
-            className={`rounded-full px-4 py-2 text-[13px] transition ${
-              active
-                ? "bg-[#2F3A4A] text-white"
-                : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
-            }`}
-          >
-            {option.replace(" Tank", "").replace(" Tee", "")}
-          </button>
-        );
-      })}
-    </div>
-  </div>
-)}
+                    return (
+                      <button
+                        key={option}
+                        type="button"
+                        onClick={() => setItemStyle(option)}
+                        className={`rounded-full px-4 py-2 text-[13px] transition ${
+                          active
+                            ? "bg-[#2F3A4A] text-white"
+                            : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
-            <div className="mt-8 rounded-[24px] border border-[#EEEAE4] bg-white p-5">
+            <div className="mt-8 rounded-[28px] border border-[#F1EEE9] bg-white p-6">
               <LogoPicker
                 logos={campLogos}
                 selectedLogo={selectedLogo}
@@ -246,7 +261,7 @@ export default function ProductPage() {
                 <select
                   value={logoColor}
                   onChange={(e) => setLogoColor(e.target.value)}
-                  className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none"
+                  className={`${selectClass} mt-2`}
                 >
                   {logoColors.map((c) => (
                     <option key={c}>{c}</option>
@@ -264,7 +279,7 @@ export default function ProductPage() {
                   onChange={(e) => setCustomDetails(e.target.value)}
                   rows={2}
                   placeholder="Add camp, initials, custom logo request, or special notes"
-                  className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none placeholder:text-[#A8A29E]"
+                  className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none placeholder:text-[#A8A29E] focus:border-[#6F879E]"
                 />
               </div>
             </div>
@@ -281,7 +296,7 @@ export default function ProductPage() {
                 onChange={(e) =>
                   setQuantity(Math.max(1, Number(e.target.value)))
                 }
-                className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none"
+                className={`${selectClass} mt-2`}
               />
             </div>
 
@@ -296,4 +311,5 @@ export default function ProductPage() {
         </div>
       </div>
     </main>
+  );
 }
