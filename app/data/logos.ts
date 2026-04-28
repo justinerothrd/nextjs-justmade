@@ -457,17 +457,7 @@ export const logos: Logo[] = [
     group: "Camp Laurel",
     style: "Varsity",
   },
-
-  // CAMP — CHENAWANDA
-  {
-    slug: "chenawanda-varsity-arch",
-    name: "Varsity Arch",
-    image: "/logos/THC-varsityarch.png",
-    category: "Camp",
-    group: "Chenawanda",
-    style: "Varsity",
-  },
-
+  
   // CAMP — TIMBERLAKE
   {
     slug: "timberlake-analog",
@@ -492,14 +482,6 @@ export const logos: Logo[] = [
     category: "Camp",
     group: "Timberlake",
     style: "Minimal",
-  },
-  {
-    slug: "timberlake-country-club-white",
-    name: "Country Club White",
-    image: "/logos/timberlake-countryclub-white.png",
-    category: "Camp",
-    group: "Timberlake",
-    style: "Classic",
   },
   {
     slug: "timberlake-country-club",
@@ -537,14 +519,6 @@ export const logos: Logo[] = [
     slug: "timberlake-sport-mascot",
     name: "Sport Mascot",
     image: "/logos/timberlake-sport-mascot.png",
-    category: "Camp",
-    group: "Timberlake",
-    style: "Icon",
-  },
-  {
-    slug: "timberlake-tiger-white",
-    name: "Tiger White",
-    image: "/logos/timberlake-tiger-white.png",
     category: "Camp",
     group: "Timberlake",
     style: "Icon",
