@@ -6,7 +6,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { logos } from "@/app/data/logos";
 
 const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon"] as const;
-const [selectedLogo, setSelectedLogo] = useState<string | null>(null);
 
 function DesignsPageContent() {
   const searchParams = useSearchParams();
@@ -15,6 +14,13 @@ function DesignsPageContent() {
 
   const [activeStyle, setActiveStyle] =
     useState<(typeof styles)[number]>("All");
+
+  const [selectedLogo, setSelectedLogo] = useState<null | {
+    image: string;
+    name: string;
+    group: string;
+    style: string;
+  }>(null);
 
   const visibleLogos = useMemo(() => {
     const realLogos = logos.filter((logo) => logo.slug !== "custom-logo");
@@ -39,18 +45,18 @@ function DesignsPageContent() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#6B7280]">
-  Explore our collection of camp and college designs.  
-  Every piece can be customized for your camp, school, or group.
-</p>
+              Explore our collection of camp and college designs. Every piece
+              can be customized for your camp, school, or group.
+            </p>
           </div>
 
           <button
-  type="button"
-  onClick={() => router.push(returnTo)}
-  className="shrink-0 text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
->
-  Back to product
-</button>
+            type="button"
+            onClick={() => router.push(returnTo)}
+            className="shrink-0 text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
+          >
+            Back to product
+          </button>
         </div>
 
         <section className="mb-16">
@@ -68,10 +74,18 @@ function DesignsPageContent() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((logo) => (
               <button
-  key={logo.slug}
-  onClick={() => setSelectedLogo(logo.image)}
-  className="group rounded-[34px] border border-[#ECE7E1] bg-white p-5 shadow-[0_12px_34px_rgba(0,0,0,0.035)] transition hover:-translate-y-1 hover:shadow-[0_20px_46px_rgba(0,0,0,0.06)]"
->
+                key={logo.slug}
+                type="button"
+                onClick={() =>
+                  setSelectedLogo({
+                    image: logo.image,
+                    name: logo.name,
+                    group: logo.group,
+                    style: logo.style,
+                  })
+                }
+                className="group text-left rounded-[34px] border border-[#ECE7E1] bg-white p-5 shadow-[0_12px_34px_rgba(0,0,0,0.035)] transition hover:-translate-y-1 hover:shadow-[0_20px_46px_rgba(0,0,0,0.06)]"
+              >
                 <div className="relative aspect-square overflow-hidden rounded-[26px] bg-[#FAF8F5]">
                   <Image
                     src={logo.image}
@@ -89,7 +103,7 @@ function DesignsPageContent() {
                     {logo.group} · {logo.style}
                   </p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </section>
@@ -120,7 +134,7 @@ function DesignsPageContent() {
                         : "border-[#D8D3CD] bg-white text-[#2F3A4A] hover:border-[#6F879E]"
                     }`}
                   >
-                    {style === "All" ? "All" : style}
+                    {style}
                   </button>
                 );
               })}
@@ -129,12 +143,19 @@ function DesignsPageContent() {
 
           <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
             {visibleLogos.map((logo, index) => (
-              <div
-                <button
-  key={logo.slug}
-  onClick={() => setSelectedLogo(logo.image)}
-  className="mb-4 break-inside-avoid rounded-[28px] border border-[#ECE7E1] bg-white p-4 shadow-[0_8px_24px_rgba(0,0,0,0.025)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(0,0,0,0.045)]"
->
+              <button
+                key={logo.slug}
+                type="button"
+                onClick={() =>
+                  setSelectedLogo({
+                    image: logo.image,
+                    name: logo.name,
+                    group: logo.group,
+                    style: logo.style,
+                  })
+                }
+                className="mb-4 w-full break-inside-avoid rounded-[28px] border border-[#ECE7E1] bg-white p-4 text-left shadow-[0_8px_24px_rgba(0,0,0,0.025)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(0,0,0,0.045)]"
+              >
                 <div
                   className={`relative overflow-hidden rounded-[22px] bg-[#FAF8F5] ${
                     index % 5 === 0 ? "aspect-[4/5]" : "aspect-square"
@@ -144,7 +165,7 @@ function DesignsPageContent() {
                     src={logo.image}
                     alt={logo.name}
                     fill
-                    className="object-contain p-5"
+                    className="object-contain p-5 transition-transform duration-700 hover:scale-[1.04]"
                   />
                 </div>
 
@@ -156,25 +177,51 @@ function DesignsPageContent() {
                     {logo.group} · {logo.style}
                   </p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </section>
       </div>
+
       {selectedLogo && (
-  <div
-    onClick={() => setSelectedLogo(null)}
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
-  >
-    <div className="relative max-w-lg w-full">
-      <img
-        src={selectedLogo}
-        alt="Zoomed logo"
-        className="w-full rounded-[24px] bg-white p-8"
-      />
-    </div>
-  </div>
-)}
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+          onClick={() => setSelectedLogo(null)}
+        >
+          <div
+            className="w-full max-w-xl rounded-[30px] bg-white p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative aspect-square w-full overflow-hidden rounded-[24px] bg-[#FAF8F5]">
+              <Image
+                src={selectedLogo.image}
+                alt={selectedLogo.name}
+                fill
+                className="object-contain p-8"
+              />
+            </div>
+
+            <div className="mt-5 flex items-start justify-between gap-4">
+              <div>
+                <p className="text-lg font-medium text-[#2F3A4A]">
+                  {selectedLogo.name}
+                </p>
+                <p className="mt-1 text-sm text-[#8A8178]">
+                  {selectedLogo.group} · {selectedLogo.style}
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setSelectedLogo(null)}
+                className="rounded-full border border-[#E5E1DB] px-4 py-2 text-sm text-[#2F3A4A] transition hover:border-[#6F879E]"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
