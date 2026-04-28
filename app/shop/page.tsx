@@ -5,7 +5,7 @@ import { categories } from "@/lib/categories";
 import { products } from "@/lib/products";
 
 const previewProductsByCategory = {
-  sweatshirts: ["hoodie", "quarter-zip"],
+  sweatshirts: ["hoodie", "crewneck", "quarter-zip"],
   tees: ["tank-top", "custom-tee"],
   bottoms: ["custom-shorts", "sweatpants"],
   sleepwear: ["sleepwear", "sleepwear-set"],
