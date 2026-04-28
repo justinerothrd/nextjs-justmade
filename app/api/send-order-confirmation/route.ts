@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-
+<img src="https://justmadecustom.com/logo.png" />
 type OrderItem = {
   product: string;
   price: string;
