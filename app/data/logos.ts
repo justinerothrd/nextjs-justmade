@@ -92,7 +92,7 @@ export const logos: Logo[] = [
   {
     slug: "thc-analog",
     name: "Analog",
-    image: "/logos/THC-analog.png",
+    image: "/logos/thc-analog.png",
     category: "Camp",
     group: "Tyler Hill",
     style: "Minimal",
