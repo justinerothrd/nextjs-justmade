@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { logos } from "@/app/data/logos";
 
 const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon"] as const;
+const [selectedLogo, setSelectedLogo] = useState<string | null>(null);
 
 function DesignsPageContent() {
   const searchParams = useSearchParams();
@@ -37,9 +38,10 @@ function DesignsPageContent() {
               Design Library
             </h1>
 
-            <p className="mt-10 max-w-xl text-sm leading-10 text-[#6B6762]">
-              Browse camp all our camp and college artwork. All logos can be made for any camp or college! Add your request in the customization details.
-            </p>
+            <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#6B7280]">
+  Explore our collection of camp and college designs.  
+  Every piece can be customized for your camp, school, or group.
+</p>
           </div>
 
           <button
@@ -65,10 +67,11 @@ function DesignsPageContent() {
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((logo) => (
-              <div
-                key={logo.slug}
-                className="group rounded-[34px] border border-[#ECE7E1] bg-white p-5 shadow-[0_12px_34px_rgba(0,0,0,0.035)] transition hover:-translate-y-1 hover:shadow-[0_20px_46px_rgba(0,0,0,0.06)]"
-              >
+              <button
+  key={logo.slug}
+  onClick={() => setSelectedLogo(logo.image)}
+  className="group rounded-[34px] border border-[#ECE7E1] bg-white p-5 shadow-[0_12px_34px_rgba(0,0,0,0.035)] transition hover:-translate-y-1 hover:shadow-[0_20px_46px_rgba(0,0,0,0.06)]"
+>
                 <div className="relative aspect-square overflow-hidden rounded-[26px] bg-[#FAF8F5]">
                   <Image
                     src={logo.image}
@@ -127,9 +130,11 @@ function DesignsPageContent() {
           <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
             {visibleLogos.map((logo, index) => (
               <div
-                key={logo.slug}
-                className="mb-4 break-inside-avoid rounded-[28px] border border-[#ECE7E1] bg-white p-4 shadow-[0_8px_24px_rgba(0,0,0,0.025)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(0,0,0,0.045)]"
-              >
+                <button
+  key={logo.slug}
+  onClick={() => setSelectedLogo(logo.image)}
+  className="mb-4 break-inside-avoid rounded-[28px] border border-[#ECE7E1] bg-white p-4 shadow-[0_8px_24px_rgba(0,0,0,0.025)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(0,0,0,0.045)]"
+>
                 <div
                   className={`relative overflow-hidden rounded-[22px] bg-[#FAF8F5] ${
                     index % 5 === 0 ? "aspect-[4/5]" : "aspect-square"
@@ -156,6 +161,20 @@ function DesignsPageContent() {
           </div>
         </section>
       </div>
+      {selectedLogo && (
+  <div
+    onClick={() => setSelectedLogo(null)}
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+  >
+    <div className="relative max-w-lg w-full">
+      <img
+        src={selectedLogo}
+        alt="Zoomed logo"
+        className="w-full rounded-[24px] bg-white p-8"
+      />
+    </div>
+  </div>
+)}
     </main>
   );
 }
