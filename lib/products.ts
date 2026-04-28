@@ -13,7 +13,7 @@ export const products: Record<string, Product> = {
   hoodie: {
     name: "Custom Hoodie",
     price: "$60",
-    description: "A cozy custom hoodie for chilly camp nights and cool mornings.",
+    description: "A cozy and soft hoodie for chilly camp nights and cool mornings.",
     images: [
       "/skims hoodie front.png",
       "/timberlake-hoodie.png",
@@ -31,8 +31,7 @@ export const products: Record<string, Product> = {
 
   "quarter-zip": {
     name: "Custom 1/4 Zip",
-    price: "$65",
-    description: "A polished quarter zip that layers easily for camp, travel, and everyday wear.",
+    price: "$65", 
     images: ["/THCquarterzipgrey.png", "/THCquarterzipnavy.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
