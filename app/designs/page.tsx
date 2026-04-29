@@ -10,12 +10,12 @@ const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon"] as con
 function DesignsPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
+
   const returnTo = searchParams.get("returnTo") || "/shop";
+  const featuredGroup = searchParams.get("group") || "Tyler Hill";
 
   const [activeStyle, setActiveStyle] =
-  useState<(typeof styles)[number]>("All");
-
-const [activeGroup, setActiveGroup] = useState("Tyler Hill");
+    useState<(typeof styles)[number]>("All");
 
   const [selectedLogo, setSelectedLogo] = useState<null | {
     image: string;
@@ -24,19 +24,39 @@ const [activeGroup, setActiveGroup] = useState("Tyler Hill");
     style: string;
   }>(null);
 
+  const realLogos = useMemo(() => {
+    return logos.filter((logo) => logo.slug !== "custom-logo");
+  }, []);
+
+  const featured = useMemo(() => {
+    const groupLogos = realLogos.filter((logo) => logo.group === featuredGroup);
+
+    return groupLogos.length > 0 ? groupLogos.slice(0, 4) : realLogos.slice(0, 4);
+  }, [realLogos, featuredGroup]);
+
   const visibleLogos = useMemo(() => {
-    const realLogos = logos.filter((logo) => logo.slug !== "custom-logo");
-
     if (activeStyle === "All") return realLogos;
-    return realLogos.filter((logo) => logo.style === activeStyle);
-  }, [activeStyle]);
 
-  const featured = visibleLogos.slice(0, 4);
+    return realLogos.filter((logo) => logo.style === activeStyle);
+  }, [realLogos, activeStyle]);
+
+  function openLogo(logo: {
+    image: string;
+    name: string;
+    group: string;
+    style: string;
+  }) {
+    setSelectedLogo({
+      image: logo.image,
+      name: logo.name,
+      group: logo.group,
+      style: logo.style,
+    });
+  }
 
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-16">
       <div className="mx-auto max-w-7xl">
-        {/* HEADER */}
         <div className="mb-14 flex items-start justify-between gap-6">
           <div>
             <p className="mb-3 text-[11px] uppercase tracking-[0.22em] text-[#8A8178]">
@@ -48,12 +68,13 @@ const [activeGroup, setActiveGroup] = useState("Tyler Hill");
             </h1>
 
             <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#6B7280]">
-              Explore our collection of camp and college designs. Every logo
-              can be customized for your camp, school, or group.
+              Explore our collection of camp and college designs. Every logo can
+              be customized for your camp, school, or group.
             </p>
           </div>
 
           <button
+            type="button"
             onClick={() => router.push(returnTo)}
             className="shrink-0 text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
           >
@@ -61,24 +82,21 @@ const [activeGroup, setActiveGroup] = useState("Tyler Hill");
           </button>
         </div>
 
-        {/* FEATURED */}
         <section className="mb-16">
           <p className="text-[11px] uppercase tracking-[0.2em] text-[#8A8178]">
             Featured
           </p>
 
+          <h2 className="mt-2 text-2xl font-light text-[#2F3A4A]">
+            Featured for {featuredGroup}
+          </h2>
+
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((logo) => (
               <button
                 key={logo.slug}
-                onClick={() =>
-                  setSelectedLogo({
-                    image: logo.image,
-                    name: logo.name,
-                    group: logo.group,
-                    style: logo.style,
-                  })
-                }
+                type="button"
+                onClick={() => openLogo(logo)}
                 className="group rounded-[34px] border border-[#ECE7E1] bg-white p-5 transition hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="relative aspect-square overflow-hidden rounded-[26px]">
@@ -86,7 +104,7 @@ const [activeGroup, setActiveGroup] = useState("Tyler Hill");
                     src={logo.image}
                     alt={logo.name}
                     fill
-                    className="object-contain p-7"
+                    className="object-contain p-7 transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                 </div>
 
@@ -103,7 +121,6 @@ const [activeGroup, setActiveGroup] = useState("Tyler Hill");
           </div>
         </section>
 
-        {/* ALL DESIGNS */}
         <section>
           <div className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -122,6 +139,7 @@ const [activeGroup, setActiveGroup] = useState("Tyler Hill");
                 return (
                   <button
                     key={style}
+                    type="button"
                     onClick={() => setActiveStyle(style)}
                     className={`rounded-full border px-4 py-2 text-[13px] transition ${
                       active
@@ -136,30 +154,20 @@ const [activeGroup, setActiveGroup] = useState("Tyler Hill");
             </div>
           </div>
 
-          <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
-            {visibleLogos.map((logo, index) => (
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {visibleLogos.map((logo) => (
               <button
                 key={logo.slug}
-                onClick={() =>
-                  setSelectedLogo({
-                    image: logo.image,
-                    name: logo.name,
-                    group: logo.group,
-                    style: logo.style,
-                  })
-                }
-                className="mb-4 w-full break-inside-avoid rounded-[28px] border border-[#ECE7E1] bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-sm"
+                type="button"
+                onClick={() => openLogo(logo)}
+                className="w-full rounded-[28px] border border-[#ECE7E1] bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-sm"
               >
-                <div
-                  className={`relative overflow-hidden rounded-[22px] ${
-                    index % 5 === 0 ? "aspect-[4/5]" : "aspect-square"
-                  }`}
-                >
+                <div className="relative aspect-square overflow-hidden rounded-[22px]">
                   <Image
                     src={logo.image}
                     alt={logo.name}
                     fill
-                    className="object-contain p-5"
+                    className="object-contain p-5 transition-transform duration-700 hover:scale-[1.04]"
                   />
                 </div>
 
@@ -177,7 +185,6 @@ const [activeGroup, setActiveGroup] = useState("Tyler Hill");
         </section>
       </div>
 
-      {/* MODAL */}
       {selectedLogo && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
@@ -196,7 +203,7 @@ const [activeGroup, setActiveGroup] = useState("Tyler Hill");
               />
             </div>
 
-            <div className="mt-5 flex items-start justify-between">
+            <div className="mt-5 flex items-start justify-between gap-4">
               <div>
                 <p className="text-lg font-medium text-[#2F3A4A]">
                   {selectedLogo.name}
@@ -207,8 +214,9 @@ const [activeGroup, setActiveGroup] = useState("Tyler Hill");
               </div>
 
               <button
+                type="button"
                 onClick={() => setSelectedLogo(null)}
-                className="text-sm underline"
+                className="text-sm underline underline-offset-4"
               >
                 Close
               </button>
