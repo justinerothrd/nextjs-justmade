@@ -95,7 +95,7 @@ export const products: Record<string, Product> = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
-      White: "/blanks/sweatpants-grey.png",
+      White: "/blanks/sweatpantsgrey-open.png",
   },
 
   "custom-shorts": {
@@ -107,7 +107,7 @@ export const products: Record<string, Product> = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
-      White: "/blanks/bikeshorts-black.png",
+      White: "/blanks/bikeshort-black.png",
   },
 
   sleepwear: {
