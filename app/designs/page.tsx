@@ -46,7 +46,7 @@ function DesignsPageContent() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#6B7280]">
-              Explore our collection of camp and college designs. Every piece
+              Explore our collection of camp and college designs. Every logo
               can be customized for your camp, school, or group.
             </p>
           </div>
