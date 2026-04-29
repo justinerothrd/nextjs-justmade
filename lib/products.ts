@@ -96,6 +96,7 @@ export const products: Record<string, Product> = {
     logoGroup: "Tyler Hill",
     blankImages: {
       White: "/blanks/sweatpantsgrey-open.png",
+    },
   },
 
   "custom-shorts": {
@@ -108,6 +109,7 @@ export const products: Record<string, Product> = {
     logoGroup: "Tyler Hill",
     blankImages: {
       White: "/blanks/bikeshort-black.png",
+    },
   },
 
   sleepwear: {
@@ -120,30 +122,22 @@ export const products: Record<string, Product> = {
     logoGroup: "Tyler Hill",
     blankImages: {
       White: "/blanks/sleepshorts-blank.png",
+    },
   },
 
-  "sleeppants": {
-  name: "Custom Sleep Pants",
-  price: "$40", // adjust if needed
-  description: "",
-  images: [
-    "/thcsleeppants.png", // update if you have better images
-  ],
-  colors: ["White", "Heather Gray", "Light Blue", "Navy"],
-  sizes: [
-    "Youth S",
-    "Youth M",
-    "Youth L",
-    "Adult XS",
-    "Adult S",
-    "Adult M",
-    "Adult L",
-  ],
-  logoGroup: "Tyler Hill",
-  blankImages: {
-    White: "/blanks/sleeppants-blank.png",
+  sleeppants: {
+    name: "Custom Sleep Pants",
+    price: "$40",
+    description: "",
+    images: ["/thcsleeppants.png"],
+    colors: ["White", "Heather Gray", "Light Blue", "Navy"],
+    sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
+    logoGroup: "Tyler Hill",
+    blankImages: {
+      White: "/blanks/sleeppants-blank.png",
+    },
   },
-},
+
   "sleepwear-set": {
     name: "Custom Sleep Set",
     price: "$65",
@@ -154,6 +148,7 @@ export const products: Record<string, Product> = {
     logoGroup: "Tyler Hill",
     blankImages: {
       White: "/blanks/sleepset-blank.png",
+    },
   },
 
   "accessories-slides": {
@@ -166,6 +161,7 @@ export const products: Record<string, Product> = {
     logoGroup: "Tyler Hill",
     blankImages: {
       White: "/blanks/slides-blank.png",
+    },
   },
 
   "accessories-socks": {
@@ -178,8 +174,9 @@ export const products: Record<string, Product> = {
     logoGroup: "Tyler Hill",
     blankImages: {
       White: "/blanks/socks-blank.png",
+    },
   },
-}
+};
 
 export type ProductSlug = keyof typeof products;
 
