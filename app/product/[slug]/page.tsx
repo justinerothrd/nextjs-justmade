@@ -46,49 +46,17 @@ function getBlankImage(slug: string, color: string, style?: string) {
   };
 
   const colorFile = colorMap[c];
-
   if (!colorFile) return "";
 
-  if (slug === "hoodie") {
-    return `/blanks/hoodie-${colorFile}.png`;
-  }
-
-  if (slug === "crewneck") {
-    return `/blanks/crewneck-${colorFile}.png`;
-  }
-
-  if (slug === "quarter-zip") {
-    return `/blanks/quarterzip-${colorFile}.png`;
-  }
-
-  if (slug === "tank-top") {
-    return `/blanks/tank-${colorFile}.png`;
-  }
-
-  if (slug === "custom-tee") {
-    return `/blanks/tee-${colorFile}.png`;
-  }
-
+  // 🔥 SHORTS
   if (slug === "custom-shorts") {
+    if (style === "Soffee Shorts") {
+      return `/blanks/soffee-${colorFile}.png`;
+    }
     return `/blanks/bikeshort-${colorFile}.png`;
   }
 
-  if (slug === "sleepwear") {
-    return "/blanks/pajamashorts-blank.png";
-  }
-
-  if (slug === "sleepwear-set") {
-    return "/blanks/sleepset-blank.png";
-  }
-
-  if (slug === "accessories-slides") {
-    return "/blanks/slides-blank.png";
-  }
-
-  if (slug === "accessories-socks") {
-    return "/blanks/socks-blank.png";
-  }
-
+  // 🔥 SWEATPANTS
   if (slug === "sweatpants") {
     if (colorFile === "grey") {
       return style === "Closed Bottom"
@@ -105,11 +73,22 @@ function getBlankImage(slug: string, color: string, style?: string) {
     if (colorFile === "white") {
       return "/blanks/white-closed-sweatpants.png";
     }
-
-    if (colorFile === "royalblue") {
-      return "/blanks/sweatpants-royalblue-closed.png";
-    }
   }
+
+  // 🔥 EVERYTHING ELSE (this is the magic)
+  const productMap: Record<string, string> = {
+    hoodie: "hoodie",
+    crewneck: "crewneck",
+    "quarter-zip": "quarterzip",
+    "tank-top": "tank",
+    "custom-tee": "tee",
+  };
+
+  const base = productMap[slug];
+  if (!base) return "";
+
+  return `/blanks/${base}-${colorFile}.png`;
+}
 
   return "";
 }
