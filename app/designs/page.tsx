@@ -13,7 +13,9 @@ function DesignsPageContent() {
   const returnTo = searchParams.get("returnTo") || "/shop";
 
   const [activeStyle, setActiveStyle] =
-    useState<(typeof styles)[number]>("All");
+  useState<(typeof styles)[number]>("All");
+
+const [activeGroup, setActiveGroup] = useState("Tyler Hill");
 
   const [selectedLogo, setSelectedLogo] = useState<null | {
     image: string;
