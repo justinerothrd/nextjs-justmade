@@ -20,6 +20,15 @@ const placementOptionsBySlug: Record<string, string[]> = {
   "accessories-slides": ["Top of Slides"],
   "accessories-socks": ["Outer Ankle"],
 };
+
+const styleOptionsBySlug: Record<string, string[]> = {
+  "custom-tee": ["Crewneck", "Cropped", "V-Neck"],
+  "tank-top": ["Ribbed Reg", "Ribbed Crop", "Scoop Neck", "Malibu Sugar"],
+  "sweatpants": ["Open Bottom", "Closed Bottom"],
+  "custom-shorts": ["Bike Shorts", "Soffee Shorts"]
+};
+
+const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
 function getBlankImage(slug: string, color: string, style?: string) {
   const c = color.toLowerCase();
 
@@ -37,57 +46,55 @@ function getBlankImage(slug: string, color: string, style?: string) {
   };
 
   const colorFile = colorMap[c];
+
   if (!colorFile) return "";
 
-  // 🔥 SHORTS
+  if (slug === "hoodie") {
+    return `/blanks/hoodie-${colorFile}.png`;
+  }
+
+  if (slug === "crewneck") {
+    return `/blanks/crewneck-${colorFile}.png`;
+  }
+
+  if (slug === "quarter-zip") {
+    return `/blanks/quarterzip-${colorFile}.png`;
+  }
+
+  if (slug === "tank-top") {
+    return `/blanks/tank-${colorFile}.png`;
+  }
+
+  if (slug === "custom-tee") {
+    return `/blanks/tee-${colorFile}.png`;
+  }
+
   if (slug === "custom-shorts") {
-    if (style === "Soffee Shorts") {
-      return `/blanks/soffee-${colorFile}.png`;
-    }
     return `/blanks/bikeshort-${colorFile}.png`;
   }
 
-  // 🔥 SWEATPANTS
+  if (slug === "sleepwear") {
+    return "/blanks/pajamashorts-blank.png";
+  }
+
+  if (slug === "sleepwear-set") {
+    return "/blanks/sleepset-blank.png";
+  }
+
+  if (slug === "accessories-slides") {
+    return "/blanks/slides-blank.png";
+  }
+
+  if (slug === "accessories-socks") {
+    return "/blanks/socks-blank.png";
+  }
+
   if (slug === "sweatpants") {
     if (colorFile === "grey") {
       return style === "Closed Bottom"
         ? "/blanks/grey-closed-sweatpants.png"
         : "/blanks/sweatpantsgrey-open.png";
     }
-
-    if (colorFile === "navy") {
-      return style === "Closed Bottom"
-        ? "/blanks/sweatpantsnavy-closed.png"
-        : "/blanks/sweatpants-open-navy.png";
-    }
-
-    if (colorFile === "white") {
-      return "/blanks/white-closed-sweatpants.png";
-    }
-  }
-
-  // 🔥 EVERYTHING ELSE (this is the magic)
-  const productMap: Record<string, string> = {
-    hoodie: "hoodie",
-    crewneck: "crewneck",
-    "quarter-zip": "quarterzip",
-    "tank-top": "tank",
-    "custom-tee": "tee",
-  };
-
-  const base = productMap[slug];
-  if (!base) return "";
-
-  return `/blanks/${base}-${colorFile}.png`;
-}
-const styleOptionsBySlug: Record<string, string[]> = {
-  "custom-tee": ["Crewneck", "Cropped", "V-Neck"],
-  "tank-top": ["Ribbed Reg", "Ribbed Crop", "Scoop Neck", "Malibu Sugar"],
-  "sweatpants": ["Open Bottom", "Closed Bottom"],
-  "custom-shorts": ["Bike Shorts", "Soffee Shorts"]
-};
-
-const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
 
     if (colorFile === "navy") {
       return style === "Closed Bottom"
@@ -152,8 +159,8 @@ export default function ProductPage() {
 
   if (!product) return <div>Product not found</div>;
 
-  const displayImage =
-  getBlankImage(safeSlug, color, itemStyle) || currentImage;
+  const currentImage =
+    product.images?.[selectedImage] || product.images?.[0] || "";
 
   const placementOptions =
     placementOptionsBySlug[safeSlug] || ["Full Front", "Left Chest", "Back"];
@@ -236,8 +243,7 @@ export default function ProductPage() {
 
             <div className="flex aspect-square w-full items-center justify-center overflow-hidden rounded-[28px] border border-[#F0ECE6] bg-[#FBFAF8] p-4 sm:p-6">
               <img
-                <img
-  src={displayImage}
+                src={currentImage}
                 alt={product.name}
                 className="max-h-[94%] max-w-[94%] object-contain transition-transform duration-700 hover:scale-[1.02]"
               />
