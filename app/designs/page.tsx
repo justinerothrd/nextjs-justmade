@@ -163,6 +163,7 @@ function DesignsPageContent() {
                     src={logo.image}
                     alt={logo.name}
                     fill
+                    />
                     className="object-contain p-5 transition-transform duration-700 hover:scale-[1.04]"
                   />
                 </div>
