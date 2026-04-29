@@ -33,7 +33,7 @@ const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Blac
 function getBlankImage(slug: string, color: string, style?: string) {
   const c = color.toLowerCase();
 
-  const colorMap: Record<string, string> = {
+  const map: Record<string, string> = {
     "heather gray": "grey",
     gray: "grey",
     grey: "grey",
@@ -46,51 +46,63 @@ function getBlankImage(slug: string, color: string, style?: string) {
     "royal blue": "royalblue",
   };
 
-  const colorFile = colorMap[c];
-  if (!colorFile) return "";
+  const colorKey = map[c];
+  if (!colorKey) return "";
 
-  if (slug === "hoodie") return `/blanks/hoodie-${colorFile}.png`;
-  if (slug === "crewneck") return `/blanks/crewneck-${colorFile}.png`;
-  if (slug === "quarter-zip") return `/blanks/quarterzip-${colorFile}.png`;
-  if (slug === "tank-top") return `/blanks/tank-${colorFile}.png`;
-  if (slug === "custom-tee") return `/blanks/tee-${colorFile}.png`;
+  // TOPS
+  if (slug === "hoodie") return `/blanks/hoodie-${colorKey}.png`;
+  if (slug === "crewneck") return `/blanks/crewneck-${colorKey}.png`;
+  if (slug === "quarter-zip") return `/blanks/quarterzip-${colorKey}.png`;
+  if (slug === "tank-top") return `/blanks/tank-${colorKey}.png`;
+  if (slug === "custom-tee") return `/blanks/tee-${colorKey}.png`;
 
+  // SHORTS
   if (slug === "custom-shorts") {
-  if (style === "Soffee Shorts") {
-    return "/blanks/pajamashorts-blank.png";
+    if (style === "Bike Shorts") {
+      return `/blanks/bikeshort-${colorKey}.png`;
+    }
+
+    if (style === "Soffee Shorts") {
+      return `/blanks/soffee-${colorKey}.png`; // YOU HAVE THESE ✅
+    }
+
+    return "";
   }
 
-  return `/blanks/bikeshort-${colorFile}.png`;
-}
+  // SWEATPANTS (MATCHES YOUR FILES EXACTLY)
+  if (slug === "sweatpants") {
+    if (colorKey === "grey") {
+      return style === "Closed Bottom"
+        ? "/blanks/sweatpants-grey-closed-back.png"
+        : "/blanks/sweatpantsgrey-open.png"; // <-- weird name but matches your repo
+    }
 
+    if (colorKey === "navy") {
+      return style === "Closed Bottom"
+        ? "/blanks/sweatpantsnavy-closed.png"
+        : "/blanks/sweatpants-open-navy.png";
+    }
+
+    if (colorKey === "white") {
+      return "/blanks/sweatpantswhite-closed.png";
+    }
+
+    if (colorKey === "royalblue") {
+      return "/blanks/sweatpants-royalblue-closed.png";
+    }
+
+    return "";
+  }
+
+  // OTHER
   if (slug === "sleepwear") return "/blanks/pajamashorts-blank.png";
   if (slug === "sleeppants") return "/blanks/sleeppants-blank.png";
   if (slug === "sleepwear-set") return "/blanks/sleepset-blank.png";
   if (slug === "accessories-slides") return "/blanks/slides-blank.png";
   if (slug === "accessories-socks") return "/blanks/socks-blank.png";
 
-  if (slug === "sweatpants") {
-    if (colorFile === "grey") {
-      return style === "Closed Bottom"
-        ? "/blanks/grey-closed-sweatpants.png"
-        : "/blanks/sweatpantsgrey-open.png";
-    }
-
-    if (colorFile === "navy") {
-      return style === "Closed Bottom"
-        ? "/blanks/sweatpantsnavy-closed.png"
-        : "/blanks/sweatpants-open-navy.png";
-    }
-
-    if (colorFile === "white") {
-      return "/blanks/sweatpantswhite-closed.png";
-    }
-
-    if (colorFile === "royalblue") {
-      return "/blanks/sweatpants-royalblue-closed.png";
-    }
-  }
-
+  return "";
+}
   return "";
 }
 
