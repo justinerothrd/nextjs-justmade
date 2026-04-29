@@ -133,17 +133,13 @@ export default function CartPage() {
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-16">
       <div className="mx-auto max-w-4xl">
         <div className="mb-10 text-center">
-          <p className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A]">
-            Just Made Custom
-          </p>
-
+        
           <h1 className="mt-2 text-[34px] font-light tracking-[-0.01em] text-[#2F2F2F] sm:text-[42px]">
             Review Your Order
           </h1>
 
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray-500">
-            Each piece is made custom — please review your selections below
-            before submitting your order request.
+          <p className="mx-auto mt-8 max-w-xl text-sm leading-6 text-gray-500">
+            Review your selections below and contact us with any questions or requests!
           </p>
 
           <a
