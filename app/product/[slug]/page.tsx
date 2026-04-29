@@ -282,44 +282,53 @@ export default function ProductPage() {
               </div>
             )}
 
-            <div className="mt-8 rounded-[28px] border border-[#F1EEE9] bg-white p-6">
-              <LogoPicker
-                logos={campLogos}
-                selectedLogo={selectedLogo}
-                onSelectLogo={setSelectedLogo}
-              />
+            <div className="mt-8 rounded-[30px] border border-[#ECE7E1] bg-[#FBFAF8] p-5 sm:p-6">
+  <div className="mb-5">
+    <p className="text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
+      Custom Design
+    </p>
+    <p className="mt-2 text-sm leading-6 text-[#6B6762]">
+      Choose a design below, or add a custom request and we’ll help finalize the artwork.
+    </p>
+  </div>
 
-              <div className="mt-5">
-                <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
-                  Logo Color
-                </label>
+  <LogoPicker
+    logos={campLogos}
+    selectedLogo={selectedLogo}
+    onSelectLogo={setSelectedLogo}
+  />
 
-                <select
-                  value={logoColor}
-                  onChange={(e) => setLogoColor(e.target.value)}
-                  className={`${selectClass} mt-2`}
-                >
-                  {logoColors.map((c) => (
-                    <option key={c}>{c}</option>
-                  ))}
-                </select>
-              </div>
+  <div className="mt-6 grid gap-5 sm:grid-cols-2">
+    <div>
+      <label className="text-[11px] uppercase tracking-[0.16em] text-[#8A8178]">
+        Logo Color
+      </label>
 
-              <div className="mt-5 rounded-[20px] border border-[#EEEAE4] bg-[#FBFAF8] p-4">
-                <label className="text-[11px] uppercase tracking-[0.14em] text-[#6B7280]">
-                  Custom Details
-                </label>
+      <select
+        value={logoColor}
+        onChange={(e) => setLogoColor(e.target.value)}
+        className="mt-2 w-full rounded-full border border-[#E5E1DB] bg-white px-4 py-3 text-sm outline-none transition hover:border-[#CFC9C2] focus:border-[#6F879E]"
+      >
+        {logoColors.map((c) => (
+          <option key={c}>{c}</option>
+        ))}
+      </select>
+    </div>
 
-                <textarea
-                  value={customDetails}
-                  onChange={(e) => setCustomDetails(e.target.value)}
-                  rows={2}
-                  placeholder="Add camp, initials, custom logo request, or special notes"
-                  className="mt-2 w-full resize-none rounded-[14px] border border-[#D8D3CD] bg-white px-3 py-2 text-sm outline-none placeholder:text-[#A8A29E] focus:border-[#6F879E]"
-                />
-              </div>
-            </div>
+    <div>
+      <label className="text-[11px] uppercase tracking-[0.16em] text-[#8A8178]">
+        Notes
+      </label>
 
+      <input
+        value={customDetails}
+        onChange={(e) => setCustomDetails(e.target.value)}
+        placeholder="Camp name, initials, special request"
+        className="mt-2 w-full rounded-full border border-[#E5E1DB] bg-white px-4 py-3 text-sm outline-none placeholder:text-[#A8A29E] transition hover:border-[#CFC9C2] focus:border-[#6F879E]"
+      />
+    </div>
+  </div>
+</div>
             <div className="mt-5">
               <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
                 Quantity
