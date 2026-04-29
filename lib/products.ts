@@ -40,7 +40,11 @@ crewneck: {
   sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
   logoGroup: "Tyler Hill",
   blankImages: {
-    "Heather Gray": "/thc-monogram-crew.png",
+  "Heather Gray": "/blanks/crewneck-grey.png",
+  Navy: "/blanks/crewneck-navy.png",
+  White: "/blanks/crewneck-white.png",
+  Green: "/blanks/crewneck-green.png",
+},
   },
 },
   "quarter-zip": {
