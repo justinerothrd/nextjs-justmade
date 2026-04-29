@@ -34,14 +34,13 @@ crewneck: {
   description: "A classic custom crewneck designed for everyday camp wear and layering.",
   images: [
     "/thc-monagram-crew.png", 
-    "/laurel-arch-crew.png",
-    
+    "/laurel-arch-crew.png",  
   ],
   colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
   sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
   logoGroup: "Tyler Hill",
   blankImages: {
-    "Heather Gray": "/crewneck-grey.png",
+    "Heather Gray": "/thc-monogram-crew.png",
   },
 },
   "quarter-zip": {
