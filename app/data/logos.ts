@@ -473,6 +473,14 @@ export const logos: Logo[] = [
     group: "Camp Laurel",
     style: "Classic",
   },
+   {
+    slug: "laurel-monogram",
+    name: "Monogram",
+    image: "/logos/laurel-monogram.png",
+    category: "Camp",
+    group: "Camp Laurel",
+    style: "Classic",
+  },
   {
     slug: "laurel-print",
     name: "Print",
