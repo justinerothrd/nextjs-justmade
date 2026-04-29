@@ -46,17 +46,17 @@ function getBlankImage(slug: string, color: string, style?: string) {
   };
 
   const colorFile = colorMap[c];
+
   if (!colorFile) return "";
 
-  // 🔥 SHORTS
   if (slug === "custom-shorts") {
     if (style === "Soffee Shorts") {
       return `/blanks/soffee-${colorFile}.png`;
     }
+
     return `/blanks/bikeshort-${colorFile}.png`;
   }
 
-  // 🔥 SWEATPANTS
   if (slug === "sweatpants") {
     if (colorFile === "grey") {
       return style === "Closed Bottom"
@@ -73,9 +73,14 @@ function getBlankImage(slug: string, color: string, style?: string) {
     if (colorFile === "white") {
       return "/blanks/white-closed-sweatpants.png";
     }
+
+    if (colorFile === "royalblue") {
+      return "/blanks/sweatpants-royalblue-closed.png";
+    }
+
+    return "";
   }
 
-  // 🔥 EVERYTHING ELSE (this is the magic)
   const productMap: Record<string, string> = {
     hoodie: "hoodie",
     crewneck: "crewneck",
@@ -85,42 +90,11 @@ function getBlankImage(slug: string, color: string, style?: string) {
   };
 
   const base = productMap[slug];
+
   if (!base) return "";
 
   return `/blanks/${base}-${colorFile}.png`;
 }
-
-  return "";
-}
-export default function ProductPage() {
-  const params = useParams();
-  const rawSlug = params?.slug;
-  const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
-  const safeSlug = slug || "";
-
-  const product = safeSlug ? getProductBySlug(safeSlug) : null;
-
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedLogo, setSelectedLogo] = useState("");
-  const [logoColor, setLogoColor] = useState("Navy");
-  const [placement, setPlacement] = useState("");
-  const [itemStyle, setItemStyle] = useState("");
-  const [size, setSize] = useState("Youth M");
-  const [color, setColor] = useState("Heather Gray");
-  const [customDetails, setCustomDetails] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [added, setAdded] = useState(false);
-
-  const campLogos = useMemo(
-    () => logos.filter((logo) => logo.category === "Camp"),
-    []
-  );
-
-  const selectedLogoObject = useMemo(
-    () => logos.find((logo) => logo.slug === selectedLogo),
-    [selectedLogo]
-  );
-
   useEffect(() => {
     if (!product) return;
 
