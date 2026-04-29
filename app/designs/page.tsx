@@ -85,10 +85,12 @@ function DesignsPageContent() {
                 className="group text-left rounded-[34px] border border-[#ECE7E1] bg-white p-5 shadow-[0_12px_34px_rgba(0,0,0,0.035)] transition hover:-translate-y-1 hover:shadow-[0_20px_46px_rgba(0,0,0,0.06)]"
               >
                 <div className="relative aspect-square overflow-hidden rounded-[26px] bg-transparent">
-                  <Image
-                    src={logo.image}
-                    alt={logo.name}
-                    fill
+                 <Image
+  src={selectedLogo.image}
+  alt={selectedLogo.name}
+  fill
+/>
+                    
                     className="object-contain p-7 transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                 </div>
