@@ -27,38 +27,54 @@ const styleOptionsBySlug: Record<string, string[]> = {
 };
 
 const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
-function getBlankImage(slug: string, color: string) {
-  const normalizedColor = color.toLowerCase();
+function getBlankImage(slug: string, color: string, style?: string) {
+  const c = color.toLowerCase();
 
-  const colorMap: Record<string, string> = {
+  if (slug === "sweatpants") {
+    if (c.includes("gray")) {
+      return style === "Closed Bottom"
+        ? "/blanks/grey-closed-sweatpants.png"
+        : "/blanks/sweatpantsgrey-open.png";
+    }
+
+    if (c.includes("navy")) {
+      return style === "Closed Bottom"
+        ? "/blanks/sweatpantsnavy-closed.png"
+        : "/blanks/sweatpants-open-navy.png";
+    }
+
+    if (c.includes("white")) {
+      return "/blanks/sweatpantswhite-closed.png";
+    }
+  }
+
+  // fallback for everything else (your existing logic)
+  const map: any = {
+    hoodie: "hoodie",
+    "quarter-zip": "quarterzip",
+    "crew-neck": "crewneck",
+    "tank-top": "tank",
+    "custom-tee": "tee",
+    "custom-shorts": "bikeshort",
+  };
+
+  const colorMap: any = {
     "heather gray": "grey",
     gray: "grey",
-    grey: "grey",
     navy: "navy",
     white: "white",
     black: "black",
     green: "green",
     "light blue": "lightblue",
     red: "red",
-    "royal blue": "royalblue",
   };
 
-  const productMap: Record<string, string> = {
-    hoodie: "hoodie",
-    "quarter-zip": "quarterzip",
-    "crew-neck": "crewneck", 
-    "tank-top": "tank",
-    "custom-tee": "tee",
-    "custom-shorts": "bikeshort",
-    sweatpants: "sweatpants",
-  };
+  const p = map[slug];
+  const col = colorMap[c];
 
-  const productFileName = productMap[slug];
-  const colorFileName = colorMap[normalizedColor];
+  if (!p || !col) return "";
 
-  if (!productFileName || !colorFileName) return "";
-
-  return `/blanks/${productFileName}-${colorFileName}.png`;
+  return `/blanks/${p}-${col}.png`;
 }
 export default function ProductPage() {
   const params = useParams();
@@ -128,7 +144,7 @@ export default function ProductPage() {
   color,
   style: itemStyle,
   quantity,
-  image: getBlankImage(safeSlug, color) || currentImage,
+  image: getBlankImage(safeSlug, color, itemStyle) || currentImage,
 
   logoSlug: selectedLogo,
   logoName: selectedLogoObject?.name || "",
