@@ -23,6 +23,7 @@ const placementOptionsBySlug: Record<string, string[]> = {
 const styleOptionsBySlug: Record<string, string[]> = {
   "custom-tee": ["Crewneck", "Cropped", "V-Neck"],
   "tank-top": ["Ribbed Reg", "Ribbed Crop", "Scoop Neck", "Malibu Sugar"],
+  "sweatpants": ["Open Bottom", "Closed Bottom"],
 };
 
 const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
