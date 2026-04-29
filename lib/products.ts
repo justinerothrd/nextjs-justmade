@@ -95,7 +95,7 @@ export const products: Record<string, Product> = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
-      White: "/blanks/sweatpantsgrey-open.png",
+      "Heather Gray": "/blanks/sweatpantsgrey-open.png",
     },
   },
 
@@ -108,7 +108,7 @@ export const products: Record<string, Product> = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
-      White: "/blanks/bikeshort-black.png",
+      Black: "/blanks/bikeshort-black.png",
     },
   },
 
@@ -121,7 +121,7 @@ export const products: Record<string, Product> = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
-      White: "/blanks/sleepshorts-blank.png",
+      Blank: "/blanks/sleepshorts-blank.png",
     },
   },
 
@@ -134,7 +134,7 @@ export const products: Record<string, Product> = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
-      White: "/blanks/sleeppants-blank.png",
+      Blank: "/blanks/sleeppants-blank.png",
     },
   },
 
@@ -147,7 +147,7 @@ export const products: Record<string, Product> = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
-      White: "/blanks/sleepset-blank.png",
+      Blank: "/blanks/sleepset-blank.png",
     },
   },
 
@@ -160,7 +160,7 @@ export const products: Record<string, Product> = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
-      White: "/blanks/slides-blank.png",
+      Blank: "/blanks/slides-blank.png",
     },
   },
 
@@ -173,7 +173,7 @@ export const products: Record<string, Product> = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
-      White: "/blanks/socks-blank.png",
+      Blank: "/blanks/socks-blank.png",
     },
   },
 };
