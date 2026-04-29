@@ -20,21 +20,29 @@ const categoryMeta = {
 
 const categoryStyles = {
   sweatshirts: [
-    {
-      slug: "hoodie",
-      title: "Hoodies",
-      image: products["hoodie"].images[0],
-      href: "/product/hoodie",
-      imageClassName: "max-h-[94%] max-w-[94%]",
-    },
-    {
-      slug: "quarter-zip",
-      title: "Quarter Zips",
-      image: products["quarter-zip"].images[0],
-      href: "/product/quarter-zip",
-      imageClassName: "max-h-[94%] max-w-[94%]",
-    },
-  ],
+    sweatshirts: [
+  {
+    slug: "hoodie",
+    title: "Hoodies",
+    image: products["hoodie"].images[0],
+    href: "/product/hoodie",
+    imageClassName: "max-h-[94%] max-w-[94%]",
+  },
+  {
+    slug: "crewneck",
+    title: "Crewnecks",
+    image: products["crewneck"].images[0],
+    href: "/product/crewneck",
+    imageClassName: "max-h-[94%] max-w-[94%]",
+  },
+  {
+    slug: "quarter-zip",
+    title: "Quarter Zips",
+    image: products["quarter-zip"].images[0],
+    href: "/product/quarter-zip",
+    imageClassName: "max-h-[94%] max-w-[94%]",
+  },
+],
   tees: [
     {
       slug: "tank-top",
