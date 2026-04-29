@@ -167,29 +167,32 @@ export default function ProductPage() {
   const styleOptions = styleOptionsBySlug[safeSlug] || [];
 
   function handleAddToCart() {
-    if (!product || !safeSlug) return;
+  if (!product || !safeSlug) return;
 
-    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+  if (!selectedLogo) {
+    alert("Please choose a design or select Use Custom Design before adding to cart.");
+    return;
+  }
 
-    const newItem = {
-  id: Date.now(),
-  slug: safeSlug,
-  product: product.name,
-  price: product.price,
-  size,
-  color,
-  style: itemStyle,
-  quantity,
-  image: getBlankImage(safeSlug, color, itemStyle) || currentImage,
+  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-  logoSlug: selectedLogo,
-  logoName: selectedLogoObject?.name || "",
-  logoImage: selectedLogoObject?.image || "",   // 👈 ADD THIS LINE
-
-  logoColor,
-  placement,
-  customDetails,
-};
+  const newItem = {
+    id: Date.now(),
+    slug: safeSlug,
+    product: product.name,
+    price: product.price,
+    size,
+    color,
+    style: itemStyle,
+    quantity,
+    image: getBlankImage(safeSlug, color, itemStyle) || currentImage,
+    logoSlug: selectedLogo,
+    logoName: selectedLogoObject?.name || "",
+    logoImage: selectedLogoObject?.image || "",
+    logoColor,
+    placement,
+    customDetails,
+  };
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
     window.dispatchEvent(new Event("cartUpdated"));
