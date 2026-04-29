@@ -126,7 +126,7 @@ export default function LogoPicker({
   href={`/designs?returnTo=${encodeURIComponent(pathname)}`}
   className="text-[11px] text-[#8A8178] underline underline-offset-4 hover:text-[#6F879E]"
 >
-  View all
+  Browse all camp designs
 </a>
       </div>
 
