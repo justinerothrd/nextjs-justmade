@@ -15,6 +15,7 @@ const placementOptionsBySlug: Record<string, string[]> = {
   sweatpants: ["Left Leg", "Right Leg", "Hip"],
   "custom-shorts": ["Left Leg", "Right Leg", "Hip"],
   sleepwear: ["Left Leg", "Right Leg", "Hip"],
+  "sleeppants": ["Left Leg", "Right Leg", "Hip"],
   "sleepwear-set": ["Top Front", "Shorts Leg"],
   "accessories-slides": ["Top of Slides"],
   "accessories-socks": ["Outer Ankle"],
