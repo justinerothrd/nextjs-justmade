@@ -33,9 +33,9 @@ crewneck: {
   price: "$60",
   description: "A classic custom crewneck designed for everyday camp wear and layering.",
   images: [
-    "/crewneck-grey.png", // update to your real file names
-    "/crewneck-navy.png",
-    "/crewneck-white.png",
+    "/thc-monagram-crew.png", 
+    "/laurel-arch-crew.png",
+    
   ],
   colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
   sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
