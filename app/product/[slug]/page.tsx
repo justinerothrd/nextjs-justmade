@@ -57,7 +57,7 @@ function getBlankImage(slug: string, color: string, style?: string) {
 
   if (slug === "custom-shorts") {
     return `/blanks/bikeshort-${colorFile}.png`;
-    return `/blanks/soffeeshort-${colorFile}.png`;
+    return `/blanks/soffee-${colorFile}.png`;
   }
 
   if (slug === "sleepwear") return "/blanks/pajamashorts-blank.png";
@@ -69,7 +69,7 @@ function getBlankImage(slug: string, color: string, style?: string) {
   if (slug === "sweatpants") {
     if (colorFile === "grey") {
       return style === "Closed Bottom"
-        ? "/blanks/grey-closed-sweatpants.png"
+        ? "/blanks/sweatpantsnavy-closed.png"
         : "/blanks/sweatpantsgrey-open.png";
     }
 
