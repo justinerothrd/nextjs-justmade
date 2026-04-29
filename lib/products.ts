@@ -103,7 +103,7 @@ export const products: Record<string, Product> = {
     name: "Custom Shorts",
     price: "$36",
     description: "",
-    images: ["/THCbikeshorts.png", "/shorts-preview.png"],
+    images: ["/THCbikeshorts.png", "/pontiac-soffee-short.png"],
     colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
