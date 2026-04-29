@@ -8,6 +8,7 @@ import { logos } from "@/app/data/logos";
 
 const placementOptionsBySlug: Record<string, string[]> = {
   hoodie: ["Left Chest", "Full Front", "Back", "Sleeve"],
+  crewneck: ["Left Chest", "Full Front", "Back", "Sleeve"],
   "quarter-zip": ["Left Chest", "Full Front", "Back", "Sleeve"],
   "tank-top": ["Full Front", "Left Chest", "Back"],
   "custom-tee": ["Full Front", "Left Chest", "Back", "Sleeve"],
@@ -44,6 +45,7 @@ function getBlankImage(slug: string, color: string) {
   const productMap: Record<string, string> = {
     hoodie: "hoodie",
     "quarter-zip": "quarterzip",
+    "crew-neck": "crewneck", 
     "tank-top": "tank",
     "custom-tee": "tee",
     "custom-shorts": "bikeshort",
