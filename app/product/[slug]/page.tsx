@@ -103,8 +103,6 @@ function getBlankImage(slug: string, color: string, style?: string) {
 
   return "";
 }
-  return "";
-}
 
 export default function ProductPage() {
   const params = useParams();
