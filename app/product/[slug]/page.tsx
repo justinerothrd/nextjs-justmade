@@ -229,7 +229,7 @@ export default function ProductPage() {
               aria-label={`Zoom ${product.name}`}
             >
               <img
-                src={displayImage}
+                src={currentImage}
                 alt={product.name}
                 className="max-h-[94%] max-w-[94%] object-contain transition-transform duration-700 group-hover:scale-[1.03]"
               />
@@ -413,7 +413,7 @@ export default function ProductPage() {
           </button>
 
           <img
-            src={displayImage}
+            src={currentImage}
             alt={product.name}
             className="max-h-[88vh] max-w-[92vw] object-contain"
           />
