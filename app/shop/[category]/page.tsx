@@ -89,6 +89,13 @@ const categoryStyles = {
       href: "/product/sleepwear-set",
       imageClassName: "max-h-[98%] max-w-[98%]",
     },
+    {
+  slug: "sleeppants",
+  title: "Sleep Pants",
+  image: products["sleeppants"].images[0],
+  href: "/product/sleeppants",
+  imageClassName: "max-h-[94%] max-w-[94%]",
+},
   ],
   accessories: [
     {
