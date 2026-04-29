@@ -138,7 +138,7 @@ export default function CartPage() {
             Review Your Order
           </h1>
 
-          <p className="mx-auto mt-8 max-w-xl text-sm leading-6 text-gray-500">
+          <p className="mx-auto mt-8 max-w-xl text-sm leading-10 text-gray-500">
             Review your selections below and contact us with any questions or requests!
           </p>
 
