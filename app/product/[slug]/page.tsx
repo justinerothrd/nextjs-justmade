@@ -57,37 +57,40 @@ function getBlankImage(slug: string, color: string, style?: string) {
   if (slug === "custom-tee") return `/blanks/tee-${colorKey}.png`;
 
   // SHORTS
-  if (slug === "custom-shorts") {
-    if (style === "Bike Shorts") {
-      return `/blanks/bikeshort-${colorKey}.png`;
+    if (slug === "custom-shorts") {
+    if (style === "Soffee Shorts") {
+      return `/blanks/soffee-${colorFile}.png`;
     }
 
-    if (style === "Soffee Shorts") {
-      return `/blanks/soffee-${colorKey}.png`; // YOU HAVE THESE ✅
+    if (style === "Bike Shorts") {
+      if (colorFile === "black") return "/blanks/bikeshort-black.png";
+      if (colorFile === "grey") return "/blanks/bikeshort-grey.png";
+      if (colorFile === "navy") return "/blanks/bikeshort-navy.png";
+
+      return "";
     }
 
     return "";
   }
 
-  // SWEATPANTS (MATCHES YOUR FILES EXACTLY)
   if (slug === "sweatpants") {
-    if (colorKey === "grey") {
+    if (colorFile === "grey") {
       return style === "Closed Bottom"
         ? "/blanks/sweatpants-grey-closed-back.png"
-        : "/blanks/sweatpantsgrey-open.png"; // <-- weird name but matches your repo
+        : "/blanks/sweatpantsgrey-open.png";
     }
 
-    if (colorKey === "navy") {
+    if (colorFile === "navy") {
       return style === "Closed Bottom"
         ? "/blanks/sweatpantsnavy-closed.png"
         : "/blanks/sweatpants-open-navy.png";
     }
 
-    if (colorKey === "white") {
+    if (colorFile === "white") {
       return "/blanks/sweatpantswhite-closed.png";
     }
 
-    if (colorKey === "royalblue") {
+    if (colorFile === "royalblue") {
       return "/blanks/sweatpants-royalblue-closed.png";
     }
 
