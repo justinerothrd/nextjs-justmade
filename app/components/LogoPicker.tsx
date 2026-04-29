@@ -123,7 +123,11 @@ export default function LogoPicker({
         </p>
 
         <a
-  href={`/designs?returnTo=${encodeURIComponent(pathname)}`}
+  href={`/designs?group=${encodeURIComponent(
+    selectedGroup === "All" || selectedGroup === "Other"
+      ? "Tyler Hill"
+      : selectedGroup
+  )}&returnTo=${encodeURIComponent(pathname)}`}
   className="text-[11px] text-[#8A8178] underline underline-offset-4 hover:text-[#6F879E]"
 >
   Browse all camp designs
