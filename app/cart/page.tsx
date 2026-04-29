@@ -230,7 +230,7 @@ export default function CartPage() {
       <img
         src={item.logoImage}
         alt={item.logoName}
-        className="h-8 w-8 rounded-md bg-[#F7F7F5] object-contain p-1"
+        className="h-12 w-12 rounded-lg bg-[#F7F7F5] object-contain p-2 border border-[#EEEAE5]"
       />
     )}
   </p>
