@@ -33,7 +33,7 @@ export const products: Record<string, Product> = {
     name: "Custom Crewneck",
     price: "$60",
     description: "",
-    images: ["/thc-monogram-crew.png", "/laurel-arch-crew.png"],
+    images: ["/thc-monogram-crew.png", "/laurel-arch-crewneck.png"],
     colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
