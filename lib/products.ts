@@ -179,7 +179,7 @@ export const products: Record<string, Product> = {
     blankImages: {
       White: "/blanks/socks-blank.png",
   },
-};
+}
 
 export type ProductSlug = keyof typeof products;
 
