@@ -138,9 +138,12 @@ export default function ProductPage() {
 
   if (!product) return <div>Product not found</div>;
 
-  const currentImage =
-    product.images?.[selectedImage] || product.images?.[0] || "";
+  const baseImage =
+  product.images?.[selectedImage] || product.images?.[0] || "";
 
+const displayImage =
+  getBlankImage(safeSlug, color, itemStyle) || baseImage;
+  
   const placementOptions =
     placementOptionsBySlug[safeSlug] || ["Full Front", "Left Chest", "Back"];
 
@@ -222,7 +225,7 @@ export default function ProductPage() {
 
             <div className="flex aspect-square w-full items-center justify-center overflow-hidden rounded-[28px] border border-[#F0ECE6] bg-[#FBFAF8] p-4 sm:p-6">
               <img
-                src={currentImage}
+                src={displayImage}
                 alt={product.name}
                 className="max-h-[94%] max-w-[94%] object-contain transition-transform duration-700 hover:scale-[1.02]"
               />
