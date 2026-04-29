@@ -119,9 +119,31 @@ export const products: Record<string, Product> = {
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
-      White: "/blanks/pajamashorts-blank.png",
+      White: "/blanks/sleepshorts-blank.png",
   },
 
+  "sleeppants": {
+  name: "Custom Sleep Pants",
+  price: "$40", // adjust if needed
+  description: "",
+  images: [
+    "/thcsleeppants.png", // update if you have better images
+  ],
+  colors: ["White", "Heather Gray", "Light Blue", "Navy"],
+  sizes: [
+    "Youth S",
+    "Youth M",
+    "Youth L",
+    "Adult XS",
+    "Adult S",
+    "Adult M",
+    "Adult L",
+  ],
+  logoGroup: "Tyler Hill",
+  blankImages: {
+    White: "/blanks/sleeppants-blank.png",
+  },
+},
   "sleepwear-set": {
     name: "Custom Sleep Set",
     price: "$65",
