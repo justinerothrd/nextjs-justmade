@@ -15,7 +15,7 @@ const placementOptionsBySlug: Record<string, string[]> = {
   sweatpants: ["Left Leg", "Right Leg", "Hip"],
   "custom-shorts": ["Left Leg", "Right Leg", "Hip"],
   sleepwear: ["Left Leg", "Right Leg", "Hip"],
-  "sleeppants": ["Left Leg", "Right Leg", "Hip"],
+  sleeppants: ["Left Leg", "Right Leg", "Hip"],
   "sleepwear-set": ["Top Front", "Shorts Leg"],
   "accessories-slides": ["Top of Slides"],
   "accessories-socks": ["Outer Ankle"],
@@ -24,11 +24,12 @@ const placementOptionsBySlug: Record<string, string[]> = {
 const styleOptionsBySlug: Record<string, string[]> = {
   "custom-tee": ["Crewneck", "Cropped", "V-Neck"],
   "tank-top": ["Ribbed Reg", "Ribbed Crop", "Scoop Neck", "Malibu Sugar"],
-  "sweatpants": ["Open Bottom", "Closed Bottom"],
-  "custom-shorts": ["Bike Shorts", "Soffee Shorts"]
+  sweatpants: ["Open Bottom", "Closed Bottom"],
+  "custom-shorts": ["Bike Shorts", "Soffee Shorts"],
 };
 
 const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
+
 function getBlankImage(slug: string, color: string, style?: string) {
   const c = color.toLowerCase();
 
@@ -46,16 +47,23 @@ function getBlankImage(slug: string, color: string, style?: string) {
   };
 
   const colorFile = colorMap[c];
-
   if (!colorFile) return "";
 
-  if (slug === "custom-shorts") {
-    if (style === "Soffee Shorts") {
-      return `/blanks/soffee-${colorFile}.png`;
-    }
+  if (slug === "hoodie") return `/blanks/hoodie-${colorFile}.png`;
+  if (slug === "crewneck") return `/blanks/crewneck-${colorFile}.png`;
+  if (slug === "quarter-zip") return `/blanks/quarterzip-${colorFile}.png`;
+  if (slug === "tank-top") return `/blanks/tank-${colorFile}.png`;
+  if (slug === "custom-tee") return `/blanks/tee-${colorFile}.png`;
 
+  if (slug === "custom-shorts") {
     return `/blanks/bikeshort-${colorFile}.png`;
   }
+
+  if (slug === "sleepwear") return "/blanks/pajamashorts-blank.png";
+  if (slug === "sleeppants") return "/blanks/sleeppants-blank.png";
+  if (slug === "sleepwear-set") return "/blanks/sleepset-blank.png";
+  if (slug === "accessories-slides") return "/blanks/slides-blank.png";
+  if (slug === "accessories-socks") return "/blanks/socks-blank.png";
 
   if (slug === "sweatpants") {
     if (colorFile === "grey") {
@@ -71,30 +79,47 @@ function getBlankImage(slug: string, color: string, style?: string) {
     }
 
     if (colorFile === "white") {
-      return "/blanks/white-closed-sweatpants.png";
+      return "/blanks/sweatpantswhite-closed.png";
     }
 
     if (colorFile === "royalblue") {
       return "/blanks/sweatpants-royalblue-closed.png";
     }
-
-    return "";
   }
 
-  const productMap: Record<string, string> = {
-    hoodie: "hoodie",
-    crewneck: "crewneck",
-    "quarter-zip": "quarterzip",
-    "tank-top": "tank",
-    "custom-tee": "tee",
-  };
-
-  const base = productMap[slug];
-
-  if (!base) return "";
-
-  return `/blanks/${base}-${colorFile}.png`;
+  return "";
 }
+
+export default function ProductPage() {
+  const params = useParams();
+  const rawSlug = params?.slug;
+  const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
+  const safeSlug = slug || "";
+
+  const product = safeSlug ? getProductBySlug(safeSlug) : null;
+
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [selectedLogo, setSelectedLogo] = useState("");
+  const [logoColor, setLogoColor] = useState("Navy");
+  const [placement, setPlacement] = useState("");
+  const [itemStyle, setItemStyle] = useState("");
+  const [size, setSize] = useState("Youth M");
+  const [color, setColor] = useState("Heather Gray");
+  const [customDetails, setCustomDetails] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [added, setAdded] = useState(false);
+  const [imageZoomOpen, setImageZoomOpen] = useState(false);
+
+  const campLogos = useMemo(
+    () => logos.filter((logo) => logo.category === "Camp"),
+    []
+  );
+
+  const selectedLogoObject = useMemo(
+    () => logos.find((logo) => logo.slug === selectedLogo),
+    [selectedLogo]
+  );
+
   useEffect(() => {
     if (!product) return;
 
@@ -112,44 +137,44 @@ function getBlankImage(slug: string, color: string, style?: string) {
 
   if (!product) return <div>Product not found</div>;
 
-  const baseImage =
-  product.images?.[selectedImage] || product.images?.[0] || "";
+  const currentImage = product.images?.[selectedImage] || product.images?.[0] || "";
+  const displayImage = getBlankImage(safeSlug, color, itemStyle) || currentImage;
 
-const displayImage =
-  getBlankImage(safeSlug, color, itemStyle) || baseImage;
-  
   const placementOptions =
     placementOptionsBySlug[safeSlug] || ["Full Front", "Left Chest", "Back"];
 
   const styleOptions = styleOptionsBySlug[safeSlug] || [];
 
   function handleAddToCart() {
-  if (!product || !safeSlug) return;
+    if (!product || !safeSlug) return;
 
-  if (!selectedLogo) {
-    alert("Please choose a design or select Use Custom Design before adding to cart.");
-    return;
-  }
+    if (!selectedLogo) {
+      alert("Please choose a design or select Use Custom Design before adding to cart.");
+      return;
+    }
 
-  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-  const newItem = {
-    id: Date.now(),
-    slug: safeSlug,
-    product: product.name,
-    price: product.price,
-    size,
-    color,
-    style: itemStyle,
-    quantity,
-    image: getBlankImage(safeSlug, color, itemStyle) || currentImage,
-    logoSlug: selectedLogo,
-    logoName: selectedLogoObject?.name || "",
-    logoImage: selectedLogoObject?.image || "",
-    logoColor,
-    placement,
-    customDetails,
-  };
+    const newItem = {
+      id: Date.now(),
+      slug: safeSlug,
+      product: product.name,
+      price: product.price,
+      size,
+      color,
+      style: itemStyle,
+      quantity,
+      image: displayImage,
+      logoSlug: selectedLogo,
+      logoName:
+        selectedLogo === "custom-logo"
+          ? "Custom Design Request"
+          : selectedLogoObject?.name || "",
+      logoImage: selectedLogoObject?.image || "",
+      logoColor,
+      placement,
+      customDetails,
+    };
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
     window.dispatchEvent(new Event("cartUpdated"));
@@ -174,7 +199,7 @@ const displayImage =
 
         <div className="mt-8 grid items-start gap-10 md:grid-cols-2 md:gap-14">
           <div className="flex gap-4">
-            {product.images.length > 1 && (
+            {product.images?.length > 1 && (
               <div className="flex flex-col gap-3 pt-1">
                 {product.images.map((img, i) => (
                   <button
@@ -197,13 +222,18 @@ const displayImage =
               </div>
             )}
 
-            <div className="flex aspect-square w-full items-center justify-center overflow-hidden rounded-[28px] border border-[#F0ECE6] bg-[#FBFAF8] p-4 sm:p-6">
+            <button
+              type="button"
+              onClick={() => setImageZoomOpen(true)}
+              className="group flex aspect-square w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-[28px] border border-[#F0ECE6] bg-[#FBFAF8] p-4 sm:p-6"
+              aria-label={`Zoom ${product.name}`}
+            >
               <img
                 src={displayImage}
                 alt={product.name}
-                className="max-h-[94%] max-w-[94%] object-contain transition-transform duration-700 hover:scale-[1.02]"
+                className="max-h-[94%] max-w-[94%] object-contain transition-transform duration-700 group-hover:scale-[1.03]"
               />
-            </div>
+            </button>
           </div>
 
           <div>
@@ -296,53 +326,52 @@ const displayImage =
             )}
 
             <div className="mt-8 rounded-[30px] border border-[#ECE7E1] bg-[#FBFAF8] p-5 sm:p-6">
-  <div className="mb-5">
-    <p className="text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
-      Custom Design
-    </p>
-    <p className="mt-2 text-sm leading-6 text-[#6B6762]">
-      Choose a design below, or add a custom request and we’ll help finalize the artwork.
-    </p>
-  </div>
+              <div className="mb-5">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
+                  Custom Design
+                </p>
+                <p className="mt-2 text-sm leading-6 text-[#6B6762]">
+                  Choose a design below, or add a custom request and we’ll help finalize the artwork.
+                </p>
+              </div>
 
-  <LogoPicker
-    logos={campLogos}
-    selectedLogo={selectedLogo}
-    onSelectLogo={setSelectedLogo}
-  />
+              <LogoPicker
+                logos={campLogos}
+                selectedLogo={selectedLogo}
+                onSelectLogo={setSelectedLogo}
+              />
 
-  <div className="mt-6 grid gap-5 sm:grid-cols-2">
-    <div>
-      <label className="text-[11px] uppercase tracking-[0.16em] text-[#8A8178]">
-        Logo Color
-      </label>
+              <div className="mt-6">
+                <label className="text-[11px] uppercase tracking-[0.16em] text-[#8A8178]">
+                  Logo Color
+                </label>
 
-      <select
-        value={logoColor}
-        onChange={(e) => setLogoColor(e.target.value)}
-        className="mt-2 w-full rounded-full border border-[#E5E1DB] bg-white px-4 py-3 text-sm outline-none transition hover:border-[#CFC9C2] focus:border-[#6F879E]"
-      >
-        {logoColors.map((c) => (
-          <option key={c}>{c}</option>
-        ))}
-      </select>
-    </div>
+                <select
+                  value={logoColor}
+                  onChange={(e) => setLogoColor(e.target.value)}
+                  className="mt-2 w-full rounded-full border border-[#E5E1DB] bg-white px-4 py-3 text-sm outline-none transition hover:border-[#CFC9C2] focus:border-[#6F879E]"
+                >
+                  {logoColors.map((c) => (
+                    <option key={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
 
-    <div>
-      <label className="text-[11px] uppercase tracking-[0.16em] text-[#8A8178]">
-        Notes
-      </label>
+              <div className="mt-5">
+                <label className="text-[11px] uppercase tracking-[0.16em] text-[#8A8178]">
+                  Notes
+                </label>
 
-      <textarea
-  value={customDetails}
-  onChange={(e) => setCustomDetails(e.target.value)}
-  rows={3}
-  placeholder="Camp name, initials, custom logo request, or special notes"
-  className="mt-2 w-full resize-none rounded-[18px] border border-[#E5E1DB] bg-white px-4 py-3 text-sm leading-6 outline-none placeholder:text-[#A8A29E] transition hover:border-[#CFC9C2] focus:border-[#6F879E]"
-/>
-    </div>
-  </div>
-</div>
+                <textarea
+                  value={customDetails}
+                  onChange={(e) => setCustomDetails(e.target.value)}
+                  rows={3}
+                  placeholder="Camp name, initials, custom logo request, or special notes"
+                  className="mt-2 w-full resize-none rounded-[18px] border border-[#E5E1DB] bg-white px-4 py-3 text-sm leading-6 outline-none placeholder:text-[#A8A29E] transition hover:border-[#CFC9C2] focus:border-[#6F879E]"
+                />
+              </div>
+            </div>
+
             <div className="mt-5">
               <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
                 Quantity
@@ -369,6 +398,27 @@ const displayImage =
           </div>
         </div>
       </div>
+
+      {imageZoomOpen && (
+        <div
+          className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/70 p-5"
+          onClick={() => setImageZoomOpen(false)}
+        >
+          <button
+            type="button"
+            onClick={() => setImageZoomOpen(false)}
+            className="absolute right-5 top-5 rounded-full bg-white/90 px-4 py-2 text-sm text-[#2F2F2F]"
+          >
+            Close
+          </button>
+
+          <img
+            src={displayImage}
+            alt={product.name}
+            className="max-h-[88vh] max-w-[92vw] object-contain"
+          />
+        </div>
+      )}
     </main>
   );
 }
