@@ -159,8 +159,8 @@ export default function ProductPage() {
 
   if (!product) return <div>Product not found</div>;
 
-  const currentImage =
-    product.images?.[selectedImage] || product.images?.[0] || "";
+  const displayImage =
+  getBlankImage(safeSlug, color, itemStyle) || currentImage;
 
   const placementOptions =
     placementOptionsBySlug[safeSlug] || ["Full Front", "Left Chest", "Back"];
