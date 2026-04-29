@@ -131,9 +131,6 @@ function DesignsPageContent() {
         </div>
 
         <section className="mb-16">
-          <p className="text-[11px] uppercase tracking-[0.2em] text-[#8A8178]">
-            Featured
-          </p>
 
           <h2 className="mt-2 text-2xl font-light text-[#2F3A4A]">
             Featured for {featuredGroup}
