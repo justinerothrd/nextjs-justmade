@@ -7,6 +7,45 @@ import { logos } from "@/app/data/logos";
 
 const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon"] as const;
 
+const featuredByGroup: Record<string, string[]> = {
+  "Tyler Hill": [
+    "thc-running-club-new",
+    "thc-mongoram",
+    "thc-script",
+    "thc-patch",
+  ],
+  Pontiac: [
+    "pontiac-varsity-date",
+    "pontiac-script",
+    "pontiac-mascot",
+    "pontiac-runner-22",
+  ],
+  Westmont: [
+    "wm-country-club",
+    "wm-script",
+    "wm-varsity-arch-date",
+    "WM-runner81",
+  ],
+  Canadensis: [
+    "canadensis-country-club",
+    "canadensis-script",
+    "canadensis-varsity-arch-date",
+    "canadensis-running-club",
+  ],
+  "Camp Laurel": [
+    "laurel-country-club",
+    "laurel-script",
+    "laurel-varsity-arch-date",
+    "laurel-running-club",
+  ],
+  Timberlake: [
+    "timberlake-country-club",
+    "timberlake-script",
+    "timberlake-varsity-arch-date",
+    "timberlake-tiger",
+  ],
+};
+
 function DesignsPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -29,14 +68,23 @@ function DesignsPageContent() {
   }, []);
 
   const featured = useMemo(() => {
-    const groupLogos = realLogos.filter((logo) => logo.group === featuredGroup);
+    const preferredSlugs = featuredByGroup[featuredGroup] || [];
+
+    const preferredLogos = preferredSlugs
+      .map((slug) => realLogos.find((logo) => logo.slug === slug))
+      .filter(Boolean) as typeof realLogos;
+
+    if (preferredLogos.length > 0) return preferredLogos;
+
+    const groupLogos = realLogos.filter(
+      (logo) => logo.group === featuredGroup
+    );
 
     return groupLogos.length > 0 ? groupLogos.slice(0, 4) : realLogos.slice(0, 4);
   }, [realLogos, featuredGroup]);
 
   const visibleLogos = useMemo(() => {
     if (activeStyle === "All") return realLogos;
-
     return realLogos.filter((logo) => logo.style === activeStyle);
   }, [realLogos, activeStyle]);
 
