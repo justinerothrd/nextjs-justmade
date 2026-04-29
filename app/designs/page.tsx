@@ -65,10 +65,6 @@ function DesignsPageContent() {
             Featured
           </p>
 
-          <h2 className="mt-2 text-2xl font-light text-[#2F3A4A]">
-            Most-used designs
-          </h2>
-
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((logo) => (
               <button
