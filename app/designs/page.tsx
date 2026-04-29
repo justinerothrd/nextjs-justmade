@@ -65,9 +65,7 @@ function DesignsPageContent() {
               <p className="text-[11px] uppercase tracking-[0.2em] text-[#8A8178]">
                 Featured
               </p>
-              <h2 className="mt-2 text-2xl font-light text-[#2F3A4A]">
-                Most-used designs
-              </h2>
+          
             </div>
           </div>
 
@@ -86,7 +84,7 @@ function DesignsPageContent() {
                 }
                 className="group text-left rounded-[34px] border border-[#ECE7E1] bg-white p-5 shadow-[0_12px_34px_rgba(0,0,0,0.035)] transition hover:-translate-y-1 hover:shadow-[0_20px_46px_rgba(0,0,0,0.06)]"
               >
-                <div className="relative aspect-square overflow-hidden rounded-[26px] bg-[#FAF8F5]">
+                <div className="relative aspect-square overflow-hidden rounded-[26px] bg-transparent">
                   <Image
                     src={logo.image}
                     alt={logo.name}
@@ -157,7 +155,7 @@ function DesignsPageContent() {
                 className="mb-4 w-full break-inside-avoid rounded-[28px] border border-[#ECE7E1] bg-white p-4 text-left shadow-[0_8px_24px_rgba(0,0,0,0.025)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(0,0,0,0.045)]"
               >
                 <div
-                  className={`relative overflow-hidden rounded-[22px] bg-[#FAF8F5] ${
+                  className={`relative overflow-hidden rounded-[22px] bg-transparent ${
                     index % 5 === 0 ? "aspect-[4/5]" : "aspect-square"
                   }`}
                 >
@@ -192,7 +190,7 @@ function DesignsPageContent() {
             className="w-full max-w-xl rounded-[30px] bg-white p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative aspect-square w-full overflow-hidden rounded-[24px] bg-[#FAF8F5]">
+            <div className="relative aspect-square w-full overflow-hidden rounded-[24px] bg-transparent"
               <Image
                 src={selectedLogo.image}
                 alt={selectedLogo.name}
