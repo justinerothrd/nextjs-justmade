@@ -101,7 +101,7 @@ function getBlankImage(slug: string, color: string, style?: string) {
     }
 
     if (colorFile === "white") {
-      return "/blanks/sweatpantswhite-closed.png";
+      return "/blanks/white-closed-sweatpants.png";
     }
 
     if (colorFile === "royalblue") {
