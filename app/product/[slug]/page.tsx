@@ -25,6 +25,7 @@ const styleOptionsBySlug: Record<string, string[]> = {
   "custom-tee": ["Crewneck", "Cropped", "V-Neck"],
   "tank-top": ["Ribbed Reg", "Ribbed Crop", "Scoop Neck", "Malibu Sugar"],
   "sweatpants": ["Open Bottom", "Closed Bottom"],
+  "custom-shorts": ["Bike Shorts", "Soffee Shorts"]
 };
 
 const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
