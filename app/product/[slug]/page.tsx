@@ -243,7 +243,8 @@ export default function ProductPage() {
 
             <div className="flex aspect-square w-full items-center justify-center overflow-hidden rounded-[28px] border border-[#F0ECE6] bg-[#FBFAF8] p-4 sm:p-6">
               <img
-                src={currentImage}
+                <img
+  src={displayImage}
                 alt={product.name}
                 className="max-h-[94%] max-w-[94%] object-contain transition-transform duration-700 hover:scale-[1.02]"
               />
