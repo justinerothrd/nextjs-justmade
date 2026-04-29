@@ -57,6 +57,7 @@ function getBlankImage(slug: string, color: string, style?: string) {
 
   if (slug === "custom-shorts") {
     return `/blanks/bikeshort-${colorFile}.png`;
+    return `/blanks/soffeeshort-${colorFile}.png`;
   }
 
   if (slug === "sleepwear") return "/blanks/pajamashorts-blank.png";
