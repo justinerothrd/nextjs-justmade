@@ -30,51 +30,86 @@ const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Blac
 function getBlankImage(slug: string, color: string, style?: string) {
   const c = color.toLowerCase();
 
-  if (slug === "sweatpants") {
-    if (c.includes("gray")) {
-      return style === "Closed Bottom"
-        ? "/blanks/grey-closed-sweatpants.png"
-        : "/blanks/sweatpantsgrey-open.png";
-    }
-
-    if (c.includes("navy")) {
-      return style === "Closed Bottom"
-        ? "/blanks/sweatpantsnavy-closed.png"
-        : "/blanks/sweatpants-open-navy.png";
-    }
-
-    if (c.includes("white")) {
-      return "/blanks/sweatpantswhite-closed.png";
-    }
-  }
-
-  // fallback for everything else (your existing logic)
-  const map: any = {
-    hoodie: "hoodie",
-    "quarter-zip": "quarterzip",
-    "crew-neck": "crewneck",
-    "tank-top": "tank",
-    "custom-tee": "tee",
-    "custom-shorts": "bikeshort",
-  };
-
-  const colorMap: any = {
+  const colorMap: Record<string, string> = {
     "heather gray": "grey",
     gray: "grey",
+    grey: "grey",
     navy: "navy",
     white: "white",
     black: "black",
     green: "green",
     "light blue": "lightblue",
     red: "red",
+    "royal blue": "royalblue",
   };
 
-  const p = map[slug];
-  const col = colorMap[c];
+  const colorFile = colorMap[c];
 
-  if (!p || !col) return "";
+  if (!colorFile) return "";
 
-  return `/blanks/${p}-${col}.png`;
+  if (slug === "hoodie") {
+    return `/blanks/hoodie-${colorFile}.png`;
+  }
+
+  if (slug === "crewneck") {
+    return `/blanks/crewneck-${colorFile}.png`;
+  }
+
+  if (slug === "quarter-zip") {
+    return `/blanks/quarterzip-${colorFile}.png`;
+  }
+
+  if (slug === "tank-top") {
+    return `/blanks/tank-${colorFile}.png`;
+  }
+
+  if (slug === "custom-tee") {
+    return `/blanks/tee-${colorFile}.png`;
+  }
+
+  if (slug === "custom-shorts") {
+    return `/blanks/bikeshort-${colorFile}.png`;
+  }
+
+  if (slug === "sleepwear") {
+    return "/blanks/pajamashorts-blank.png";
+  }
+
+  if (slug === "sleepwear-set") {
+    return "/blanks/sleepset-blank.png";
+  }
+
+  if (slug === "accessories-slides") {
+    return "/blanks/slides-blank.png";
+  }
+
+  if (slug === "accessories-socks") {
+    return "/blanks/socks-blank.png";
+  }
+
+  if (slug === "sweatpants") {
+    if (colorFile === "grey") {
+      return style === "Closed Bottom"
+        ? "/blanks/grey-closed-sweatpants.png"
+        : "/blanks/sweatpantsgrey-open.png";
+    }
+
+    if (colorFile === "navy") {
+      return style === "Closed Bottom"
+        ? "/blanks/sweatpantsnavy-closed.png"
+        : "/blanks/sweatpants-open-navy.png";
+    }
+
+    if (colorFile === "white") {
+      return "/blanks/sweatpantswhite-closed.png";
+    }
+
+    if (colorFile === "royalblue") {
+      return "/blanks/sweatpants-royalblue-closed.png";
+    }
+  }
+
+  return "";
 }
 export default function ProductPage() {
   const params = useParams();
