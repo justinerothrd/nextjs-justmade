@@ -20,7 +20,6 @@ const categoryMeta = {
 
 const categoryStyles = {
   sweatshirts: [
-    sweatshirts: [
   {
     slug: "hoodie",
     title: "Hoodies",
