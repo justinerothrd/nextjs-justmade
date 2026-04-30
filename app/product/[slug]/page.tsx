@@ -130,7 +130,7 @@ export default function ProductPage() {
     setItemStyle(styleOptions[0] || "");
     setSelectedLogo("");
     setLogoColor("Navy");
-  }, [product, safeSlug]);
+  } [product, safeSlug]);
 
   if (!product) return <div>Product not found</div>;
 
