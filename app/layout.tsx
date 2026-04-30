@@ -64,7 +64,7 @@ export default function RootLayout({
         {/* NAV */}
         <header className="sticky top-0 z-40 bg-[#F7F7F5]/95 backdrop-blur-sm">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-6 sm:py-4">
-            <a href="/" className="flex items-center">
+            <div className="flex items-center justify-center gap-10">
               <img
                 src="/logo.png"
                 alt="Just Made Custom logo"
