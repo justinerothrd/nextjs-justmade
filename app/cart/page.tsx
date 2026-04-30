@@ -16,6 +16,7 @@ type CartItem = {
   logoName?: string;
   logoImage?: string;
   placement?: string;
+  distressed?: boolean; // ✅ ADD THIS
 };
 
 export default function CartPage() {
