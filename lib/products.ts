@@ -183,7 +183,7 @@ export const products: Record<string, Product> = {
   images: ["/timberlake-tote.png"],
   colors: ["Heather Gray", "Light Blue"],
   sizes: ["One Size"],
-  category: "accessories",
+  logoGroup: "Tyler Hill",
 },
 
 "weekend-duffle": {
@@ -193,7 +193,7 @@ export const products: Record<string, Product> = {
   images: ["/thc-duffle-large.png"],
   colors: ["Navy", "Black", "White"],
   sizes: ["One Size"],
-  category: "accessories",
+  logoGroup: "Tyler Hill",
  },
 };
 
