@@ -21,7 +21,6 @@ export default function RootLayout({
   const [cartCount, setCartCount] = useState(0);
   const pathname = usePathname();
 
-  // 👉 CHANGE THIS ANYTIME FOR PROMOS
   const announcementText = "";
 
   useEffect(() => {
@@ -40,20 +39,12 @@ export default function RootLayout({
 
     loadCartCount();
 
-    function handleCartUpdated() {
-      loadCartCount();
-    }
-
-    function handleStorage() {
-      loadCartCount();
-    }
-
-    window.addEventListener("cartUpdated", handleCartUpdated);
-    window.addEventListener("storage", handleStorage);
+    window.addEventListener("cartUpdated", loadCartCount);
+    window.addEventListener("storage", loadCartCount);
 
     return () => {
-      window.removeEventListener("cartUpdated", handleCartUpdated);
-      window.removeEventListener("storage", handleStorage);
+      window.removeEventListener("cartUpdated", loadCartCount);
+      window.removeEventListener("storage", loadCartCount);
     };
   }, []);
 
@@ -64,72 +55,97 @@ export default function RootLayout({
         {/* NAV */}
         <header className="sticky top-0 z-40 bg-[#F7F7F5]/95 backdrop-blur-sm">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-6 sm:py-4">
-            <div className="flex items-center justify-center gap-10">
+
+            {/* LOGO */}
+            <a href="/" className="flex items-center">
               <img
                 src="/logo.png"
                 alt="Just Made Custom logo"
-                className="h-18 w-auto sm:h-16"
+                className="h-14 w-auto sm:h-16"
               />
             </a>
 
-            <nav className="hidden items-center gap-10 text-[15px] font-medium uppercase tracking-[0.14em] md:flex">
-              <a href="/" className="hover:text-[#6F879E]">Home</a>
-              <a href="/shop" className="hover:text-[#6F879E]">Shop Camp</a>
-              <a href="/college" className="hover:text-[#6F879E]">Shop College</a>
-              <a href="/custom-orders" className="hover:text-[#6F879E]">Custom Orders</a>
-              <a href="/contact" className="hover:text-[#6F879E]">Contact</a>
+            {/* DESKTOP NAV */}
+            <nav className="hidden items-center gap-10 text-[14px] uppercase tracking-[0.14em] md:flex">
+              <a href="/" className="transition hover:text-[#6F879E]">Home</a>
+              <a href="/shop" className="transition hover:text-[#6F879E]">Shop Camp</a>
+              <a href="/college" className="transition hover:text-[#6F879E]">Shop College</a>
+              <a href="/custom-orders" className="transition hover:text-[#6F879E]">Custom Orders</a>
+              <a href="/contact" className="transition hover:text-[#6F879E]">Contact</a>
             </nav>
 
+            {/* RIGHT SIDE */}
             <div className="flex items-center gap-4">
+
+              {/* CART */}
               <button
                 onClick={() => window.dispatchEvent(new Event("openMiniCart"))}
-                className="hidden md:flex items-center gap-2 text-[15px] font-medium uppercase tracking-[0.12em] text-[#3F3F3F] transition duration-200 hover:text-[#6F879E]"
-                aria-label="Open cart"
+                className="hidden md:flex items-center gap-2 text-[14px] uppercase tracking-[0.12em] transition hover:text-[#6F879E]"
               >
-                <span>Cart</span>
-
+                Cart
                 {cartCount > 0 && (
-                  <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#5F7A94] text-[10px] font-medium text-white">
+                  <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#5F7A94] text-[10px] text-white">
                     {cartCount}
                   </span>
                 )}
               </button>
 
+              {/* MOBILE MENU BUTTON */}
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
-                aria-label="Toggle menu"
               >
                 <span className={`block h-0.5 w-7 bg-[#4B4B4B] transition ${menuOpen ? "translate-y-2 rotate-45" : ""}`} />
                 <span className={`block h-0.5 w-7 bg-[#4B4B4B] transition ${menuOpen ? "opacity-0" : ""}`} />
                 <span className={`block h-0.5 w-7 bg-[#4B4B4B] transition ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
               </button>
+
             </div>
           </div>
 
+          {/* MOBILE MENU */}
           {menuOpen && (
-            <nav className="border-t border-[#E3E3E0] bg-[#F7F7F5] px-6 py-5 text-sm uppercase tracking-widest md:hidden">
-              <div className="flex flex-col gap-4">
-                <a href="/" onClick={() => setMenuOpen(false)}>Home</a>
-                <a href="/shop" onClick={() => setMenuOpen(false)}>Shop Camp</a>
-                <a href="/college" onClick={() => setMenuOpen(false)}>Shop College</a>
-                <a href="/custom-orders" onClick={() => setMenuOpen(false)}>Custom Orders</a>
-                <a href="/about" onClick={() => setMenuOpen(false)}>About</a>
-                <a href="/faq" onClick={() => setMenuOpen(false)}>FAQ</a>
-                <a href="/contact" onClick={() => setMenuOpen(false)}>Contact</a>
-                <a href="/cart" onClick={() => setMenuOpen(false)}>View Cart</a>
+            <nav className="border-t border-[#E5E1DB] bg-[#F7F7F5] px-6 py-6 md:hidden">
+
+              <div className="flex flex-col gap-6 pt-2">
+
+                <a href="/" onClick={() => setMenuOpen(false)} className="text-[14px] tracking-[0.12em] transition hover:text-[#6F879E]">
+                  Home
+                </a>
+
+                <a href="/shop" onClick={() => setMenuOpen(false)} className="text-[14px] tracking-[0.12em] transition hover:text-[#6F879E]">
+                  Shop Camp
+                </a>
+
+                <a href="/college" onClick={() => setMenuOpen(false)} className="text-[14px] tracking-[0.12em] transition hover:text-[#6F879E]">
+                  Shop College
+                </a>
+
+                <a href="/custom-orders" onClick={() => setMenuOpen(false)} className="text-[14px] tracking-[0.12em] transition hover:text-[#6F879E]">
+                  Custom Orders
+                </a>
+
+                <a href="/contact" onClick={() => setMenuOpen(false)} className="text-[14px] tracking-[0.12em] transition hover:text-[#6F879E]">
+                  Contact
+                </a>
+
+                <a href="/cart" onClick={() => setMenuOpen(false)} className="text-[14px] tracking-[0.12em] transition hover:text-[#6F879E]">
+                  View Cart
+                </a>
+
               </div>
             </nav>
           )}
         </header>
 
-{pathname !== "/" && (
-  <div className="bg-[#6F879E] py-2.5 text-center text-xs uppercase tracking-[0.3em] text-white">
-    {announcementText || "\u00A0"}
-  </div>
-)}
+        {/* ANNOUNCEMENT BAR */}
+        {pathname !== "/" && (
+          <div className="bg-[#6F879E] py-2.5 text-center text-xs uppercase tracking-[0.3em] text-white">
+            {announcementText || "\u00A0"}
+          </div>
+        )}
 
-<MiniCart />
+        <MiniCart />
 
         {children}
 
