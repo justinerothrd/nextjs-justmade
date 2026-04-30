@@ -41,7 +41,7 @@ function getBlankImage(slug: string, color: string, style?: string) {
     white: "white",
     black: "black",
     green: "green",
-    "blank": "blank"
+    "blank": "blank",
     "light blue": "lightblue",
     red: "red",
     "royal blue": "royalblue",
