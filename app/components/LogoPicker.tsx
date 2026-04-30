@@ -6,7 +6,10 @@ import { usePathname } from "next/navigation";
 import type { Logo } from "@/app/data/logos";
 
 const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon", "Custom"] as const;
-
+type LogoPickerProps = {
+  logos: any[];
+  showCampFilter?: boolean;
+};
 type LogoPickerProps = {
   logos: Logo[];
   selectedLogo: string;
