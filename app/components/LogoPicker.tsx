@@ -27,6 +27,7 @@ export default function LogoPicker({
   const [zoomLogo, setZoomLogo] = useState<Logo | null>(null);
   const pathname = usePathname();
   const [otherCamp, setOtherCamp] = useState("");
+  const [distressed, setDistressed] = useState(false);
 
   const pickerCategory = logos[0]?.category;
 
