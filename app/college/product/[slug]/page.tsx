@@ -260,6 +260,8 @@ export default function ProductPage() {
   selectedLogo={selectedLogo}
   onSelectLogo={setSelectedLogo}
   defaultGroup="All"
+  distressed={distressed}
+  onDistressedChange={setDistressed}
 />
               </div>
 
