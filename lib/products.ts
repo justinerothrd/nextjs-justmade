@@ -176,6 +176,25 @@ export const products: Record<string, Product> = {
       Blank: "/blanks/socks-blank.png",
     },
   },
+  "sweatshirt-tote": {
+  name: "Sweatshirt Tote",
+  price: "$45",
+  description: "A soft, everyday tote made from sweatshirt material.",
+  images: ["/timberlake-tote.png"],
+  colors: ["Heather Gray", "Light Blue"],
+  sizes: ["One Size"],
+  category: "accessories",
+},
+
+"weekend-duffle": {
+  name: "Weekend Duffle",
+  price: "$68",
+  description: "A spacious duffle for camp, travel, and weekends.",
+  images: ["/thc-duffle-large.png"],
+  colors: ["Navy", "Black", "White"],
+  sizes: ["One Size"],
+  category: "accessories",
+ },
 };
 
 export type ProductSlug = keyof typeof products;
