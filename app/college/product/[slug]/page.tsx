@@ -256,10 +256,9 @@ export default function ProductPage() {
                 </div>
 
                 <LogoPicker
-                  logos={collegeLogos}
-                  selectedLogo={selectedLogo}
-                  onSelectLogo={setSelectedLogo}
-                />
+  logos={logos.filter((logo) => logo.type === "college")}
+  showCampFilter={false}
+/>
               </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
