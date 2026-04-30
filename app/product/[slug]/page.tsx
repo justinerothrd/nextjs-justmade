@@ -120,7 +120,13 @@ export default function ProductPage() {
   const styleOptions = styleOptionsBySlug[safeSlug] || [];
 
   setSelectedImage(0);
-  setSize(product.sizes?.[0] || "Youth M");
+  setSize(
+  safeSlug === "accessories-slides"
+    ? "Youth 1"
+    : safeSlug === "accessories-socks"
+    ? "Youth S/M"
+    : product.sizes?.[0] || "Youth M"
+);
 
   setColor(
     safeSlug === "custom-shorts"
@@ -258,9 +264,15 @@ export default function ProductPage() {
                   onChange={(e) => setSize(e.target.value)}
                   className={selectClass}
                 >
-                  {product.sizes.map((s) => (
-                    <option key={s}>{s}</option>
-                  ))}
+                 {(
+  safeSlug === "accessories-slides"
+    ? ["Youth 1", "Youth 2", "Youth 3", "Youth 4", "Youth 5", "Youth 6", "Adult 7", "Adult 8", "Adult 9", "Adult 10"]
+    : safeSlug === "accessories-socks"
+    ? ["Youth S/M", "Youth L/XL", "Adult S/M", "Adult L/XL"]
+    : product.sizes
+).map((s) => (
+  <option key={s}>{s}</option>
+))}
                 </select>
               </div>
 
