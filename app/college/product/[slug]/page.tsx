@@ -184,11 +184,7 @@ export default function ProductPage() {
 
             <p className="mt-2 text-[18px] text-[#5F7A94]">{product.price}</p>
 
-            {product.description && (
-              <p className="mt-5 max-w-md text-[14px] leading-6 text-[#6B7280]">
-                {product.description}
-              </p>
-            )}
+    
 
             <div className="mt-7 space-y-6">
               <div className="rounded-[24px] border border-[#EEEAE4] bg-[#FBFAF8] p-5">
