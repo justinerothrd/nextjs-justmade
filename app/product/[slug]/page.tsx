@@ -172,6 +172,7 @@ export default function ProductPage() {
       size,
       color,
       style: itemStyle,
+      distressed,
       quantity,
       image: displayImage,
       logoSlug: selectedLogo,
