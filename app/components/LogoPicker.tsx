@@ -122,7 +122,7 @@ export default function LogoPicker({
           Choose Logo
         </p>
 
-        <a
+     <a
   href={`/designs?group=${encodeURIComponent(
     selectedGroup === "All" || selectedGroup === "Other"
       ? "Tyler Hill"
@@ -130,7 +130,9 @@ export default function LogoPicker({
   )}&returnTo=${encodeURIComponent(pathname)}`}
   className="text-[11px] text-[#8A8178] underline underline-offset-4 hover:text-[#6F879E]"
 >
-  Browse all camp designs
+  {pickerCategory === "College"
+    ? "Browse all college designs"
+    : "Browse all camp designs"}
 </a>
       </div>
 
