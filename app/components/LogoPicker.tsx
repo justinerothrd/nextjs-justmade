@@ -11,6 +11,8 @@ type LogoPickerProps = {
   logos: Logo[];
   selectedLogo: string;
   onSelectLogo: (slug: string) => void;
+  distressed: boolean;
+  onDistressedChange: (value: boolean) => void;
   defaultGroup?: string;
   productType?: string;
   selectedColor?: string;
@@ -20,14 +22,15 @@ export default function LogoPicker({
   logos,
   selectedLogo,
   onSelectLogo,
+  distressed,
+  onDistressedChange,
   defaultGroup,
 }: LogoPickerProps) {
   const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
   const [selectedGroup, setSelectedGroup] = useState(defaultGroup || "Tyler Hill");
   const [zoomLogo, setZoomLogo] = useState<Logo | null>(null);
-  const pathname = usePathname();
   const [otherCamp, setOtherCamp] = useState("");
-  const [distressed, setDistressed] = useState(false);
+  const pathname = usePathname();
 
   const pickerCategory = logos[0]?.category;
 
@@ -72,49 +75,50 @@ export default function LogoPicker({
           </p>
 
           <div className="flex flex-wrap gap-2">
-           {groups.map((group) => {
-  const active = selectedGroup === group && group !== "All";
+            {groups.map((group) => {
+              const active = selectedGroup === group && group !== "All";
 
-  return (
-    <button
-      key={group}
-      type="button"
-      onClick={() => setSelectedGroup(group)}
-      className={`px-3.5 py-1.5 text-[13px] transition ${
-        active
-          ? "rounded-full bg-[#2F3A4A] text-white"
-          : group === "All"
-  ? "text-[#8A8178] underline underline-offset-4 hover:text-[#2F2F2F]"
-          : "rounded-full border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
-      }`}
-    >
-      {group}
-    </button>
-  );
-})}
+              return (
+                <button
+                  key={group}
+                  type="button"
+                  onClick={() => setSelectedGroup(group)}
+                  className={`px-3.5 py-1.5 text-[13px] transition ${
+                    active
+                      ? "rounded-full bg-[#2F3A4A] text-white"
+                      : group === "All"
+                      ? "text-[#8A8178] underline underline-offset-4 hover:text-[#2F2F2F]"
+                      : "rounded-full border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
+                  }`}
+                >
+                  {group}
+                </button>
+              );
+            })}
           </div>
-          <div className="mt-3 flex items-center gap-2">
-  <button
-    type="button"
-    onClick={() => setSelectedGroup("Other")}
-    className={`rounded-full px-3.5 py-1.5 text-[13px] transition ${
-      selectedGroup === "Other"
-        ? "bg-[#2F3A4A] text-white"
-        : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
-    }`}
-  >
-    Other
-  </button>
 
-  {selectedGroup === "Other" && (
-    <input
-      value={otherCamp}
-      onChange={(e) => setOtherCamp(e.target.value)}
-      placeholder="Camp name"
-      className="min-w-[180px] rounded-full border border-[#E5E1DB] bg-white px-4 py-1.5 text-[13px] outline-none focus:border-[#6F879E]"
-    />
-  )}
-</div>
+          <div className="mt-3 flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setSelectedGroup("Other")}
+              className={`rounded-full px-3.5 py-1.5 text-[13px] transition ${
+                selectedGroup === "Other"
+                  ? "bg-[#2F3A4A] text-white"
+                  : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
+              }`}
+            >
+              Other
+            </button>
+
+            {selectedGroup === "Other" && (
+              <input
+                value={otherCamp}
+                onChange={(e) => setOtherCamp(e.target.value)}
+                placeholder="Camp name"
+                className="min-w-[180px] rounded-full border border-[#E5E1DB] bg-white px-4 py-1.5 text-[13px] outline-none focus:border-[#6F879E]"
+              />
+            )}
+          </div>
         </div>
       )}
 
@@ -123,18 +127,18 @@ export default function LogoPicker({
           Choose Logo
         </p>
 
-     <a
-  href={`/designs?group=${encodeURIComponent(
-    selectedGroup === "All" || selectedGroup === "Other"
-      ? "Tyler Hill"
-      : selectedGroup
-  )}&returnTo=${encodeURIComponent(pathname)}`}
-  className="text-[11px] text-[#8A8178] underline underline-offset-4 hover:text-[#6F879E]"
->
-  {pickerCategory === "College"
-    ? "Browse all college designs"
-    : "Browse all camp designs"}
-</a>
+        <a
+          href={`/designs?group=${encodeURIComponent(
+            selectedGroup === "All" || selectedGroup === "Other"
+              ? "Tyler Hill"
+              : selectedGroup
+          )}&returnTo=${encodeURIComponent(pathname)}`}
+          className="text-[11px] text-[#8A8178] underline underline-offset-4 hover:text-[#6F879E]"
+        >
+          {pickerCategory === "College"
+            ? "Browse all college designs"
+            : "Browse all camp designs"}
+        </a>
       </div>
 
       <div className="mb-5 flex flex-wrap gap-2">
@@ -172,13 +176,13 @@ export default function LogoPicker({
               }`}
             >
               <button
-  type="button"
-  onClick={() => {
-    onSelectLogo(item.slug);
-    setZoomLogo(item);
-  }}
-  className="group flex h-[70px] w-full cursor-pointer items-center justify-center"
->
+                type="button"
+                onClick={() => {
+                  onSelectLogo(item.slug);
+                  setZoomLogo(item);
+                }}
+                className="group flex h-[70px] w-full cursor-pointer items-center justify-center"
+              >
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -206,6 +210,42 @@ export default function LogoPicker({
             </div>
           );
         })}
+      </div>
+
+      <div className="mt-6 rounded-[24px] border border-[#ECE7E1] bg-[#FAF8F5] p-5">
+        <p className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
+          Finish
+        </p>
+
+        <p className="mb-3 text-[13px] text-[#6B6762]">
+          Make it distressed or vintage?
+        </p>
+
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => onDistressedChange(false)}
+            className={`rounded-full px-4 py-2 text-[13px] transition ${
+              !distressed
+                ? "bg-[#2F3A4A] text-white"
+                : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
+            }`}
+          >
+            Clean
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onDistressedChange(true)}
+            className={`rounded-full px-4 py-2 text-[13px] transition ${
+              distressed
+                ? "bg-[#2F3A4A] text-white"
+                : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
+            }`}
+          >
+            Distressed / Vintage
+          </button>
+        </div>
       </div>
 
       <div className="mt-6 rounded-[24px] border border-[#ECE7E1] bg-[#FAF8F5] p-5">
