@@ -60,5 +60,4 @@ export default function CustomOrdersPage() {
               Contact Us
             </a>
     </main>
-  );
 }
