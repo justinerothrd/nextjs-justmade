@@ -48,6 +48,7 @@ export default function ProductPage() {
   const [size, setSize] = useState("Youth M");
   const [color, setColor] = useState("Heather Gray");
   const [zoomOpen, setZoomOpen] = useState(false);
+  const [distressed, setDistressed] = useState(false);
 
   const collegeLogos = useMemo(() => {
     return logos.filter((logo) => logo.category === "College");
