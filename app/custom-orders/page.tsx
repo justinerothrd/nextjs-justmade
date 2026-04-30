@@ -2,13 +2,14 @@ export default function CustomOrdersPage() {
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-6 py-20 text-[#4B4B4B]">
       <div className="mx-auto max-w-5xl">
-
         <h1 className="mt-4 max-w-3xl text-[42px] font-light leading-tight tracking-[-0.02em] text-[#2F2F2F] md:text-[62px]">
           Custom Orders
         </h1>
 
         <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#5D5D5D]">
-          We specialize in making everything one of a kind. If you don't see something or need help with ideas let us know!  
+          We specialize in making everything one of a kind. If you don't
+          see something or need help with ideas, let us know!
+        </p>
 
         <section className="mt-16 border-t border-[#DDD8D2] pt-10">
           <p className="mb-8 text-sm uppercase tracking-[0.22em] text-[#8A8178]">
@@ -17,9 +18,21 @@ export default function CustomOrdersPage() {
 
           <div className="space-y-8">
             {[
-              ["01", "Choose your item", "Browse our collection for ideas or reach out for something unique."],
-              ["02", "Pick your logo or personalization", "Send us the camp or college name, colors, quantity, wording, and any design notes."],
-              ["03", "We’ll confirm the details", "We’ll review sizing, artwork, and next steps before anything is made."],
+              [
+                "01",
+                "Choose your item",
+                "Browse our collection for ideas or reach out for something unique.",
+              ],
+              [
+                "02",
+                "Pick your logo or personalization",
+                "Send us the camp or college name, colors, quantity, wording, and any design notes.",
+              ],
+              [
+                "03",
+                "We’ll confirm the details",
+                "We’ll review sizing, artwork, and next steps before anything is made.",
+              ],
             ].map(([number, title, text]) => (
               <div
                 key={number}
@@ -28,6 +41,7 @@ export default function CustomOrdersPage() {
                 <p className="text-sm tracking-[0.22em] text-[#6F879E]">
                   {number}
                 </p>
+
                 <div>
                   <h2 className="text-2xl font-light text-[#2F2F2F]">
                     {title}
@@ -48,10 +62,9 @@ export default function CustomOrdersPage() {
 
           <div className="mt-4 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              h2 className="text-3xl font-light text-[#2F2F2F]">
+              <h2 className="text-3xl font-light text-[#2F2F2F]">
                 Send us your custom request.
               </h2>
-              
             </div>
 
             <a
