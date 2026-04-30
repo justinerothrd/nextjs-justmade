@@ -354,10 +354,12 @@ export default function ProductPage() {
               </div>
 
               <LogoPicker
-                logos={campLogos}
-                selectedLogo={selectedLogo}
-                onSelectLogo={setSelectedLogo}
-              />
+  logos={campLogos}
+  selectedLogo={selectedLogo}
+  onSelectLogo={setSelectedLogo}
+  distressed={distressed}
+  onDistressedChange={setDistressed}
+/>
 
               <div className="mt-6">
                 <label className="text-[11px] uppercase tracking-[0.16em] text-[#8A8178]">
