@@ -114,10 +114,14 @@ export default function ProductPage() {
   );
 
   useEffect(() => {
-    if (!product) return;
+  if (!product) return;
 
-    const placementOptions = placementOptionsBySlug[safeSlug] || ["Full Front"];
-    const styleOptions = styleOptionsBySlug[safeSlug] || [];
+  if (safeSlug === "custom-shorts" && style === "Bike Shorts") {
+    setColor("Navy");
+  } else {
+    setColor(product.colors?.[0] || "White");
+  }
+}, [product, style, safeSlug]);
 
     setSelectedImage(0);
     setSize(product.sizes?.[0] || "Youth M");
@@ -267,9 +271,13 @@ export default function ProductPage() {
                   onChange={(e) => setColor(e.target.value)}
                   className={selectClass}
                 >
-                  {product.colors.map((c) => (
-                    <option key={c}>{c}</option>
-                  ))}
+                  {(
+  safeSlug === "custom-shorts" && itemStyle === "Bike Shorts"
+    ? ["Navy", "Grey", "Black"]
+    : product.colors
+).map((c) => (
+  <option key={c}>{c}</option>
+))}
                 </select>
               </div>
 
