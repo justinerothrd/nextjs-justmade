@@ -19,7 +19,7 @@ const placementOptionsBySlug: Record<string, string[]> = {
   "sleepwear-set": ["Top Front", "Shorts Leg"],
   "accessories-slides": ["Top of Slides"],
   "accessories-socks": ["Outer Ankle"],
-   duffle: ["Front"],
+   "weekend-duffle": ["Front"],
   "sweatshirt-tote": ["Front"],
 };
 
@@ -28,7 +28,7 @@ const styleOptionsBySlug: Record<string, string[]> = {
   "tank-top": ["Ribbed Reg", "Ribbed Crop", "Scoop Neck", "Malibu Sugar"],
   sweatpants: ["Open Bottom", "Closed Bottom"],
   "custom-shorts": ["Bike Shorts", "Soffee Shorts"],
-  duffle: ["Small", "Large"],
+  "weekend-duffle": ["Small", "Large"],
 };
 
 const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
