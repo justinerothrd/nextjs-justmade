@@ -27,7 +27,6 @@ export default function LogoPicker({
   const [zoomLogo, setZoomLogo] = useState<Logo | null>(null);
   const pathname = usePathname();
   const [otherCamp, setOtherCamp] = useState("");
-  const [distressed, setDistressed] = useState(false);
 
   const pickerCategory = logos[0]?.category;
 
@@ -207,7 +206,37 @@ export default function LogoPicker({
           );
         })}
       </div>
+<div className="mt-6">
+  <p className="text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
+    Finish
+  </p>
 
+  <div className="mt-2 flex gap-2">
+    <button
+      type="button"
+      onClick={() => setDistressed(false)}
+      className={`rounded-full px-4 py-2 text-[13px] transition ${
+        !distressed
+          ? "bg-[#2F3A4A] text-white"
+          : "border border-[#E5E1DB] bg-white text-[#2F2F2F]"
+      }`}
+    >
+      Clean
+    </button>
+
+    <button
+      type="button"
+      onClick={() => setDistressed(true)}
+      className={`rounded-full px-4 py-2 text-[13px] transition ${
+        distressed
+          ? "bg-[#2F3A4A] text-white"
+          : "border border-[#E5E1DB] bg-white text-[#2F2F2F]"
+      }`}
+    >
+      Distressed / Vintage
+    </button>
+  </div>
+</div>
       <div className="mt-6 rounded-[24px] border border-[#ECE7E1] bg-[#FAF8F5] p-5">
         <p className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
           Custom Logo Details
