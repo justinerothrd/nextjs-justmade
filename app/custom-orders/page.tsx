@@ -2,18 +2,13 @@ export default function CustomOrdersPage() {
   return (
     <main className="min-h-screen bg-[#F7F7F5] px-6 py-20 text-[#4B4B4B]">
       <div className="mx-auto max-w-5xl">
-        <p className="text-sm uppercase tracking-[0.24em] text-[#6F879E]">
-          Custom Orders
-        </p>
 
         <h1 className="mt-4 max-w-3xl text-[42px] font-light leading-tight tracking-[-0.02em] text-[#2F2F2F] md:text-[62px]">
-          Made for your bunk, group, or special moment.
+          Custom Orders
         </h1>
 
         <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#5D5D5D]">
-          For bunk gifts, sibling sets, camp events, and one-of-a-kind pieces.
-          Tell us what you’re imagining and we’ll help bring it to life.
-        </p>
+          We specialize in making everything one of a kind. If you don't see something or need help with ideas let us know!  
 
         <section className="mt-16 border-t border-[#DDD8D2] pt-10">
           <p className="mb-8 text-sm uppercase tracking-[0.22em] text-[#8A8178]">
@@ -22,8 +17,8 @@ export default function CustomOrdersPage() {
 
           <div className="space-y-8">
             {[
-              ["01", "Choose your item", "Start with a sweatshirt, tee, tank, sleepwear piece, accessory, or something custom."],
-              ["02", "Share your personalization", "Send the camp name, colors, quantity, wording, and any design notes."],
+              ["01", "Choose your item", "Browse our collection for ideas or reach out for something unique."],
+              ["02", "Pick your logo or personalization", "Send us the camp or college name, colors, quantity, wording, and any design notes."],
               ["03", "We’ll confirm the details", "We’ll review sizing, artwork, and next steps before anything is made."],
             ].map(([number, title, text]) => (
               <div
@@ -56,10 +51,6 @@ export default function CustomOrdersPage() {
               <h2 className="text-3xl font-light text-[#2F2F2F]">
                 Send us your custom request.
               </h2>
-              <p className="mt-3 max-w-xl text-[15px] leading-7 text-[#66615C]">
-                Include the item, name or camp wording, quantity, colors, and any
-                design ideas you have in mind.
-              </p>
             </div>
 
             <a
