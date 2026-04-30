@@ -12,6 +12,7 @@ type OrderItem = {
   logoName?: string;
   logoImage?: string;
   placement?: string;
+  distressed?: boolean;
 };
 
 function getImageUrl(image?: string) {
@@ -23,6 +24,7 @@ function getImageUrl(image?: string) {
 export async function POST(req: Request) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
+
     const { email, orderNumber, submittedAt, total, cart } = await req.json();
 
     const itemsHtml = (cart || [])
@@ -85,6 +87,11 @@ export async function POST(req: Request) {
                       }
 
                       ${item.placement ? `Placement: ${item.placement}<br/>` : ""}
+                      ${
+                        item.distressed
+                          ? `Finish: Distressed / Vintage<br/>`
+                          : ""
+                      }
                     </div>
                   </td>
 
@@ -193,12 +200,14 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: "Just Made Custom <orders@justmadecustom.com>",
       to: [email],
+      bcc: ["YOUR-EMAIL@gmail.com"],
       subject: `We received your order • ${orderNumber}`,
       html,
     });
 
     return Response.json({ success: true });
-  } catch {
+  } catch (error) {
+    console.error("Order email failed:", error);
     return Response.json({ error: "Failed" }, { status: 500 });
   }
 }
