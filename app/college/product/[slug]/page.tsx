@@ -256,7 +256,7 @@ export default function ProductPage() {
                 </div>
 
                 <LogoPicker
-  logos={logos.filter((logo) => logo.type === "college")}
+  logos={logos.filter((logo) => logo.category === "College")}
   showCampFilter={false}
 />
               </div>
