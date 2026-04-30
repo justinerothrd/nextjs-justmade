@@ -59,13 +59,13 @@ function getBlankImage(slug: string, color: string, style?: string) {
   if (slug === "custom-tee") return `/blanks/tee-${colorKey}.png`;
 
     // SHORTS
-onClick={() => {
-  setItemStyle(option);
-
-  if (safeSlug === "custom-shorts" && option === "Bike Shorts") {
-    setColor("Navy");
+if (slug === "custom-shorts") {
+  const type = style === "Soffee Shorts" ? "soffee" : "bike";
+  return `/blanks/shorts-${type}-${colorKey}.png`;
+}
+  if (style === "Bike Shorts") {
+    return `/blanks/bikeshort-${colorKey}.png`;
   }
-}}
 
 // SWEATPANTS
 if (slug === "sweatpants") {
