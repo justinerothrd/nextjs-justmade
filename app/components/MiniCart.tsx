@@ -179,11 +179,6 @@ export default function MiniCart() {
   </p>
 )}
                             {item.placement && <p>Placement: {item.placement}</p>}
-                            {item.distressed && (
-  <p className="text-sm text-gray-500">
-    Finish: Distressed / Vintage
-  </p>
-)}
                           </div>
 
                           <button
