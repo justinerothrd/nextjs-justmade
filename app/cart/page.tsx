@@ -235,6 +235,11 @@ export default function CartPage() {
                           {item.placement && (
                             <p><span className="text-gray-500">Placement:</span> {item.placement}</p>
                           )}
+                          {item.distressed && (
+  <p>
+    <span className="text-gray-500">Finish:</span> Distressed / Vintage
+  </p>
+)}
                         </div>
 
                         <button
