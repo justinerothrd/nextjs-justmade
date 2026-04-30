@@ -116,21 +116,23 @@ export default function ProductPage() {
   useEffect(() => {
   if (!product) return;
 
-  if (safeSlug === "custom-shorts" && style === "Bike Shorts") {
-    setColor("Navy");
-  } else {
-    setColor(product.colors?.[0] || "White");
-  }
-}, [product, style, safeSlug]);
+  const placementOptions = placementOptionsBySlug[safeSlug] || ["Full Front"];
+  const styleOptions = styleOptionsBySlug[safeSlug] || [];
 
-    setSelectedImage(0);
-    setSize(product.sizes?.[0] || "Youth M");
-    setColor(product.colors?.[0] || "Heather Gray");
-    setPlacement(placementOptions[0]);
-    setItemStyle(styleOptions[0] || "");
-    setSelectedLogo("");
-    setLogoColor("Navy");
-    }, [product, safeSlug]);
+  setSelectedImage(0);
+  setSize(product.sizes?.[0] || "Youth M");
+
+  setColor(
+    safeSlug === "custom-shorts"
+      ? "Navy"
+      : product.colors?.[0] || "Heather Gray"
+  );
+
+  setPlacement(placementOptions[0]);
+  setItemStyle(styleOptions[0] || "");
+  setSelectedLogo("");
+  setLogoColor("Navy");
+}, [product, safeSlug]);
 
   if (!product) return <div>Product not found</div>;
 
