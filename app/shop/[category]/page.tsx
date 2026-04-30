@@ -97,22 +97,36 @@ const categoryStyles = {
   imageClassName: "max-h-[94%] max-w-[94%]",
 },
   ],
-  accessories: [
-    {
-      slug: "accessories-slides",
-      title: "Slides",
-      image: products["accessories-slides"].images[0],
-      href: "/product/accessories-slides",
-      imageClassName: "max-h-[94%] max-w-[94%]",
-    },
-    {
-      slug: "accessories-socks",
-      title: "Socks",
-      image: products["accessories-socks"].images[0],
-      href: "/product/accessories-socks",
-      imageClassName: "max-h-[94%] max-w-[94%]",
-    },
-  ],
+accessories: [
+  {
+    slug: "accessories-slides",
+    title: "Slides",
+    image: products["accessories-slides"].images[0],
+    href: "/product/accessories-slides",
+    imageClassName: "max-h-[94%] max-w-[94%]",
+  },
+  {
+    slug: "accessories-socks",
+    title: "Socks",
+    image: products["accessories-socks"].images[0],
+    href: "/product/accessories-socks",
+    imageClassName: "max-h-[94%] max-w-[94%]",
+  },
+  {
+    slug: "sweatshirt-tote",
+    title: "Sweatshirt Tote",
+    image: products["sweatshirt-tote"].images[0],
+    href: "/product/sweatshirt-tote",
+    imageClassName: "max-h-[94%] max-w-[94%]",
+  },
+  {
+    slug: "weekend-duffle",
+    title: "Weekend Duffle",
+    image: products["weekend-duffle"].images[0],
+    href: "/product/weekend-duffle",
+    imageClassName: "max-h-[94%] max-w-[94%]",
+  },
+],
 } as const;
 
 type CategorySlug = keyof typeof categoryMeta;
