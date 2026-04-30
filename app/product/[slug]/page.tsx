@@ -63,6 +63,9 @@ if (slug === "custom-shorts") {
   const type = style === "Soffee Shorts" ? "soffee" : "bike";
   return `/blanks/shorts-${type}-${colorKey}.png`;
 }
+  if (style === "Bike Shorts") {
+    return `/blanks/bikeshort-${colorKey}.png`;
+  }
 
 // SWEATPANTS
 if (slug === "sweatpants") {
