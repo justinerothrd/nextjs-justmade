@@ -61,13 +61,13 @@ function getBlankImage(slug: string, color: string, style?: string) {
   // SHORTS
     if (slug === "custom-shorts") {
     if (style === "Soffee Shorts") {
-      return `/blanks/soffee-${colorFile}.png`;
+      return `/blanks/soffee-${colorKey}.png`;
     }
 
     if (style === "Bike Shorts") {
-      if (colorFile === "black") return "/blanks/bikeshort-black.png";
-      if (colorFile === "grey") return "/blanks/bikeshort-grey.png";
-      if (colorFile === "navy") return "/blanks/bikeshort-navy.png";
+      if (colorKey === "black") return "/blanks/bikeshort-black.png";
+      if (colorKey === "grey") return "/blanks/bikeshort-grey.png";
+      if (colorKey === "navy") return "/blanks/bikeshort-navy.png";
 
       return "";
     }
@@ -76,23 +76,23 @@ function getBlankImage(slug: string, color: string, style?: string) {
   }
 
   if (slug === "sweatpants") {
-    if (colorFile === "grey") {
+    if (colorKey === "grey") {
       return style === "Closed Bottom"
         ? "/blanks/sweatpants-grey-closed-back.png"
         : "/blanks/sweatpantsgrey-open.png";
     }
 
-    if (colorFile === "navy") {
+    if (colorKey === "navy") {
       return style === "Closed Bottom"
         ? "/blanks/sweatpantsnavy-closed.png"
         : "/blanks/sweatpants-open-navy.png";
     }
 
-    if (colorFile === "white") {
+    if (colorKey === "white") {
       return "/blanks/sweatpantswhite-closed.png";
     }
 
-    if (colorFile === "royalblue") {
+    if (colorKey === "royalblue") {
       return "/blanks/sweatpants-royalblue-closed.png";
     }
 
