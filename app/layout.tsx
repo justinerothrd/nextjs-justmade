@@ -77,8 +77,6 @@ export default function RootLayout({
               <a href="/shop" className="hover:text-[#6F879E]">Shop Camp</a>
               <a href="/college" className="hover:text-[#6F879E]">Shop College</a>
               <a href="/custom-orders" className="hover:text-[#6F879E]">Custom Orders</a>
-              <a href="/about" className="hover:text-[#6F879E]">About</a>
-              <a href="/faq" className="hover:text-[#6F879E]">FAQ</a>
               <a href="/contact" className="hover:text-[#6F879E]">Contact</a>
             </nav>
 
