@@ -214,7 +214,7 @@ export default function LogoPicker({
   <div className="mt-2 flex gap-2">
     <button
       type="button"
-      onClick={() => setDistressed(false)}
+      onClick={() => onDistressedChange(false)}
       className={`rounded-full px-4 py-2 text-[13px] transition ${
         !distressed
           ? "bg-[#2F3A4A] text-white"
@@ -226,7 +226,7 @@ export default function LogoPicker({
 
     <button
       type="button"
-      onClick={() => setDistressed(true)}
+      onClick={() => onDistressedChange(true)}
       className={`rounded-full px-4 py-2 text-[13px] transition ${
         distressed
           ? "bg-[#2F3A4A] text-white"
