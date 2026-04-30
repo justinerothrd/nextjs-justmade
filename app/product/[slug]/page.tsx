@@ -105,6 +105,7 @@ export default function ProductPage() {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [imageZoomOpen, setImageZoomOpen] = useState(false);
+  const [distressed, setDistressed] = useState(false);
 
   const campLogos = useMemo(
     () => logos.filter((logo) => logo.category === "Camp"),
@@ -136,7 +137,7 @@ export default function ProductPage() {
       ? "Navy"
       : product.colors?.[0] || "Heather Gray"
   );
-
+  setDistressed(false);
   setPlacement(placementOptions[0]);
   setItemStyle(styleOptions[0] || "");
   setSelectedLogo("");
