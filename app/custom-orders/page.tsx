@@ -48,9 +48,10 @@ export default function CustomOrdersPage() {
 
           <div className="mt-4 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-3xl font-light text-[#2F2F2F]">
+              h2 className="text-3xl font-light text-[#2F2F2F]">
                 Send us your custom request.
               </h2>
+              
             </div>
 
             <a
@@ -59,5 +60,9 @@ export default function CustomOrdersPage() {
             >
               Contact Us
             </a>
+          </div>
+        </section>
+      </div>
     </main>
+  );
 }
