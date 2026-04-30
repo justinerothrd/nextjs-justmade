@@ -200,7 +200,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: "Just Made Custom <orders@justmadecustom.com>",
       to: [email],
-      bcc: ["YOUR-EMAIL@gmail.com"],
+      bcc: ["justinerothrd@gmail.com"],
       subject: `We received your order • ${orderNumber}`,
       html,
     });
