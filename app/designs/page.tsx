@@ -51,7 +51,9 @@ function DesignsPageContent() {
   const router = useRouter();
 
   const returnTo = searchParams.get("returnTo") || "/shop";
-  const featuredGroup = searchParams.get("group") || "Tyler Hill";
+  const featured = useMemo(() => {
+  return realLogos.slice(0, 4);
+}, [realLogos]);
 
   const [activeStyle, setActiveStyle] =
     useState<(typeof styles)[number]>("All");
@@ -107,16 +109,13 @@ function DesignsPageContent() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 flex items-start justify-between gap-6">
           <div>
-            <p className="mb-3 text-[11px] uppercase tracking-[0.22em] text-[#8A8178]">
-              Just Made Custom
-            </p>
 
             <h1 className="text-[38px] font-light leading-[1.05] tracking-[-0.03em] text-[#2F3A4A] sm:text-[58px]">
               Design Library
             </h1>
 
             <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#6B7280]">
-              Explore our collection of camp and college designs. Every logo can
+              Explore our collection of camp and college designs. All designs can
               be customized for your camp, school, or group.
             </p>
           </div>
@@ -126,7 +125,7 @@ function DesignsPageContent() {
             onClick={() => router.push(returnTo)}
             className="shrink-0 text-sm underline underline-offset-4 transition hover:text-[#6F879E]"
           >
-            Back to product
+            Back 
           </button>
         </div>
 
