@@ -5,6 +5,7 @@ export type Logo = {
   category: "Camp" | "College" | "Team" | "Custom";
   group: string;
   style: "Varsity" | "Minimal" | "Script" | "Classic" | "Icon" | "Custom";
+  featured?: boolean;
 };
 
 export const logos: Logo[] = [
