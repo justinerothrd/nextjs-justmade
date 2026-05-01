@@ -112,13 +112,12 @@ function DesignsPageContent() {
             </p>
 
             <h1 className="text-[38px] font-light leading-[1.05] tracking-[-0.03em] text-[#2F3A4A] sm:text-[58px]">
-              Design Library
-            </h1>
+  Design Collection
+</h1>
 
-            <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#6B7280]">
-              Explore our collection of camp and college designs. Every logo can
-              be customized for your camp, school, or group.
-            </p>
+<p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#6B7280]">
+  All designs can be adapted for most camps and colleges.
+</p>
           </div>
 
           <button
