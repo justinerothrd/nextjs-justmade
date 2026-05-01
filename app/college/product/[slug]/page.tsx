@@ -49,6 +49,7 @@ export default function ProductPage() {
   const [color, setColor] = useState("Heather Gray");
   const [zoomOpen, setZoomOpen] = useState(false);
   const [distressed, setDistressed] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
 
   const collegeLogos = useMemo(() => {
     return logos.filter((logo) => logo.category === "College");
@@ -65,6 +66,7 @@ export default function ProductPage() {
       setColor(product.colors?.[0] ?? "Heather Gray");
       setSelectedLogo("");
       setZoomOpen(false);
+      setSelectedOptions({});
     }
   }, [product]);
 
@@ -115,6 +117,7 @@ export default function ProductPage() {
       logoSlug: selectedLogo,
       logoName: selectedLogoObject?.name || "",
       placement,
+      options: selectedOptions,
     };
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
@@ -206,6 +209,32 @@ export default function ProductPage() {
               </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
+                {product.options && product.options.length > 0 && (
+  <div className="grid gap-5 sm:grid-cols-2">
+    {product.options.map((opt) => (
+      <div key={opt.label}>
+        <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
+          {opt.label}
+        </label>
+
+        <select
+          value={selectedOptions[opt.label] || opt.choices[0]}
+          onChange={(e) =>
+            setSelectedOptions({
+              ...selectedOptions,
+              [opt.label]: e.target.value,
+            })
+          }
+          className="mt-2 w-full rounded-full border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#6F879E]"
+        >
+          {opt.choices.map((choice) => (
+            <option key={choice}>{choice}</option>
+          ))}
+        </select>
+      </div>
+    ))}
+  </div>
+)}
                 <div>
                   <label className="text-[12px] uppercase tracking-[0.14em] text-[#6B7280]">
                     Size
