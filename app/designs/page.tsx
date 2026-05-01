@@ -72,8 +72,6 @@ function DesignsPageContent() {
     return logos.filter((logo) => logo.slug !== "custom-logo");
   }, []);
 
-  const featured = useMemo(() => {
-    const preferredSlugs = featuredByGroup[featuredGroup] || [];
 
     const preferredLogos = preferredSlugs
       .map((slug) => realLogos.find((logo) => logo.slug === slug))
