@@ -14,16 +14,9 @@ export default function DesignsPage() {
   }, []);
 
   // ✅ NEW ARRIVALS (2 college + 2 camp)
-  const featured = useMemo(() => {
+ const featured = useMemo(() => {
   return realLogos.filter((logo) => logo.featured).slice(0, 4);
 }, [realLogos]);
-
-    const camp = realLogos
-      .filter((logo) => logo.category === "Camp")
-      .slice(0, 2);
-
-    return [college[0], camp[0], college[1], camp[1]].filter(Boolean);
-  }, [realLogos]);
 
   // ✅ FILTERED GRID
   const visibleLogos = useMemo(() => {
