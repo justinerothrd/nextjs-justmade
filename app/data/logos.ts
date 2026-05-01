@@ -689,7 +689,7 @@ export const logos: Logo[] = [
   {
     slug: "maryland-sport-mascot",
     name: "Sport Mascot",
-    image: "/logos/college/maryland-sport-mascot.png",
+    image: "/logos/college/marlyand-sport-mascot.png",
     category: "College",
     group: "Maryland",
     style: "Icon",
