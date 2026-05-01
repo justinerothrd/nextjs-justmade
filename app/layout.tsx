@@ -70,7 +70,7 @@ export default function RootLayout({
               <a href="/" className="transition hover:text-[#6F879E]">Home</a>
               <a href="/shop" className="transition hover:text-[#6F879E]">Shop Camp</a>
               <a href="/college" className="transition hover:text-[#6F879E]">Shop College</a>
-              <a href="/designs" className="transition hover:text-[#6F879E]">Design Collection</a>
+              <a href="/designs" className="transition hover:text-[#6F879E]">Design Library</a>
               <a href="/custom-orders" className="transition hover:text-[#6F879E]">Custom Orders</a>
               <a href="/contact" className="transition hover:text-[#6F879E]">Contact</a>
             </nav>
@@ -123,7 +123,7 @@ export default function RootLayout({
                   Shop College
                 </a>
 <a href="/designs" onClick={() => setMenuOpen(false)}>
-  Design Collection
+  Design Library
 </a>
                 <a href="/custom-orders" onClick={() => setMenuOpen(false)} className="text-[14px] tracking-[0.12em] transition hover:text-[#6F879E]">
                   Custom Orders
