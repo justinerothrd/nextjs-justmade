@@ -197,13 +197,29 @@ export async function POST(req: Request) {
       </div>
     `;
 
-    await resend.emails.send({
-      from: "Just Made Custom <orders@justmadecustom.com>",
-      to: [email],
-      bcc: ["justinerothrd@gmail.com"],
-      subject: `We received your order • ${orderNumber}`,
-      html,
-    });
+  // 🔹 SEND TO FORMSPREE (BACKUP RECORD)
+await fetch("https://formspree.io/f/mlgoglny", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+  body: JSON.stringify({
+    email,
+    orderNumber,
+    total,
+    cart,
+  }),
+});
+
+// 🔹 SEND EMAIL (Resend)
+await resend.emails.send({
+  from: "Just Made Custom <orders@justmadecustom.com>",
+  to: [email],
+  bcc: ["your@email.com"],
+  subject: `We received your order • ${orderNumber}`,
+  html,
+});
 
     return Response.json({ success: true });
   } catch (error) {
