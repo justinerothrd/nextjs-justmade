@@ -83,8 +83,6 @@ function DesignsPageContent() {
       (logo) => logo.group === featuredGroup
     );
 
-    return groupLogos.length > 0 ? groupLogos.slice(0, 4) : realLogos.slice(0, 4);
-  }, [realLogos, featuredGroup]);
 
   const visibleLogos = useMemo(() => {
     if (activeStyle === "All") return realLogos;
