@@ -15,9 +15,8 @@ export default function DesignsPage() {
 
   // ✅ NEW ARRIVALS (2 college + 2 camp)
   const featured = useMemo(() => {
-    const college = realLogos
-      .filter((logo) => logo.category === "College")
-      .slice(0, 2);
+  return realLogos.filter((logo) => logo.featured).slice(0, 4);
+}, [realLogos]);
 
     const camp = realLogos
       .filter((logo) => logo.category === "Camp")
