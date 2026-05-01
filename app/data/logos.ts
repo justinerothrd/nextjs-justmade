@@ -146,7 +146,6 @@ export const logos: Logo[] = [
     category: "Camp",
     group: "Tyler Hill",
     style: "Classic",
-    featured: true,
   },
 
   // CAMP — PONTIAC
@@ -245,6 +244,7 @@ export const logos: Logo[] = [
     category: "Camp",
     group: "Pontiac",
     style: "Script",
+    featured: true,
   },
 
   // CAMP — WESTMONT
