@@ -136,6 +136,7 @@ export const logos: Logo[] = [
     category: "Camp",
     group: "Tyler Hill",
     style: "Script",
+    featured: true,
   },
   {
     slug: "thc-mongoram",
@@ -144,6 +145,7 @@ export const logos: Logo[] = [
     category: "Camp",
     group: "Tyler Hill",
     style: "Classic",
+    featured: true,
   },
 
   // CAMP — PONTIAC
@@ -659,6 +661,7 @@ export const logos: Logo[] = [
     category: "College",
     group: "Tulane",
     style: "Icon",
+    featured: true,
   },
   {
     slug: "tulane-runner-34",
@@ -719,6 +722,7 @@ export const logos: Logo[] = [
     category: "College",
     group: "Ohio State",
     style: "Varsity",
+    featured: true,
   },
   {
     slug: "ohio-essentials",
