@@ -133,8 +133,8 @@ function DesignsPageContent() {
         <section className="mb-16">
 
           <h2 className="mt-2 text-2xl font-light text-[#2F3A4A]">
-            Featured for {featuredGroup}
-          </h2>
+  New Arrivals
+</h2>
 
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((logo) => (
