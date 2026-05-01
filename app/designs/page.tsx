@@ -52,7 +52,10 @@ function DesignsPageContent() {
 
   const returnTo = searchParams.get("returnTo") || "/shop";
   const featured = useMemo(() => {
-  return realLogos.slice(0, 4);
+  const college = realLogos.filter((logo) => logo.category === "College").slice(0, 2);
+  const camp = realLogos.filter((logo) => logo.category === "Camp").slice(0, 2);
+
+  return [...college, ...camp];
 }, [realLogos]);
 
   const [activeStyle, setActiveStyle] =
