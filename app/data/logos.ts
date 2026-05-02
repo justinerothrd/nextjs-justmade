@@ -715,6 +715,7 @@ export const logos: Logo[] = [
     category: "College",
     group: "Maryland",
     style: "Varsity",
+    featured: true,
   },
 
   // COLLEGE — OHIO STATE
@@ -810,6 +811,7 @@ export const logos: Logo[] = [
     category: "College",
     group: "Delaware",
     style: "Minimal",
+    featured: true,
   },
   {
     slug: "udel-script",
