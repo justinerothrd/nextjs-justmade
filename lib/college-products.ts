@@ -67,7 +67,7 @@ export const collegeProducts: Record<string, Product> = {
     options: [
       {
         label: "Tee Style",
-        choices: ["Classic Tee", "Boxy Tee", "Crop Tee", "Oversized Tee"],
+        choices: ["Crewneck", "Cropped", "V-neck", "Oversized"],
       },
     ],
   },
@@ -92,7 +92,7 @@ export const collegeProducts: Record<string, Product> = {
     options: [
       {
         label: "Tank Style",
-        choices: ["Classic Tank", "Cropped Tank", "Racerback Tank", "Muscle Tank"],
+        choices: ["Ribbed Reg", "Rib Cropped", "Scoop neck", "Malibu Sugar"],
       },
     ],
   },
