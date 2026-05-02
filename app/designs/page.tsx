@@ -1,9 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { logos } from "@/app/data/logos";
 
 const styles = ["All", "Varsity", "Minimal", "Script", "Classic", "Icon", "Custom"] as const;
+const categories = ["All", "Camp", "College"] as const;
+
+type LogoItem = (typeof logos)[number];
 
 type SelectedLogo = {
   image: string;
@@ -12,25 +16,61 @@ type SelectedLogo = {
   style: string;
 };
 
-export default function DesignsPage() {
-  const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
+function DesignsPageContent() {
+  const searchParams = useSearchParams();
+
+  const initialCategory = searchParams.get("category");
+
+  const [activeCategory, setActiveCategory] =
+    useState<(typeof categories)[number]>(
+      initialCategory === "College"
+        ? "College"
+        : initialCategory === "Camp"
+        ? "Camp"
+        : "All"
+    );
+
+  const [activeStyle, setActiveStyle] =
+    useState<(typeof styles)[number]>("All");
+
   const [selectedLogo, setSelectedLogo] = useState<SelectedLogo | null>(null);
 
-  const realLogos = useMemo(() => logos.filter((logo) => logo.slug !== "custom-logo"), []);
+  const realLogos = useMemo(() => {
+    return logos.filter((logo) => logo.slug !== "custom-logo");
+  }, []);
 
   const featured = useMemo(() => {
-    return realLogos.filter((logo) => logo.featured).slice(0, 4);
-  }, [realLogos]);
+    let featuredLogos = realLogos.filter((logo) => logo.featured);
+
+    if (activeCategory !== "All") {
+      featuredLogos = featuredLogos.filter(
+        (logo) => logo.category === activeCategory
+      );
+    }
+
+    return featuredLogos.slice(0, 4);
+  }, [realLogos, activeCategory]);
 
   const filteredLogos = useMemo(() => {
-    if (activeStyle === "All") return realLogos;
-    return realLogos.filter((logo) => logo.style === activeStyle);
-  }, [activeStyle, realLogos]);
+    let filtered = realLogos;
+
+    if (activeCategory !== "All") {
+      filtered = filtered.filter((logo) => logo.category === activeCategory);
+    }
+
+    if (activeStyle !== "All") {
+      filtered = filtered.filter((logo) => logo.style === activeStyle);
+    }
+
+    return filtered;
+  }, [activeCategory, activeStyle, realLogos]);
 
   const campLogos = filteredLogos.filter((logo) => logo.category === "Camp");
-  const collegeLogos = filteredLogos.filter((logo) => logo.category === "College");
+  const collegeLogos = filteredLogos.filter(
+    (logo) => logo.category === "College"
+  );
 
-  function openLogo(logo: SelectedLogo) {
+  function openLogo(logo: LogoItem) {
     setSelectedLogo({
       image: logo.image,
       name: logo.name,
@@ -39,7 +79,7 @@ export default function DesignsPage() {
     });
   }
 
-  function LogoGrid({ items }: { items: typeof realLogos }) {
+  function LogoGrid({ items }: { items: LogoItem[] }) {
     return (
       <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-4">
         {items.map((logo) => (
@@ -47,12 +87,12 @@ export default function DesignsPage() {
             key={logo.slug}
             type="button"
             onClick={() => openLogo(logo)}
-            className="group flex aspect-square items-center justify-center rounded-[24px] p-2 transition"
+            className="group flex aspect-square items-center justify-center rounded-[24px] bg-white p-4 transition hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)]"
           >
             <img
               src={logo.image}
               alt={logo.name}
-              className="max-h-[80%] max-w-[80%] object-contain transition-transform duration-500 group-hover:scale-[1.05]"
+              className="max-h-[82%] max-w-[82%] object-contain transition-transform duration-500 group-hover:scale-[1.05]"
             />
           </button>
         ))}
@@ -71,78 +111,99 @@ export default function DesignsPage() {
           All logos can be designed and modified for most camps and colleges.
         </p>
 
+        {/* CATEGORY BUTTONS */}
+        <div className="mt-10 flex flex-wrap gap-3">
+          {categories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              onClick={() => setActiveCategory(category)}
+              className={`rounded-full px-5 py-2 text-sm transition ${
+                activeCategory === category
+                  ? "bg-[#2F3A4A] text-white"
+                  : "border border-[#DDD8D2] bg-white text-[#4B4B4B] hover:bg-[#F3F2EF]"
+              }`}
+            >
+              {category === "All" ? "All Designs" : `${category} Designs`}
+            </button>
+          ))}
+        </div>
+
         {/* NEW ARRIVALS */}
-        <section className="mt-14">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-[#8A8178]">
-            New Arrivals
-          </p>
-          <h2 className="mt-2 text-3xl font-light tracking-[-0.02em] text-[#2F2F2F]">
-            The latest drop
-          </h2>
+        {featured.length > 0 && (
+          <section className="mt-14">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[#8A8178]">
+              New Arrivals
+            </p>
 
-          <div className="mt-6 grid gap-5 lg:grid-cols-[1.25fr_1fr]">
-            {featured[0] && (
-              <button
-                type="button"
-                onClick={() => openLogo(featured[0])}
-                className="group rounded-[34px] border border-[#ECE7E1] bg-white p-6 text-left transition hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.06)]"
-              >
-                <div className="flex aspect-[4/3] items-center justify-center rounded-[28px] bg-[#FAF8F5] p-8">
-                  <img
-                    src={featured[0].image}
-                    alt={featured[0].name}
-                    className="max-h-[82%] max-w-[82%] object-contain transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                </div>
+            <h2 className="mt-2 text-3xl font-light tracking-[-0.02em] text-[#2F2F2F]">
+              The latest drop
+            </h2>
 
-                <div className="mt-5">
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-[#8A8178]">
-                    New
-                  </p>
-                  <p className="mt-2 text-xl font-light text-[#2F2F2F]">
-                    {featured[0].name}
-                  </p>
-                  <p className="mt-1 text-sm text-[#8A8178]">
-                    {featured[0].group} · {featured[0].style}
-                  </p>
-                </div>
-              </button>
-            )}
-
-            <div className="grid gap-5 sm:grid-cols-3 lg:grid-cols-1">
-              {featured.slice(1, 4).map((logo) => (
+            <div className="mt-6 grid gap-5 lg:grid-cols-[1.25fr_1fr]">
+              {featured[0] && (
                 <button
-                  key={logo.slug}
                   type="button"
-                  onClick={() => openLogo(logo)}
-                  className="group grid grid-cols-[110px_1fr] items-center gap-4 rounded-[28px] border border-[#ECE7E1] bg-white p-4 text-left transition hover:-translate-y-0.5 hover:shadow-sm sm:block lg:grid"
+                  onClick={() => openLogo(featured[0])}
+                  className="group rounded-[34px] bg-white p-6 text-left transition hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.06)]"
                 >
-                  <div className="flex aspect-square items-center justify-center p-2">
+                  <div className="flex aspect-[4/3] items-center justify-center p-8">
                     <img
-                      src={logo.image}
-                      alt={logo.name}
-                      className="max-h-[80%] max-w-[80%] object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+                      src={featured[0].image}
+                      alt={featured[0].name}
+                      className="max-h-[82%] max-w-[82%] object-contain transition-transform duration-700 group-hover:scale-[1.04]"
                     />
                   </div>
 
-                  <div className="mt-0 sm:mt-4 lg:mt-0">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#8A8178]">
+                  <div className="mt-5">
+                    <p className="text-[11px] uppercase tracking-[0.2em] text-[#8A8178]">
                       New
                     </p>
-                    <p className="mt-1 text-sm font-medium text-[#2F2F2F]">
-                      {logo.name}
+                    <p className="mt-2 text-xl font-light text-[#2F2F2F]">
+                      {featured[0].name}
                     </p>
-                    <p className="mt-1 text-xs text-[#8A8178]">
-                      {logo.group} · {logo.style}
+                    <p className="mt-1 text-sm text-[#8A8178]">
+                      {featured[0].group} · {featured[0].style}
                     </p>
                   </div>
                 </button>
-              ))}
-            </div>
-          </div>
-        </section>
+              )}
 
-        {/* FILTER */}
+              <div className="grid gap-5 sm:grid-cols-3 lg:grid-cols-1">
+                {featured.slice(1, 4).map((logo) => (
+                  <button
+                    key={logo.slug}
+                    type="button"
+                    onClick={() => openLogo(logo)}
+                    className="group grid grid-cols-[110px_1fr] items-center gap-4 rounded-[28px] bg-white p-4 text-left transition hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] sm:block lg:grid"
+                  >
+                    <div className="flex aspect-square items-center justify-center p-2">
+                      <img
+                        src={logo.image}
+                        alt={logo.name}
+                        className="max-h-[80%] max-w-[80%] object-contain transition-transform duration-700 group-hover:scale-[1.05]"
+                      />
+                    </div>
+
+                    <div className="mt-0 sm:mt-4 lg:mt-0">
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-[#8A8178]">
+                        New
+                      </p>
+                      <p className="mt-1 text-sm font-medium text-[#2F2F2F]">
+                        {logo.name}
+                      </p>
+                      <p className="mt-1 text-xs text-[#8A8178]">
+                        {logo.group} · {logo.style}
+                      </p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* STYLE FILTER */}
         <div className="mt-16 flex flex-wrap gap-3">
           {styles.map((style) => (
             <button
@@ -152,7 +213,7 @@ export default function DesignsPage() {
               className={`rounded-full px-4 py-2 text-sm transition ${
                 activeStyle === style
                   ? "bg-[#5F7A94] text-white"
-                  : "border border-[#DDD8D2] text-[#4B4B4B] hover:bg-[#F3F2EF]"
+                  : "border border-[#DDD8D2] bg-white text-[#4B4B4B] hover:bg-[#F3F2EF]"
               }`}
             >
               {style}
@@ -160,27 +221,29 @@ export default function DesignsPage() {
           ))}
         </div>
 
-        {/* CAMP DESIGNS */}
-        <section className="mt-12">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-[#8A8178]">
-            Camp
-          </p>
-          <h2 className="mt-2 text-3xl font-light tracking-[-0.02em] text-[#2F2F2F]">
-            Camp Designs
-          </h2>
-          <LogoGrid items={campLogos} />
-        </section>
+        {(activeCategory === "All" || activeCategory === "Camp") && (
+          <section className="mt-12">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[#8A8178]">
+              Camp
+            </p>
+            <h2 className="mt-2 text-3xl font-light tracking-[-0.02em] text-[#2F2F2F]">
+              Camp Designs
+            </h2>
+            <LogoGrid items={campLogos} />
+          </section>
+        )}
 
-        {/* COLLEGE DESIGNS */}
-        <section className="mt-16">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-[#8A8178]">
-            College
-          </p>
-          <h2 className="mt-2 text-3xl font-light tracking-[-0.02em] text-[#2F2F2F]">
-            College Designs
-          </h2>
-          <LogoGrid items={collegeLogos} />
-        </section>
+        {(activeCategory === "All" || activeCategory === "College") && (
+          <section className="mt-16">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[#8A8178]">
+              College
+            </p>
+            <h2 className="mt-2 text-3xl font-light tracking-[-0.02em] text-[#2F2F2F]">
+              College Designs
+            </h2>
+            <LogoGrid items={collegeLogos} />
+          </section>
+        )}
       </div>
 
       {selectedLogo && (
@@ -200,7 +263,7 @@ export default function DesignsPage() {
               Close
             </button>
 
-            <div className="flex aspect-square w-full items-center justify-center rounded-[24px] bg-[#FAF8F5] p-8">
+            <div className="flex aspect-square w-full items-center justify-center p-8">
               <img
                 src={selectedLogo.image}
                 alt={selectedLogo.name}
@@ -220,5 +283,13 @@ export default function DesignsPage() {
         </div>
       )}
     </main>
+  );
+}
+
+export default function DesignsPage() {
+  return (
+    <Suspense fallback={null}>
+      <DesignsPageContent />
+    </Suspense>
   );
 }
