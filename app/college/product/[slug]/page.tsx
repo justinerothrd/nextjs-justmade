@@ -201,10 +201,12 @@ export default function ProductPage() {
                 <p className="text-[11px] uppercase text-[#8A8178]">Style</p>
 
                 <div className="mt-3 flex flex-wrap gap-2">
-                  {product.options[0].choices.map((choice) => {
-                    const active =
-                      (selectedOptions[product.options[0].label] ||
-                        product.options[0].choices[0]) === choice;
+                  {product.options?.[0]?.choices.map((choice) => {
+  const optionLabel = product.options?.[0]?.label || "Style";
+  const defaultChoice = product.options?.[0]?.choices?.[0] || "";
+
+  const active =
+    (selectedOptions[optionLabel] || defaultChoice) === choice;
 
                     return (
                       <button
@@ -212,7 +214,7 @@ export default function ProductPage() {
                         onClick={() =>
                           setSelectedOptions({
                             ...selectedOptions,
-                            [product.options[0].label]: choice,
+                            [optionLabel]: choice,
                           })
                         }
                         className={`rounded-full px-4 py-2 text-sm ${
