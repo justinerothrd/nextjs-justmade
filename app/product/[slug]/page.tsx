@@ -24,7 +24,7 @@ const placementOptionsBySlug: Record<string, string[]> = {
 };
 
 const styleOptionsBySlug: Record<string, string[]> = {
-  "custom-tee": ["Crewneck", "Cropped", "V-Neck"],
+  "custom-tee": ["Crewneck", "Cropped", "V-Neck", "Oversized"],
   "tank-top": ["Ribbed Reg", "Ribbed Crop", "Scoop Neck", "Malibu Sugar"],
   sweatpants: ["Open Bottom", "Closed Bottom"],
   "custom-shorts": ["Bike Shorts", "Soffee Shorts"],
