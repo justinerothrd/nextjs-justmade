@@ -220,6 +220,7 @@ export const logos: Logo[] = [
     category: "Camp",
     group: "Pontiac",
     style: "Varsity",
+    featured: true,
   },
   {
     slug: "pontiac-mascot",
@@ -629,6 +630,7 @@ export const logos: Logo[] = [
     category: "Camp",
     group: "Timberlake",
     style: "Varsity",
+    featured: true,
   },
   {
     slug: "timberlake-varsity-arch",
