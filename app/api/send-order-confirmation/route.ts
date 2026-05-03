@@ -196,24 +196,7 @@ export async function POST(req: Request) {
         </div>
       </div>
     `;
-await fetch("YOUR_GOOGLE_SCRIPT_URL", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    name,
-    email,
-    product,
-    size,
-    color,
-    logo,
-    distressed,
-    notes,
-    quantity,
-    total,
-  }),
-});
+
   // 🔹 SEND TO FORMSPREE (BACKUP RECORD)
 await fetch("https://formspree.io/f/mlgoglny", {
   method: "POST",
