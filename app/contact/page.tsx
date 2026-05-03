@@ -14,7 +14,7 @@ export default function ContactPage() {
 
         {/* ✅ THIS IS THE FIX */}
         <form
-          action="https://formspree.io/f/YOUR_FORM_ID"
+          action="https://formspree.io/f/mlgoglny"
           method="POST"
           className="mt-10 rounded-3xl border border-[#E3E3E0] bg-white p-8"
         >
