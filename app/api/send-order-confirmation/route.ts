@@ -204,7 +204,6 @@ await fetch("YOUR_GOOGLE_SCRIPT_URL", {
   body: JSON.stringify({
     name,
     email,
-    phone,
     product,
     size,
     color,
