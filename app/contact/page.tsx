@@ -54,11 +54,11 @@ export default function ContactPage() {
           </div>
 
           <button
-            type="submit"
-            className="mt-6 rounded-full bg-[#6F879E] px-6 py-3 text-white"
-          >
-            Send Message
-          </button>
+  type="submit"
+  className="mt-6 cursor-pointer rounded-full bg-[#6F879E] px-6 py-3 text-white hover:bg-[#5f778d]"
+>
+  Send Message
+</button>
         </form>
       </div>
     </main>
