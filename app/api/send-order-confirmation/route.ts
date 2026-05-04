@@ -265,7 +265,7 @@ Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
     });
 
     // 🔹 SEND ORDER TO GOOGLE SHEET
-    await fetch("https://script.google.com/macros/s/AKfycbx4i0yz-71JfYNW-AXKpQ4JnKq7w66rti8K2JkZt8SRvl7syT2B01cDxMQQnv4kRGCQ/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbyWS8u0XZVxz0kMmm4-Tv1aZGpoyTZNlBXStd0MKSbicxJBUcLJDHEsVeop5CCHeOjh6w/exec", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
