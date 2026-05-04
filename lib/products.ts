@@ -21,7 +21,7 @@ export const products: Record<string, Product> = {
       "/skims hoodie back.png",
       "/hoodie.center-preview.png",
     ],
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    colors: ["Heather Gray", "Black", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -34,7 +34,7 @@ export const products: Record<string, Product> = {
     price: "$60",
     description: "",
     images: ["/thc-monogram-crew.png", "/laurel-arch-crewneck.png"],
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    colors: ["Heather Gray", "Black", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -50,7 +50,7 @@ export const products: Record<string, Product> = {
     price: "$65",
     description: "",
     images: ["/THCquarterzipgrey.png", "/THCquarterzipnavy.png"],
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    colors: ["Heather Gray", "Black", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -63,7 +63,7 @@ export const products: Record<string, Product> = {
     price: "$40",
     description: "",
     images: ["/timberlake-tank.png", "/WM81tank.png", "/THC-tankgrey.png", "/tank with script.png", "/tank-preview.png"],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -78,7 +78,7 @@ export const products: Record<string, Product> = {
     price: "$38",
     description: "",
     images: ["/THbeartee.png", "/hotel westmont.png", "/THCsuperpufftee.png", "/timberlaketee.jpg"],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -91,7 +91,7 @@ export const products: Record<string, Product> = {
     price: "$48",
     description: "",
     images: ["/PCsweatpants.jpg", "/WMsweatpants.png"],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -104,7 +104,7 @@ export const products: Record<string, Product> = {
     price: "$36",
     description: "",
     images: ["/THCbikeshorts.png", "/pontiac-soffee-short.png"],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -117,7 +117,7 @@ export const products: Record<string, Product> = {
     price: "$32",
     description: "",
     images: ["/timberlake-sleepshorts.png", "/thcsleeppants.png"],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -130,7 +130,7 @@ export const products: Record<string, Product> = {
     price: "$40",
     description: "",
     images: ["/thcsleeppants.png"],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -143,7 +143,7 @@ export const products: Record<string, Product> = {
     price: "$65",
     description: "",
     images: ["/THCsleepset.png", "/WMsleepset.png"],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -156,7 +156,7 @@ export const products: Record<string, Product> = {
     price: "$60",
     description: "",
     images: ["/THCslides.png", "/customsocks.png"],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
@@ -169,7 +169,7 @@ export const products: Record<string, Product> = {
     price: "$22",
     description: "",
     images: ["/customsocks.png"],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult XS", "Adult S", "Adult M", "Adult L"],
     logoGroup: "Tyler Hill",
     blankImages: {
