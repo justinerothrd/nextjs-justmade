@@ -263,6 +263,25 @@ await fetch("YOUR_GOOGLE_SCRIPT_URL", {
     total,
   }),
 });
+    await fetch("YOUR_GOOGLE_SCRIPT_URL", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name,
+    email,
+    phone,
+    product,
+    size,
+    color,
+    logo,
+    distressed,
+    notes,
+    quantity,
+    total,
+  }),
+});
     // 🔹 SEND CLEAN RECORD TO FORMSPREE
     await fetch("https://formspree.io/f/mlgoglny", {
       method: "POST",
