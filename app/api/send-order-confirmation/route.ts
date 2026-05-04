@@ -76,7 +76,7 @@ export async function POST(req: Request) {
                       ${
                         item.logoName
                           ? `
-                            <span>Design: ${item.logoName}</span>
+                            Design: ${item.logoName}
                             ${
                               logoImageUrl
                                 ? `
@@ -245,7 +245,7 @@ Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
       </div>
     `;
 
-    // 🔹 SEND CLEAN RECORD TO FORMSPREE
+    // 🔹 SEND CLEAN RECORD TO FORMSPREE BACKUP
     await fetch("https://formspree.io/f/mlgoglny", {
       method: "POST",
       headers: {
@@ -261,6 +261,23 @@ Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
         phone,
         total,
         orderDetails: internalOrderSheet,
+      }),
+    });
+
+    // 🔹 SEND ORDER TO GOOGLE SHEET
+    await fetch("https://script.google.com/macros/s/AKfycbx4i0yz-71JfYNW-AXKpQ4JnKq7w66rti8K2JkZt8SRvl7syT2B01cDxMQQnv4kRGCQ/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        orderNumber,
+        submittedAt,
+        name,
+        email,
+        phone,
+        total,
+        cart,
       }),
     });
 
