@@ -243,19 +243,49 @@ Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
 `,
   }),
 });
+const internalOrderSheet = `
+NEW JUST MADE ORDER
 
-// 🔹 SEND EMAIL (Resend)
+ORDER INFO
+Order #: ${orderNumber}
+Date: ${submittedAt}
+Total: ${total}
+
+CUSTOMER
+Name: ${name || "Not provided"}
+Email: ${email}
+Phone: ${phone || "Not provided"}
+
+ITEMS
+${(cart || [])
+  .map(
+    (item: OrderItem, index: number) => `
+ITEM ${index + 1}
+Product: ${item.product}
+Price: ${item.price}
+Quantity: ${item.quantity}
+Size: ${item.size}
+Color: ${item.color}
+Customization: ${item.campName || item.college || "N/A"}
+Design: ${item.logoName || "None"}
+Placement: ${item.placement || "None"}
+Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
+`
+  )
+  .join("\n------------------------------\n")}
+`;
+// 🔹 SEND CUSTOMER EMAIL
 await resend.emails.send({
   from: "Just Made Custom <orders@justmadecustom.com>",
   to: [email],
-  bcc: ["justinerothrd@gmail.com"],
   subject: `We received your order • ${orderNumber}`,
   html,
 });
 
-    return Response.json({ success: true });
-  } catch (error) {
-    console.error("Order email failed:", error);
-    return Response.json({ error: "Failed" }, { status: 500 });
-  }
-}
+// 🔹 SEND SIMPLE INTERNAL ORDER SHEET TO YOU
+await resend.emails.send({
+  from: "Just Made Custom <orders@justmadecustom.com>",
+  to: ["justinerothrd@gmail.com"],
+  subject: `New Order Sheet • ${orderNumber}`,
+  text: internalOrderSheet,
+});
