@@ -16,12 +16,14 @@ type CartItem = {
   logoName?: string;
   logoImage?: string;
   placement?: string;
-  distressed?: boolean; // ✅ ADD THIS
+  distressed?: boolean;
 };
 
 export default function CartPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [submittedOrderNumber, setSubmittedOrderNumber] = useState("");
 
@@ -67,7 +69,9 @@ export default function CartPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          name,
           email,
+          phone,
           orderNumber,
           submittedAt,
           total: `$${getTotal().toFixed(2)}`,
@@ -134,7 +138,6 @@ export default function CartPage() {
     <main className="min-h-screen bg-[#F7F7F5] px-4 py-10 text-[#4B4B4B] sm:px-6 sm:py-16">
       <div className="mx-auto max-w-4xl">
         <div className="mb-10 text-center">
-        
           <h1 className="mt-2 text-[34px] font-light tracking-[-0.01em] text-[#2F2F2F] sm:text-[42px]">
             Review Your Order
           </h1>
@@ -219,28 +222,29 @@ export default function CartPage() {
                           </p>
 
                           {item.logoName && (
-  <p className="flex items-center gap-2">
-    <span className="text-gray-500">Design:</span>
-    <span>{item.logoName}</span>
+                            <p className="flex items-center gap-2">
+                              <span className="text-gray-500">Design:</span>
+                              <span>{item.logoName}</span>
 
-    {item.logoImage && (
-      <img
-        src={item.logoImage}
-        alt={item.logoName}
-        className="h-12 w-12 rounded-lg bg-[#F7F7F5] object-contain p-2 border border-[#EEEAE5]"
-      />
-    )}
-  </p>
-)}
+                              {item.logoImage && (
+                                <img
+                                  src={item.logoImage}
+                                  alt={item.logoName}
+                                  className="h-12 w-12 rounded-lg bg-[#F7F7F5] object-contain p-2 border border-[#EEEAE5]"
+                                />
+                              )}
+                            </p>
+                          )}
 
                           {item.placement && (
                             <p><span className="text-gray-500">Placement:</span> {item.placement}</p>
                           )}
+
                           {item.distressed && (
-  <p>
-    <span className="text-gray-500">Finish:</span> Distressed / Vintage
-  </p>
-)}
+                            <p>
+                              <span className="text-gray-500">Finish:</span> Distressed / Vintage
+                            </p>
+                          )}
                         </div>
 
                         <button
@@ -272,16 +276,36 @@ export default function CartPage() {
 
             <div className="mt-8 rounded-[28px] border border-[#EAE6E1] bg-white p-6 shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
               <label className="text-sm font-medium text-[#2F2F2F]">
-                Contact Email
+                Contact Information
               </label>
 
               <p className="mt-1 text-xs leading-5 text-gray-500">
                 We’ll send your order confirmation and payment instructions here.
               </p>
 
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                <input
+                  type="text"
+                  placeholder="Full name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#5F7A94]"
+                />
+
+                <input
+                  type="tel"
+                  placeholder="Phone number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                  className="w-full rounded-xl border border-[#D8D3CD] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#5F7A94]"
+                />
+              </div>
+
               <input
                 type="email"
-                placeholder="your@email.com"
+                placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
