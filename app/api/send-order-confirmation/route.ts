@@ -25,7 +25,15 @@ export async function POST(req: Request) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const { email, orderNumber, submittedAt, total, cart } = await req.json();
+    const {
+      name,
+      email,
+      phone,
+      orderNumber,
+      submittedAt,
+      total,
+      cart,
+    } = await req.json();
 
     const itemsHtml = (cart || [])
       .map((item: OrderItem) => {
@@ -105,6 +113,46 @@ export async function POST(req: Request) {
         `;
       })
       .join("");
+
+    const internalOrderSheet = `
+NEW JUST MADE ORDER
+
+==============================
+ORDER INFO
+==============================
+Order #: ${orderNumber}
+Date: ${submittedAt}
+Total: ${total}
+
+==============================
+CUSTOMER
+==============================
+Name: ${name || "Not provided"}
+Email: ${email}
+Phone: ${phone || "Not provided"}
+
+==============================
+ITEMS
+==============================
+${(cart || [])
+  .map(
+    (item: OrderItem, index: number) => `
+ITEM ${index + 1}
+------------------------------
+Product: ${item.product}
+Price: ${item.price}
+Quantity: ${item.quantity}
+Size: ${item.size}
+Color: ${item.color}
+
+Customization: ${item.campName || item.college || "N/A"}
+Design: ${item.logoName || "None"}
+Placement: ${item.placement || "None"}
+Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
+`
+  )
+  .join("\n")}
+`;
 
     const html = `
       <div style="background:#FBFBFA;padding:24px 14px;font-family:Arial,Helvetica,sans-serif;">
@@ -197,95 +245,44 @@ export async function POST(req: Request) {
       </div>
     `;
 
- // 🔹 SEND TO FORMSPREE (BACKUP RECORD)
-await fetch("https://formspree.io/f/mlgoglny", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-  body: JSON.stringify({
-    _subject: `New Just Made Order • ${orderNumber}`,
+    // 🔹 SEND CLEAN RECORD TO FORMSPREE
+    await fetch("https://formspree.io/f/mlgoglny", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        _subject: `New Just Made Order • ${orderNumber}`,
+        orderNumber,
+        submittedAt,
+        name,
+        email,
+        phone,
+        total,
+        orderDetails: internalOrderSheet,
+      }),
+    });
 
-    orderNumber,
-    submittedAt,
-    customerEmail: email,
-    total,
+    // 🔹 SEND CUSTOMER EMAIL
+    await resend.emails.send({
+      from: "Just Made Custom <orders@justmadecustom.com>",
+      to: [email],
+      subject: `We received your order • ${orderNumber}`,
+      html,
+    });
 
-    orderDetails: `
-NEW JUST MADE ORDER
+    // 🔹 SEND SIMPLE INTERNAL ORDER SHEET TO YOU
+    await resend.emails.send({
+      from: "Just Made Custom <orders@justmadecustom.com>",
+      to: ["justinerothrd@gmail.com"],
+      subject: `New Order Sheet • ${orderNumber}`,
+      text: internalOrderSheet,
+    });
 
-ORDER INFO
-Order #: ${orderNumber}
-Date: ${submittedAt}
-Email: ${email}
-Total: ${total}
-
-ITEMS
-${(cart || [])
-  .map(
-    (item: OrderItem, index: number) => `
-------------------------------
-ITEM ${index + 1}
-------------------------------
-Product: ${item.product}
-Price: ${item.price}
-Quantity: ${item.quantity}
-Size: ${item.size}
-Color: ${item.color}
-
-Design: ${item.logoName || "None"}
-Placement: ${item.placement || "None"}
-Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
-`
-  )
-  .join("\n")}
-`,
-  }),
-});
-const internalOrderSheet = `
-NEW JUST MADE ORDER
-
-ORDER INFO
-Order #: ${orderNumber}
-Date: ${submittedAt}
-Total: ${total}
-
-CUSTOMER
-Name: ${name || "Not provided"}
-Email: ${email}
-Phone: ${phone || "Not provided"}
-
-ITEMS
-${(cart || [])
-  .map(
-    (item: OrderItem, index: number) => `
-ITEM ${index + 1}
-Product: ${item.product}
-Price: ${item.price}
-Quantity: ${item.quantity}
-Size: ${item.size}
-Color: ${item.color}
-Customization: ${item.campName || item.college || "N/A"}
-Design: ${item.logoName || "None"}
-Placement: ${item.placement || "None"}
-Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
-`
-  )
-  .join("\n------------------------------\n")}
-`;
-// 🔹 SEND CUSTOMER EMAIL
-await resend.emails.send({
-  from: "Just Made Custom <orders@justmadecustom.com>",
-  to: [email],
-  subject: `We received your order • ${orderNumber}`,
-  html,
-});
-
-// 🔹 SEND SIMPLE INTERNAL ORDER SHEET TO YOU
-await resend.emails.send({
-  from: "Just Made Custom <orders@justmadecustom.com>",
-  to: ["justinerothrd@gmail.com"],
-  subject: `New Order Sheet • ${orderNumber}`,
-  text: internalOrderSheet,
-});
+    return Response.json({ success: true });
+  } catch (error) {
+    console.error("Order email failed:", error);
+    return Response.json({ error: "Failed" }, { status: 500 });
+  }
+}
