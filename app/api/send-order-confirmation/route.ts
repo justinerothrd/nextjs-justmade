@@ -248,7 +248,7 @@ Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
 await resend.emails.send({
   from: "Just Made Custom <orders@justmadecustom.com>",
   to: [email],
-  bcc: ["your@email.com"],
+  bcc: ["justinerothrd@gmail.com"],
   subject: `We received your order • ${orderNumber}`,
   html,
 });
