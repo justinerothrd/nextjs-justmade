@@ -12,12 +12,18 @@ export default function ContactPage() {
           Questions on sizing, styles, or custom and group orders? Reach out—we’ll help you find the perfect pieces!
         </p>
 
-        {/* ✅ THIS IS THE FIX */}
         <form
           action="https://formspree.io/f/mlgoglny"
           method="POST"
           className="mt-10 rounded-3xl border border-[#E3E3E0] bg-white p-8"
         >
+          {/* 👇 Better email subject */}
+          <input
+            type="hidden"
+            name="_subject"
+            value="New Contact Form Submission • Just Made"
+          />
+
           <div className="grid gap-6 md:grid-cols-2">
             <div>
               <label className="mb-2 block text-sm font-medium">Name</label>
@@ -42,6 +48,19 @@ export default function ContactPage() {
             </div>
           </div>
 
+          {/* ✅ NEW PHONE FIELD */}
+          <div className="mt-6">
+            <label className="mb-2 block text-sm font-medium">
+              Phone (optional)
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              className="w-full rounded-xl border border-[#D8D8D4] px-4 py-3"
+              placeholder="Your phone number"
+            />
+          </div>
+
           <div className="mt-6">
             <label className="mb-2 block text-sm font-medium">Message</label>
             <textarea
@@ -54,11 +73,11 @@ export default function ContactPage() {
           </div>
 
           <button
-  type="submit"
-  className="mt-6 cursor-pointer rounded-full bg-[#6F879E] px-6 py-3 text-white hover:bg-[#5f778d]"
->
-  Send Message
-</button>
+            type="submit"
+            className="mt-6 cursor-pointer rounded-full bg-[#6F879E] px-6 py-3 text-white hover:bg-[#5f778d]"
+          >
+            Send Message
+          </button>
         </form>
       </div>
     </main>
