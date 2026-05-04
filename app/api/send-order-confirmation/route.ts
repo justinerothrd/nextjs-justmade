@@ -197,7 +197,7 @@ export async function POST(req: Request) {
       </div>
     `;
 
-  // 🔹 SEND TO FORMSPREE (BACKUP RECORD)
+ // 🔹 SEND TO FORMSPREE (BACKUP RECORD)
 await fetch("https://formspree.io/f/mlgoglny", {
   method: "POST",
   headers: {
@@ -205,10 +205,42 @@ await fetch("https://formspree.io/f/mlgoglny", {
     Accept: "application/json",
   },
   body: JSON.stringify({
-    email,
+    _subject: `New Just Made Order • ${orderNumber}`,
+
     orderNumber,
+    submittedAt,
+    customerEmail: email,
     total,
-    cart,
+
+    orderDetails: `
+NEW JUST MADE ORDER
+
+ORDER INFO
+Order #: ${orderNumber}
+Date: ${submittedAt}
+Email: ${email}
+Total: ${total}
+
+ITEMS
+${(cart || [])
+  .map(
+    (item: OrderItem, index: number) => `
+------------------------------
+ITEM ${index + 1}
+------------------------------
+Product: ${item.product}
+Price: ${item.price}
+Quantity: ${item.quantity}
+Size: ${item.size}
+Color: ${item.color}
+
+Design: ${item.logoName || "None"}
+Placement: ${item.placement || "None"}
+Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
+`
+  )
+  .join("\n")}
+`,
   }),
 });
 
