@@ -24,7 +24,7 @@ export const collegeProducts: Record<string, Product> = {
       "/ohiocrewneck-grey.png",
       "/ohiocrewneck-red.png",
     ],
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    colors: ["Heather Gray", "Black", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
     logoGroup: "College",
     blankImages: {
@@ -43,7 +43,7 @@ export const collegeProducts: Record<string, Product> = {
       "/ucla-hoodie.png",
       "/uncornowhere-hoodie.png",
     ],
-    colors: ["Heather Gray", "Light Blue", "Navy", "White", "Green", "Red"],
+    colors: ["Heather Gray", "Black", "Light Blue", "Navy", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
     logoGroup: "College",
     blankImages: {
@@ -58,7 +58,7 @@ export const collegeProducts: Record<string, Product> = {
     price: "$40",
     description: "",
     images: ["/college.tee.jpg", "/TUgrey-tshirt.png", "/uncblue-tshirt.png"],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
     logoGroup: "College",
     blankImages: {
@@ -81,7 +81,7 @@ export const collegeProducts: Record<string, Product> = {
       "/marylandcrop-tank.png",
       "/ohiocrop-tank.png",
     ],
-    colors: ["White", "Heather Gray", "Light Blue", "Navy", "Green", "Red"],
+    colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
     logoGroup: "College",
     blankImages: {
@@ -108,7 +108,7 @@ export const collegeProducts: Record<string, Product> = {
       "/udelgrey-sweatpants.png",
       "/tulane-sweatpants.png",
     ],
-    colors: ["Heather Gray", "Navy", "Green", "Red"],
+    colors: ["Heather Gray", "Black", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
     logoGroup: "College",
     blankImages: {
@@ -127,7 +127,7 @@ export const collegeProducts: Record<string, Product> = {
     price: "$36",
     description: "",
     images: ["/texas-shorts.png", "/ucla-shorts.png"],
-    colors: ["Heather Gray", "Navy", "Green", "Red"],
+    colors: ["Heather Gray", "Black", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
     logoGroup: "College",
     blankImages: {
@@ -146,7 +146,7 @@ export const collegeProducts: Record<string, Product> = {
     price: "$36",
     description: "",
     images: ["/collegeshorts.png"],
-    colors: ["Heather Gray", "Navy", "Green", "Red"],
+    colors: ["Heather Gray", "Black", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
     logoGroup: "College",
     blankImages: {
@@ -165,7 +165,7 @@ export const collegeProducts: Record<string, Product> = {
     price: "$32",
     description: "",
     images: ["/tulane-sleepshorts.png", "/unc-pjpants.png"],
-    colors: ["Light Blue", "White", "Green", "Red"],
+    colors: ["Light Blue", "Black", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
     logoGroup: "College",
     blankImages: {
@@ -184,7 +184,7 @@ export const collegeProducts: Record<string, Product> = {
     price: "$65",
     description: "",
     images: ["/ohiostate-sleepset.png", "/unc-sleepset.png"],
-    colors: ["Light Blue", "White", "Green", "Red"],
+    colors: ["Light Blue", "Black", "White", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Youth XL", "Adult S", "Adult M"],
     logoGroup: "College",
     blankImages: {
@@ -197,7 +197,7 @@ export const collegeProducts: Record<string, Product> = {
     price: "$60",
     description: "",
     images: ["/slides-preview.png"],
-    colors: ["White", "Navy", "Green", "Red"],
+    colors: ["White", "Black", "Navy", "Green", "Red"],
     sizes: ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M"],
     logoGroup: "College",
     blankImages: {
