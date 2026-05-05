@@ -106,6 +106,7 @@ export default function ProductPage() {
   const [added, setAdded] = useState(false);
   const [imageZoomOpen, setImageZoomOpen] = useState(false);
   const [distressed, setDistressed] = useState(false);
+  const [selectedCamp, setSelectedCamp] = useState("");
 
   const campLogos = useMemo(
     () => logos.filter((logo) => logo.category === "Camp"),
@@ -161,10 +162,7 @@ export default function ProductPage() {
       alert("Please choose a design or select Use Custom Design before adding to cart.");
       return;
     }
-if (!customDetails.trim()) {
-  alert("Please enter the camp name or custom details before adding to cart.");
-  return;
-}
+
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const newItem = {
@@ -186,8 +184,8 @@ if (!customDetails.trim()) {
       logoImage: selectedLogoObject?.image || "",
       logoColor,
       placement,
-      campName: customDetails.trim(),
-customDetails: customDetails.trim(),
+      campName: selectedCamp,
+customDetails: selectedCamp,
     };
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
@@ -365,6 +363,7 @@ customDetails: customDetails.trim(),
   onSelectLogo={setSelectedLogo}
   distressed={distressed}
   onDistressedChange={setDistressed}
+  onSelectGroup={setSelectedCamp}
 />
 
               <div className="mt-6">
