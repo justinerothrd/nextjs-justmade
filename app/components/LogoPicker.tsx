@@ -16,7 +16,7 @@ type LogoPickerProps = {
   defaultGroup?: string;
   productType?: string;
   selectedColor?: string;
-  onSelectGroup?: (group: string) => void; 
+  onSelectGroup?: (group: string) => void;
 };
 
 export default function LogoPicker({
@@ -26,13 +26,13 @@ export default function LogoPicker({
   distressed,
   onDistressedChange,
   defaultGroup,
+  onSelectGroup,
 }: LogoPickerProps) {
   const [activeStyle, setActiveStyle] = useState<(typeof styles)[number]>("All");
   const [selectedGroup, setSelectedGroup] = useState(defaultGroup || "Tyler Hill");
   const [zoomLogo, setZoomLogo] = useState<Logo | null>(null);
   const [otherCamp, setOtherCamp] = useState("");
   const pathname = usePathname();
-  onSelectGroup?: (group: string) => void;
 
   const pickerCategory = logos[0]?.category;
 
@@ -85,9 +85,9 @@ export default function LogoPicker({
                   key={group}
                   type="button"
                   onClick={() => {
-  setSelectedGroup(group);
-  onSelectGroup?.(group);
-}}
+                    setSelectedGroup(group);
+                    onSelectGroup?.(group);
+                  }}
                   className={`px-3.5 py-1.5 text-[13px] transition ${
                     active
                       ? "rounded-full bg-[#2F3A4A] text-white"
@@ -105,7 +105,10 @@ export default function LogoPicker({
           <div className="mt-3 flex items-center gap-2">
             <button
               type="button"
-              onClick={() => setSelectedGroup("Other")}
+              onClick={() => {
+                setSelectedGroup("Other");
+                onSelectGroup?.(otherCamp || "Other");
+              }}
               className={`rounded-full px-3.5 py-1.5 text-[13px] transition ${
                 selectedGroup === "Other"
                   ? "bg-[#2F3A4A] text-white"
@@ -119,9 +122,9 @@ export default function LogoPicker({
               <input
                 value={otherCamp}
                 onChange={(e) => {
-  setOtherCamp(e.target.value);
-  onSelectGroup?.(e.target.value);
-}}
+                  setOtherCamp(e.target.value);
+                  onSelectGroup?.(e.target.value);
+                }}
                 placeholder="Camp name"
                 className="min-w-[180px] rounded-full border border-[#E5E1DB] bg-white px-4 py-1.5 text-[13px] outline-none focus:border-[#6F879E]"
               />
