@@ -161,7 +161,10 @@ export default function ProductPage() {
       alert("Please choose a design or select Use Custom Design before adding to cart.");
       return;
     }
-
+if (!customDetails.trim()) {
+  alert("Please enter the camp name or custom details before adding to cart.");
+  return;
+}
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const newItem = {
@@ -183,7 +186,8 @@ export default function ProductPage() {
       logoImage: selectedLogoObject?.image || "",
       logoColor,
       placement,
-      customDetails,
+      campName: customDetails.trim(),
+customDetails: customDetails.trim(),
     };
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
