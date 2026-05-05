@@ -69,7 +69,10 @@ export default function ProductPage() {
       alert("Please select a design");
       return;
     }
-
+if (!customDetails.trim()) {
+  alert("Please enter the school name or custom details before adding to cart.");
+  return;
+}
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const newItem = {
