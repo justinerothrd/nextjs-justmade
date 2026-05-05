@@ -19,7 +19,7 @@ const placementOptionsBySlug: Record<string, string[]> = {
   "sleepwear-set": ["Top Front", "Shorts Leg"],
   "accessories-slides": ["Top of Slides"],
   "accessories-socks": ["Outer Ankle"],
-   "weekend-duffle": ["Front"],
+  "weekend-duffle": ["Front"],
   "sweatshirt-tote": ["Front"],
 };
 
@@ -44,39 +44,31 @@ function getBlankImage(slug: string, color: string, style?: string) {
     white: "white",
     black: "black",
     green: "green",
-    "blank": "blank",
+    blank: "blank",
     "light blue": "lightblue",
     red: "red",
     "royal blue": "royalblue",
-    
   };
 
   const colorKey = map[c];
   if (!colorKey) return "";
 
-  // TOPS
   if (slug === "hoodie") return `/blanks/hoodie-${colorKey}.png`;
   if (slug === "crewneck") return `/blanks/crewneck-${colorKey}.png`;
   if (slug === "quarter-zip") return `/blanks/quarterzip-${colorKey}.png`;
   if (slug === "tank-top") return `/blanks/tank-${colorKey}.png`;
   if (slug === "custom-tee") return `/blanks/tee-${colorKey}.png`;
 
-    // SHORTS
-if (slug === "custom-shorts") {
-  const type = style === "Soffee Shorts" ? "soffee" : "bike";
-  return `/blanks/shorts-${type}-${colorKey}.png`;
-}
-  if (style === "Bike Shorts") {
-    return `/blanks/bikeshort-${colorKey}.png`;
+  if (slug === "custom-shorts") {
+    const type = style === "Soffee Shorts" ? "soffee" : "bike";
+    return `/blanks/shorts-${type}-${colorKey}.png`;
   }
 
-// SWEATPANTS
-if (slug === "sweatpants") {
-  const type = style === "Closed Bottom" ? "closed" : "open";
-  return `/blanks/sweatpants-${type}-${colorKey}.png`;
-}
+  if (slug === "sweatpants") {
+    const type = style === "Closed Bottom" ? "closed" : "open";
+    return `/blanks/sweatpants-${type}-${colorKey}.png`;
+  }
 
-  // OTHER
   if (slug === "sleepwear") return "/blanks/pajamashorts-blank.png";
   if (slug === "sleeppants") return "/blanks/sleeppants-blank.png";
   if (slug === "sleepwear-set") return "/blanks/sleepset-blank.png";
@@ -106,7 +98,7 @@ export default function ProductPage() {
   const [added, setAdded] = useState(false);
   const [imageZoomOpen, setImageZoomOpen] = useState(false);
   const [distressed, setDistressed] = useState(false);
-  const [selectedCamp, setSelectedCamp] = useState("");
+  const [selectedCamp, setSelectedCamp] = useState("Tyler Hill");
 
   const campLogos = useMemo(
     () => logos.filter((logo) => logo.category === "Camp"),
@@ -119,31 +111,33 @@ export default function ProductPage() {
   );
 
   useEffect(() => {
-  if (!product) return;
+    if (!product) return;
 
-  const placementOptions = placementOptionsBySlug[safeSlug] || ["Full Front"];
-  const styleOptions = styleOptionsBySlug[safeSlug] || [];
+    const placementOptions = placementOptionsBySlug[safeSlug] || ["Full Front"];
+    const styleOptions = styleOptionsBySlug[safeSlug] || [];
 
-  setSelectedImage(0);
-  setSize(
-  safeSlug === "accessories-slides"
-    ? "Youth 1"
-    : safeSlug === "accessories-socks"
-    ? "Youth S/M"
-    : product.sizes?.[0] || "Youth M"
-);
+    setSelectedImage(0);
+    setSize(
+      safeSlug === "accessories-slides"
+        ? "Youth 1"
+        : safeSlug === "accessories-socks"
+        ? "Youth S/M"
+        : product.sizes?.[0] || "Youth M"
+    );
 
-  setColor(
-    safeSlug === "custom-shorts"
-      ? "Navy"
-      : product.colors?.[0] || "Heather Gray"
-  );
-  setDistressed(false);
-  setPlacement(placementOptions[0]);
-  setItemStyle(styleOptions[0] || "");
-  setSelectedLogo("");
-  setLogoColor("Navy");
-}, [product, safeSlug]);
+    setColor(
+      safeSlug === "custom-shorts"
+        ? "Navy"
+        : product.colors?.[0] || "Heather Gray"
+    );
+
+    setDistressed(false);
+    setPlacement(placementOptions[0]);
+    setItemStyle(styleOptions[0] || "");
+    setSelectedLogo("");
+    setLogoColor("Navy");
+    setSelectedCamp("Tyler Hill");
+  }, [product, safeSlug]);
 
   if (!product) return <div>Product not found</div>;
 
@@ -157,6 +151,11 @@ export default function ProductPage() {
 
   function handleAddToCart() {
     if (!product || !safeSlug) return;
+
+    if (!selectedCamp || selectedCamp === "All" || selectedCamp === "Other") {
+      alert("Please choose a camp before adding to cart.");
+      return;
+    }
 
     if (!selectedLogo) {
       alert("Please choose a design or select Use Custom Design before adding to cart.");
@@ -185,7 +184,7 @@ export default function ProductPage() {
       logoColor,
       placement,
       campName: selectedCamp,
-customDetails: selectedCamp,
+      customDetails: customDetails.trim(),
     };
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
@@ -266,20 +265,16 @@ customDetails: selectedCamp,
                 <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
                   Size
                 </p>
-                <select
-                  value={size}
-                  onChange={(e) => setSize(e.target.value)}
-                  className={selectClass}
-                >
-                 {(
-  safeSlug === "accessories-slides"
-    ? ["Youth 1", "Youth 2", "Youth 3", "Youth 4", "Youth 5", "Youth 6", "Adult 7", "Adult 8", "Adult 9", "Adult 10"]
-    : safeSlug === "accessories-socks"
-    ? ["Youth S/M", "Youth L/XL", "Adult S/M", "Adult L/XL"]
-    : product.sizes
-).map((s) => (
-  <option key={s}>{s}</option>
-))}
+                <select value={size} onChange={(e) => setSize(e.target.value)} className={selectClass}>
+                  {(
+                    safeSlug === "accessories-slides"
+                      ? ["Youth 1", "Youth 2", "Youth 3", "Youth 4", "Youth 5", "Youth 6", "Adult 7", "Adult 8", "Adult 9", "Adult 10"]
+                      : safeSlug === "accessories-socks"
+                      ? ["Youth S/M", "Youth L/XL", "Adult S/M", "Adult L/XL"]
+                      : product.sizes
+                  ).map((s) => (
+                    <option key={s}>{s}</option>
+                  ))}
                 </select>
               </div>
 
@@ -287,18 +282,14 @@ customDetails: selectedCamp,
                 <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
                   Color
                 </p>
-                <select
-                  value={color}
-                  onChange={(e) => setColor(e.target.value)}
-                  className={selectClass}
-                >
+                <select value={color} onChange={(e) => setColor(e.target.value)} className={selectClass}>
                   {(
-  safeSlug === "custom-shorts" && itemStyle === "Bike Shorts"
-    ? ["Navy", "Grey", "Black"]
-    : product.colors
-).map((c) => (
-  <option key={c}>{c}</option>
-))}
+                    safeSlug === "custom-shorts" && itemStyle === "Bike Shorts"
+                      ? ["Navy", "Grey", "Black"]
+                      : product.colors
+                  ).map((c) => (
+                    <option key={c}>{c}</option>
+                  ))}
                 </select>
               </div>
 
@@ -306,11 +297,7 @@ customDetails: selectedCamp,
                 <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
                   Placement
                 </p>
-                <select
-                  value={placement}
-                  onChange={(e) => setPlacement(e.target.value)}
-                  className={selectClass}
-                >
+                <select value={placement} onChange={(e) => setPlacement(e.target.value)} className={selectClass}>
                   {placementOptions.map((option) => (
                     <option key={option}>{option}</option>
                   ))}
@@ -353,18 +340,18 @@ customDetails: selectedCamp,
                   Custom Design
                 </p>
                 <p className="mt-2 text-sm leading-6 text-[#6B6762]">
-                  Choose a design below, or add a custom request and we’ll help finalize the artwork.
+                  Choose a camp and design below, or add a custom request and we’ll help finalize the artwork.
                 </p>
               </div>
 
               <LogoPicker
-  logos={campLogos}
-  selectedLogo={selectedLogo}
-  onSelectLogo={setSelectedLogo}
-  distressed={distressed}
-  onDistressedChange={setDistressed}
-  onSelectGroup={setSelectedCamp}
-/>
+                logos={campLogos}
+                selectedLogo={selectedLogo}
+                onSelectLogo={setSelectedLogo}
+                distressed={distressed}
+                onDistressedChange={setDistressed}
+                onSelectGroup={setSelectedCamp}
+              />
 
               <div className="mt-6">
                 <label className="text-[11px] uppercase tracking-[0.16em] text-[#8A8178]">
@@ -391,7 +378,7 @@ customDetails: selectedCamp,
                   value={customDetails}
                   onChange={(e) => setCustomDetails(e.target.value)}
                   rows={3}
-                  placeholder="Camp name, initials, custom logo request, or special notes"
+                  placeholder="Initials, custom logo request, or special notes"
                   className="mt-2 w-full resize-none rounded-[18px] border border-[#E5E1DB] bg-white px-4 py-3 text-sm leading-6 outline-none placeholder:text-[#A8A29E] transition hover:border-[#CFC9C2] focus:border-[#6F879E]"
                 />
               </div>
@@ -406,9 +393,7 @@ customDetails: selectedCamp,
                 type="number"
                 min="1"
                 value={quantity}
-                onChange={(e) =>
-                  setQuantity(Math.max(1, Number(e.target.value)))
-                }
+                onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
                 className={`${selectClass} mt-2`}
               />
             </div>
