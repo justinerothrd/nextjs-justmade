@@ -16,6 +16,7 @@ type LogoPickerProps = {
   defaultGroup?: string;
   productType?: string;
   selectedColor?: string;
+  onSelectGroup?: (group: string) => void; 
 };
 
 export default function LogoPicker({
@@ -31,6 +32,7 @@ export default function LogoPicker({
   const [zoomLogo, setZoomLogo] = useState<Logo | null>(null);
   const [otherCamp, setOtherCamp] = useState("");
   const pathname = usePathname();
+  onSelectGroup?: (group: string) => void;
 
   const pickerCategory = logos[0]?.category;
 
@@ -82,7 +84,10 @@ export default function LogoPicker({
                 <button
                   key={group}
                   type="button"
-                  onClick={() => setSelectedGroup(group)}
+                  onClick={() => {
+  setSelectedGroup(group);
+  onSelectGroup?.(group);
+}}
                   className={`px-3.5 py-1.5 text-[13px] transition ${
                     active
                       ? "rounded-full bg-[#2F3A4A] text-white"
@@ -113,7 +118,10 @@ export default function LogoPicker({
             {selectedGroup === "Other" && (
               <input
                 value={otherCamp}
-                onChange={(e) => setOtherCamp(e.target.value)}
+                onChange={(e) => {
+  setOtherCamp(e.target.value);
+  onSelectGroup?.(e.target.value);
+}}
                 placeholder="Camp name"
                 className="min-w-[180px] rounded-full border border-[#E5E1DB] bg-white px-4 py-1.5 text-[13px] outline-none focus:border-[#6F879E]"
               />
