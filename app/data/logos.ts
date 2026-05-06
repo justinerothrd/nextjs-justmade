@@ -43,6 +43,14 @@ export const logos: Logo[] = [
     style: "Script",
   },
   {
+    slug: "thc-alo",
+    name: "alo",
+    image: "/logos/thc-alo.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Minimal",
+  },
+  {
     slug: "thc-sporty-bear",
     name: "Sporty Bear",
     image: "/logos/THC-sportybear.png",
