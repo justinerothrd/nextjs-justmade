@@ -247,6 +247,14 @@ export const logos: Logo[] = [
     style: "Script",
     featured: true,
   },
+  {
+    slug: "pontiac-analog",
+    name: "Analog",
+    image: "/logos/pontiac-analog.png",
+    category: "Camp",
+    group: "Pontiac",
+    style: "Minimal",
+  },
 
   // CAMP — WESTMONT
   {
@@ -336,6 +344,7 @@ export const logos: Logo[] = [
     category: "Camp",
     group: "Westmont",
     style: "Classic",
+    featured: true,
   },
   {
     slug: "wm-running-club",
