@@ -165,27 +165,30 @@ export default function ProductPage() {
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const newItem = {
-      id: Date.now(),
-      slug: safeSlug,
-      product: product.name,
-      price: product.price,
-      size,
-      color,
-      style: itemStyle,
-      distressed,
-      quantity,
-      image: displayImage,
-      logoSlug: selectedLogo,
-      logoName:
-        selectedLogo === "custom-logo"
-          ? "Custom Design Request"
-          : selectedLogoObject?.name || "",
-      logoImage: selectedLogoObject?.image || "",
-      logoColor,
-      placement,
-      campName: selectedCamp,
-      customDetails: customDetails.trim(),
-    };
+  id: Date.now(),
+  slug: safeSlug,
+  product:
+    itemStyle
+      ? `${itemStyle} ${product.name}`
+      : product.name,
+  price: product.price,
+  size,
+  color,
+  style: itemStyle,
+  distressed,
+  quantity,
+  image: displayImage,
+  logoSlug: selectedLogo,
+  logoName:
+    selectedLogo === "custom-logo"
+      ? "Custom Design Request"
+      : selectedLogoObject?.name || "",
+  logoImage: selectedLogoObject?.image || "",
+  logoColor,
+  placement,
+  campName: selectedCamp,
+  customDetails: customDetails.trim(),
+};
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
     window.dispatchEvent(new Event("cartUpdated"));
