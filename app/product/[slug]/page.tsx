@@ -168,9 +168,9 @@ export default function ProductPage() {
   id: Date.now(),
   slug: safeSlug,
   product:
-    itemStyle
-      ? `${itemStyle} ${product.name}`
-      : product.name,
+  itemStyle
+    ? `${product.name} - ${itemStyle}`
+    : product.name,
   price: product.price,
   size,
   color,
