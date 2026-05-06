@@ -22,11 +22,23 @@ export default function ProductPage() {
   const [size, setSize] = useState("Youth M");
   const [color, setColor] = useState("Heather Gray");
   const [distressed, setDistressed] = useState(false);
+  const [logoColor, setLogoColor] = useState("Navy");
   const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
+  
 
   const collegeLogos = useMemo(() => {
     return logos.filter((logo) => logo.category === "College");
   }, []);
+  
+  const logoColors = [
+  "Navy",
+  "White",
+  "Light Blue",
+  "Pink",
+  "Green",
+  "Red",
+  "Black",
+];
 
   const selectedLogoObject = useMemo(() => {
     return logos.find((logo) => logo.slug === selectedLogo);
@@ -94,6 +106,7 @@ export default function ProductPage() {
   customDetails: customDetails.trim(),
   distressed,
   logoImage: selectedLogoObject?.image || "",
+logoColor,
   size,
   color,
   quantity,
@@ -243,7 +256,21 @@ export default function ProductPage() {
                 onDistressedChange={setDistressed}
                 onSelectGroup={setSelectedSchool}
               />
+<div className="mt-6">
+  <label className="text-[11px] uppercase tracking-[0.16em] text-[#8A8178]">
+    Logo Color
+  </label>
 
+  <select
+    value={logoColor}
+    onChange={(e) => setLogoColor(e.target.value)}
+    className="mt-2 w-full rounded-full border border-[#E5E1DB] bg-white px-4 py-3 text-sm outline-none transition hover:border-[#CFC9C2] focus:border-[#6F879E]"
+  >
+    {logoColors.map((c) => (
+      <option key={c}>{c}</option>
+    ))}
+  </select>
+</div>
               <textarea
                 placeholder="School name, mascot, notes..."
                 value={customDetails}
