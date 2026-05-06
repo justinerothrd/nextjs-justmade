@@ -15,6 +15,7 @@ type CartItem = {
   image?: string;
   logoName?: string;
   logoImage?: string;
+  logoColor?: string;
   placement?: string;
   distressed?: boolean;
 };
@@ -235,7 +236,11 @@ export default function CartPage() {
                               )}
                             </p>
                           )}
-
+{item.logoColor && (
+  <p>
+    <span className="text-gray-500">Logo Color:</span> {item.logoColor}
+  </p>
+)}
                           {item.placement && (
                             <p><span className="text-gray-500">Placement:</span> {item.placement}</p>
                           )}
