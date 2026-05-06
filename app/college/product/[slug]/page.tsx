@@ -97,9 +97,9 @@ export default function ProductPage() {
   id: Date.now(),
   slug,
   product:
-    Object.values(selectedOptions).length > 0
-      ? `${Object.values(selectedOptions).join(" ")} ${product.name}`
-      : product.name,
+  Object.values(selectedOptions).length > 0
+    ? `${product.name} - ${Object.values(selectedOptions).join(" ")}`
+    : product.name,
   price: product.price,
   college: schoolForCart,
   collegeName: schoolForCart,
