@@ -81,28 +81,31 @@ export default function ProductPage() {
 
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-    const newItem = {
-      id: Date.now(),
-      slug,
-      product: product.name,
-      price: product.price,
-      college: schoolForCart,
-      collegeName: schoolForCart,
-      customDetails: customDetails.trim(),
-      distressed,
-      logoImage: selectedLogoObject?.image || "",
-      size,
-      color,
-      quantity,
-      image: currentImage,
-      logoSlug: selectedLogo,
-      logoName:
-        selectedLogo === "custom-logo"
-          ? "Custom Design Request"
-          : selectedLogoObject?.name || "",
-      placement,
-      options: selectedOptions,
-    };
+   const newItem = {
+  id: Date.now(),
+  slug,
+  product:
+    Object.values(selectedOptions).length > 0
+      ? `${Object.values(selectedOptions).join(" ")} ${product.name}`
+      : product.name,
+  price: product.price,
+  college: schoolForCart,
+  collegeName: schoolForCart,
+  customDetails: customDetails.trim(),
+  distressed,
+  logoImage: selectedLogoObject?.image || "",
+  size,
+  color,
+  quantity,
+  image: currentImage,
+  logoSlug: selectedLogo,
+  logoName:
+    selectedLogo === "custom-logo"
+      ? "Custom Design Request"
+      : selectedLogoObject?.name || "",
+  placement,
+  options: selectedOptions,
+};
 
     localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
     window.dispatchEvent(new Event("cartUpdated"));
