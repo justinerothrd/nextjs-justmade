@@ -12,12 +12,10 @@ const josefin = Josefin_Sans({
 export const metadata: Metadata = {
   title: "Just Made Custom",
   description: "Personalized gear for camp, college, and everyday.",
-
   icons: {
-  icon: "/icon.png?v=2",
-},
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
-
   openGraph: {
     title: "Just Made Custom",
     description: "Personalized gear for camp, college, and everyday.",
@@ -33,7 +31,6 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Just Made Custom",
