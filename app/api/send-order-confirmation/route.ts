@@ -149,6 +149,7 @@ Customization: ${item.campName || item.college || "N/A"}
 Design: ${item.logoName || "None"}
 Placement: ${item.placement || "None"}
 Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
+${item.customDetails ? `Notes: ${item.customDetails}\n` : ""}
 `
   )
   .join("\n")}
