@@ -18,6 +18,7 @@ type CartItem = {
   logoColor?: string;
   placement?: string;
   distressed?: boolean;
+  customDetails?: string;
 };
 
 export default function CartPage() {
@@ -27,6 +28,7 @@ export default function CartPage() {
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [submittedOrderNumber, setSubmittedOrderNumber] = useState("");
+  
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -221,6 +223,11 @@ export default function CartPage() {
                             <span className="text-gray-500">Customization Details:</span>{" "}
                             {item.campName || item.college || "N/A"}
                           </p>
+                          {item.customDetails && (
+  <p className="sm:col-span-2">
+    <span className="text-gray-500">Notes:</span> {item.customDetails}
+  </p>
+)}
 
                           {item.logoName && (
                             <p className="flex items-center gap-2">
