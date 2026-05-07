@@ -127,7 +127,7 @@ export const products: Record<string, Product> = {
 
   sleeppants: {
     name: "Custom Sleep Pants",
-    price: "$40",
+    price: "$44",
     description: "",
     images: ["/thcsleeppants.png"],
     colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy"],
