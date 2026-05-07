@@ -162,7 +162,7 @@ export const collegeProducts: Record<string, Product> = {
 
   "college-sleepwear": {
     name: "College Pajama Bottoms",
-    price: "$32",
+    price: "$44",
     description: "",
     images: ["/tulane-sleepshorts.png", "/unc-pjpants.png"],
     colors: ["Light Blue", "Black", "White", "Green", "Red"],
