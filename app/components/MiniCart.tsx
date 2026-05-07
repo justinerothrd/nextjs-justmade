@@ -17,6 +17,7 @@ type CartItem = {
   logoImage?: string;
   logoColor?: string;
   placement?: string;
+  customDetails?: string;
 };
 
 export default function MiniCart() {
@@ -180,6 +181,7 @@ export default function MiniCart() {
   </p>
 )}{item.logoColor && <p>Logo Color: {item.logoColor}</p>}
                             {item.placement && <p>Placement: {item.placement}</p>}
+                            {item.customDetails && <p>Notes: {item.customDetails}</p>}
                           </div>
 
                           <button
