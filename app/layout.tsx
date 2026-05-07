@@ -14,7 +14,8 @@ export const metadata: Metadata = {
   description: "Personalized gear for camp, college, and everyday.",
 
   icons: {
-    icon: "/icon.png",
+  icon: "/icon.png?v=2",
+},
   },
 
   openGraph: {
