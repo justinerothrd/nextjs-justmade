@@ -13,6 +13,7 @@ type OrderItem = {
   logoImage?: string;
   placement?: string;
   distressed?: boolean;
+  customDetails?: string;
 };
 
 function getImageUrl(image?: string) {
