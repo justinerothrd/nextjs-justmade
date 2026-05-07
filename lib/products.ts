@@ -114,7 +114,7 @@ export const products: Record<string, Product> = {
 
   sleepwear: {
     name: "Camp Pajama Shorts",
-    price: "$32",
+    price: "$38",
     description: "",
     images: ["/timberlake-sleepshorts.png", "/thcsleeppants.png"],
     colors: ["White", "Heather Gray", "Black", "Light Blue", "Navy", "Green", "Red"],
