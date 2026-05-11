@@ -11,6 +11,7 @@ type OrderItem = {
   college?: string;
   logoName?: string;
   logoImage?: string;
+  logoColor?: string;
   placement?: string;
   distressed?: boolean;
   customDetails?: string;
@@ -148,6 +149,7 @@ Color: ${item.color}
 
 Customization: ${item.campName || item.college || "N/A"}
 Design: ${item.logoName || "None"}
+Logo Color: ${item.logoColor || "Default"}
 Placement: ${item.placement || "None"}
 Distressed / Vintage: ${item.distressed ? "Yes" : "No"}
 ${item.customDetails ? `Notes: ${item.customDetails}\n` : ""}
