@@ -75,6 +75,14 @@ export const logos: Logo[] = [
     style: "Varsity",
   },
   {
+    slug: "thc-vintage-oval",
+    name: "Vintage THC",
+    image: "/logos/thc-vintage-oval.png",
+    category: "Camp",
+    group: "Tyler Hill",
+    style: "Varsity",
+  },
+  {
     slug: "thc-varsity-arch-solid",
     name: "Varsity Arch Solid",
     image: "/logos/THC-varsityarch-solid.png",
@@ -196,6 +204,14 @@ export const logos: Logo[] = [
     category: "Camp",
     group: "Pontiac",
     style: "Icon",
+  },
+  {
+    slug: "pontiac-vintage-oval",
+    name: "Vintage Pontiac",
+    image: "/logos/pontiac-vintage-oval.png",
+    category: "Camp",
+    group: "Pontiac",
+    style: "Varsity",
   },
   {
     slug: "camp-pontiac",
