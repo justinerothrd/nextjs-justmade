@@ -223,28 +223,25 @@ export default function ProductPage() {
 
         <div className="mt-8 grid items-start gap-10 md:grid-cols-2 md:gap-14">
           <div className="flex gap-4">
+
             {product.images.length > 1 && (
               <div className="flex flex-col gap-3 pt-1">
-                {product.images.map(
-                  (img, i) => (
-                    <button
-                      key={i}
-                      onClick={() =>
-                        setSelectedImage(i)
-                      }
-                     className={`rounded-full border px-4 py-2 text-sm transition ${
-  selectedOption === option
-    ? "border-[#6F879E] bg-[#6F879E] text-white"
-    : "border-[#EEEAE4] bg-white text-[#4B4B4B]"
-}`}
-                    >
-                      <img
-                        src={img}
-                        className="h-16 w-16 object-contain p-2"
-                      />
-                    </button>
-                  )
-                )}
+                {product.images.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSelectedImage(i)}
+                    className={`overflow-hidden rounded-[14px] border bg-white transition ${
+                      selectedImage === i
+                        ? "border-[#6F879E]"
+                        : "border-[#EEEAE4] hover:border-[#D9D4CE]"
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      className="h-16 w-16 object-contain p-2"
+                    />
+                  </button>
+                ))}
               </div>
             )}
 
@@ -455,4 +452,3 @@ export default function ProductPage() {
     </main>
   );
 }
-```
