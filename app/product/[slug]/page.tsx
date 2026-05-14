@@ -59,31 +59,36 @@ const logoColors = [
   "Black",
 ];
 
-function getBlankImage(slug: string, color: string) {
-  const c = color.toLowerCase();
+function getBlankImage(
+  slug: string,
+  color: string
+) {
+  const colorKey = color
+    ?.toLowerCase()
+    .replace(/\s+/g, "-");
 
-  const map: Record<string, string> = {
-    "heather gray": "grey",
-    gray: "grey",
-    grey: "grey",
-    navy: "navy",
-    white: "white",
-    black: "black",
-    green: "green",
-    blank: "blank",
-    "light blue": "lightblue",
-    red: "red",
-    "royal blue": "royalblue",
-  };
-
-  const colorKey = map[c];
   if (!colorKey) return "";
 
-  if (slug === "hoodie") return `/blanks/hoodie-${colorKey}.png`;
-  if (slug === "crewneck") return `/blanks/crewneck-${colorKey}.png`;
-  if (slug === "quarter-zip") return `/blanks/quarterzip-${colorKey}.png`;
-  if (slug === "tank-top") return `/blanks/tank-${colorKey}.png`;
-  if (slug === "custom-tee") return `/blanks/tee-${colorKey}.png`;
+  if (slug === "hoodie")
+    return `/blanks/hoodie-${colorKey}.png`;
+
+  if (slug === "quarter-zip")
+    return `/blanks/quarterzip-${colorKey}.png`;
+
+  if (slug === "tank-top")
+    return `/blanks/tank-${colorKey}.png`;
+
+  if (slug === "custom-tee")
+    return `/blanks/tee-${colorKey}.png`;
+
+  if (slug === "custom-shorts")
+    return `/blanks/shorts-${colorKey}.png`;
+
+  if (slug === "sleepwear")
+    return `/blanks/pajama-${colorKey}.png`;
+
+  if (slug === "sleepwear-set")
+    return `/blanks/pajamaset-${colorKey}.png`;
 
   return "";
 }
