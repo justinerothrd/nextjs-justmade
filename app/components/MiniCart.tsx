@@ -18,8 +18,11 @@ type CartItem = {
   logoColor?: string;
   placement?: string;
   customDetails?: string;
-};
 
+  style?: string;
+  fit?: string;
+  length?: string;
+};
 export default function MiniCart() {
   const [open, setOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -164,9 +167,13 @@ export default function MiniCart() {
                                 ? `College: ${item.college}`
                                 : "Customization: N/A"}
                             </p>
-                            <p>
-                              {item.size} · {item.color} · Qty {item.quantity}
-                            </p>
+                           <p>
+  {item.size} · {item.color} · Qty {item.quantity}
+</p>
+
+{item.style && <p>Style: {item.style}</p>}
+{item.fit && <p>Fit: {item.fit}</p>}
+{item.length && <p>Length: {item.length}</p>}
                             {item.logoName && (
   <p className="flex items-center gap-2">
     <span>Design: {item.logoName}</span>
