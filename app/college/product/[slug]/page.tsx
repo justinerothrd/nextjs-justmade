@@ -232,11 +232,11 @@ export default function ProductPage() {
                       onClick={() =>
                         setSelectedImage(i)
                       }
-                      className={`overflow-hidden rounded-[14px] border bg-white ${
-                        selectedImage === i
-                          ? "border-[#6F879E]"
-                          : "border-[#EEEAE4]"
-                      }`}
+                     className={`rounded-full border px-4 py-2 text-sm transition ${
+  selectedOption === option
+    ? "border-[#6F879E] bg-[#6F879E] text-white"
+    : "border-[#EEEAE4] bg-white text-[#4B4B4B]"
+}`}
                     >
                       <img
                         src={img}
