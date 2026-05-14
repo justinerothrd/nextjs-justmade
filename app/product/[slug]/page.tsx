@@ -1,3 +1,4 @@
+```tsx
 "use client";
 
 import { useParams } from "next/navigation";
@@ -23,17 +24,43 @@ const placementOptionsBySlug: Record<string, string[]> = {
   "sweatshirt-tote": ["Front"],
 };
 
-const styleOptionsBySlug: Record<string, string[]> = {
-  "custom-tee": ["Crewneck", "Cropped", "V-Neck", "Oversized"],
-  "tank-top": ["Ribbed Reg", "Ribbed Crop", "Scoop Neck", "Malibu Sugar"],
-  sweatpants: ["Open Bottom", "Closed Bottom"],
-  "custom-shorts": ["Bike Shorts", "Soffee Shorts"],
-  "weekend-duffle": ["Small", "Large"],
+const productOptionsBySlug = {
+  "tank-top": {
+    type: ["Basic Tank", "Ribbed Tank"],
+    style: ["Camisole", "Wide Strap"],
+    length: ["Regular", "Cropped"],
+  },
+
+  "custom-tee": {
+    neckline: ["Crewneck", "V-Neck"],
+    fit: ["Fitted", "Relaxed"],
+    length: ["Regular", "Cropped"],
+  },
+
+  sweatpants: {
+    style: ["Open Bottom", "Closed Bottom"],
+  },
+
+  "custom-shorts": {
+    style: ["Bike Shorts", "Soffee Shorts"],
+  },
+
+  "weekend-duffle": {
+    sizeOption: ["Small", "Large"],
+  },
 };
 
-const logoColors = ["Navy", "White", "Light Blue", "Pink", "Green", "Red", "Black"];
+const logoColors = [
+  "Navy",
+  "White",
+  "Light Blue",
+  "Pink",
+  "Green",
+  "Red",
+  "Black",
+];
 
-function getBlankImage(slug: string, color: string, style?: string) {
+function getBlankImage(slug: string, color: string) {
   const c = color.toLowerCase();
 
   const map: Record<string, string> = {
@@ -59,22 +86,6 @@ function getBlankImage(slug: string, color: string, style?: string) {
   if (slug === "tank-top") return `/blanks/tank-${colorKey}.png`;
   if (slug === "custom-tee") return `/blanks/tee-${colorKey}.png`;
 
-  if (slug === "custom-shorts") {
-    const type = style === "Soffee Shorts" ? "soffee" : "bike";
-    return `/blanks/shorts-${type}-${colorKey}.png`;
-  }
-
-  if (slug === "sweatpants") {
-    const type = style === "Closed Bottom" ? "closed" : "open";
-    return `/blanks/sweatpants-${type}-${colorKey}.png`;
-  }
-
-  if (slug === "sleepwear") return "/blanks/pajamashorts-blank.png";
-  if (slug === "sleeppants") return "/blanks/sleeppants-blank.png";
-  if (slug === "sleepwear-set") return "/blanks/sleepset-blank.png";
-  if (slug === "accessories-slides") return "/blanks/slides-blank.png";
-  if (slug === "accessories-socks") return "/blanks/socks-blank.png";
-
   return "";
 }
 
@@ -90,7 +101,6 @@ export default function ProductPage() {
   const [selectedLogo, setSelectedLogo] = useState("");
   const [logoColor, setLogoColor] = useState("Navy");
   const [placement, setPlacement] = useState("");
-  const [itemStyle, setItemStyle] = useState("");
   const [size, setSize] = useState("Youth M");
   const [color, setColor] = useState("Heather Gray");
   const [customDetails, setCustomDetails] = useState("");
@@ -99,6 +109,8 @@ export default function ProductPage() {
   const [imageZoomOpen, setImageZoomOpen] = useState(false);
   const [distressed, setDistressed] = useState(false);
   const [selectedCamp, setSelectedCamp] = useState("Tyler Hill");
+
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
 
   const campLogos = useMemo(
     () => logos.filter((logo) => logo.category === "Camp"),
@@ -114,9 +126,9 @@ export default function ProductPage() {
     if (!product) return;
 
     const placementOptions = placementOptionsBySlug[safeSlug] || ["Full Front"];
-    const styleOptions = styleOptionsBySlug[safeSlug] || [];
 
     setSelectedImage(0);
+
     setSize(
       safeSlug === "accessories-slides"
         ? "Youth 1"
@@ -125,75 +137,103 @@ export default function ProductPage() {
         : product.sizes?.[0] || "Youth M"
     );
 
-    setColor(
-      safeSlug === "custom-shorts"
-        ? "Navy"
-        : product.colors?.[0] || "Heather Gray"
-    );
+    setColor(product.colors?.[0] || "Heather Gray");
 
-    setDistressed(false);
     setPlacement(placementOptions[0]);
-    setItemStyle(styleOptions[0] || "");
+
+    setSelectedOptions({});
     setSelectedLogo("");
     setLogoColor("Navy");
     setSelectedCamp("Tyler Hill");
+    setDistressed(false);
   }, [product, safeSlug]);
 
   if (!product) return <div>Product not found</div>;
 
-  const currentImage = product.images?.[selectedImage] || product.images?.[0] || "";
-  const displayImage = getBlankImage(safeSlug, color, itemStyle) || currentImage;
+  const currentImage =
+    product.images?.[selectedImage] || product.images?.[0] || "";
+
+  const displayImage =
+    getBlankImage(safeSlug, color) || currentImage;
 
   const placementOptions =
-    placementOptionsBySlug[safeSlug] || ["Full Front", "Left Chest", "Back"];
+    placementOptionsBySlug[safeSlug] || [
+      "Full Front",
+      "Left Chest",
+      "Back",
+    ];
 
-  const styleOptions = styleOptionsBySlug[safeSlug] || [];
+  const productOptions =
+    productOptionsBySlug[
+      safeSlug as keyof typeof productOptionsBySlug
+    ] || {};
 
   function handleAddToCart() {
     if (!product || !safeSlug) return;
 
-    if (!selectedCamp || selectedCamp === "All" || selectedCamp === "Other") {
+    if (!selectedCamp || selectedCamp === "All") {
       alert("Please choose a camp before adding to cart.");
       return;
     }
 
     if (!selectedLogo) {
-      alert("Please choose a design or select Use Custom Design before adding to cart.");
+      alert("Please choose a design before adding to cart.");
       return;
     }
 
-    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const existingCart = JSON.parse(
+      localStorage.getItem("cart") || "[]"
+    );
 
     const newItem = {
-  id: Date.now(),
-  slug: safeSlug,
-  product:
-  itemStyle
-    ? `${product.name} - ${itemStyle}`
-    : product.name,
-  price: product.price,
-  size,
-  color,
-  style: itemStyle,
-  distressed,
-  quantity,
-  image: displayImage,
-  logoSlug: selectedLogo,
-  logoName:
-    selectedLogo === "custom-logo"
-      ? "Custom Design Request"
-      : selectedLogoObject?.name || "",
-  logoImage: selectedLogoObject?.image || "",
-  logoColor,
-  placement,
-  campName: selectedCamp,
-  customDetails: customDetails.trim(),
-};
+      id: Date.now(),
+      slug: safeSlug,
 
-    localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
+      product: product.name,
+
+      type: selectedOptions.type || "",
+      style: selectedOptions.style || "",
+      fit: selectedOptions.fit || "",
+      length: selectedOptions.length || "",
+      neckline: selectedOptions.neckline || "",
+      sizeOption: selectedOptions.sizeOption || "",
+
+      price: product.price,
+      size,
+      color,
+      quantity,
+
+      image: displayImage,
+
+      logoSlug: selectedLogo,
+
+      logoName:
+        selectedLogo === "custom-logo"
+          ? "Custom Design Request"
+          : selectedLogoObject?.name || "",
+
+      logoImage: selectedLogoObject?.image || "",
+      logoColor,
+
+      placement,
+
+      distressed,
+
+      campName: selectedCamp,
+
+      customDetails: customDetails.trim(),
+    };
+
+    localStorage.setItem(
+      "cart",
+      JSON.stringify([...existingCart, newItem])
+    );
+
     window.dispatchEvent(new Event("cartUpdated"));
     window.dispatchEvent(new Event("openMiniCart"));
+
     setAdded(true);
+
     setTimeout(() => setAdded(false), 2000);
   }
 
@@ -240,7 +280,6 @@ export default function ProductPage() {
               type="button"
               onClick={() => setImageZoomOpen(true)}
               className="group flex aspect-square w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-[28px] border border-[#F0ECE6] bg-[#FBFAF8] p-4 sm:p-6"
-              aria-label={`Zoom ${product.name}`}
             >
               <img
                 src={currentImage}
@@ -255,95 +294,96 @@ export default function ProductPage() {
               {product.name}
             </h1>
 
-            <p className="mt-2 text-[18px] text-[#5F7A94]">{product.price}</p>
+            <p className="mt-2 text-[18px] text-[#5F7A94]">
+              {product.price}
+            </p>
 
-            {product.description && (
-              <p className="mt-5 max-w-md text-[14px] leading-6 text-[#6B7280]">
-                {product.description}
-              </p>
-            )}
+            <div className="mt-8 rounded-[30px] border border-[#ECE7E1] bg-[#FBFAF8] p-5 sm:p-6">
 
-            <div className="mt-7 grid gap-5 sm:grid-cols-3">
-              <div>
-                <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
-                  Size
+              <div className="mb-6">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
+                  Product Options
                 </p>
-                <select value={size} onChange={(e) => setSize(e.target.value)} className={selectClass}>
-                  {(
-                    safeSlug === "accessories-slides"
-                      ? ["Youth 1", "Youth 2", "Youth 3", "Youth 4", "Youth 5", "Youth 6", "Adult 7", "Adult 8", "Adult 9", "Adult 10"]
-                      : safeSlug === "accessories-socks"
-                      ? ["Youth S/M", "Youth L/XL", "Adult S/M", "Adult L/XL"]
-                      : product.sizes
-                  ).map((s) => (
-                    <option key={s}>{s}</option>
-                  ))}
-                </select>
               </div>
 
-              <div>
-                <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
-                  Color
-                </p>
-                <select value={color} onChange={(e) => setColor(e.target.value)} className={selectClass}>
-                  {(
-                    safeSlug === "custom-shorts" && itemStyle === "Bike Shorts"
-                      ? ["Navy", "Grey", "Black"]
-                      : product.colors
-                  ).map((c) => (
-                    <option key={c}>{c}</option>
-                  ))}
-                </select>
-              </div>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
+                    Size
+                  </p>
 
-              <div>
-                <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
-                  Placement
-                </p>
-                <select value={placement} onChange={(e) => setPlacement(e.target.value)} className={selectClass}>
-                  {placementOptions.map((option) => (
-                    <option key={option}>{option}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
+                  <select
+                    value={size}
+                    onChange={(e) => setSize(e.target.value)}
+                    className={selectClass}
+                  >
+                    {product.sizes.map((s) => (
+                      <option key={s}>{s}</option>
+                    ))}
+                  </select>
+                </div>
 
-            {styleOptions.length > 0 && (
-              <div className="mt-6">
-                <p className="mb-2 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
-                  Style
-                </p>
+                <div>
+                  <p className="mb-1 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
+                    Color
+                  </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {styleOptions.map((option) => {
-                    const active = itemStyle === option;
-
-                    return (
-                      <button
-                        key={option}
-                        type="button"
-                        onClick={() => setItemStyle(option)}
-                        className={`rounded-full px-4 py-2 text-[13px] transition ${
-                          active
-                            ? "bg-[#2F3A4A] text-white"
-                            : "border border-[#E5E1DB] bg-white text-[#2F2F2F] hover:border-[#CFC9C2]"
-                        }`}
-                      >
-                        {option}
-                      </button>
-                    );
-                  })}
+                  <select
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                    className={selectClass}
+                  >
+                    {product.colors.map((c) => (
+                      <option key={c}>{c}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
-            )}
+
+              {Object.entries(productOptions).map(([label, choices]) => (
+                <div key={label} className="mt-6">
+                  <p className="mb-2 text-[11px] uppercase tracking-[0.14em] text-[#8A8178]">
+                    {label}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {(choices as string[]).map((choice) => {
+                      const active =
+                        selectedOptions[label] === choice;
+
+                      return (
+                        <button
+                          key={choice}
+                          type="button"
+                          onClick={() =>
+                            setSelectedOptions({
+                              ...selectedOptions,
+                              [label]: choice,
+                            })
+                          }
+                          className={`rounded-full px-4 py-2 text-[13px] transition ${
+                            active
+                              ? "bg-[#2F3A4A] text-white"
+                              : "border border-[#E5E1DB] bg-white text-[#2F2F2F]"
+                          }`}
+                        >
+                          {choice}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
 
             <div className="mt-8 rounded-[30px] border border-[#ECE7E1] bg-[#FBFAF8] p-5 sm:p-6">
               <div className="mb-5">
                 <p className="text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
-                  Custom Design
+                  Design
                 </p>
+
                 <p className="mt-2 text-sm leading-6 text-[#6B6762]">
-                  Choose a camp and design below, or add a custom request and we’ll help finalize the artwork.
+                  Choose a camp and design below.
                 </p>
               </div>
 
@@ -363,11 +403,31 @@ export default function ProductPage() {
 
                 <select
                   value={logoColor}
-                  onChange={(e) => setLogoColor(e.target.value)}
-                  className="mt-2 w-full rounded-full border border-[#E5E1DB] bg-white px-4 py-3 text-sm outline-none transition hover:border-[#CFC9C2] focus:border-[#6F879E]"
+                  onChange={(e) =>
+                    setLogoColor(e.target.value)
+                  }
+                  className="mt-2 w-full rounded-full border border-[#E5E1DB] bg-white px-4 py-3 text-sm outline-none"
                 >
                   {logoColors.map((c) => (
                     <option key={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="mt-6">
+                <label className="text-[11px] uppercase tracking-[0.16em] text-[#8A8178]">
+                  Placement
+                </label>
+
+                <select
+                  value={placement}
+                  onChange={(e) =>
+                    setPlacement(e.target.value)
+                  }
+                  className="mt-2 w-full rounded-full border border-[#E5E1DB] bg-white px-4 py-3 text-sm outline-none"
+                >
+                  {placementOptions.map((option) => (
+                    <option key={option}>{option}</option>
                   ))}
                 </select>
               </div>
@@ -379,10 +439,12 @@ export default function ProductPage() {
 
                 <textarea
                   value={customDetails}
-                  onChange={(e) => setCustomDetails(e.target.value)}
+                  onChange={(e) =>
+                    setCustomDetails(e.target.value)
+                  }
                   rows={3}
-                  placeholder="Initials, custom logo request, or special notes"
-                  className="mt-2 w-full resize-none rounded-[18px] border border-[#E5E1DB] bg-white px-4 py-3 text-sm leading-6 outline-none placeholder:text-[#A8A29E] transition hover:border-[#CFC9C2] focus:border-[#6F879E]"
+                  placeholder="Initials, custom requests, notes..."
+                  className="mt-2 w-full resize-none rounded-[18px] border border-[#E5E1DB] bg-white px-4 py-3 text-sm leading-6 outline-none"
                 />
               </div>
             </div>
@@ -396,7 +458,11 @@ export default function ProductPage() {
                 type="number"
                 min="1"
                 value={quantity}
-                onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
+                onChange={(e) =>
+                  setQuantity(
+                    Math.max(1, Number(e.target.value))
+                  )
+                }
                 className={`${selectClass} mt-2`}
               />
             </div>
@@ -414,7 +480,7 @@ export default function ProductPage() {
 
       {imageZoomOpen && (
         <div
-          className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/70 p-5"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-5"
           onClick={() => setImageZoomOpen(false)}
         >
           <button
@@ -435,3 +501,4 @@ export default function ProductPage() {
     </main>
   );
 }
+```
