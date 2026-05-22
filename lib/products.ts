@@ -12,7 +12,7 @@ export type Product = {
 export const products: Record<string, Product> = {
   hoodie: {
     name: "Custom Hoodie",
-    price: "$60",
+    price: "$65",
     description: "",
     images: [
       "/skims hoodie front.png",
