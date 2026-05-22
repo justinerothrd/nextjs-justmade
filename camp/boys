@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { categories } from "@/lib/boys-categories";
-import { products } from "@/lib/boys-products";
+import { categories } from "@/lib/categories";
+import { products } from "@/lib/products";
 
 const previewProductsByCategory = {
   sweatshirts: ["hoodie", "quarter-zip"],
