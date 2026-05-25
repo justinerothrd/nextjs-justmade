@@ -81,6 +81,12 @@ export async function POST(req: Request) {
                     <div style="margin-top:6px;font-size:13px;color:#6F6F6F;line-height:1.7;">
                       Size: ${item.size}<br/>
                       Color: ${item.color}<br/>
+                      ${item.type ? `Type: ${item.type}<br/>` : ""}
+${item.style ? `Style: ${item.style}<br/>` : ""}
+${item.fit ? `Fit: ${item.fit}<br/>` : ""}
+${item.length ? `Length: ${item.length}<br/>` : ""}
+${item.neckline ? `Neckline: ${item.neckline}<br/>` : ""}
+${item.sizeOption ? `Option: ${item.sizeOption}<br/>` : ""}
                       Quantity: ${item.quantity}<br/>
 
                       ${
@@ -154,6 +160,12 @@ Price: ${item.price}
 Quantity: ${item.quantity}
 Size: ${item.size}
 Color: ${item.color}
+Type: ${item.type || "N/A"}
+Style: ${item.style || "N/A"}
+Fit: ${item.fit || "N/A"}
+Length: ${item.length || "N/A"}
+Neckline: ${item.neckline || "N/A"}
+Option: ${item.sizeOption || "N/A"}
 
 Customization: ${item.campName || item.college || "N/A"}
 Design: ${item.logoName || "None"}
