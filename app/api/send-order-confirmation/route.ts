@@ -5,6 +5,14 @@ type OrderItem = {
   price: string;
   size: string;
   color: string;
+
+  type?: string;
+  style?: string;
+  fit?: string;
+  length?: string;
+  neckline?: string;
+  sizeOption?: string;
+
   quantity: number;
   image?: string;
   campName?: string;
