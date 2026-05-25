@@ -286,7 +286,7 @@ export default function ProductPage() {
               className="group flex aspect-square w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-[28px] border border-[#F0ECE6] bg-[#FBFAF8] p-4 sm:p-6"
             >
               <img
-                src={currentImage}
+                src={displayImage}
                 alt={product.name}
                 className="max-h-[94%] max-w-[94%] object-contain transition-transform duration-700 group-hover:scale-[1.03]"
               />
@@ -496,7 +496,7 @@ export default function ProductPage() {
           </button>
 
           <img
-            src={currentImage}
+            src={displayImage}
             alt={product.name}
             className="max-h-[88vh] max-w-[92vw] object-contain"
           />
