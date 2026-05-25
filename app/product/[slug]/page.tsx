@@ -167,8 +167,12 @@ export default function ProductPage() {
   const currentImage =
     product.images?.[selectedImage] || product.images?.[0] || "";
 
-  const displayImage =
-    getBlankImage(safeSlug, color) || currentImage;
+  const blankImage = getBlankImage(safeSlug, color);
+
+const displayImage =
+  selectedImage === 0 && blankImage
+    ? blankImage
+    : currentImage;
 
   const placementOptions =
     placementOptionsBySlug[safeSlug] || [
