@@ -171,7 +171,13 @@ export default function SiteShell({
               >
                 Custom Orders
               </a>
-
+<a
+  href="/about"
+  onClick={() => setMenuOpen(false)}
+  className="text-[14px] tracking-[0.12em] transition hover:text-[#6F879E]"
+>
+  About
+</a>
               <a
                 href="/contact"
                 onClick={() => setMenuOpen(false)}
