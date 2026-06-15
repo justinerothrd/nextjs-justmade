@@ -59,46 +59,27 @@ const logoColors = [
   "Black",
 ];
 
-function getBlankImage(
-  slug: string,
-  color: string
-) {
-  const colorKey = color
-  ?.toLowerCase()
-  .replace(/\s+/g, "-");
+function getBlankImage(slug: string, color: string) {
+  const colorKey = color?.toLowerCase().replace(/\s+/g, "-");
 
-if (!colorKey) return "";
+  if (!colorKey) return "";
 
-const colorMap: Record<string, string> = {
-  "heather-gray": "grey",
-  gray: "grey",
-  grey: "grey",
-  "light-blue": "lightblue",
-};
+  const colorMap: Record<string, string> = {
+    "heather-gray": "grey",
+    gray: "grey",
+    grey: "grey",
+    "light-blue": "lightblue",
+  };
 
-const normalizedColor =
-  colorMap[colorKey] || colorKey;
+  const normalizedColor = colorMap[colorKey] || colorKey;
 
-  if (slug === "hoodie")
-    return `/blanks/hoodie-${normalizedColor}.png`;
-
-  if (slug === "quarter-zip")
-    return `/blanks/quarterzip-${normalizedColor}.png`;
-
-  if (slug === "tank-top")
-    return `/blanks/tank-${normalizedColor}.png`;
-
-  if (slug === "custom-tee")
-    return `/blanks/tee-${normalizedColor}.png`;
-
-  if (slug === "custom-shorts")
-    return `/blanks/shorts-${normalizedColor}.png`;
-
-  if (slug === "sleepwear")
-    return `/blanks/pajama-${normalizedColor}.png`;
-
-  if (slug === "sleepwear-set")
-    return `/blanks/pajamaset-${normalizedColor}.png`;
+  if (slug === "hoodie") return `/blanks/hoodie-${normalizedColor}.png`;
+  if (slug === "quarter-zip") return `/blanks/quarterzip-${normalizedColor}.png`;
+  if (slug === "tank-top") return `/blanks/tank-${normalizedColor}.png`;
+  if (slug === "custom-tee") return `/blanks/tee-${normalizedColor}.png`;
+  if (slug === "custom-shorts") return `/blanks/shorts-${normalizedColor}.png`;
+  if (slug === "sleepwear") return `/blanks/pajama-${normalizedColor}.png`;
+  if (slug === "sleepwear-set") return `/blanks/pajamaset-${normalizedColor}.png`;
 
   return "";
 }
@@ -152,7 +133,6 @@ export default function ProductPage() {
     );
 
     setColor(product.colors?.[0] || "Heather Gray");
-
     setPlacement(placementOptions[0]);
 
     setSelectedOptions({});
@@ -164,26 +144,22 @@ export default function ProductPage() {
 
   if (!product) return <div>Product not found</div>;
 
-  const displayImage = currentImage;
+  const currentImage =
+    product.images?.[selectedImage] || product.images?.[0] || "";
 
   const blankImage = getBlankImage(safeSlug, color);
 
-const displayImage =
-  selectedImage === 0 && blankImage
-    ? blankImage
-    : currentImage;
+  // Main website preview should show the styled/mockup product image.
+  const displayImage = currentImage;
+
+  // Cart/order confirmation should use the clean blank PNG.
+  const cartImage = blankImage || currentImage;
 
   const placementOptions =
-    placementOptionsBySlug[safeSlug] || [
-      "Full Front",
-      "Left Chest",
-      "Back",
-    ];
+    placementOptionsBySlug[safeSlug] || ["Full Front", "Left Chest", "Back"];
 
   const productOptions =
-    productOptionsBySlug[
-      safeSlug as keyof typeof productOptionsBySlug
-    ] || {};
+    productOptionsBySlug[safeSlug as keyof typeof productOptionsBySlug] || {};
 
   function handleAddToCart() {
     if (!product || !safeSlug) return;
@@ -198,9 +174,7 @@ const displayImage =
       return;
     }
 
-    const existingCart = JSON.parse(
-      localStorage.getItem("cart") || "[]"
-    );
+    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const newItem = {
       id: Date.now(),
@@ -220,7 +194,7 @@ const displayImage =
       color,
       quantity,
 
-      image: displayImage,
+      image: cartImage,
 
       logoSlug: selectedLogo,
 
@@ -241,10 +215,7 @@ const displayImage =
       customDetails: customDetails.trim(),
     };
 
-    localStorage.setItem(
-      "cart",
-      JSON.stringify([...existingCart, newItem])
-    );
+    localStorage.setItem("cart", JSON.stringify([...existingCart, newItem]));
 
     window.dispatchEvent(new Event("cartUpdated"));
     window.dispatchEvent(new Event("openMiniCart"));
@@ -312,11 +283,10 @@ const displayImage =
             </h1>
 
             <p className="mt-2 text-[18px] text-[#5F7A94]">
-              {product.price}
+              ${product.price}
             </p>
 
             <div className="mt-8 rounded-[30px] border border-[#ECE7E1] bg-[#FBFAF8] p-5 sm:p-6">
-
               <div className="mb-6">
                 <p className="text-[11px] uppercase tracking-[0.18em] text-[#8A8178]">
                   Product Options
@@ -365,8 +335,7 @@ const displayImage =
 
                   <div className="flex flex-wrap gap-2">
                     {(choices as string[]).map((choice) => {
-                      const active =
-                        selectedOptions[label] === choice;
+                      const active = selectedOptions[label] === choice;
 
                       return (
                         <button
@@ -420,9 +389,7 @@ const displayImage =
 
                 <select
                   value={logoColor}
-                  onChange={(e) =>
-                    setLogoColor(e.target.value)
-                  }
+                  onChange={(e) => setLogoColor(e.target.value)}
                   className="mt-2 w-full rounded-full border border-[#E5E1DB] bg-white px-4 py-3 text-sm outline-none"
                 >
                   {logoColors.map((c) => (
@@ -438,9 +405,7 @@ const displayImage =
 
                 <select
                   value={placement}
-                  onChange={(e) =>
-                    setPlacement(e.target.value)
-                  }
+                  onChange={(e) => setPlacement(e.target.value)}
                   className="mt-2 w-full rounded-full border border-[#E5E1DB] bg-white px-4 py-3 text-sm outline-none"
                 >
                   {placementOptions.map((option) => (
@@ -456,9 +421,7 @@ const displayImage =
 
                 <textarea
                   value={customDetails}
-                  onChange={(e) =>
-                    setCustomDetails(e.target.value)
-                  }
+                  onChange={(e) => setCustomDetails(e.target.value)}
                   rows={3}
                   placeholder="Initials, custom requests, notes..."
                   className="mt-2 w-full resize-none rounded-[18px] border border-[#E5E1DB] bg-white px-4 py-3 text-sm leading-6 outline-none"
@@ -475,11 +438,7 @@ const displayImage =
                 type="number"
                 min="1"
                 value={quantity}
-                onChange={(e) =>
-                  setQuantity(
-                    Math.max(1, Number(e.target.value))
-                  )
-                }
+                onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
                 className={`${selectClass} mt-2`}
               />
             </div>
