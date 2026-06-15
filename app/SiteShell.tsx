@@ -78,7 +78,9 @@ export default function SiteShell({
             <a href="/custom-orders" className="transition hover:text-[#6F879E]">
               Custom Orders
             </a>
-
+<a href="/about" className="transition hover:text-[#6F879E]">
+  About
+</a>
             <a href="/contact" className="transition hover:text-[#6F879E]">
               Contact
             </a>
