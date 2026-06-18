@@ -10,26 +10,8 @@ export default function AboutPage() {
         </h1>
 
         <p className="mt-6 max-w-3xl text-lg leading-8 text-[#5D5D5D]">
-          We create custom styles for camp, college, and every occasion in between. From clothing to accessories and gifts— our designs are unique, fun and always the best quality. 
+          I am a busy Mom with a hobby that turned into something more! I love creating custom styles for camp, college, and every occasion in between. From clothing to accessories and gifts— the designs are unique, fun and always the best quality. 
         </p>
-
-        <div className="mt-12 grid gap-10 md:grid-cols-2">
-          <div className="rounded-3xl bg-white p-8 border border-[#E3E3E0]">
-            <h2 className="text-2xl font-light text-[#3F3F3F]">What we believe</h2>
-            <p className="mt-4 leading-8 text-[#5D5D5D]">
-              Life is full of meaningful moments. Our goal is for everything we make to feel
-              elevated, simple, and personal.
-            </p>
-          </div>
-
-          <div className="rounded-3xl bg-white p-8 border border-[#E3E3E0]">
-            <h2 className="text-2xl font-light text-[#3F3F3F]">What we make</h2>
-            <p className="mt-4 leading-8 text-[#5D5D5D]">
-              Personalized apparel and gifts for camp, bunk gifts, sibling sets,
-              group orders, and all of your summer camp needs.
-            </p>
-          </div>
-        </div>
       </div>
     </main>
   );
