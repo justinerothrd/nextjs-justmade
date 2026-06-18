@@ -10,7 +10,9 @@ export default function AboutPage() {
         </h1>
 
         <p className="mt-6 max-w-3xl text-lg leading-8 text-[#5D5D5D]">
-          I am a busy Mom with a hobby that turned into something more! I love creating custom styles for camp, college, and every occasion in between. From clothing to accessories and gifts— the designs are unique, fun and always the best quality. 
+          I am a busy Mom with a hobby that turned into something more! I love creating custom styles for camp, college, and every occasion in between. 
+          
+          From clothing to accessories and gifts— the designs are unique, fun and always the best quality. 
         </p>
       </div>
     </main>
